@@ -1,0 +1,2766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadat Academy for Management Sciences - FCI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* ===== PAGE SYSTEM ===== */
+        .page {
+            display: none;
+            min-height: 80vh;
+            animation: fadeIn 0.5s ease-in;
+            scroll-margin-top: calc(var(--nav-offset, 180px));
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            color: #1e4d7b;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ffb81c;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .page-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h3 {
+            color: #1e4d7b;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-left: 4px solid #ffb81c;
+            padding-left: 15px;
+        }
+
+        .content-section h4 {
+            color: #2d6fa3;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-section li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .specs-table th, .specs-table td {
+            border: 1px solid #ddd;
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        .specs-table th {
+            background: #ffb81c;
+            color: white;
+            font-weight: 600;
+        }
+
+        .specs-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .specs-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .highlight-box {
+            background: #e8f4f8;
+            border-left: 4px solid #ffb81c;
+            padding: 18px 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box strong {
+            color: #1e4d7b;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 25px 0;
+        }
+
+        .grid-2col > div {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 6px;
+            border-top: 3px solid #ffb81c;
+        }
+
+        .grid-2col h4 {
+            color: #1e4d7b;
+            margin-bottom: 15px;
+        }
+
+        .icon-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .icon-item strong {
+            color: #1e4d7b;
+            min-width: 100px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: white;
+            border-bottom: 2px solid #f0f0f0;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .logo-fallback-badge {
+            display: none;
+            width: 70px;
+            height: 70px;
+            flex: 0 0 70px;
+            border-radius: 50%;
+            background: #ffb81c;
+            color: #1e4d7b;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            color: #1e4d7b;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #999;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .auth-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-links a {
+            color: #1e4d7b;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .auth-links a:hover {
+            color: #ffb81c;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            padding-left: 15px;
+            border-left: 1px solid #eee;
+        }
+
+        .lang-switcher a {
+            text-decoration: none;
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .lang-switcher a:hover {
+            color: #1e4d7b;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: linear-gradient(135deg, #1e4d7b 0%, #2d6fa3 100%);
+            padding: 0;
+            position: sticky;
+            top: 110px;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav > .nav-content > ul > li > a {
+            display: block;
+            padding: 14px 18px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav > .nav-content > ul > li > a:hover,
+        nav > .nav-content > ul > li > a.active {
+            background: rgba(255,255,255,0.1);
+            border-bottom-color: #ffb81c;
+        }
+
+        /* Submenu */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            border-top: 3px solid #ffb81c;
+        }
+
+        nav li:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            width: 100%;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 12px 18px;
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .submenu a:hover {
+            background: #f5f5f5;
+            color: #1e4d7b;
+            border-left-color: #ffb81c;
+            padding-left: 28px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #1e4d7b 0%, #2d6fa3 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="rgba(255,255,255,0.05)" width="1200" height="600"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #ffb81c;
+            color: #1e4d7b;
+            padding: 12px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background: #ffc940;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 184, 28, 0.3);
+        }
+
+        /* ===== CARDS ===== */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 3px solid #ffb81c;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #1e4d7b;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faculty-card-image {
+            height: 200px;
+            margin: -30px -30px 22px;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+            background: #e8f4f8;
+        }
+
+        .faculty-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ===== STATISTICS ===== */
+        .stats {
+            background: linear-gradient(135deg, #1e4d7b 0%, #2d6fa3 100%);
+            color: white;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-box {
+            padding: 30px 20px;
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffb81c;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1e4d7b;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: #ffb81c;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffb81c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .campus-image-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: all 0.3s;
+        }
+
+        .campus-image-card.campus-fallback {
+            min-height: 320px;
+            background: linear-gradient(135deg, #e8f4f8, #f0f7fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .campus-image-card.campus-fallback::after {
+            content: "Faculty of Computers and Information - Maadi Campus";
+            color: #1e4d7b;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== CHATBOT ===== */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ffb81c;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 3001;
+            font-size: 30px;
+            transition: all 0.3s;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .chatbot-toggle.hidden {
+            display: none;
+        }
+
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            z-index: 3000;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: all 0.3s;
+        }
+
+        .chatbot-widget.active {
+            transform: scale(1);
+        }
+
+        .chatbot-widget.maximized {
+            top: 50%;
+            left: 50%;
+            right: auto;
+            bottom: auto;
+            width: min(920px, calc(100vw - 64px));
+            height: min(760px, calc(100vh - 64px));
+            border-radius: 10px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+            transform-origin: center;
+        }
+
+        .chatbot-widget.active.maximized {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #1e4d7b 0%, #2d6fa3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bb-online-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 0 rgba(74, 222, 128, 0.65);
+            animation: bb-pulse 1.6s infinite;
+        }
+
+        .chatbot-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chatbot-window-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            min-width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .chatbot-window-btn:hover {
+            background: rgba(255,255,255,0.16);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .message.bot .message-content {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .message.user .message-content {
+            background: #1e4d7b;
+            color: white;
+        }
+
+        .policy-chips {
+            padding: 8px 12px 4px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .chips-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .policy-chip {
+            background: #ffffff;
+            border: 1.5px solid #1e4d7b;
+            color: #1e4d7b;
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .policy-chip:hover {
+            background: #1e4d7b;
+            color: #ffffff;
+        }
+
+        .policy-chip:active {
+            transform: scale(0.96);
+        }
+
+        .chatbot-input {
+            border-top: 1px solid #eee;
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .chatbot-input button {
+            background: #1e4d7b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .chatbot-input button:hover {
+            background: #2d6fa3;
+        }
+
+        .chatbot-stop {
+            display: none;
+            background: #b91c1c !important;
+        }
+
+        .chatbot-stop.active {
+            display: inline-block;
+        }
+
+        .chatbot-input.is-generating .chatbot-send {
+            display: none;
+        }
+
+        @keyframes bbBounce {
+            0%,60%,100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+
+        @keyframes bb-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.65); }
+            70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+
+        /* ===== ROADMAP STYLES ===== */
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .roadmap-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #ffb81c;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-left-color: #1e4d7b;
+        }
+
+        .roadmap-header {
+            background: linear-gradient(135deg, #1e4d7b 0%, #2d6fa3 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .roadmap-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .roadmap-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .roadmap-body {
+            padding: 25px 20px;
+        }
+
+        .year-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .year-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .year-title {
+            background: #f5f5f5;
+            color: #1e4d7b;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border-left: 3px solid #ffb81c;
+        }
+
+        .course-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .course-item {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .course-item::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ffb81c;
+            font-weight: bold;
+        }
+
+        .specialization-badge {
+            display: inline-block;
+            background: #e8f4f8;
+            color: #1e4d7b;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 1.8em;
+            }
+
+            .page-content {
+                padding: 20px;
+            }
+
+            .chatbot-widget {
+                width: 100%;
+                height: 100vh;
+                max-width: 100%;
+                border-radius: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+            }
+
+            .chatbot-widget.maximized {
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .chatbot-widget.active.maximized {
+                transform: scale(1);
+            }
+
+            #navToggle {
+                display: block !important;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+            }
+
+            nav ul.nav-open {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav > .nav-content > ul > li > a {
+                padding: 10px 15px;
+            }
+
+            .section {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#home" class="logo" onclick="showPage('home'); return false;">
+                <span class="logo-fallback-badge" aria-hidden="true">SA</span>
+                <img src="assets/sams_logo.png" alt="SAMS Logo" onerror="this.style.display='none'; this.previousElementSibling.style.display='flex';">
+                <div class="logo-text">
+                    <h1>Sadat Academy</h1>
+                    <p>For Management Sciences</p>
+                </div>
+            </a>
+            <div class="header-right">
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-content">
+            <button id="navToggle" onclick="document.querySelector('nav ul').classList.toggle('nav-open')" style="display:none;background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:10px 20px;">☰</button>
+            <ul>
+                <li>
+                    <a onclick="showPage('home')">Home</a>
+                </li>
+                <li>
+                    <a>About ▼</a>
+                    <ul class="submenu">
+                        <li><a onclick="showPage('vision')">Vision, Mission & Goals</a></li>
+                        <li><a onclick="showPage('departments')">Academic Departments</a></li>
+                        <li><a onclick="showPage('overview')">Why Choose SAMS</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Admissions ▼</a>
+                    <ul class="submenu">
+                        <li><a onclick="showPage('admission')">Admission Requirements</a></li>
+                        <li><a onclick="showPage('tuition')">Tuition & Fees</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Academic ▼</a>
+                    <ul class="submenu">
+                        <li><a onclick="showPage('studyplan')">Study Plan</a></li>
+                        <li><a onclick="showPage('registration')">Registration & Enrollment</a></li>
+                        <li><a onclick="showPage('exams')">Examination System</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Policies ▼</a>
+                    <ul class="submenu">
+                        <li><a onclick="showPage('policies')">Academic Policies</a></li>
+                        <li><a onclick="showPage('discipline')">Discipline System</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a onclick="showPage('roadmap')">Roadmaps</a>
+                </li>
+                <li>
+                    <a onclick="showPage('contact')">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE: HOME -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Sadat Academy for Management Sciences</h1>
+                <p>Faculty of Computers and Information</p>
+            <p style="font-size: 16px; margin-top: 20px;">Excellence in Computer Science | Artificial Intelligence | Cyber Security | Information Systems & Data Science | Software Engineering</p>
+                <button class="btn-primary" onclick="showPage('admission')">Apply Now</button>
+            </div>
+        </section>
+
+        <!-- Carousel Image Section -->
+        <div style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+            <div class="campus-image-card">
+                <img src="assets/Capture1.PNG" alt="Students working on computer science projects" style="width: 100%; height: 360px; object-fit: cover; display: block;" onerror="this.style.display='none'; this.parentElement.classList.add('campus-fallback');">
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 style="text-align: center; color: #1e4d7b; margin-bottom: 40px;">Why Choose Sadat Academy?</h2>
+            <ol style="max-width: 1200px; margin: 0 auto; margin-left: 40px;">
+                <li><strong>Pioneer in Management Education:</strong> Egypt's first governmental educational organization specialized in management sciences.</li>
+                <li><strong>Diverse Academic Programs:</strong> Comprehensive programs across management sciences, computer sciences, and languages.</li>
+                <li><strong>Theory Meets Practice:</strong> Programs linking academic knowledge with real-world professional applications.</li>
+                <li><strong>Nationwide Presence:</strong> Branches in Cairo, Tanta, Port Said, Mansoura, Alexandria, and Minia.</li>
+                <li><strong>Excellence and Innovation:</strong> Recognized for academic excellence, research, and student development.</li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2 style="text-align: center; color: #1e4d7b; margin-bottom: 40px;">Our Faculties</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="faculty-card-image">
+                        <img src="assets/capture 2.jpg" alt="Management Sciences">
+                    </div>
+                    <h3>Faculty of Management Sciences</h3>
+                    <p>Offering advanced programs in business administration, accounting, economics, international business, human resources, and tourism management. Duration: 3-4 years.</p>
+                </div>
+                <div class="card">
+                    <div class="faculty-card-image">
+                        <img src="assets/Capture3.PNG" alt="Languages and Translation">
+                    </div>
+                    <h3>Faculty of Languages and Translation</h3>
+                    <p>Comprehensive programs in English, Spanish, and Chinese languages with practical translation, interpretation, and professional communication skills. Duration: 4 years.</p>
+                </div>
+                <div class="card">
+                    <div class="faculty-card-image">
+                        <img src="assets/Capture1.PNG" alt="Computers and Information">
+                    </div>
+                    <h3>Faculty of Computers and Information</h3>
+                    <p>Cutting-edge programs in Computer Sciences, Artificial Intelligence, Cyber Security, Information Systems & Data Science, and Software Engineering. Duration: 4 years.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-box">
+                <div class="stat-number">43+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Specialized Faculties</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Academic Programs</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Branches Nationwide</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 style="text-align: center; color: #1e4d7b; margin-bottom: 40px;">Our Mission & Vision</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3>Our Mission</h3>
+                    <p>To enhance the professions of management by preparing students and scholars in management sciences, computer sciences, and languages capable of competition and meeting stakeholder expectations through exceptional educational and training programs that link theory with practice.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Vision</h3>
+                    <p>To be a distinguished educational organization in Egypt and the Arab world, recognized for excellence in academics, research, and student development, producing graduates who are leaders and innovators in their respective fields.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: VISION, MISSION & GOALS -->
+    <div id="vision" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Vision, Mission & Goals</h2>
+
+                <div class="content-section">
+                    <h3>Vision</h3>
+                    <p>The Faculty of Computers and Information at Sadat Academy for Management Sciences aspires to advance the scientific, applied, and research level in Computer Science, Information Systems, and Software Engineering — achieving a distinguished standing among FCI faculties locally, regionally, and globally — while upholding professional ethics, developing Egypt's information society, and managing its information resources and heritage, through qualifying outstanding human capital that contributes to community development.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Mission</h3>
+                    <p>The faculty strives to provide a distinguished educational and research level in Computer Science, Information Systems, and Software Engineering for its graduates, preparing them academically and professionally to meet society's evolving aspirations and push them to build the information-technology infrastructure of organizations, with attention to diversity in scientific research and development, and providing an environment that encourages creativity, excellence, and professional ethical commitment.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Strategic Goals</h3>
+                    <ol style="margin-left: 30px;">
+                        <li><strong>Prepare Specialists:</strong> Equip graduates with theoretical and applied foundations in computing and information technology, qualifying them to compete in the global market.</li>
+                        <li><strong>Conduct Research:</strong> Perform scientific and applied studies directly impacting information resources and community development.</li>
+                        <li><strong>Technical Consultation:</strong> Provide scientific and technical consultations to organizations utilizing computing and information technology.</li>
+                        <li><strong>Train Technical Staff:</strong> Train professionals in various state sectors in computing technology and information management.</li>
+                        <li><strong>Raise Awareness:</strong> Spread understanding of computing technology and rational information resource management across sectors.</li>
+                        <li><strong>Organize Scientific Events:</strong> Conduct conferences and scientific meetings to elevate educational levels.</li>
+                        <li><strong>Build International Partnerships:</strong> Conclude scientific agreements with equivalent institutions locally and internationally.</li>
+                        <li><strong>Support Research Publishing:</strong> Provide and support scientific publishing and research means.</li>
+                        <li><strong>Establish Research Units:</strong> Create advanced specialized research units in various CS and information management branches.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: DEPARTMENTS -->
+    <div id="departments" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Academic Departments</h2>
+
+                <div class="content-section">
+                    <p><strong>All instruction is conducted in English.</strong> The Faculty of Computers and Information offers five distinct specializations at the Bachelor's degree level:</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>1. Department of Computer Sciences</h3>
+                    <p>Computer Science covers a wide range of theoretical foundations contributing to robotics, computer vision, intelligent systems, bioinformatics, and more. It solves complex problems using mathematical analysis, algorithms, programming languages, and system/network security.</p>
+                    <h4>Key Topics Include:</h4>
+                    <p>Algorithm Analysis & Design • Computer Architecture • Computer Programming • Programming Language Concepts • Object-Oriented Programming • Web Application Development • Data Structures • Operating Systems • Computer Networks • Artificial Intelligence • Machine Learning • Computer Security • Cloud & Mobile Computing • Computer Vision • Pattern Recognition • Virtual Reality • Graduation Project</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>2. Department of Information Systems</h3>
+                    <p>Information Systems focuses on developing, operating, and maintaining systems that enable information and communication services in modern organizations. It bridges Computer Science and the business world by understanding organizational problems and providing technical solutions.</p>
+                    <h4>Key Topics Include:</h4>
+                    <p>IS Fundamentals • IS Analysis & Design • IS Development Methodologies • E-Business Strategy & Architecture • Expert Systems • Knowledge-Based Systems • Database Systems • E-Commerce • Decision Support Systems • IS Project Management • IS Quality Assurance • Graduation Project</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>3. Department of Software Engineering</h3>
+                    <p>Software Engineering relates to developing software systems efficiently, reliably, and at scale, with ongoing maintenance. It covers designing and developing the foundations for building complete systems that meet user requirements.</p>
+                    <h4>Key Topics Include:</h4>
+                    <p>SE Fundamentals • Software Requirements • Software Design • Software Architecture • Software Testing • Software Maintenance • SE Project Management • Software Quality Management • SE Tools & Methods • Graduation Project</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>4. Artificial Intelligence</h3>
+                    <p>Trains students to build intelligent systems across the full AI stack — from automated reasoning and cognitive science through deep learning, NLP, robotics, and autonomous agents. Graduates pursue roles as AI/ML Engineers, NLP Engineers, Robotics Engineers, and Research Scientists.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>5. Cyber Security</h3>
+                    <p>Prepares students to defend systems and networks against the full spectrum of digital threats. The curriculum spans cryptographic theory, penetration testing, digital forensics, risk management, cloud security, and cyber warfare. Graduates find roles as Penetration Testers, SOC Analysts, Digital Forensics Investigators, and Security Architects.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Specialization Rules:</strong><br>
+                    • Choose a major and a minor from the five specializations (starting Year 3)<br>
+                    • The two cannot be in the same field<br>
+                    • Dual-specialization Bachelor's degrees are available<br>
+                    • Students may change specialization once during their study period
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: OVERVIEW -->
+    <div id="overview" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">About Sadat Academy</h2>
+
+                <div class="content-section">
+                    <p style="font-size: 1.05em; line-height: 1.9;">Sadat Academy for Management Sciences (SAMS) is Egypt's premier educational organization dedicated to excellence in management sciences, computer sciences, and languages. We are committed to producing graduates who are capable of competing globally and meeting the expectations of stakeholders through exceptional educational and training programs that bridge theory with practice.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Our Historical Background</h3>
+                    <p>The roots of Sadat Academy trace back to <strong>1954</strong> with the establishment of the Public Administration training center, followed by the <strong>National center for Management Development in 1961</strong> and the <strong>Local Administration training center in 1967</strong>. Sadat Academy for Management Sciences was formally established in <strong>March 1981</strong> under Presidential Decree No. 172/1981 as an independent educational organization, becoming <strong>Egypt's first governmental body specialized in management sciences</strong>.</p>
+                    <p>For over four decades, we have been a beacon of academic excellence and innovation in the region, serving thousands of students and professionals.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Why Choose Sadat Academy?</h3>
+                    <ol style="margin-left: 30px; font-size: 1.05em;">
+                        <li><strong>Pioneer in Management Education:</strong> We are Egypt's first governmental educational organization specialized in management sciences.</li>
+                        <li><strong>Diverse Academic Programs:</strong> We offer comprehensive programs across multiple disciplines including management, computer sciences, and languages.</li>
+                        <li><strong>Theory Meets Practice:</strong> Our programs link academic knowledge with real-world professional applications through hands-on training and community engagement.</li>
+                        <li><strong>Nationwide Presence:</strong> With branches in Cairo, Tanta, Port Said, Mansoura, Alexandria, and Minia, we serve students across Egypt.</li>
+                        <li><strong>Excellence and Innovation:</strong> We are recognized for our commitment to academic excellence, research, and student development.</li>
+                    </ol>
+                </div>
+
+                <div class="content-section">
+                    <h3>Our Commitment to Excellence</h3>
+                    <p>Sadat Academy for Management Sciences has been serving students and communities for over four decades. Our commitment to academic excellence, research innovation, and student success has established us as a leader in higher education in Egypt and the Arab region.</p>
+                    <p>We believe in:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Preparing students for meaningful careers in their chosen fields</li>
+                        <li>Fostering critical thinking and independent learning</li>
+                        <li>Building partnerships between education and industry</li>
+                        <li>Contributing to national development through quality education</li>
+                        <li>Maintaining the highest standards of academic integrity</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: ADMISSION REQUIREMENTS -->
+    <div id="admission" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Admission Requirements & Process</h2>
+
+                <div class="content-section">
+                    <h3>Enrollment Requirements</h3>
+                    <div class="highlight-box">
+                        <strong>You must:</strong><br>
+                        ✓ Hold a General Secondary Education certificate (Mathematics or Science stream) or equivalent<br>
+                        ✓ Achieve at least <strong>80% in English language</strong><br>
+                        ✓ Pass aptitude tests held by the faculty<br>
+                        ✓ Successfully complete the personal interview
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Transfers from Other Faculties</h3>
+                    <h4>From Equivalent Faculties:</h4>
+                    <ul style="margin-left: 30px;">
+                        <li>Must be passing at current faculty</li>
+                        <li>Secondary school total must meet the Academy's minimum for your certificate year</li>
+                    </ul>
+                    <h4>From Non-Equivalent Faculties:</h4>
+                    <ul style="margin-left: 30px;">
+                        <li>Must hold a secondary certificate total qualifying for FCI admission</li>
+                    </ul>
+                    <h4>General Requirements:</h4>
+                    <ul style="margin-left: 30px;">
+                        <li>Must not have discontinued studies before transfer</li>
+                        <li>Must not have been permanently dismissed for disciplinary reasons</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Required Documents</h3>
+                    <p>Submit the following to the Student Affairs Office:</p>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Document</th>
+                            <th>Details</th>
+                        </tr>
+                        <tr>
+                            <td>Grade Sheet</td>
+                            <td>From General Secondary Education or equivalent</td>
+                        </tr>
+                        <tr>
+                            <td>Birth Certificate</td>
+                            <td>Copy or official extract</td>
+                        </tr>
+                        <tr>
+                            <td>National ID</td>
+                            <td>Copy of national ID card</td>
+                        </tr>
+                        <tr>
+                            <td>Medical Examination</td>
+                            <td>Issued by the Academy</td>
+                        </tr>
+                        <tr>
+                            <td>Photographs</td>
+                            <td>Six personal photographs</td>
+                        </tr>
+                        <tr>
+                            <td>Military Service (Males)</td>
+                            <td>Forms 2 Jund and 6 Jund, or Form 7 Jund</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px;"><strong>Important:</strong> Upon acceptance, submit all original documents within one week of enrollment.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Admission Steps</h3>
+                    <ol style="margin-left: 30px;">
+                        <li>Submit application documents to Student Affairs Office</li>
+                        <li>Documents reviewed against originals</li>
+                        <li>Receive payment order for application envelope fee</li>
+                        <li>Pay envelope and examination fees at the treasury</li>
+                        <li>Complete all data forms</li>
+                        <li>Submit file to registration committee</li>
+                        <li>Receive file number (seat number)</li>
+                        <li>Exam location and date announced after file submission</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: STUDY PLAN -->
+    <div id="studyplan" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Study Plan & Credit Hours</h2>
+
+                <div class="content-section">
+                    <h3>Degree Requirements (144 Credit Hours)</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Requirement Type</th>
+                            <th>Credit Hours</th>
+                            <th>Composition</th>
+                        </tr>
+                        <tr>
+                            <td><strong>General Requirements</strong></td>
+                            <td>12 hrs</td>
+                            <td>6 mandatory + 6 elective</td>
+                        </tr>
+                        <tr>
+                            <td><strong>College Requirements</strong></td>
+                            <td>72 hrs</td>
+                            <td>66 mandatory + 6 elective</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Major Specialization</strong></td>
+                            <td>45 hrs</td>
+                            <td>30 mandatory + 15 elective</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Minor Specialization</strong></td>
+                            <td>15 hrs</td>
+                            <td>All elective</td>
+                        </tr>
+                        <tr style="background: #1e4d7b; color: white;">
+                            <td><strong>TOTAL</strong></td>
+                            <td><strong>144 hrs</strong></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Study Structure</h3>
+                    <div class="grid-2col">
+                        <div>
+                            <h4>Duration</h4>
+                            <p>4 years (8 semesters) + Summer practical training (3 months total)</p>
+                        </div>
+                        <div>
+                            <h4>Academic Calendar</h4>
+                            <p>Two 16-week main semesters per year, plus optional summer semester</p>
+                        </div>
+                    </div>
+                    <div class="grid-2col">
+                        <div>
+                            <h4>Years 1 & 2</h4>
+                            <p><strong>General Study:</strong> All students follow the same curriculum</p>
+                        </div>
+                        <div>
+                            <h4>Years 3 & 4</h4>
+                            <p><strong>Specialization:</strong> Choose major and minor specializations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Academic Levels</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Level</th>
+                            <th>Completed Credit Hours</th>
+                            <th>Year</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Level 1</strong></td>
+                            <td>1 – 36 hours</td>
+                            <td>Year 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Level 2</strong></td>
+                            <td>37 – 72 hours</td>
+                            <td>Year 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Level 3</strong></td>
+                            <td>73 – 108 hours</td>
+                            <td>Year 3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Level 4</strong></td>
+                            <td>109 – 144 hours</td>
+                            <td>Year 4</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Graduation Project</h3>
+                    <p>Fourth-year students must prepare a graduation project spanning two semesters (Semesters 7 & 8). The project is assessed both practically and orally by a faculty committee. Students may request a Faculty Council extension of up to 4 weeks after written exams to complete the project.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Additional Improvement Opportunity:</strong><br>
+                    Upon completing all required graduation hours, students may register up to 3 additional elective courses to improve their cumulative GPA.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: REGISTRATION & ENROLLMENT -->
+    <div id="registration" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Registration & Enrollment</h2>
+
+                <div class="content-section">
+                    <h3>Academic Advising</h3>
+                    <p>The faculty assigns academic advisors from the teaching staff to guide students in choosing required courses before each registration period. Your advisor will help you make course selections aligned with your academic plan.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Registration Timeline & Process</h3>
+                    <h4>Standard Registration Window</h4>
+                    <div class="highlight-box">
+                        <strong>Registration opens:</strong> 1 week before semester start<br>
+                        <strong>Late registration available:</strong> First and second weeks after study begins<br>
+                        <strong>Requirement:</strong> Payment of tuition + approval from academic advisor and Vice Dean
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Credit Load Requirements</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Semester Type</th>
+                            <th>Minimum</th>
+                            <th>Maximum</th>
+                            <th>Special Cases</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Regular Semester</strong></td>
+                            <td>15 hrs</td>
+                            <td>21 hrs</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Summer Semester</strong></td>
+                            <td>—</td>
+                            <td>2 courses (6 hrs)</td>
+                            <td>Up to 3 courses if GPA ≥ 3.7 or enables graduation</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Add/Drop Courses</h3>
+                    <p><strong>During the Academic Advising Period (1 week before + 2 weeks after semester start):</strong></p>
+                    <ul style="margin-left: 30px;">
+                        <li>May add or drop up to 2 courses</li>
+                        <li><strong>No record on transcript</strong></li>
+                        <li>Requires academic advisor approval</li>
+                    </ul>
+                    <p style="margin-top: 20px;"><strong>After Advising Period (Until Midterm Exams):</strong></p>
+                    <ul style="margin-left: 30px;">
+                        <li>Withdrawal recorded as "W" on transcript</li>
+                        <li>Still requires advisor approval</li>
+                    </ul>
+                    <p style="margin-top: 20px;"><strong>After Midterm Exams:</strong></p>
+                    <ul style="margin-left: 30px;">
+                        <li>❌ No further withdrawals allowed</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Registration Suspension (Enrollment Freeze)</h3>
+                    <p>Students may request to suspend registration for a semester under the following conditions:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Submit compelling reason within <strong>8 weeks of semester start</strong></li>
+                        <li>Obtain <strong>Faculty Council approval</strong></li>
+                        <li>All previously earned grades are preserved</li>
+                    </ul>
+                    <h4>Suspension Limits</h4>
+                    <p>Maximum suspension:</p>
+                    <ul style="margin-left: 30px;">
+                        <li><strong>2 consecutive semesters</strong>, OR</li>
+                        <li><strong>4 non-consecutive semesters</strong> throughout entire study period</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>Important:</strong> Suspension periods are NOT counted toward the time allowed to earn the Bachelor's degree.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: EXAMINATION SYSTEM -->
+    <div id="exams" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Examination System & Assessment</h2>
+
+                <div class="content-section">
+                    <h3>Exam Schedule</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Exam Type</th>
+                            <th>When It's Held</th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Midterm Exam</strong></td>
+                            <td>At 7th lecture of semester</td>
+                            <td>2 hours</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Final Exam</strong></td>
+                            <td>Last week of semester</td>
+                            <td>2 hours</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Grade Distribution (Per Course)</h3>
+                    <div class="grid-2col">
+                        <div>
+                            <h4>Exams: 75%</h4>
+                            <p>Midterm: 15%<br>Final: 60%</p>
+                        </div>
+                        <div>
+                            <h4>Coursework: 25%</h4>
+                            <p>Oral & written tests<br>Reports & research<br>Lab experiments<br>Weekly/monthly assignments</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Grading Scale</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Grade</th>
+                            <th>Symbol</th>
+                            <th>Points</th>
+                            <th>Percentage</th>
+                        </tr>
+                        <tr>
+                            <td>Excellent</td>
+                            <td><strong>A+</strong></td>
+                            <td>4.0</td>
+                            <td>95 – 100%</td>
+                        </tr>
+                        <tr>
+                            <td>Excellent</td>
+                            <td><strong>A</strong></td>
+                            <td>3.7</td>
+                            <td>90 – 94%</td>
+                        </tr>
+                        <tr>
+                            <td>Very Good</td>
+                            <td><strong>B+</strong></td>
+                            <td>3.5</td>
+                            <td>85 – 89%</td>
+                        </tr>
+                        <tr>
+                            <td>Very Good</td>
+                            <td><strong>B</strong></td>
+                            <td>3.2</td>
+                            <td>80 – 84%</td>
+                        </tr>
+                        <tr>
+                            <td>Good</td>
+                            <td><strong>C+</strong></td>
+                            <td>2.9</td>
+                            <td>73 – 79%</td>
+                        </tr>
+                        <tr>
+                            <td>Good</td>
+                            <td><strong>C</strong></td>
+                            <td>2.6</td>
+                            <td>65 – 72%</td>
+                        </tr>
+                        <tr>
+                            <td>Pass</td>
+                            <td><strong>D+</strong></td>
+                            <td>2.3</td>
+                            <td>58 – 64%</td>
+                        </tr>
+                        <tr>
+                            <td>Pass</td>
+                            <td><strong>D</strong></td>
+                            <td>2.0</td>
+                            <td>50 – 57%</td>
+                        </tr>
+                        <tr style="background: #ffcccc;">
+                            <td>Fail</td>
+                            <td><strong>F</strong></td>
+                            <td>0</td>
+                            <td>&lt;50%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>GPA Calculation</h3>
+                    <p><strong>Annual GPA:</strong> Weighted average of grades across both semesters of the year</p>
+                    <p style="margin-top: 10px;">Formula: Sum of (credit hours × grade points) ÷ Total credit hours</p>
+                    <p style="margin-top: 15px;"><strong>Cumulative GPA:</strong> Weighted average of all grades earned throughout the study period</p>
+
+                    <table class="specs-table" style="margin-top: 20px;">
+                        <tr>
+                            <th>GPA Range</th>
+                            <th>Symbol</th>
+                            <th>Grade</th>
+                        </tr>
+                        <tr>
+                            <td>3.7 and above</td>
+                            <td><strong>A</strong></td>
+                            <td>Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>3.2 to less than 3.7</td>
+                            <td><strong>B</strong></td>
+                            <td>Very Good</td>
+                        </tr>
+                        <tr>
+                            <td>2.6 to less than 3.2</td>
+                            <td><strong>C</strong></td>
+                            <td>Good</td>
+                        </tr>
+                        <tr>
+                            <td>2.0 to less than 2.6</td>
+                            <td><strong>D</strong></td>
+                            <td>Pass</td>
+                        </tr>
+                        <tr style="background: #ffcccc;">
+                            <td>Below 2.0</td>
+                            <td><strong>F</strong></td>
+                            <td>Fail</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Honors Distinction</h3>
+                    <p>Honors distinction is awarded at graduation to students meeting ALL of the following criteria:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Cumulative GPA of <strong>3.7 or higher</strong></li>
+                        <li>Studied at least <strong>75%</strong> of graduation requirements at FCI</li>
+                        <li><strong>No failures</strong> in any course taken at FCI</li>
+                        <li>Completed graduation requirements in <strong>4 years or less</strong> (excluding suspension periods)</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Incomplete Grades</h3>
+                    <p>A student receives an Incomplete (I) grade if they have:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>A serious legitimate reason accepted by the Faculty Council</li>
+                        <li>Absences within the allowed percentage</li>
+                        <li>Valid excuse from final exam</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Resolution:</strong> The Incomplete grade must be resolved before the next semester starts, coordinated with the course instructor by the Vice Dean.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Re-taking Failed Courses</h3>
+                    <p>If you fail a mandatory course, you must re-register and re-take it. <strong>Both the original fail grade and the new grade are recorded on your transcript.</strong></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: POLICIES -->
+    <div id="policies" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Academic Policies & Regulations</h2>
+
+                <div class="content-section">
+                    <h3>Attendance & Absence Policy</h3>
+                    <div class="highlight-box">
+                        <strong>⚠️ THE 25% RULE (CRITICAL)</strong><br><br>
+                        If your absence exceeds 25% of total teaching hours for ANY course:<br>
+                        ❌ You are FAILED in that course<br>
+                        ❌ You are BARRED from the final exam<br><br>
+                        <strong>Exception:</strong> If your absence is excused and approved by Faculty Council, you receive a "W" (Withdrawn) grade instead.
+                    </div>
+                    <p>Students must regularly attend:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Lectures and practical sessions</li>
+                        <li>Midterm exams and coursework</li>
+                        <li>Research labs and classrooms</li>
+                        <li>All registered course activities</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Important:</strong> Report absences to Student Affairs immediately.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>National/Patriotic Duty Exemptions</h3>
+                    <p>Students assigned national or patriotic duties receive special consideration:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Absence for national duties is <strong>excused and doesn't count toward the 25% limit</strong></li>
+                        <li>Must complete coursework in alternative manner agreed with instructor</li>
+                        <li>If missing midterm: take alternative exam (70%, 3 hours) at semester end</li>
+                        <li>If missing final: may request Incomplete (I) grade</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Academic Warning System</h3>
+                    <div class="highlight-box">
+                        <strong>When You Get an Academic Warning:</strong><br>
+                        Your cumulative GPA has fallen below 2.0
+                    </div>
+                    <p><strong>Actions Required:</strong></p>
+                    <ul style="margin-left: 30px;">
+                        <li>Your maximum credit load is reduced to <strong>15 hours per semester</strong></li>
+                        <li>You have <strong>2 semesters</strong> to raise your cumulative GPA to at least 2.0</li>
+                        <li>If you reach 2.0, the warning is cleared</li>
+                        <li>If you don't reach 2.0 within 2 semesters, you may only re-register courses you previously failed</li>
+                        <li>For elective courses, you may substitute with alternative courses</li>
+                        <li>You have exactly <strong>2 chances total</strong> to clear the warning</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Specialization Change Option:</strong> You may transfer to another major specialization within the faculty if it improves your chances of clearing the warning (with Vice Dean approval).</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Failure & Incomplete Procedures</h3>
+                    <h4>Automatic Failure</h4>
+                    <p>If you don't sit for final exams, you are automatically <strong>FAILED in those courses</strong>.</p>
+                    <h4>Incomplete Grade (I)</h4>
+                    <p>If you have a serious legitimate reason approved by Faculty Council and your absence is within allowed limits, you may receive an Incomplete (I) grade instead of failure. You must resolve the Incomplete before the next semester starts.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: DISCIPLINE SYSTEM -->
+    <div id="discipline" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Student Discipline System</h2>
+
+                <div class="content-section">
+                    <p>The Faculty of Computers and Information follows the provisions of Universities Organization Law No. 49 of 1972 and its executive regulations regarding student discipline.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Disciplinary Violations</h3>
+                    <p>The following constitute disciplinary violations:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Actions disrupting faculty or university order</li>
+                        <li>Obstructing studies, inciting others to skip classes, or organized refusal to attend lectures</li>
+                        <li>Any act contrary to honor, dignity, or good conduct inside or outside the university</li>
+                        <li><strong>Disrupting exam order, cheating or attempting to cheat</strong> ⚠️</li>
+                        <li>Damaging or wasting university facilities, equipment, materials, or books</li>
+                        <li>Organizing unauthorized associations within the university</li>
+                        <li>Distributing flyers or posting wall newspapers without prior permission</li>
+                        <li>Sit-ins or demonstrations violating public order</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Cheating Policy (Severe)</h3>
+                    <div class="highlight-box">
+                        <strong>🚨 CONSEQUENCES OF CHEATING:</strong><br><br>
+                        If caught cheating:<br>
+                        1. ✋ Immediately removed from exam room by Dean or representative<br>
+                        2. ❌ Barred from remaining exams of that session<br>
+                        3. ❌ Considered FAILED in ALL courses of that exam session<br>
+                        4. 📋 Case referred to Disciplinary Council for further action
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Disciplinary Penalties</h3>
+                    <p>Penalties are applied in order of severity:</p>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Penalty Level</th>
+                            <th>Type</th>
+                            <th>Details</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Oral Warning</td>
+                            <td>Not recorded in file</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Written Warning</td>
+                            <td>Recorded; guardian notified</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Denial of Student Services</td>
+                            <td>Withdrawal of specific services</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Course Attendance Ban</td>
+                            <td>Barred from specific course(s) up to 1 month</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Faculty Suspension</td>
+                            <td>Temporary suspension from faculty up to 1 month</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Exam Ban</td>
+                            <td>Barred from one or more exam(s)</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Exam Cancellation</td>
+                            <td>Exam cancelled for one or more courses</td>
+                        </tr>
+                        <tr style="background: #ffcccc;">
+                            <td>8</td>
+                            <td>Permanent Expulsion</td>
+                            <td>Communicated to all Egyptian universities; bars enrollment/exams nationwide</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content-section">
+                    <h3>Recording & Notification</h3>
+                    <p>All disciplinary decisions except oral warnings are:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Kept permanently in the student's official file</li>
+                        <li>Reported to the student's guardian</li>
+                        <li>Referenced in future academic matters</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: TUITION & FEES -->
+    <div id="tuition" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Tuition, Fees & Refund Policy</h2>
+
+                <div class="content-section">
+                    <h3>Tuition Payment</h3>
+                    <div class="highlight-box">
+                        <strong>Payment Deadline:</strong> Within 2 weeks from semester start<br>
+                        <strong>Summer Semester:</strong> Pay before study begins<br>
+                        <strong>First-Year Students:</strong> NOT officially enrolled until tuition is paid
+                    </div>
+                    <p style="margin-top: 15px;">Tuition is determined by the Academy's Scientific Council each year.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Application & Examination Fees</h3>
+                    <div class="highlight-box">
+                        <strong>🚨 NON-REFUNDABLE</strong><br><br>
+                        Application and examination fees are <strong>NEVER refunded</strong> under any circumstances, regardless of when you withdraw or if circumstances change.
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Tuition Refund Policy</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <th>Withdrawal Timing</th>
+                            <th>Refund Amount</th>
+                            <th>Condition</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Within 3 weeks of study start</strong></td>
+                            <td>75% refund</td>
+                            <td>Must not have attended any lectures</td>
+                        </tr>
+                        <tr>
+                            <td><strong>After 3 weeks, before midterm exams</strong></td>
+                            <td>40% refund</td>
+                            <td>—</td>
+                        </tr>
+                        <tr style="background: #ffcccc;">
+                            <td><strong>After midterm exams begin</strong></td>
+                            <td>0% (No refund)</td>
+                            <td>—</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px;"><strong>Important:</strong> You must present the original payment receipt (Form 33) to process any refund.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Payment Methods & Records</h3>
+                    <p>Payment is made at the Academy treasury. Students must:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Retain the original payment receipt (Form 33)</li>
+                        <li>Present receipt for verification when needed</li>
+                        <li>Use receipt as proof of enrollment</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Additional Services</h3>
+                    <h4>Medical Care</h4>
+                    <p>The Academy provides comprehensive medical care throughout the academic year and summer vacation, including:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Medical examination for new students at start of academic year</li>
+                        <li>Medical services throughout the year</li>
+                        <li>Referrals to contracted hospitals</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: ROADMAP -->
+    <div id="roadmap" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">🗺️ Career Roadmaps - Choose Your Path</h2>
+                <p style="text-align: center; color: #666; font-size: 1.05em; margin-bottom: 40px;">
+                    Select a specialization to see the recommended course pathway for your career development
+                </p>
+
+                <div class="roadmap-container">
+                    <!-- Computer Science Roadmap -->
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <h3>💻 Computer Science</h3>
+                            <p>4 Years | 144 Credit Hours</p>
+                        </div>
+                        <div class="roadmap-body">
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 1 & 2: Foundation</div>
+                                <ul class="course-list">
+                                    <li class="course-item">General Education Requirements</li>
+                                    <li class="course-item">Programming Fundamentals</li>
+                                    <li class="course-item">Data Structures</li>
+                                    <li class="course-item">Web Development Basics</li>
+                                    <li class="course-item">Mathematics & Algorithms</li>
+                                    <li class="course-item">Database Fundamentals</li>
+                                </ul>
+                            </div>
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 3 & 4: Specialization</div>
+                                <ul class="course-list">
+                                    <li class="course-item">Advanced Algorithms</li>
+                                    <li class="course-item">Operating Systems</li>
+                                    <li class="course-item">Computer Networks</li>
+                                    <li class="course-item">Artificial Intelligence</li>
+                                    <li class="course-item">Machine Learning</li>
+                                    <li class="course-item">Computer Vision</li>
+                                    <li class="course-item">Graduation Project</li>
+                                </ul>
+                            </div>
+                            <span class="specialization-badge">🎯 Focus: Algorithms & AI</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Roadmap -->
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <h3>🤖 Artificial Intelligence</h3>
+                            <p>4 Years | 144 Credit Hours</p>
+                        </div>
+                        <div class="roadmap-body">
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 1 & 2: Foundation</div>
+                                <ul class="course-list">
+                                    <li class="course-item">General Education Requirements</li>
+                                    <li class="course-item">Python Programming</li>
+                                    <li class="course-item">Linear Algebra & Statistics</li>
+                                    <li class="course-item">Database Systems</li>
+                                    <li class="course-item">Data Structures</li>
+                                    <li class="course-item">Web Development</li>
+                                </ul>
+                            </div>
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 3 & 4: AI Specialization</div>
+                                <ul class="course-list">
+                                    <li class="course-item">Machine Learning Algorithms</li>
+                                    <li class="course-item">Deep Learning & Neural Networks</li>
+                                    <li class="course-item">Natural Language Processing</li>
+                                    <li class="course-item">Computer Vision</li>
+                                    <li class="course-item">AI Ethics & Applications</li>
+                                    <li class="course-item">AI Project Development</li>
+                                    <li class="course-item">Graduation Project</li>
+                                </ul>
+                            </div>
+                            <span class="specialization-badge">🎯 Focus: Machine Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Science Roadmap -->
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <h3>📊 Data Science</h3>
+                            <p>4 Years | 144 Credit Hours</p>
+                        </div>
+                        <div class="roadmap-body">
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 1 & 2: Foundation</div>
+                                <ul class="course-list">
+                                    <li class="course-item">General Education Requirements</li>
+                                    <li class="course-item">Python & R Programming</li>
+                                    <li class="course-item">Statistics & Probability</li>
+                                    <li class="course-item">Database Management</li>
+                                    <li class="course-item">Data Visualization</li>
+                                    <li class="course-item">Linear Algebra</li>
+                                </ul>
+                            </div>
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 3 & 4: Data Science</div>
+                                <ul class="course-list">
+                                    <li class="course-item">Advanced Statistics</li>
+                                    <li class="course-item">Machine Learning for Data</li>
+                                    <li class="course-item">Big Data Technologies</li>
+                                    <li class="course-item">Data Mining</li>
+                                    <li class="course-item">Predictive Analytics</li>
+                                    <li class="course-item">Data Engineering</li>
+                                    <li class="course-item">Graduation Project</li>
+                                </ul>
+                            </div>
+                            <span class="specialization-badge">🎯 Focus: Analytics & Insights</span>
+                        </div>
+                    </div>
+
+                    <!-- Software Engineering Roadmap -->
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <h3>🏗️ Software Engineering</h3>
+                            <p>4 Years | 144 Credit Hours</p>
+                        </div>
+                        <div class="roadmap-body">
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 1 & 2: Foundation</div>
+                                <ul class="course-list">
+                                    <li class="course-item">General Education Requirements</li>
+                                    <li class="course-item">OOP Programming</li>
+                                    <li class="course-item">Software Design Patterns</li>
+                                    <li class="course-item">Database Design</li>
+                                    <li class="course-item">Web Development</li>
+                                    <li class="course-item">Data Structures</li>
+                                </ul>
+                            </div>
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 3 & 4: SE Specialization</div>
+                                <ul class="course-list">
+                                    <li class="course-item">Software Architecture</li>
+                                    <li class="course-item">Software Testing & QA</li>
+                                    <li class="course-item">Agile Development</li>
+                                    <li class="course-item">DevOps & CI/CD</li>
+                                    <li class="course-item">Software Project Management</li>
+                                    <li class="course-item">Full Stack Development</li>
+                                    <li class="course-item">Graduation Project</li>
+                                </ul>
+                            </div>
+                            <span class="specialization-badge">🎯 Focus: Development & Quality</span>
+                        </div>
+                    </div>
+
+                    <!-- Cyber Security Roadmap -->
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <h3>🔒 Cyber Security</h3>
+                            <p>4 Years | 144 Credit Hours</p>
+                        </div>
+                        <div class="roadmap-body">
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 1 & 2: Foundation</div>
+                                <ul class="course-list">
+                                    <li class="course-item">General Education Requirements</li>
+                                    <li class="course-item">Systems Programming</li>
+                                    <li class="course-item">Networking Fundamentals</li>
+                                    <li class="course-item">Operating Systems</li>
+                                    <li class="course-item">Database Systems</li>
+                                    <li class="course-item">Computer Architecture</li>
+                                </ul>
+                            </div>
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 3 & 4: Security</div>
+                                <ul class="course-list">
+                                    <li class="course-item">Cryptography</li>
+                                    <li class="course-item">Network Security</li>
+                                    <li class="course-item">Web Application Security</li>
+                                    <li class="course-item">Ethical Hacking</li>
+                                    <li class="course-item">Security Compliance & Privacy</li>
+                                    <li class="course-item">Penetration Testing</li>
+                                    <li class="course-item">Graduation Project</li>
+                                </ul>
+                            </div>
+                            <span class="specialization-badge">🎯 Focus: Protection & Defense</span>
+                        </div>
+                    </div>
+
+                    <!-- Information Systems Roadmap -->
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <h3>📱 Information Systems</h3>
+                            <p>4 Years | 144 Credit Hours</p>
+                        </div>
+                        <div class="roadmap-body">
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 1 & 2: Foundation</div>
+                                <ul class="course-list">
+                                    <li class="course-item">General Education Requirements</li>
+                                    <li class="course-item">Database Fundamentals</li>
+                                    <li class="course-item">Business IT Concepts</li>
+                                    <li class="course-item">Web Development</li>
+                                    <li class="course-item">Systems Analysis</li>
+                                    <li class="course-item">IT Infrastructure</li>
+                                </ul>
+                            </div>
+                            <div class="year-section">
+                                <div class="year-title">📌 Year 3 & 4: IS Specialization</div>
+                                <ul class="course-list">
+                                    <li class="course-item">Enterprise Systems</li>
+                                    <li class="course-item">Database Administration</li>
+                                    <li class="course-item">Business Intelligence</li>
+                                    <li class="course-item">E-Commerce Systems</li>
+                                    <li class="course-item">IT Project Management</li>
+                                    <li class="course-item">Cloud Computing & Services</li>
+                                    <li class="course-item">Graduation Project</li>
+                                </ul>
+                            </div>
+                            <span class="specialization-badge">🎯 Focus: Business & Systems</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 50px; padding: 30px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #ffb81c;">
+                    <h3 style="color: #1e4d7b; margin-top: 0;">📋 How to Use This Roadmap</h3>
+                    <ul style="margin-left: 30px; color: #555;">
+                        <li><strong>Year 1 & 2:</strong> Complete general education and foundational courses required for all students</li>
+                        <li><strong>Year 3 & 4:</strong> Focus on your chosen specialization with major courses and electives</li>
+                        <li><strong>Graduation Project:</strong> Apply your learning in a comprehensive final project</li>
+                        <li><strong>Flexibility:</strong> Consult with your academic advisor to customize your pathway based on career goals</li>
+                        <li><strong>Practical Training:</strong> Complete 3 months of practical training (1 month per year) during summer</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE: CONTACT -->
+    <div id="contact" class="page">
+        <section class="section">
+            <div class="page-content">
+                <h2 class="page-title">Get in Touch</h2>
+
+                <div class="grid-cards">
+                    <div class="card">
+                        <h3>Main Campus - Cairo</h3>
+                        <div class="icon-item">
+                            <strong>📍 Location:</strong>
+                            <p>Maadi, Cairo, Egypt</p>
+                        </div>
+                        <div class="icon-item">
+                            <strong>📞 Phone:</strong>
+                            <p>+20 2 2380 5610</p>
+                        </div>
+                        <div class="icon-item">
+                            <strong>📧 Email:</strong>
+                            <p>info@sams.edu.eg</p>
+                        </div>
+                        <div class="icon-item">
+                            <strong>⏰ Hours:</strong>
+                            <p>9:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Other Branches</h3>
+                        <ul style="margin-left: 20px;">
+                            <li>🏢 Cairo (Main Campus — Maadi)</li>
+                            <li>🏢 Tanta</li>
+                            <li>🏢 Port Said</li>
+                            <li>🏢 Mansoura</li>
+                            <li>🏢 Alexandria</li>
+                            <li>🏢 Minia</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Online</h3>
+                        <div class="icon-item">
+                            <strong>🌐 Website:</strong>
+                            <p>www.sams.edu.eg</p>
+                        </div>
+                        <p style="margin-top: 20px; font-size: 0.95em;">Follow us on social media for the latest updates, events, and announcements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>About SAMS</h4>
+                    <p>Sadat Academy for Management Sciences is Egypt's premier educational organization specializing in management sciences, computer sciences, and languages. Established in 1981, we remain committed to academic excellence and preparing leaders for tomorrow.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a onclick="showPage('departments')">Academic Programs</a></li>
+                        <li><a onclick="showPage('vision')">About Us</a></li>
+                        <li><a onclick="showPage('contact')">Contact Information</a></li>
+                        <li><a onclick="showPage('admission')">Admissions</a></li>
+                        <li><a onclick="showPage('studyplan')">Study Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Academic Faculties</h4>
+                    <ul>
+                        <li><a>Faculty of Management Sciences</a></li>
+                        <li><a>Faculty of Languages and Translation</a></li>
+                        <li><a onclick="showPage('departments')">Faculty of Computers and Information</a></li>
+                        <li><a>Graduate Programs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sadat Academy for Management Sciences. All rights reserved. | Dedicated to Excellence in Education</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHATBOT WIDGET -->
+    <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()" aria-label="Open BuddyBot">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+    </button>
+
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <h3><span class="bb-online-dot"></span>BuddyBot - FCI Assistant</h3>
+            <div class="chatbot-actions">
+                <button class="chatbot-window-btn" id="chatbotMaximize" onclick="toggleChatbotMaximize()" aria-label="Maximize chat" title="Maximize chat">[]</button>
+                <button class="chatbot-window-btn" onclick="minimizeChatbot()" aria-label="Minimize chat" title="Minimize chat">-</button>
+                <button class="chatbot-window-btn" onclick="minimizeChatbot()" aria-label="Close chat" title="Close chat">x</button>
+            </div>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                <div class="message-content">
+                    Hey! I'm BuddyBot, FCI's campus assistant.
+Ask me about students, GPA, courses, schedules, instructors, FCI policies, official documents, or campus services - in Arabic or English.
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-chips" id="policyChips">
+            <div class="chips-row" id="chipsAr">
+                <button class="policy-chip" data-msg="ما هي نسبة الغياب المسموح بها؟">📋 نسبة الغياب</button>
+                <button class="policy-chip" data-msg="ما هو الإنذار الأكاديمي وكيف أتجنبه؟">⚠️ الإنذار الأكاديمي</button>
+                <button class="policy-chip" data-msg="ما هي سياسة الرسوم الدراسية والاسترداد؟">💰 الرسوم الدراسية</button>
+                <button class="policy-chip" data-msg="كيف يمكنني تغيير تخصصي؟">🔄 تغيير التخصص</button>
+            </div>
+            <div class="chips-row" id="chipsEn" style="display:none">
+                <button class="policy-chip" data-msg="What is the absence policy at FCI?">📋 Absence Policy</button>
+                <button class="policy-chip" data-msg="What is an academic warning and how do I avoid it?">⚠️ Academic Warning</button>
+                <button class="policy-chip" data-msg="What is the tuition fee refund policy?">💰 Tuition &amp; Fees</button>
+                <button class="policy-chip" data-msg="How can I change my specialisation?">🔄 Change Major</button>
+            </div>
+        </div>
+
+        <div class="chatbot-input" id="chatbotInputBar">
+            <input 
+                type="text" 
+                id="chatbotInput" 
+                placeholder="Ask us anything..."
+                onkeypress="handleChatInput(event)"
+            >
+            <button class="chatbot-send" onclick="sendChatMessage()">Send</button>
+            <button class="chatbot-stop" id="chatbotStop" onclick="stopChatResponse()">Stop</button>
+        </div>
+    </div>
+
+    <script>
+        // Show/Hide Pages
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                const navH = document.querySelector('nav').offsetHeight
+                           + document.querySelector('.header').offsetHeight;
+                document.documentElement.style.setProperty('--nav-offset', `${navH}px`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#en' && href !== '#ar' && href !== '#login' && href !== '#register') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Chatbot Functions
+        function toggleChatbot() {
+            const widget = document.getElementById('chatbotWidget');
+            const toggle = document.getElementById('chatbotToggle');
+
+            widget.classList.toggle('active');
+            toggle.classList.toggle('hidden');
+        }
+
+        function minimizeChatbot() {
+            const widget = document.getElementById('chatbotWidget');
+            const toggle = document.getElementById('chatbotToggle');
+
+            widget.classList.remove('active');
+            toggle.classList.remove('hidden');
+        }
+
+        function updateChatbotMaximizeButton(isMaximized) {
+            const maximizeButton = document.getElementById('chatbotMaximize');
+            if (!maximizeButton) return;
+
+            maximizeButton.textContent = isMaximized ? '<>' : '[]';
+            maximizeButton.setAttribute('aria-label', isMaximized ? 'Restore chat' : 'Maximize chat');
+            maximizeButton.setAttribute('title', isMaximized ? 'Restore chat' : 'Maximize chat');
+        }
+
+        function toggleChatbotMaximize() {
+            const widget = document.getElementById('chatbotWidget');
+            const isMaximized = widget.classList.toggle('maximized');
+            updateChatbotMaximizeButton(isMaximized);
+        }
+
+        function handleChatInput(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        const LOCAL_RASA_URL = "http://127.0.0.1:5005/webhooks/rest/webhook";
+        const PRODUCTION_RASA_URL =
+            "https://buddybot-production-f71e.up.railway.app/webhooks/rest/webhook";
+
+        function normalizeRasaWebhookUrl(url) {
+            const cleaned = (url || "").trim().replace(/\/+$/, "");
+            if (!cleaned) return "";
+            if (cleaned.endsWith("/webhooks/rest/webhook")) return cleaned;
+            return cleaned + "/webhooks/rest/webhook";
+        }
+
+        const rasaUrlFromQuery = new URLSearchParams(window.location.search).get("rasa");
+        if (rasaUrlFromQuery) {
+            localStorage.setItem("bb_rasa_url", normalizeRasaWebhookUrl(rasaUrlFromQuery));
+        }
+
+        const STORED_RASA_URL = normalizeRasaWebhookUrl(localStorage.getItem("bb_rasa_url"));
+        const RASA_URL = normalizeRasaWebhookUrl(window.BUDDYBOT_RASA_URL)
+            || STORED_RASA_URL
+            || ((location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "")
+                ? LOCAL_RASA_URL
+                : PRODUCTION_RASA_URL);
+        const CHATBOT_TIMEOUT_MS = 30000;
+        const CHATBOT_DEFAULT_PLACEHOLDER = "Ask us anything...";
+        let activeChatController = null;
+        let activeChatRequestId = 0;
+        let activeChatTimeoutId = null;
+
+        function getBuddyBotSenderId() {
+            return sessionStorage.getItem('bb_sid') || (() => {
+                const id = 'u_' + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem('bb_sid', id);
+                return id;
+            })();
+        }
+
+        function setBotGenerating(isGenerating) {
+            const inputBar = document.getElementById('chatbotInputBar');
+            const input = document.getElementById('chatbotInput');
+            const stopButton = document.getElementById('chatbotStop');
+
+            inputBar.classList.toggle('is-generating', isGenerating);
+            stopButton.classList.toggle('active', isGenerating);
+            input.disabled = isGenerating;
+            input.placeholder = isGenerating ? "BuddyBot is thinking..." : CHATBOT_DEFAULT_PLACEHOLDER;
+            if (!isGenerating) input.focus();
+        }
+
+        function stopChatResponse() {
+            if (!activeChatController) return;
+
+            if (activeChatTimeoutId) {
+                clearTimeout(activeChatTimeoutId);
+                activeChatTimeoutId = null;
+            }
+            activeChatController.abort();
+            activeChatController = null;
+            activeChatRequestId++;
+            hideTyping();
+            setBotGenerating(false);
+            addMessageToChat("Stopped. You can send another question when you're ready.", "bot");
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+
+            if (message === '') return;
+
+            addMessageToChat(message, 'user');
+            updateChipLanguage(message);
+            input.value = '';
+
+            sendMessageToRasa(message);
+        }
+
+        function updateChipLanguage(lastUserMessage) {
+            const isArabic = /[\u0600-\u06FF]/.test(lastUserMessage);
+            document.getElementById('chipsAr').style.display = isArabic ? 'flex' : 'none';
+            document.getElementById('chipsEn').style.display = isArabic ? 'none' : 'flex';
+        }
+
+        document.getElementById('policyChips').addEventListener('click', function(e) {
+            const chip = e.target.closest('.policy-chip');
+            if (!chip) return;
+
+            const msg = chip.dataset.msg;
+            addMessageToChat(msg, 'user');
+            updateChipLanguage(msg);
+            document.getElementById('chatbotInput').value = '';
+            sendMessageToRasa(msg);
+        });
+
+        const abuseEnglishTerms = [
+            "stupid", "idiot", "dumb", "moron", "bitch", "bastard", "asshole",
+            "crap", "shit", "damn", "hate you", "useless", "worthless",
+            "shut up", "fuck", "loser", "trash", "garbage", "worst",
+            "horrible", "terrible", "suck", "sucks", "pathetic"
+        ];
+        const abuseArabicTerms = [
+            "غبي", "أحمق", "احمق", "بليد", "متخلف", "كلب", "حمار",
+            "زبالة", "تافه", "اخرس", "اغرب", "مش محتاجك", "عديم الفايدة"
+        ];
+        const questionOpenersEnglish = [
+            "ok i have a question", "i have a question", "i have a query",
+            "i got a question", "got a question", "quick question",
+            "can i ask", "can i ask something", "can i ask you something",
+            "i want to ask", "i want to ask you", "i need to ask",
+            "i need to ask you something", "i have something to ask",
+            "may i ask", "let me ask", "i was wondering", "i wanted to ask",
+            "before i ask", "just a question", "just wondering",
+            "one question", "quick q"
+        ];
+        const questionOpenersSingle = new Set([
+            "question", "query", "ok question", "so question",
+            "yeah question", "yes question"
+        ]);
+        const questionOpenersArabic = [
+            "عندي سؤال", "عندي استفسار", "ممكن اسأل", "ممكن أسأل",
+            "عايز اسأل", "عايز أسأل", "عاوز اسأل", "عاوز أسأل",
+            "لو سمحت سؤال", "فيه سؤال", "سؤال بس", "سؤال واحد", "استفسار"
+        ];
+        const smallTalkEnglish = new Set([
+            "how are you", "how r u", "how are u", "hows it going",
+            "how's it going", "whats up", "what's up", "sup", "wassup",
+            "how do you do"
+        ]);
+        const smallTalkArabic = new Set([
+            "كيف حالك", "عامل ايه", "عاملة ايه", "ازيك", "إزيك",
+            "كيفك", "تمام ولا ايه"
+        ]);
+
+        function normaliseArabicLetters(text) {
+            return text
+                .replace(/[إأآ]/g, "ا")
+                .replace(/ى/g, "ي")
+                .replace(/ؤ/g, "و")
+                .replace(/ئ/g, "ي");
+        }
+
+        function normaliseChatText(text, removeFillers = false) {
+            let cleaned = normaliseArabicLetters(text.toLowerCase())
+                .trim()
+                .replace(/[؟?!.,;:،؛]+/g, ' ')
+                .replace(/\s+/g, ' ');
+            if (removeFillers) {
+                cleaned = cleaned
+                    .replace(/\b(just|like|actually|basically|so|well|hey|hi)\b/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+            return cleaned;
+        }
+
+        function isQuestionOpener(message) {
+            const variants = [
+                normaliseChatText(message),
+                normaliseChatText(message, true)
+            ];
+            const arabicOpeners = questionOpenersArabic.map(item => normaliseChatText(item));
+            return variants.some(text => {
+                if (!text) return false;
+                if (questionOpenersSingle.has(text) || arabicOpeners.includes(text)) return true;
+                return questionOpenersEnglish.some(phrase => text.includes(phrase))
+                    || arabicOpeners.some(phrase => text.includes(phrase));
+            });
+        }
+
+        function isSmallTalk(message) {
+            const normalised = normaliseChatText(message);
+            return smallTalkEnglish.has(normalised) || smallTalkArabic.has(normalised);
+        }
+
+        function guardedLocalChatResponse(message) {
+            const normalised = normaliseChatText(message);
+            const isArabic = /[\u0600-\u06FF]/.test(message);
+            const hasEnglishAbuse = abuseEnglishTerms.some(term => {
+                if (term.includes(" ")) return normalised.includes(term);
+                return new RegExp("\\b" + term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b").test(normalised);
+            });
+            const hasArabicAbuse = abuseArabicTerms.some(term => normalised.includes(term));
+
+            if (hasEnglishAbuse || hasArabicAbuse) {
+                return isArabic
+                    ? "أنا هنا لمساعدتك في أسئلة كلية الحاسبات والمعلومات. 😊\nاسألني عن أي حاجة تخص الكلية."
+                    : "I'm here to help with FCI-related questions. 😊\nLet me know if you need anything about courses, students, schedules, or campus policies.";
+            }
+
+            if (isQuestionOpener(message)) {
+                return isArabic
+                    ? "أكيد! اتفضل - اسأل براحتك 😊"
+                    : "Of course! Go ahead - what's your question? 😊";
+            }
+
+            if (isSmallTalk(message)) {
+                return isArabic
+                    ? "تمام والحمد لله! 😊 بخدمتك - اسأل براحتك."
+                    : "I'm doing great, thanks for asking! 😊\nWhat can I help you with today?";
+            }
+
+            return "";
+        }
+
+        async function sendMessageToRasa(message) {
+            const localGuardResponse = guardedLocalChatResponse(message);
+            if (localGuardResponse) {
+                addMessageToChat(localGuardResponse, "bot");
+                return;
+            }
+
+            if (activeChatController) {
+                if (activeChatTimeoutId) {
+                    clearTimeout(activeChatTimeoutId);
+                    activeChatTimeoutId = null;
+                }
+                activeChatController.abort();
+            }
+
+            const requestId = ++activeChatRequestId;
+            activeChatController = new AbortController();
+            activeChatTimeoutId = setTimeout(() => {
+                if (activeChatController) activeChatController.abort();
+            }, CHATBOT_TIMEOUT_MS);
+            setBotGenerating(true);
+            showTyping();
+
+            try {
+                const response = await fetch(RASA_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true"
+                    },
+                    signal: activeChatController.signal,
+                    body: JSON.stringify({
+                        sender: getBuddyBotSenderId(),
+                        message: message
+                    })
+                });
+
+                clearTimeout(activeChatTimeoutId);
+                activeChatTimeoutId = null;
+
+                if (!response.ok) {
+                    throw new Error("Server returned " + response.status);
+                }
+
+                const data = await response.json();
+                if (requestId !== activeChatRequestId) return;
+
+                hideTyping();
+                setBotGenerating(false);
+                activeChatController = null;
+
+                if (!data || data.length === 0) {
+                    addMessageToChat(
+                        "I don't have enough information about that. For help, visit the Student Affairs office at FCI, Maadi Campus. 📍",
+                        "bot"
+                    );
+                    return;
+                }
+
+                data.forEach(item => {
+                    if (item.text) {
+                        addMessageToChat(item.text, "bot");
+                    }
+                });
+
+            } catch (error) {
+                if (requestId !== activeChatRequestId) return;
+
+                if (activeChatTimeoutId) {
+                    clearTimeout(activeChatTimeoutId);
+                    activeChatTimeoutId = null;
+                }
+                hideTyping();
+                setBotGenerating(false);
+                activeChatController = null;
+
+                if (error.name === 'AbortError') {
+                    addMessageToChat(
+                        "⏱️ BuddyBot is taking too long to respond.\nThe server might be starting up — please try again in 30 seconds.",
+                        "bot"
+                    );
+                } else if (
+                    error.message.includes('Failed to fetch') ||
+                    error.message.includes('NetworkError') ||
+                    error.message.includes('net::ERR')
+                ) {
+                    addMessageToChat(
+                        "⚠️ Can't reach BuddyBot right now.\n\n" +
+                        "This usually means the server is starting up after being idle.\n\n" +
+                        "Please try again in a moment. If the problem persists, visit:\n" +
+                        "📍 Student Affairs — FCI, Sadat Academy, Maadi Campus.",
+                        "bot"
+                    );
+                } else {
+                    addMessageToChat(
+                        "⚠️ Something went wrong. Please try again.\n📍 FCI Student Affairs, Maadi Campus.",
+                        "bot"
+                    );
+                }
+            }
+        }
+
+        function showTyping() {
+            const c = document.getElementById('chatbotMessages');
+            hideTyping();
+
+            const d = document.createElement('div');
+            d.className = 'message bot';
+            d.id = 'typingIndicator';
+            d.innerHTML = '<div class="message-content" style="display:flex;gap:5px;align-items:center;padding:12px 15px">'
+                + '<span style="width:8px;height:8px;border-radius:50%;background:#aaa;'
+                + 'animation:bbBounce 1.2s infinite;display:inline-block"></span>'
+                + '<span style="width:8px;height:8px;border-radius:50%;background:#aaa;'
+                + 'animation:bbBounce 1.2s infinite 0.2s;display:inline-block"></span>'
+                + '<span style="width:8px;height:8px;border-radius:50%;background:#aaa;'
+                + 'animation:bbBounce 1.2s infinite 0.4s;display:inline-block"></span>'
+                + '</div>';
+            c.appendChild(d);
+            c.scrollTop = c.scrollHeight;
+        }
+
+        function hideTyping() {
+            const t = document.getElementById('typingIndicator');
+            if (t) t.remove();
+        }
+
+        function addMessageToChat(text, sender) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = text;
+
+            messageDiv.appendChild(contentDiv);
+            messagesContainer.appendChild(messageDiv);
+
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>
