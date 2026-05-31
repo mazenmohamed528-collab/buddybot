@@ -72,6 +72,7 @@ OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3.2:3b"
 RAG_URL = "http://127.0.0.1:8000/query"
 SQL_ENGINE_URL = os.getenv("BUDDYBOT_SQL_ENGINE_URL") or "http://127.0.0.1:8010/query"
+SQL_ENGINE_DISABLED = os.getenv("BUDDYBOT_DISABLE_SQL_ENGINE", "0").strip().lower() in {"1", "true", "yes"}
 SQL_ENGINE_LOCAL_PATH = os.getenv("BUDDYBOT_SQL_ENGINE_LOCAL_PATH", r"C:\dev\sql_engine_service")
 DB_DIALECT = (os.getenv("BUDDYBOT_DB_DIALECT") or os.getenv("DB_DIALECT") or "sqlserver").lower()
 DB_URL = os.getenv("BUDDYBOT_DATABASE_URL") or os.getenv("DATABASE_URL")
@@ -2500,6 +2501,9 @@ def query_sql_engine_service(question: str, tracker: Tracker, timeout: int = 8) 
     cached_result = cached_continuation_result(question, tracker)
     if cached_result:
         return cached_result
+
+    if SQL_ENGINE_DISABLED:
+        return query_local_sql_engine(question, tracker)
 
     if looks_like_result_continuation(question) and not tracker.get_slot("sql_result_cache"):
         replay_question = continuation_replay_question(tracker)
