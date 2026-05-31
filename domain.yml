@@ -339,6 +339,10 @@ slots:
     type: text
     mappings:
     - type: custom
+  last_conversation_state:
+    type: text
+    mappings:
+    - type: custom
   metric:
     type: text
     mappings:
