@@ -1,0 +1,27 @@
+{
+  "model_name": "CAMeL-Lab/bert-base-arabic-camelbert-mix",
+  "dataset_path": "data/arabic_hybrid_router_training.jsonl",
+  "output_dir": "models/arabic_camelbert_router",
+  "max_length": 96,
+  "batch_size": 16,
+  "epochs": 8,
+  "learning_rate": 2e-5,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "validation_size": 0.15,
+  "test_size": 0.15,
+  "seed": 42,
+  "early_stopping_patience": 3,
+  "early_stopping_min_delta": 0.001,
+  "monitor_metric": "f1_macro",
+  "mixed_precision": true,
+  "use_cuda": true,
+  "labels": [
+    "structured_sql",
+    "educational_rag",
+    "policy_rag",
+    "file_retrieval",
+    "conversational",
+    "clarification"
+  ]
+}

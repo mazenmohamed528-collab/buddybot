@@ -1,0 +1,675 @@
+[
+  {
+    "id": "conv_greet_en_001",
+    "category": "conversational",
+    "language": "en",
+    "message": "hi",
+    "expected_route": "conversational",
+    "expected_intents": ["greeting", "greet"],
+    "expected_actions": ["utter_greet", "action_conversation_router"],
+    "expected_keywords_any": ["BuddyBot", "Ask me", "FCI", "Hey"]
+  },
+  {
+    "id": "conv_greet_ar_002",
+    "category": "conversational",
+    "language": "ar",
+    "message": "اهلا",
+    "expected_route": "conversational",
+    "expected_intents": ["greeting", "greet"],
+    "expected_actions": ["utter_greet", "action_conversation_router"],
+    "expected_keywords_any": ["BuddyBot", "Ask me", "FCI", "Hey"]
+  },
+  {
+    "id": "conv_status_eg_003",
+    "category": "conversational",
+    "language": "egyptian_ar",
+    "message": "ازيك",
+    "expected_route": "conversational",
+    "expected_actions": ["utter_greet", "action_conversation_router", "action_general_conversation"],
+    "expected_keywords_any": ["BuddyBot", "Ask me", "FCI", "Hey", "عامل", "مساعدة"]
+  },
+  {
+    "id": "conv_status_en_004",
+    "category": "conversational",
+    "language": "en",
+    "message": "hru",
+    "expected_route": "conversational",
+    "expected_actions": ["action_general_conversation", "action_conversation_router", "utter_bot_status"],
+    "expected_keywords_any": ["day", "week", "help", "BuddyBot", "chat"]
+  },
+
+  {
+    "id": "short_specialization_ar_005",
+    "category": "official_guide_short_keyword",
+    "language": "ar",
+    "message": "التخصص",
+    "expected_route": "policy_qna",
+    "expected_actions": ["utter_fci_qa_specialization_short_ar", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["التخصص", "الفرقة الثالثة", "السنة الثالثة", "الرئيسي", "الفرعي"]
+  },
+  {
+    "id": "short_change_specialization_ar_006",
+    "category": "official_guide_short_keyword",
+    "language": "ar",
+    "message": "تغيير التخصص",
+    "expected_route": "policy_qna",
+    "expected_actions": ["utter_fci_qa_change_specialization_short_ar", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["تغيير التخصص"],
+    "expected_keywords_any": ["مرة واحدة", "السنة النهائية", "المقاعد", "عميد"]
+  },
+  {
+    "id": "short_change_track_eg_007",
+    "category": "official_guide_short_keyword",
+    "language": "egyptian_ar",
+    "message": "تغيير المسار",
+    "expected_route": "policy_qna",
+    "expected_actions": ["utter_fci_qa_change_specialization_short_ar", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["مرة واحدة", "تغيير التخصص", "السنة النهائية", "المقاعد"]
+  },
+  {
+    "id": "short_departments_ar_008",
+    "category": "official_guide_short_keyword",
+    "language": "ar",
+    "message": "الاقسام",
+    "expected_route": "policy_qna_or_educational",
+    "expected_actions": ["utter_fci_qa_departments_short_ar", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["علوم الحاسب", "نظم المعلومات", "هندسة البرمجيات", "Computer Science"]
+  },
+  {
+    "id": "short_attendance_ar_009",
+    "category": "official_guide_short_keyword",
+    "language": "ar",
+    "message": "الغياب",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["25", "٢٥", "الامتحان", "راسب", "الحضور", "الغياب"]
+  },
+  {
+    "id": "short_fees_ar_010",
+    "category": "official_guide_short_keyword",
+    "language": "ar",
+    "message": "الرسوم",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["الرسوم", "75", "40", "أسبوعين", "المصروفات", "استرداد"]
+  },
+  {
+    "id": "short_warning_ar_011",
+    "category": "official_guide_short_keyword",
+    "language": "ar",
+    "message": "الانذار الاكاديمي",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["2", "٢", "15", "١٥", "المعدل", "فصلين", "إنذار"]
+  },
+  {
+    "id": "short_student_id_en_012",
+    "category": "database_short_keyword",
+    "language": "en",
+    "message": "student 22209",
+    "expected_route": "database_query",
+    "expected_intents": ["student_profile_query", "nlu_fallback", "ask_knowledge"],
+    "expected_actions": ["action_text_to_sql", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["Mazen"],
+    "expected_keywords_any": ["2122209", "22209", "Information Systems", "Data Science"]
+  },
+  {
+    "id": "short_student_id_ar_013",
+    "category": "database_short_keyword",
+    "language": "ar",
+    "message": "طالب 22209",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_all": ["Mazen"],
+    "expected_keywords_any": ["2122209", "22209", "Data Science"]
+  },
+  {
+    "id": "short_instructor_en_014",
+    "category": "database_short_keyword",
+    "language": "en",
+    "message": "dr Ahmed Esmat",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["Ahmed Esmat"],
+    "expected_keywords_any": ["ISDS451", "Data Science", "Machine and Deep Learning", "teaching assignments"]
+  },
+
+  {
+    "id": "db_student_profile_en_015",
+    "category": "database_student_lookup",
+    "language": "en",
+    "message": "show me student 22209",
+    "expected_route": "database_query",
+    "session_id": "ctx_mazen",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_all": ["Mazen"],
+    "expected_keywords_any": ["2122209", "active", "DS", "Data Science"]
+  },
+  {
+    "id": "db_student_profile_partial_016",
+    "category": "database_student_lookup",
+    "language": "en",
+    "message": "show me student 209",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_all": ["Mazen"],
+    "expected_keywords_any": ["2122209", "22209", "Data Science"]
+  },
+  {
+    "id": "db_students_ds_list_017",
+    "category": "database_student_lookup",
+    "language": "en",
+    "message": "show me all students in data science",
+    "expected_route": "database_query",
+    "session_id": "ctx_ds_students",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["38", "first 10", "show more", "all of them", "Data Science"]
+  },
+  {
+    "id": "db_students_ds_continuation_018",
+    "category": "context_pagination",
+    "language": "en",
+    "message": "all of them",
+    "expected_route": "database_query",
+    "session_id": "ctx_ds_students",
+    "depends_on": "db_students_ds_list_017",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["Showing results", "11-38", "Youssef", "remaining"]
+  },
+  {
+    "id": "db_students_ds_count_019",
+    "category": "database_student_lookup",
+    "language": "en",
+    "message": "how many students in data science",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["38", "matching students"]
+  },
+  {
+    "id": "db_students_typo_dept_020",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "show me all students in data sciencs",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["38", "Data Science", "first 10"],
+    "forbidden_keywords": ["330 matching students"]
+  },
+  {
+    "id": "db_students_se_count_typo_021",
+    "category": "database_student_lookup",
+    "language": "en",
+    "message": "how manay students in software engineering",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["114", "matching students"]
+  },
+  {
+    "id": "db_gpa_context_022",
+    "category": "context_memory",
+    "language": "en",
+    "message": "what's his gpa?",
+    "expected_route": "database_query",
+    "session_id": "ctx_mazen",
+    "depends_on": "db_student_profile_en_015",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["3.46", "GPA", "cumulative"]
+  },
+  {
+    "id": "db_student_courses_context_023",
+    "category": "context_memory",
+    "language": "en",
+    "message": "what courses does he take?",
+    "expected_route": "database_query",
+    "session_id": "ctx_mazen",
+    "depends_on": "db_student_profile_en_015",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["course", "courses", "registered", "ISDS", "Data"]
+  },
+  {
+    "id": "db_course_teacher_ds_024",
+    "category": "database_course_teacher",
+    "language": "en",
+    "message": "who teaches data science?",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["Ahmed Esmat"],
+    "expected_keywords_any": ["ISDS451", "Selected Topics in Data Science"]
+  },
+  {
+    "id": "db_course_teacher_hr_025",
+    "category": "database_course_teacher",
+    "language": "en",
+    "message": "who teaches human rights?",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Human Rights", "Hadeer El Gohary", "Ninete Fahmy", "teaching assignments"]
+  },
+  {
+    "id": "db_instructor_direct_026",
+    "category": "database_instructor_lookup",
+    "language": "en",
+    "message": "who's dr Ahmed Esmat?",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["Ahmed Esmat"],
+    "expected_keywords_any": ["ISDS451", "teaching assignments", "Data Visualization", "Data Mining"]
+  },
+  {
+    "id": "db_instructor_ar_027",
+    "category": "database_instructor_lookup",
+    "language": "mixed",
+    "message": "مين الدكتور Ahmed Esmat؟",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_all": ["Ahmed Esmat"],
+    "expected_keywords_any": ["ISDS451", "teaching assignments", "Data Visualization"]
+  },
+  {
+    "id": "db_schedule_group_028",
+    "category": "database_schedule",
+    "language": "en",
+    "message": "show fourth year data science schedule",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["schedule", "ISDS", "Data Science", "lecture", "lab", "classes"]
+  },
+  {
+    "id": "db_schedule_ar_029",
+    "category": "database_schedule",
+    "language": "ar",
+    "message": "هات جدول الداتا ساينس",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["schedule", "ISDS", "Data Science", "جدول", "lecture"]
+  },
+  {
+    "id": "db_schedule_file_ar_030",
+    "category": "database_schedule",
+    "language": "ar",
+    "message": "ابعتلي ملف الجدول",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["schedule", "file", "attachment", "PDF", "ملف", "جدول"]
+  },
+  {
+    "id": "db_departments_count_031",
+    "category": "database_departments",
+    "language": "en",
+    "message": "count students by department",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["department", "students", "Software Engineering", "Data Science", "Cyber"]
+  },
+  {
+    "id": "db_rooms_list_032",
+    "category": "database_rooms",
+    "language": "en",
+    "message": "show rooms",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["room", "rooms", "lab", "hall", "capacity"]
+  },
+  {
+    "id": "db_free_rooms_033",
+    "category": "database_rooms",
+    "language": "en",
+    "message": "free rooms now",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["free", "available", "room", "rooms", "lab", "No"]
+  },
+
+  {
+    "id": "guide_admission_en_034",
+    "category": "official_guide_admission",
+    "language": "en",
+    "message": "What are the admission requirements for FCI?",
+    "expected_route": "policy_qna",
+    "expected_actions": ["utter_fci_qa_admission_requirements_admission_requirements_en_1c37b4", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["80", "English", "aptitude", "interview", "secondary"]
+  },
+  {
+    "id": "guide_admission_ar_035",
+    "category": "official_guide_admission",
+    "language": "ar",
+    "message": "ما هي شروط القبول في كلية الحاسبات والمعلومات؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["80", "اللغة الإنجليزية", "اختبارات", "المقابلة", "الحد الأدنى"]
+  },
+  {
+    "id": "guide_documents_ar_036",
+    "category": "official_guide_admission",
+    "language": "ar",
+    "message": "ما الأوراق المطلوبة للتقديم؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["شهادة الثانوية", "شهادة الميلاد", "البطاقة", "صور", "الكشف الطبي"]
+  },
+  {
+    "id": "guide_attendance_en_037",
+    "category": "official_guide_attendance",
+    "language": "en",
+    "message": "What is the attendance policy?",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["25", "absence", "final exam", "failed", "Withdrawn"]
+  },
+  {
+    "id": "guide_attendance_eg_038",
+    "category": "official_guide_attendance",
+    "language": "egyptian_ar",
+    "message": "لو غبت كتير ايه اللي يحصل؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["25", "الامتحان النهائي", "راسب", "W", "منسحب"]
+  },
+  {
+    "id": "guide_exams_en_039",
+    "category": "official_guide_exams",
+    "language": "en",
+    "message": "How are grades distributed between midterm final and coursework?",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["15", "60", "25", "midterm", "final", "coursework"]
+  },
+  {
+    "id": "guide_exams_ar_040",
+    "category": "official_guide_exams",
+    "language": "ar",
+    "message": "الميدتيرم والفاينل عليهم كام؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["15", "60", "25", "الميد", "النهائي", "أعمال"]
+  },
+  {
+    "id": "guide_gpa_rules_en_041",
+    "category": "official_guide_gpa_rules",
+    "language": "en",
+    "message": "What is the GPA system?",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["GPA", "4.0", "3.7", "cumulative", "grade"]
+  },
+  {
+    "id": "guide_warning_ar_042",
+    "category": "official_guide_warning",
+    "language": "ar",
+    "message": "ما هو الانذار الاكاديمي؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["أقل من", "2", "15", "فصلين", "المعدل"]
+  },
+  {
+    "id": "guide_fees_en_043",
+    "category": "official_guide_fees",
+    "language": "en",
+    "message": "Can I refund tuition fees?",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["75", "40", "refund", "midterm", "fees"]
+  },
+  {
+    "id": "guide_discipline_en_044",
+    "category": "official_guide_discipline",
+    "language": "en",
+    "message": "What are the disciplinary penalties?",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["warning", "exam", "suspension", "dismissal", "penalties"]
+  },
+  {
+    "id": "guide_discipline_ar_045",
+    "category": "official_guide_discipline",
+    "language": "ar",
+    "message": "ايه عقوبة الغش في الامتحان؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["الغش", "الامتحان", "العقوبات", "إلغاء", "فصل"]
+  },
+
+  {
+    "id": "edu_data_science_en_046",
+    "category": "educational_rag",
+    "language": "en",
+    "message": "what's data science?",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["data", "insight", "statistics", "visualization", "machine learning", "Information Systems"]
+  },
+  {
+    "id": "edu_software_engineering_en_047",
+    "category": "educational_rag",
+    "language": "en",
+    "message": "what's software engineering?",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Software Engineering", "requirements", "testing", "software", "design"]
+  },
+  {
+    "id": "edu_cs_ar_048",
+    "category": "educational_rag",
+    "language": "ar",
+    "message": "علوم الحاسب",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["علوم الحاسب", "الخوارزميات", "الذكاء الاصطناعي", "Computer Science", "البرمجة"]
+  },
+  {
+    "id": "edu_ai_vs_ds_049",
+    "category": "educational_rag",
+    "language": "en",
+    "message": "what's the difference between Data Science and AI?",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["AI", "Data Science"],
+    "expected_keywords_any": ["overlap", "machine learning", "visualization", "intelligent systems"],
+    "forbidden_keywords": ["What Is an API?"]
+  },
+  {
+    "id": "edu_ai_vs_ds_ar_050",
+    "category": "educational_rag",
+    "language": "ar",
+    "message": "ايه الفرق بين الداتا ساينس والذكاء الاصطناعي؟",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Data Science", "AI", "الذكاء", "البيانات", "machine learning"]
+  },
+  {
+    "id": "edu_courses_should_take_051",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "what courses should i take if i'm in data science",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Data Science", "statistics", "SQL", "Python", "machine learning", "roadmap"],
+    "forbidden_keywords": ["I found 20 matching students", "I found 38 matching students"]
+  },
+
+  {
+    "id": "fallback_unknown_guide_052",
+    "category": "fallback",
+    "language": "en",
+    "message": "What is the official parking policy for motorcycles?",
+    "expected_route": "fallback_policy",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["not include", "not available", "not found", "official guide", "knowledge base"]
+  },
+  {
+    "id": "fallback_unknown_db_053",
+    "category": "fallback",
+    "language": "en",
+    "message": "show me student 999999999",
+    "expected_route": "fallback_database",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["could not find", "no matching", "not found", "matching data"]
+  },
+  {
+    "id": "fallback_unclear_054",
+    "category": "fallback",
+    "language": "en",
+    "message": "blue banana timetable dreams",
+    "expected_route": "fallback_unclear",
+    "expected_actions": ["action_conversation_router", "action_general_conversation", "action_rag_query"],
+    "expected_keywords_any": ["could not", "not sure", "help", "ask", "BuddyBot", "try"]
+  },
+  {
+    "id": "fallback_unclear_ar_055",
+    "category": "fallback",
+    "language": "ar",
+    "message": "عايز حاجة كده مش عارف",
+    "expected_route": "fallback_unclear",
+    "expected_actions": ["action_conversation_router", "action_general_conversation"],
+    "expected_keywords_any": ["مش واضح", "مساعدة", "اسأل", "اقدر", "help", "BuddyBot"]
+  },
+
+  {
+    "id": "mixed_gpa_policy_056",
+    "category": "mixed_language_policy",
+    "language": "mixed",
+    "message": "ايه هو ال GPA system؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["GPA", "المعدل", "4.0", "التراكمي", "grade"]
+  },
+  {
+    "id": "mixed_student_lookup_057",
+    "category": "mixed_language_database",
+    "language": "mixed",
+    "message": "هات student 22209",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_all": ["Mazen"],
+    "expected_keywords_any": ["2122209", "Data Science"]
+  },
+  {
+    "id": "mixed_students_ds_058",
+    "category": "mixed_language_database",
+    "language": "mixed",
+    "message": "هات طلبة Data Science",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["38", "Data Science", "first 10", "show more"]
+  },
+  {
+    "id": "mixed_schedule_059",
+    "category": "mixed_language_database",
+    "language": "mixed",
+    "message": "جدول DS امتى؟",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["schedule", "DS", "ISDS", "lecture", "جدول"]
+  },
+  {
+    "id": "mixed_teacher_060",
+    "category": "mixed_language_database",
+    "language": "mixed",
+    "message": "مين بيدرس Human Rights؟",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["Human Rights", "Hadeer", "Ninete"]
+  },
+
+  {
+    "id": "regression_ask_majors_061",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "give me the majors",
+    "expected_route": "policy_qna_or_educational",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Computer Science", "Information Systems", "Software Engineering", "departments"]
+  },
+  {
+    "id": "regression_attendance_ar_062",
+    "category": "regression_old_failures",
+    "language": "ar",
+    "message": "الغياب",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["25", "الامتحان", "راسب", "W"],
+    "forbidden_keywords": ["CP101", "Discrete Structures", "Computer Programming"]
+  },
+  {
+    "id": "regression_bare_cs_ar_063",
+    "category": "regression_old_failures",
+    "language": "ar",
+    "message": "علوم الحاسب",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["علوم الحاسب", "الخوارزميات", "الذكاء الاصطناعي", "Computer Science"],
+    "forbidden_keywords": ["CP101", "Discrete Structures", "I found 20 matching courses"]
+  },
+  {
+    "id": "regression_change_specialization_064",
+    "category": "regression_old_failures",
+    "language": "ar",
+    "message": "تغيير التخصص",
+    "expected_route": "policy_qna",
+    "expected_actions": ["utter_fci_qa_change_specialization_short_ar", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["مرة واحدة", "السنة النهائية", "المقاعد", "تغيير التخصص"],
+    "forbidden_keywords": ["أهداف", "رؤية", "رسالة"]
+  },
+  {
+    "id": "regression_admission_docs_ar_065",
+    "category": "regression_old_failures",
+    "language": "ar",
+    "message": "الاوراق المطلوبة للالتحاق؟",
+    "expected_route": "policy_qna",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["شهادة الثانوية", "شهادة الميلاد", "البطاقة", "صور", "الكشف الطبي"],
+    "forbidden_keywords": ["هندسة البرمجيات", "متطلبات البرمجيات"]
+  },
+  {
+    "id": "regression_all_of_them_typo_066",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "al of them",
+    "expected_route": "database_query",
+    "session_id": "ctx_ds_students",
+    "depends_on": "db_students_ds_list_017",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["Showing results", "already at the end", "remaining", "11-38"]
+  },
+  {
+    "id": "regression_and_rest_067",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "and the rest?",
+    "expected_route": "database_query",
+    "session_id": "ctx_ds_students",
+    "depends_on": "db_students_ds_list_017",
+    "expected_actions": ["action_text_to_sql", "action_conversation_router"],
+    "expected_keywords_any": ["Showing results", "already at the end", "remaining", "11-38"]
+  },
+  {
+    "id": "regression_tell_se_068",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "tell me about software engineering",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Software Engineering", "requirements", "testing", "software", "design"],
+    "forbidden_keywords": ["I found 20 matching students", "StudentID"]
+  },
+  {
+    "id": "regression_what_ds_069",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "what's data science",
+    "expected_route": "educational_rag",
+    "expected_actions": ["action_rag_query", "action_conversation_router"],
+    "expected_keywords_any": ["Data Science", "data", "insight", "statistics", "machine learning"],
+    "forbidden_keywords": ["I found 20 matching students", "StudentID", "What Is an API?"]
+  },
+  {
+    "id": "regression_who_teaches_ds_070",
+    "category": "regression_old_failures",
+    "language": "en",
+    "message": "who teaches data science?",
+    "expected_route": "database_query",
+    "expected_actions": ["action_text_to_sql", "action_rag_query", "action_conversation_router"],
+    "expected_keywords_all": ["Ahmed Esmat"],
+    "forbidden_keywords": ["official FCI student guide Q&A", "لم أجد"]
+  }
+]

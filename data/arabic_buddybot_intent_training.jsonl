@@ -1,0 +1,120 @@
+{"text": "اهلا", "label": "greeting"}
+{"text": "مرحبا", "label": "greeting"}
+{"text": "هلا", "label": "greeting"}
+{"text": "السلام عليكم", "label": "greeting"}
+{"text": "صباح الخير", "label": "greeting"}
+{"text": "مساء الخير", "label": "greeting"}
+{"text": "ازيك", "label": "greeting"}
+{"text": "عامل ايه", "label": "greeting"}
+{"text": "اهلا يا BuddyBot", "label": "greeting"}
+{"text": "هاي", "label": "greeting"}
+{"text": "hello", "label": "greeting"}
+{"text": "hi buddy", "label": "greeting"}
+{"text": "الغياب", "label": "attendance_policy"}
+{"text": "كم نسبة الغياب المسموح بها", "label": "attendance_policy"}
+{"text": "اتغيبت كتير اعمل ايه", "label": "attendance_policy"}
+{"text": "هل الغياب يمنعني من الامتحان", "label": "attendance_policy"}
+{"text": "ما هو حد الغياب في الكلية", "label": "attendance_policy"}
+{"text": "غيابي عدى 25 في المية", "label": "attendance_policy"}
+{"text": "الحضور والغياب", "label": "attendance_policy"}
+{"text": "نسبة الحضور المطلوبة كام", "label": "attendance_policy"}
+{"text": "ايه عقوبة الغياب", "label": "attendance_policy"}
+{"text": "لو غبت بعذر ايه يحصل", "label": "attendance_policy"}
+{"text": "absence policy", "label": "attendance_policy"}
+{"text": "can absence stop final exam", "label": "attendance_policy"}
+{"text": "المعدل", "label": "gpa_query"}
+{"text": "معدلي كام", "label": "gpa_query"}
+{"text": "ايه ال GPA بتاعي", "label": "gpa_query"}
+{"text": "show my GPA", "label": "gpa_query"}
+{"text": "عايز اعرف المعدل التراكمي", "label": "gpa_query"}
+{"text": "معدل الفصل ده كام", "label": "gpa_query"}
+{"text": "GPA for student 2122209", "label": "gpa_query"}
+{"text": "cgpa بتاعي", "label": "gpa_query"}
+{"text": "اعرض المعدل", "label": "gpa_query"}
+{"text": "معدل مازن", "label": "gpa_query"}
+{"text": "what is my cumulative GPA", "label": "gpa_query"}
+{"text": "ايه درجات المعدل بتاع الطالب", "label": "gpa_query"}
+{"text": "الانذار الاكاديمي", "label": "academic_warning"}
+{"text": "انذار اكاديمي", "label": "academic_warning"}
+{"text": "معدلي وقع تحت 2", "label": "academic_warning"}
+{"text": "لو ال GPA اقل من 2 يحصل ايه", "label": "academic_warning"}
+{"text": "ازاي اشيل الانذار", "label": "academic_warning"}
+{"text": "كام ساعة مع الانذار", "label": "academic_warning"}
+{"text": "عندي انذار اكاديمي اعمل ايه", "label": "academic_warning"}
+{"text": "متى يتم فصل الطالب بسبب الانذار", "label": "academic_warning"}
+{"text": "academic warning rules", "label": "academic_warning"}
+{"text": "how to remove academic warning", "label": "academic_warning"}
+{"text": "انذاري امتى ينتهي", "label": "academic_warning"}
+{"text": "فرص الانذار كام مرة", "label": "academic_warning"}
+{"text": "الجدول", "label": "schedule_query"}
+{"text": "جدول المحاضرات", "label": "schedule_query"}
+{"text": "امتى محاضرة الداتا", "label": "schedule_query"}
+{"text": "جدول سنة رابعة داتا ساينس", "label": "schedule_query"}
+{"text": "محاضرات يوم السبت", "label": "schedule_query"}
+{"text": "ايه عندي بكرة", "label": "schedule_query"}
+{"text": "schedule for AI second semester", "label": "schedule_query"}
+{"text": "جدول هندسة البرمجيات", "label": "schedule_query"}
+{"text": "ميعاد المعمل", "label": "schedule_query"}
+{"text": "what classes do I have tomorrow", "label": "schedule_query"}
+{"text": "جدول DS ترم تاني", "label": "schedule_query"}
+{"text": "امتى سكشن قواعد البيانات", "label": "schedule_query"}
+{"text": "اعرضلي الطلاب", "label": "student_lookup"}
+{"text": "كم طالب في data science", "label": "student_lookup"}
+{"text": "طلاب ال DS", "label": "student_lookup"}
+{"text": "هات طلبة الداتا ساينس", "label": "student_lookup"}
+{"text": "show me students", "label": "student_lookup"}
+{"text": "how many students in cyber security", "label": "student_lookup"}
+{"text": "list all software engineering students", "label": "student_lookup"}
+{"text": "find student 2209", "label": "student_lookup"}
+{"text": "بيانات الطالب 2122209", "label": "student_lookup"}
+{"text": "طالب اسمه مازن", "label": "student_lookup"}
+{"text": "طلاب سنة تالتة", "label": "student_lookup"}
+{"text": "اعرض طلاب CS3", "label": "student_lookup"}
+{"text": "ما هو Data Science", "label": "educational"}
+{"text": "اشرح هندسة البرمجيات", "label": "educational"}
+{"text": "ايه الفرق بين AI و Data Science", "label": "educational"}
+{"text": "ما هو تخصص علوم الحاسب", "label": "educational"}
+{"text": "مسار تعلم backend", "label": "educational"}
+{"text": "what courses should i take in data science", "label": "educational"}
+{"text": "tell me about cyber security", "label": "educational"}
+{"text": "ايه قسم نظم المعلومات", "label": "educational"}
+{"text": "ما هي التخصصات المتاحة", "label": "educational"}
+{"text": "اشرح machine learning ببساطة", "label": "educational"}
+{"text": "roadmap for AI students", "label": "educational"}
+{"text": "ايه الادوات المهمة للداتا ساينس", "label": "educational"}
+{"text": "التسجيل", "label": "registration"}
+{"text": "ازاي اسجل المواد", "label": "registration"}
+{"text": "ميعاد التسجيل امتى", "label": "registration"}
+{"text": "اضافة مادة", "label": "registration"}
+{"text": "حذف مادة", "label": "registration"}
+{"text": "الانسحاب من مادة", "label": "registration"}
+{"text": "وقف التسجيل", "label": "registration"}
+{"text": "كام ساعة ممكن اسجل", "label": "registration"}
+{"text": "المرشد الاكاديمي يعمل ايه", "label": "registration"}
+{"text": "registration rules", "label": "registration"}
+{"text": "add drop deadline", "label": "registration"}
+{"text": "هل ممكن اسجل بعد بداية الترم", "label": "registration"}
+{"text": "الرسوم الدراسية", "label": "fees_query"}
+{"text": "كام المصاريف", "label": "fees_query"}
+{"text": "مصاريف الكلية كام", "label": "fees_query"}
+{"text": "هل المصاريف بترجع", "label": "fees_query"}
+{"text": "رجوع فلوس التقديم", "label": "fees_query"}
+{"text": "fees refund policy", "label": "fees_query"}
+{"text": "متى ادفع الرسوم", "label": "fees_query"}
+{"text": "تأخير دفع المصاريف", "label": "fees_query"}
+{"text": "هل رسوم التقديم ترد", "label": "fees_query"}
+{"text": "tuition fees", "label": "fees_query"}
+{"text": "استرداد الرسوم قبل الميد تيرم", "label": "fees_query"}
+{"text": "المصاريف المتأخرة", "label": "fees_query"}
+{"text": "دليل الطالب", "label": "file_request"}
+{"text": "ابعت ملف الدليل", "label": "file_request"}
+{"text": "عايز PDF اللائحة", "label": "file_request"}
+{"text": "send student guide pdf", "label": "file_request"}
+{"text": "ملف الجدول", "label": "file_request"}
+{"text": "ابعتلي schedule PDF", "label": "file_request"}
+{"text": "download official policies", "label": "file_request"}
+{"text": "ارسل ملف القواعد", "label": "file_request"}
+{"text": "عايز الملف الرسمي", "label": "file_request"}
+{"text": "show it as a file", "label": "file_request"}
+{"text": "PDF بتاع الغياب", "label": "file_request"}
+{"text": "هات لينك دليل الطالب", "label": "file_request"}

@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "rasa_url": "http://127.0.0.1:5005",
+    "cases_file": "C:\\dev\\rasa_project\\tests\\buddybot_acceptance_cases.json",
+    "run_id": "accept_1779377904",
+    "selected_count": 3,
+    "executed_count": 3,
+    "passed_count": 1,
+    "failed_count": 2,
+    "inspect_api": false
+  },
+  "failed_count": 2,
+  "failures": [
+    {
+      "id": "db_course_teacher_ds_024",
+      "message": "who teaches data science?",
+      "expected_route": "database_query",
+      "intent": null,
+      "intent_confidence": null,
+      "actions": [],
+      "response_text": "I could not find that in the official FCI student guide Q&A. لم أجد هذه المعلومة في دليل الكلية الرسمي. Please ask about admission, departments, study system, GPA, attendance, registration, exams, fees, discipline, or graduation.",
+      "failures": [
+        "Missing required keywords: ['Ahmed Esmat']",
+        "Expected at least one keyword from: ['ISDS451', 'Selected Topics in Data Science']"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "edu_ai_vs_ds_049",
+      "message": "what's the difference between Data Science and AI?",
+      "expected_route": "educational_rag",
+      "intent": null,
+      "intent_confidence": null,
+      "actions": [],
+      "response_text": "I could not find that in the official FCI student guide Q&A. لم أجد هذه المعلومة في دليل الكلية الرسمي. Please ask about admission, departments, study system, GPA, attendance, registration, exams, fees, discipline, or graduation.",
+      "failures": [
+        "Missing required keywords: ['AI', 'Data Science']",
+        "Expected at least one keyword from: ['overlap', 'machine learning', 'visualization', 'intelligent systems']"
+      ],
+      "warnings": []
+    }
+  ]
+}

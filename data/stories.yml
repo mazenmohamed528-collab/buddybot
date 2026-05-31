@@ -1,0 +1,53 @@
+version: "3.1"
+
+stories:
+- story: ambiguous student then choose by group then follow up
+  steps:
+    - intent: student_gpa_query
+    - action: action_text_to_sql
+    - intent: clarification_response
+    - action: action_text_to_sql
+    - intent: followup_query
+    - action: action_text_to_sql
+
+- story: student profile then pronoun GPA
+  steps:
+    - intent: student_profile_query
+    - action: action_text_to_sql
+    - intent: student_gpa_query
+    - action: action_text_to_sql
+
+- story: student GPA then failed courses
+  steps:
+    - intent: student_gpa_query
+    - action: action_text_to_sql
+    - intent: student_failed_courses_query
+    - action: action_text_to_sql
+
+- story: schedule then same group followup
+  steps:
+    - intent: student_schedule_query
+    - action: action_text_to_sql
+    - intent: followup_query
+    - action: action_text_to_sql
+
+- story: course teacher then course info
+  steps:
+    - intent: course_instructor_query
+    - action: action_text_to_sql
+    - intent: course_info_query
+    - action: action_text_to_sql
+
+- story: free room then room detail
+  steps:
+    - intent: free_room_query
+    - action: action_text_to_sql
+    - intent: room_query
+    - action: action_text_to_sql
+
+- story: knowledge then database question
+  steps:
+    - intent: ask_knowledge
+    - action: action_rag_query
+    - intent: course_info_query
+    - action: action_text_to_sql

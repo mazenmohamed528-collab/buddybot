@@ -1,0 +1,38 @@
+services:
+  rasa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005"
+    environment:
+      PORT: 5005
+      ACTION_ENDPOINT_URL: http://actions:5055/webhook
+      RASA_TELEMETRY_ENABLED: "false"
+    depends_on:
+      - actions
+
+  actions:
+    build:
+      context: .
+      dockerfile: Dockerfile.actions
+    ports:
+      - "5055:5055"
+    environment:
+      PORT: 5055
+      BUDDYBOT_DB_DIALECT: ${BUDDYBOT_DB_DIALECT:-sqlserver}
+      BUDDYBOT_DB_DRIVER: ${BUDDYBOT_DB_DRIVER:-ODBC Driver 17 for SQL Server}
+      BUDDYBOT_DB_SERVER: ${BUDDYBOT_DB_SERVER:-host.docker.internal}
+      BUDDYBOT_DB_NAME: ${BUDDYBOT_DB_NAME:-FCI_UNIVERSITY}
+      BUDDYBOT_DB_USER: ${BUDDYBOT_DB_USER:-}
+      BUDDYBOT_DB_PASSWORD: ${BUDDYBOT_DB_PASSWORD:-}
+      BUDDYBOT_DB_PORT: ${BUDDYBOT_DB_PORT:-}
+      BUDDYBOT_DATABASE_URL: ${BUDDYBOT_DATABASE_URL:-}
+      DB_HOST: ${DB_HOST:-}
+      DB_NAME: ${DB_NAME:-}
+      DB_USER: ${DB_USER:-}
+      DB_PASSWORD: ${DB_PASSWORD:-}
+      DB_PORT: ${DB_PORT:-}
+      DB_SSLMODE: ${DB_SSLMODE:-require}
+      BUDDYBOT_SQL_ENGINE_URL: ${BUDDYBOT_SQL_ENGINE_URL:-http://host.docker.internal:8010/query}
+      CHROMA_PATH: ${CHROMA_PATH:-/app/chroma_db}

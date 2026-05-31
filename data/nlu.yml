@@ -1,0 +1,1111 @@
+version: "3.1"
+
+nlu:
+- intent: greeting
+  examples: |
+    - hi
+    - hello
+    - hey
+    - hey buddy
+    - hello BuddyBot
+    - good morning
+    - good evening
+    - salam
+    - salaam
+    - ahlan
+    - greetings
+    - hello there
+    - good afternoon
+    - مرحبا
+    - السلام عليكم
+    - اهلا
+    - what's up
+    - can you help me
+    - i have a question
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
+    - that's all
+    - thats all
+    - no more
+    - nothing else
+    - i'm done
+    - done
+    - stop
+    - exit
+    - end chat
+    - have a nice day
+    - good night
+    - take care
+    - bye bye
+    - مع السلامة
+    - باي
+    - شكرا مع السلامة
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot
+    - are you human
+    - what are you
+    - who are you
+    - are you BuddyBot
+    - what can you do
+    - introduce yourself
+    - explain yourself
+    - are you an AI assistant
+    - are u an ai assistant
+    - are you a bot?
+    - are you human?
+    - am I talking to a bot?
+    - are you an AI?
+    - who are you?
+    - انت بوت ولا انسان؟
+    - انت ذكاء اصطناعي؟
+
+- intent: ask_bot_identity
+  examples: |
+    - what is BuddyBot
+    - tell me about yourself
+    - tell me about urself
+    - how can you help me
+    - what do you do
+    - what kind of questions can you answer
+    - what university data can you check
+    - can you answer database questions
+    - can you answer schedule questions
+    - help
+    - what can you do?
+    - how can you help me?
+    - what can I ask you?
+    - menu
+    - options
+    - ايه اللي تقدر تعمله
+    - عايز مساعدة
+    - محتاج مساعدة
+
+- intent: ask_bot_status
+  examples: |
+    - how are you
+    - how r u
+    - how are u
+    - are you okay
+    - are u okay
+    - are you good
+    - r u good
+    - are you ready
+    - are you working
+
+- intent: ask_bot_creator
+  examples: |
+    - who created you
+    - who made you
+    - who built BuddyBot
+    - who developed this project
+    - who are your creators
+    - who worked on BuddyBot
+    - tell me about the team
+    - who supervised the project
+    - who is Dr Wael
+    - who is Mazen from the project team
+    - tell me about Sama from the team
+
+- intent: ask_project_purpose
+  examples: |
+    - why was BuddyBot created
+    - what is the purpose of BuddyBot
+    - what problem does this project solve
+    - why did you build it
+    - why did u build it
+    - what's the idea behind BuddyBot
+    - what is the project goal
+    - how does BuddyBot help students
+    - why do students need this bot
+    - why
+    - why tho
+
+- intent: thank_you
+  examples: |
+    - thanks
+    - thank you
+    - thank u
+    - thx
+    - thanks a lot
+    - many thanks
+    - thank you so much
+    - appreciate it
+    - appreciate you
+    - ty
+    - cheers
+    - شكرا
+    - شكرا جزيلا
+    - متشكر
+    - مشكور
+
+- intent: casual_acknowledgement
+  examples: |
+    - okay
+    - ok
+    - cool
+    - nice
+    - got it
+    - i see
+    - alright
+    - great
+    - good
+    - makes sense
+    - that makes sense
+    - hmm
+
+- intent: general_conversation
+  examples: |
+    - let's chat
+    - can we talk
+    - i want normal conversation
+    - i need advice
+    - advise me
+    - give me advice
+    - help me study
+    - give me study tips
+    - how should i study
+    - make me a study plan
+    - plan my revision
+    - plan my day
+    - i feel stressed
+    - im stressed
+    - i feel lost
+    - i can't focus
+    - i cant focus
+    - motivate me
+    - i need motivation
+    - tell me a joke
+    - what is the weather today?
+    - play music
+    - I want to order food
+    - what is the stock market?
+    - ساعدني اذاكر
+    - انا متوتر من الامتحانات
+
+- intent: student_profile_query
+  examples: |
+    - student [22209](student_id)
+    - student [209](student_id)
+    - student [2209](student_id)
+    - show me student [22209](student_id)
+    - show student code [209](student_id)
+    - [22209](student_id)
+    - طالب [22209](student_id)
+    - طالب [209](student_id)
+    - كود الطالب [22209](student_id)
+    - كود طالب [209](student_id)
+    - بيانات الطالب [22209](student_id)
+    - اعرض الطالب [22209](student_id)
+    - code [209](student_id)
+    - id [22209](student_id)
+    - show student [2122209](student_id)
+    - show student id [2122136](student_id)
+    - find student code [22209](student_id)
+    - do you have student code [22209](student_id)
+    - tell me about student [2122248](student_id)
+    - profile for student [2122323](student_id)
+    - student details for [2122179](student_id)
+    - what data do you have for student [2122240](student_id)
+    - show [Mazen Mohamed](student_name)
+    - show me student [Sarah Emad](student_name)
+    - show me student [Raoof Mahmoud](student_name)
+    - who's [Marceleno Ayman](student_name)
+    - [Marceleno Ayman Eskander](student_name)
+    - find student named [Mazen](student_name)
+    - do u have a student with the name of [Mazen](student_name)
+    - what department is [Mazen Mohamed](student_name) in
+    - what group is [Mazen](student_name) in
+    - what email does student [2122136](student_id) have
+    - what year is student [2122136](student_id) in
+    - students in [DS](group_code)
+    - show [CS](department) students
+    - show me srudents in [data science](department)
+    - show me studnets in [AI](department)
+    - list students in [Artificial Intelligence](department)
+    - show all active students
+    - give me [50](limit) students
+    - show me [50](limit) students
+    - do u have a student with a code of [209](student_id)
+    - student code [209](student_id)
+    - who's in semester [2](semester)
+    - who is in semester [2](semester)
+    - show students in second semester
+
+- intent: student_gpa_query
+  examples: |
+    - show my [GPA](metric)
+    - what is my [CGPA](metric)
+    - my cumulative [gpa](metric)
+    - show GPA for student [2122209](student_id)
+    - what is the GPA of student [2122136](student_id)
+    - calculate GPA for [2122248](student_id)
+    - what is [Mazen](student_name) GPA
+    - show [Mazen Mohamed](student_name) GPA
+    - gpa for [Mazen](student_name)
+    - what is his gpa
+    - what is her gpa
+    - what about their cgpa
+    - and the gpa
+    - average GPA
+    - highest GPA
+    - lowest GPA
+    - show top GPA students
+    - average gpa by [department](metric)
+    - average gpa by [group](metric)
+    - what is my GPA?
+    - show me my GPA
+    - what is my cumulative GPA?
+    - check my GPA
+    - my current GPA please
+    - معدلي كام؟
+    - عايز اعرف معدلي التراكمي
+    - ايه معدلي الفصل ده؟
+    - اعرف معدلي الحالي
+
+- intent: student_grades_query
+  examples: |
+    - grades for [2122209](student_id)
+    - show grades for student [2122136](student_id)
+    - marks of student [2122136](student_id)
+    - show marks for [Mazen](student_name)
+    - what are [Mazen](student_name) grades
+    - show my grades
+    - what about his grades
+    - what marks did he get
+    - result for student [2122209](student_id)
+    - score for [AI301](course_code) for student [2122209](student_id)
+    - what did student [2122136](student_id) get in [AI301](course_code)
+    - show course marks for [2122209](student_id)
+    - what are my grades?
+    - show me my grades
+    - my results this semester
+    - what did I get in my courses?
+    - my marks please
+    - درجاتي كام؟
+    - عايز اشوف نتايجي
+    - ايه الدرجات اللي حصلت عليها؟
+    - نتيجتي الفصل ده
+
+- intent: student_failed_courses_query
+  examples: |
+    - what courses did [Mazen](student_name) fail
+    - failed courses for [Mazen](student_name)
+    - show failed subjects for student [2122209](student_id)
+    - did student [2122136](student_id) fail anything
+    - who failed [Database](course_name)
+    - students who failed [AI301](course_code)
+    - list failing students
+    - show all failed courses
+    - what subjects did he fail
+    - show his failed courses
+    - failed marks for [2122209](student_id)
+    - courses below pass for [Mazen Mohamed](student_name)
+
+- intent: student_schedule_query
+  examples: |
+    - show my schedule
+    - what's data science schedule
+    - what is the data science timetable
+    - show cyber security schedule
+    - schedule for software engineering
+    - data science lectures
+    - what classes do I have tomorrow
+    - do I have lectures tomorrow
+    - do i have class today
+    - my timetable for [Sunday](day)
+    - schedule for student [2122209](student_id)
+    - show schedule for [Mazen](student_name)
+    - show schedule for him
+    - show his timetable
+    - schedule for group [AI 1](group_code)
+    - what is the schedule for [AI 1](group_code)
+    - show [CS1](group_code) timetable
+    - give me second semester schedule
+    - send me first semester schedule
+    - send the official schedule PDF
+    - give me the schedule file
+    - show schedule and send PDF
+    - show second semester schedule for [Data Science](department)
+    - give me [third year](year_level) [AI](department) schedule file
+    - show me [fourth year](year_level) [data science](department) second semester schedule
+    - download schedule for [CSCS2](group_code)
+    - show my group schedule
+    - show it as a file
+    - labs on [Sunday](day)
+    - show labs on [Tuesday](day)
+    - lectures on [Monday](day)
+    - what lectures on [Saturday](day) for [data science](department)
+    - which room has [AI301](course_code)
+    - when is [Database Systems](course_name)
+    - what is my class schedule?
+    - show me my timetable
+    - when do my lectures start?
+    - my weekly schedule please
+    - what time is my class today?
+    - جدولي الدراسي ايه؟
+    - عايز اشوف جدول المحاضرات
+    - امتي عندي محاضرات؟
+    - جدولي الاسبوعي ايه؟
+    - عايز pdf الجدول
+    - ابعتلي ملف الجدول
+    - هات جدول الترم التاني كملف
+
+- intent: course_info_query
+  examples: |
+    - list all courses
+    - show courses
+    - data science courses
+    - what are the 24 courses
+    - what are the 24 courses in cyber security
+    - show the 24 courses
+    - what's Algorithms Analysis and Design
+    - tell me about human rights course
+    - list [AI](department) courses
+    - list [CS](department) subjects
+    - courses for [Software Engineering](department)
+    - what courses belong to third year [AI](department)
+    - show year [3](semester) semester [1](semester) courses
+    - credit hours for [AI301](course_code)
+    - what is [AI301](course_code)
+    - tell me about [Database Systems](course_name)
+    - course info for [Machine Learning](course_name)
+    - what about [Categorical Data Analysis](course_name)
+    - [Categorical Data Analysis](course_name)
+    - subjects in [DS](department)
+    - how many courses are in the database
+    - show general courses
+    - show major courses
+
+- intent: course_instructor_query
+  examples: |
+    - who teaches data science
+    - who teaches human rights
+    - who teaches big data
+    - who teaches Algorithms Analysis and Design
+    - what courses dr Wael teaches
+    - what courses dr Wael teach
+    - what dr Wael Karam teach
+    - courses by Dr Wael Karam
+    - who teaches ai
+    - who teaches software engineering
+    - who teaches computer science
+    - who teaches [Data Science](course_name)
+    - who teaches [Human Rights](course_name)
+    - teacher for [Human Rights](course_name)
+    - professor for [Human Rights](course_name)
+    - مين بيدرس [Human Rights](course_name)
+    - مين دكتور [AI](department)
+    - مين بيدرس [AI](department)
+    - مين بيدرس داتا ساينس
+    - مين بيدرس الذكاء الاصطناعي
+    - دكتور مادة [Human Rights](course_name)
+    - who teaches [AI301](course_code)
+    - who is teaching [Database Systems](course_name)
+    - instructor for [AI301](course_code)
+    - teacher of [Machine Learning](course_name)
+    - which faculty teaches [DBMS](course_name)
+    - who teaches [AI](department)
+    - who teaches [CS](department) courses
+    - professor for [AI301](course_code)
+    - faculty assigned to [Natural Language Processing](course_name)
+    - who teaches it
+    - who teaches this course
+    - instructor for that course
+
+- intent: department_query
+  examples: |
+    - list departments
+    - show all departments
+    - what departments exist
+    - show majors
+    - list majors
+    - how many students are in [AI](department)
+    - how many students are in [CS](department)
+    - student breakdown by department
+    - percentage of students by department
+    - count students by major
+    - tell me about [Software Engineering](department)
+    - show [Information Systems and Data Science](department)
+
+- intent: room_query
+  examples: |
+    - list rooms
+    - show all rooms
+    - show labs
+    - list halls
+    - show classrooms
+    - room capacity
+    - capacity of [Hall 3](room)
+    - where is [AI301](course_code)
+    - what course is in [Hall 3](room)
+    - classes in [Lab 1](room)
+    - show room schedule for [Room B1](room)
+
+- intent: free_room_query
+  examples: |
+    - free rooms now
+    - which rooms are free now
+    - available rooms
+    - empty rooms
+    - vacant labs
+    - free labs on [Sunday](day)
+    - rooms available at [2 PM](time)
+    - free rooms tomorrow
+    - is [Hall 3](room) free now
+    - any lab free at [10:00](time)
+    - show free classrooms on [Monday](day)
+
+- intent: instructor_query
+  examples: |
+    - list instructors
+    - list faculty
+    - show professors
+    - show all instructors
+    - instructors in [Software Engineering](department)
+    - who are the instructors in [AI](department)
+    - show instructor workload report
+    - which instructor teaches the most courses
+    - schedule for instructor [Wael Karam](instructor_name)
+    - classes taught by [Yasser Salah Eldin](instructor_name)
+    - courses of [Magdy Aboulela](instructor_name)
+    - [Ahmed Esmat](instructor_name)
+    - [Dr Ahmed Esmat](instructor_name)
+    - [Iman bahi](instructor_name)
+    - what does dr [Wael](instructor_name) teach
+    - courses by [Wael Karam](instructor_name)
+    - who's dr [Ahmed Esmat](instructor_name)
+    - who is dr [Ahmed Esmat](instructor_name)
+    - dr [Ahmed Esmat](instructor_name)
+    - tell me about dr [Ahmed Esmat](instructor_name)
+    - information about dr [Ahmed Esmat](instructor_name)
+    - مين الدكتور [Ahmed Esmat](instructor_name)
+    - من هو الدكتور [Ahmed Esmat](instructor_name)
+    - عايز اعرف عن الدكتور [Ahmed Esmat](instructor_name)
+    - tell me about [Dr. Ahmed](instructor_name)
+    - who is [Dr. Sara](instructor_name)?
+    - information about [Professor Ali](instructor_name)
+    - I want to know about my lecturer
+    - lecturer information please
+    - who is the professor of this course?
+    - مين الدكتور اللي بيدرس المادة دي؟
+    - عايز اعرف عن الدكتور [Dr. Mohamed](instructor_name)
+    - معلومات عن الاستاذ
+
+- intent: analytics_query
+  examples: |
+    - top students by GPA
+    - highest gpa students
+    - lowest gpa students
+    - average GPA by department
+    - average GPA by group
+    - how many students by group
+    - count students by department
+    - instructor workload
+    - course statistics
+    - department analytics
+    - schedule conflicts
+    - busiest instructor
+    - courses with most failures
+    - students on academic warning
+
+- intent: reset_courses_query
+  examples: |
+    - show reset subjects
+    - show reset courses
+    - list reset subjects
+    - reset courses for student [2122209](student_id)
+    - does [Mazen](student_name) have reset courses
+    - which students have reset subjects
+    - repeated courses
+    - retaken subjects
+    - subjects repeated by [2122136](student_id)
+    - all reset material
+
+- intent: academic_progress_query
+  examples: |
+    - is [Mazen](student_name) now in fourth year
+    - is [Mazen Mohamed](student_name) in year 4 now
+    - did [Mazen](student_name) finish third year
+    - did he finish third year
+    - what year is he currently in
+    - what year is student [2122209](student_id) currently in
+    - did student [2122209](student_id) complete both semesters
+    - show his GPA for both semesters
+    - show GPA semester 1 and semester 2 for [2122209](student_id)
+    - what was his semester [1](semester) and semester [2](semester) GPA
+    - is he promoted to fourth year
+    - is student [2122209](student_id) eligible for fourth year
+    - did [Mazen](student_name) complete year 3
+    - show academic progress for [Mazen](student_name)
+
+- intent: followup_query
+  examples: |
+    - show more
+    - next
+    - tell me about it
+    - more about it
+    - what about his schedule
+    - show his schedule
+    - what about her grades
+    - and his GPA
+    - what about the grades
+    - show the same student's courses
+    - and the failed courses
+    - what about tomorrow
+    - same group
+    - show that student's gpa
+    - what did he get in [AI301](course_code)
+    - what about [Sunday](day)
+    - only labs
+    - for second semester
+    - for semester [2](semester)
+    - what about that course
+    - sort by highest
+    - show top [5](limit)
+
+- intent: clarification_response
+  examples: |
+    - the one in [DS](group_code)
+    - the [DS](group_code) one
+    - the one in [AI 1](group_code)
+    - choose [CS1](group_code)
+    - number [3](limit)
+    - option [2](limit)
+    - the third one
+    - first one
+    - second
+    - [2122209](student_id)
+    - student [2122323](student_id)
+    - code [22209](student_id)
+    - the [Artificial Intelligence](department) student
+    - the one in [Software Engineering](department)
+    - select [Mazen Mohamed Abd Elmageed Badawi](student_name)
+
+- intent: ask_knowledge
+  examples: |
+    - شروط القبول
+    - الغياب
+    - الانذار الاكاديمي
+    - what's data science
+    - what is data science
+    - what's software engineering
+    - what is software engineering
+    - what's computer science
+    - what is computer science
+    - what's the difference between Data Science and AI
+    - difference between AI and data science
+    - ايه الفرق بين الداتا ساينس والذكاء الاصطناعي
+    - ما الفرق بين علم البيانات والذكاء الاصطناعي
+    - tell me about university services
+    - what services are available for students
+    - does the college have a library
+    - tell me about hostel facilities
+    - what is the admission process
+    - tell me about fees
+    - what documents are needed for admission?
+    - what papers do I need to apply?
+    - required documents for enrollment
+    - what do I need to bring to register?
+    - admission paperwork required
+    - documents needed to join the college
+    - what certificates are needed to apply?
+    - what are the admission requirements?
+    - what are the conditions to join the college?
+    - minimum score required for admission
+    - what grade do I need to get accepted?
+    - English language requirement for admission
+    - is there an aptitude test for admission?
+    - what high school branch is accepted?
+    - can I transfer to this college?
+    - transfer student requirements
+    - I want to transfer from another college
+    - conditions for transfer students
+    - can I transfer my credit hours?
+    - transfer from equivalent college
+    - are scholarships available
+    - explain machine learning
+    - explain database systems
+    - what can students ask this bot
+    - what is the college policy
+    - explain the departments generally
+    - what departments are in FCI
+    - what departments does the college have?
+    - what are the available specializations?
+    - tell me about the college departments
+    - what majors are offered?
+    - what can I study at the college?
+    - available programs in the college
+    - list all departments
+    - give me the majors
+    - what are the majors
+    - what's data science
+    - tell ne about software engineering
+    - tell me about software engineering
+    - what is the software engineering department?
+    - software engineering specialization details
+    - what do software engineering students study?
+    - tell me about information systems
+    - what is the information systems department?
+    - information systems specialization details
+    - what do information systems students study?
+    - tell me about computer science
+    - what is the computer science department?
+    - computer science specialization details
+    - what do computer science students study?
+    - explain cyber security
+    - what is artificial intelligence
+    - tell me about Faculty of Computers and Information
+    - what is the admission system
+    - who is the dean of the faculty
+    - what services are on the official website
+    - show me official rules for attendance
+    - what are the withdrawal rules
+    - explain the credit hours system
+    - how does the study system work?
+    - how is study organized at the college?
+    - what is required to get a bachelor degree?
+    - how many credit hours to graduate?
+    - what is the bachelor degree study system?
+    - what is the student discipline system?
+    - what happens if a student breaks the rules?
+    - college disciplinary rules
+    - what are the penalties for students?
+    - student code of conduct
+    - how does the exam system work?
+    - tell me about the exam rules
+    - when are results announced?
+    - how are exam results approved?
+    - are exams electronic or traditional?
+    - when are the exams?
+    - exam schedule please
+    - when is the midterm exam?
+    - when is the final exam?
+    - exam dates this semester
+    - can I suspend my registration?
+    - how do I freeze my enrollment?
+    - registration suspension rules
+    - I want to take a break from studying
+    - how many semesters can I suspend?
+    - what is the deadline to request suspension?
+    - what is the attendance policy?
+    - how many absences are allowed?
+    - what happens if I exceed the absence limit?
+    - what is the required attendance percentage?
+    - can I be banned from exams due to absence?
+    - what is the absence percentage allowed?
+    - can I change my major?
+    - how do I change my specialization?
+    - transfer to another department inside the college
+    - rules for changing my specialization
+    - can I switch departments?
+    - when can I change my major?
+    - how many times can I change my major?
+    - what is an academic warning?
+    - when do I get an academic warning?
+    - my GPA is low what happens?
+    - how do I remove an academic warning?
+    - minimum GPA to avoid academic warning
+    - what is the maximum load during academic warning?
+    - what happens if I fail a subject?
+    - rules for failing a course
+    - what is an incomplete grade?
+    - how do I remove an incomplete grade?
+    - I missed the exam what happens to me?
+    - do I have to repeat a failed course?
+    - what is the grading system?
+    - how are grades calculated?
+    - what does A plus mean?
+    - grade percentages and GPA points
+    - how is the GPA calculated?
+    - what is the midterm and final exam weight?
+    - how much is coursework worth?
+    - can I add or drop a course?
+    - what are the add drop rules?
+    - how do I withdraw from a subject?
+    - when can I add or remove courses?
+    - what is the add drop deadline?
+    - what is the W grade on my transcript?
+    - how many credit hours can I take per semester?
+    - minimum and maximum credit hours per semester
+    - how many courses can I register for in summer?
+    - summer semester credit hours limit
+    - what is the maximum study load?
+    - what is academic advising?
+    - when does registration open?
+    - how do I register for courses?
+    - what does an academic advisor do?
+    - registration period when is it?
+    - do I need advisor approval to register?
+    - what is the study plan?
+    - study plan for bachelor degree
+    - what are the graduation requirements in the plan?
+    - how is the study plan organized?
+    - what are the official admission rules?
+    - who is eligible to apply to the college?
+    - what high school certificate is required?
+    - acceptance conditions at the college
+    - how is admission decided?
+    - math or science branch for admission?
+    - how long does it take to graduate?
+    - how many years is the bachelor degree?
+    - study duration at the college
+    - how many semesters are in a year?
+    - when do graduation ceremonies happen?
+    - what is hybrid learning?
+    - is study online or in person?
+    - how much study is online vs in person?
+    - online learning system at the college
+    - what do I need to graduate?
+    - what are the graduation requirements?
+    - is training required to graduate?
+    - dual major graduation requirements
+    - translate this Arabic policy and explain it
+    - ايه الأوراق المطلوبة للالتحاق بالكلية؟
+    - محتاج ايه عشان اتسجل؟
+    - ايه الوثائق المطلوبة للقبول؟
+    - الأوراق المطلوبة للتسجيل ايه؟
+    - محتاج اجيب ايه عشان اقدم؟
+    - ايه شروط الالتحاق بالكلية؟
+    - ايه الحد الادنى للقبول؟
+    - محتاج كام في اللغة الانجليزية؟
+    - فيه اختبار قدرات للقبول؟
+    - شروط القبول في الكلية ايه؟
+    - ايه الشعب الثانوية المقبولة؟
+    - ممكن اتحول للكلية دي؟
+    - ايه شروط التحويل للكلية؟
+    - انا طالب محول عايز اعرف الشروط
+    - تحويل من كلية تانية ايه شروطه؟
+    - ممكن احول ساعاتي المعتمدة؟
+    - نظام الدراسة في الكلية ايه؟
+    - محتاج كام ساعة معتمدة للتخرج؟
+    - ايه نظام الساعات المعتمدة؟
+    - كيف يعمل نظام الدراسة؟
+    - ايه متطلبات البكالوريوس؟
+    - نظام التأديب في الكلية ايه؟
+    - ايه العقوبات على الطلاب؟
+    - ايه الجزاءات التأديبية؟
+    - لو الطالب اتصرف غلط ايه اللي يحصل؟
+    - نظام الامتحانات ايه؟
+    - امتي بتتعلن النتايج؟
+    - الامتحانات الكترونية ولا تقليدية؟
+    - ايه قواعد الامتحانات؟
+    - النتايج بتتعلن امتي؟
+    - امتي الامتحانات؟
+    - جدول الامتحانات امتي؟
+    - امتي الميد تيرم؟
+    - امتي الفاينل؟
+    - مواعيد الامتحانات
+    - ممكن اوقف تسجيلي؟
+    - ايه شروط وقف التسجيل؟
+    - عايز اجمد الدراسة مؤقتا
+    - كام فصل ممكن اوقف التسجيل؟
+    - امتي اقدم طلب وقف التسجيل؟
+    - الغياب
+    - الحضور والغياب
+    - سياسة الغياب
+    - ايه نسبة الغياب المسموح بيها؟
+    - لو غبت اكتر من اللازم ايه اللي يحصل؟
+    - ايه سياسة الحضور والغياب؟
+    - ممكن يمنعوني من الامتحان بسبب الغياب؟
+    - نسبة الحضور المطلوبة كام؟
+    - ممكن اغير تخصصي؟
+    - ايه شروط تغيير التخصص؟
+    - عايز اتحول لقسم تاني جوا الكلية
+    - امتي ممكن اغير تخصصي؟
+    - كام مرة ممكن اغير التخصص؟
+    - ايه الإنذار الأكاديمي؟
+    - امتي بيجيلي إنذار أكاديمي؟
+    - معدلي وقع تحت 2 ايه اللي يحصل؟
+    - ازاي ازيل الإنذار الأكاديمي؟
+    - الحد الأدنى للمعدل التراكمي عشان مايجيش انذار؟
+    - اقدر اخد كام ساعة لو عندي انذار؟
+    - لو رسبت في مادة ايه اللي يحصل؟
+    - ايه تقدير غير مكتمل؟
+    - ازاي ازيل تقدير غير مكتمل؟
+    - غبت عن الامتحان ايه اللي بيحصل؟
+    - لازم اعيد المادة لو رسبت؟
+    - ايه نظام الدرجات؟
+    - ازاي بيتحسب المعدل؟
+    - ايه معنى A+ ؟
+    - نسبة الامتحانات والاعمال الفصلية كام؟
+    - الميدتيرم بيجيب كام درجة؟
+    - الفاينل بيجيب كام في المئة؟
+    - الفرق بين المعدل الفصلي والتراكمي ايه؟
+    - ممكن اضيف او اسحب مادة؟
+    - ايه مدة الاضافة والحذف؟
+    - امتي ممكن اسحب من مادة؟
+    - ايه اخر معاد للانسحاب من مادة؟
+    - ايه معنى W في السجل الدراسي؟
+    - ايه الحد الادنى والاقصى للساعات في الفصل؟
+    - اقدر اخد كام ساعة في الفصل؟
+    - في الفصل الصيفي اقدر اسجل كام مادة؟
+    - العبء الدراسي في الفصل كام ساعة؟
+    - الحد الاقصى للساعات في الفصل؟
+    - ايه الإرشاد الأكاديمي؟
+    - امتي بيفتح التسجيل؟
+    - ازاي اسجل المواد؟
+    - المرشد الأكاديمي بيعمل ايه؟
+    - مواعيد التسجيل امتي؟
+    - محتاج موافقة المرشد عشان اسجل؟
+    - ايه خطة الدراسة؟
+    - محتاج كام ساعة عشان اتخرج؟
+    - ايه متطلبات التخرج في الخطة؟
+    - خطة الدراسة للبكالوريوس ايه؟
+    - خطة الدراسة بتتضمن ايه؟
+    - ايه قواعد القبول الرسمية في الكلية؟
+    - مين ممكن يتقدم للكلية؟
+    - ايه شهادة الثانوية المطلوبة للقبول؟
+    - كيف يتم القبول في الكلية؟
+    - شعبة رياضيات ولا علوم للقبول؟
+    - كام سنة الدراسة في الكلية؟
+    - متى يتم التخرج؟
+    - كام فصل في السنة الجامعية؟
+    - نظام الدراسة كام سنة؟
+    - دورات التخرج امتي بتتعمل؟
+    - التعليم هجين ولا حضوري؟
+    - نسبة التعليم عن بعد كام؟
+    - ايه نظام التعليم الهجين؟
+    - الدراسة اونلاين ولا حضوري؟
+    - ايه متطلبات التخرج؟
+    - محتاج تدريب عشان اتخرج؟
+    - كام شهر تدريب مطلوب للتخرج؟
+    - ايه شروط التخرج بالتخصص المزدوج؟
+    - ايه هو علم البيانات
+    - اشرح الداتا ساينس ببساطة
+    - ايه قسم هندسة البرمجيات
+    - هندسة البرمجيات ايه هي؟
+    - عايز اعرف عن قسم هندسة البرمجيات
+    - ايه اللي بيدرسوه في هندسة البرمجيات؟
+    - تخصص هندسة البرمجيات بيدرس ايه؟
+    - نظم المعلومات ايه هي؟
+    - عايز اعرف عن قسم نظم المعلومات
+    - ايه اللي بيدرسوه في نظم المعلومات؟
+    - تخصص نظم المعلومات بيدرس ايه؟
+    - علوم الحاسب ايه هي؟
+    - عايز اعرف عن قسم علوم الحاسب
+    - ايه اللي بيدرسوه في علوم الحاسب؟
+    - تخصص علوم الحاسب بيدرس ايه؟
+    - اشرح قسم علوم الحاسب
+    - ما هو الذكاء الاصطناعي
+    - ايه الفرق بين الذكاء الاصطناعي وعلم البيانات
+    - شرح الامن السيبراني
+    - ايه نظم المعلومات
+    - هات التخصصات الموجودة
+    - مرتبة الشرف شروطها ايه
+    - ايه أقسام الكلية؟
+    - ايه اقسام الكلية
+    - مين عميد الكلية؟
+    - شرح نظام الساعات المعتمدة
+    - ايه نظام الانذار الاكاديمي؟
+    - ما هي شروط القبول؟
+    - ايه قواعد الانسحاب؟
+    - عايز معلومات من موقع الكلية الرسمي
+    - eh aksam el koleya
+    - meen 3ameed el koleya
+    - eih nezam el sa3at el mo3tamda
+    - admission rules mn website el koleya
+
+- intent: ask_database_question
+  examples: |
+    - show me all students
+    - list student ids
+    - show the FCI student records
+    - how many students are in the database
+    - show student records
+    - database question
+    - query the database
+    - check student data
+    - show university data
+    - search the FCI database
+    - هات طلبة الداتا ساينس
+    - اعرض طلاب علم البيانات
+    - عايز كل الطلبة في هندسة البرمجيات
+    - كام طالب في الذكاء الاصطناعي
+    - هات طلبة الذكاء الاصطناعي
+    - اعرض طلاب هندسة البرمجيات
+    - كام طالب في علوم الحاسب
+    - عايز كل الطلبة في نظم المعلومات
+    - جدول سنة رابعة داتا ساينس ترم تاني السبت
+    - القاعات الفاضية دلوقتي
+    - درجات الطالب 2122209
+    - معدل الطالب 2122209
+    - نسبة حضوري كام؟
+    - عايز اشوف سجل حضوري
+    - كام مرة غبت؟
+    - حضوري في المادة كام؟
+    - what is my attendance?
+    - show my attendance record
+    - how many classes did I miss?
+    - check my attendance percentage
+    - my absence record
+
+- regex: student_id
+  examples: |
+    - \bstudent[\s_-]*(?:id|number|no\.?|#)\s*[:#-]?\s*\d{1,12}\b
+    - \bstudent\s+\d{1,12}\b
+    - \b(?:code|id)\s*(?:of|is|=|:|-)?\s*\d{1,12}\b
+
+- regex: course_code
+  examples: |
+    - \b[A-Z]{2,5}\s?\d{3}\b
+
+- regex: academic_year
+  examples: |
+    - \b20\d{2}\s*[-/]\s*20\d{2}\b
+    - \b20\d{2}\b
+
+- regex: year_level
+  examples: |
+    - \b(?:first|second|third|fourth|1st|2nd|3rd|4th)\s+year\b
+    - \byear\s*[1-4]\b
+    - \blevel\s*[1-4]\b
+
+- regex: time
+  examples: |
+    - \b\d{1,2}:\d{2}\s*(?:am|pm)?\b
+    - \b\d{1,2}\s*(?:am|pm)\b
+
+- lookup: department
+  examples: |
+    - AI
+    - Artificial Intelligence
+    - CS
+    - Computer Science
+    - Computer Sciences
+    - CSCS
+    - Cyber Security
+    - Cybersecurity
+    - ISDS
+    - DS
+    - Data Science
+    - Information Systems
+    - Information Systems and Data Science
+    - Software Engineering
+    - SE
+    - الداتا ساينس
+    - علم البيانات
+    - علوم البيانات
+    - الذكاء الاصطناعي
+    - ذكاء اصطناعي
+    - هندسة البرمجيات
+    - علوم الحاسب
+    - علوم الكمبيوتر
+    - نظم المعلومات
+    - الامن السيبراني
+    - أمن سيبراني
+
+- lookup: group_code
+  examples: |
+    - AI 1
+    - AI 2
+    - AI1
+    - AI2
+    - CS
+    - CS1
+    - CS2
+    - CS3
+    - CSCS1
+    - CSCS2
+    - CSCS3
+    - DS
+    - ISDS
+    - ISDS1
+    - ISDS2
+    - SE1
+    - SE2
+    - SE3
+
+- lookup: day
+  examples: |
+    - Saturday
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - today
+    - tomorrow
+
+- lookup: metric
+  examples: |
+    - GPA
+    - CGPA
+    - cumulative GPA
+    - grades
+    - marks
+    - score
+    - credit hours
+    - attendance
+    - workload
+    - failures
+
+- lookup: student_name
+  examples: |
+    - Abdullah Mohammed Abdullah Ibrahim
+    - Ahmed Said Abdelghani Habib
+    - Ali Ahmed Hessein Ahmed
+    - Aya Basem Farouk Abd Al Hady
+    - Fayez Bahaa Fayez Ibrahim
+    - Mazen Mohamed Abd Elmageed Badawi
+    - Mazen Hany Mohamed Nagah Mohamed
+    - Mazen Wael Fawzy Mohamed
+    - Mazen Akram Mohamed Saad
+    - Mazen Yasser Sayed Qorany
+    - Sama Adham Mahmoud Ahmed
+    - Abdullah Mohamed Abdelhamed Hussein
+    - Aliaa Amr Hamed Ghareeb
+    - Eslam Muhamed Saleh Hashem
+    - Fatma Hesham Abdelrahman Habashy
+    - Mina Michel Baher Tawfik
+    - Nadine Magdy Mohamed Mohamed
+    - Youssef Amgad Ibrahim Abdelmalak
+
+- lookup: course_name
+  examples: |
+    - Machine and Deep Learning
+    - Database Systems
+    - Natural Language Processing
+    - Computer Networks
+    - Software Engineering
+    - Web and Text Mining
+    - Principles of IOT
+    - Artificial Intelligence
+    - Data Mining
+
+- synonym: AI
+  examples: |
+    - Artificial Intelligence
+    - ai
+    - A.I.
+
+- synonym: CSCS
+  examples: |
+    - Cyber Security
+    - Cybersecurity
+    - cyber security
+
+- synonym: ISDS
+  examples: |
+    - DS
+    - Data Science
+    - Information Systems
+    - Information Systems and Data Science
+
+- synonym: SE
+  examples: |
+    - Software Engineering
+    - software engineering
+
+- synonym: GPA
+  examples: |
+    - gpa
+    - CGPA
+    - cgpa
+    - cumulative GPA

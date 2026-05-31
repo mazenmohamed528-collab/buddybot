@@ -1,0 +1,805 @@
+{
+  "mode": "nlu",
+  "elapsed_seconds": 0.17,
+  "summary": {
+    "total_cases": 10,
+    "passed_cases": 2,
+    "overall_pass_rate": 20.0,
+    "intent_accuracy": 100.0,
+    "entity_accuracy": 20.0,
+    "routing_accuracy": 100.0,
+    "behavior_check_accuracy": 100.0,
+    "suggested_fixes": [
+      "Improve entity annotations/lookups/regexes for: [('metric', 8), ('student_name', 1)]"
+    ]
+  },
+  "failed_cases": [
+    {
+      "id": "TC003",
+      "user_message": "show GPA for student 2122209",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122209"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for StudentID 2122209.",
+      "expected_response_contains": [
+        "2122209"
+      ],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9987781643867493,
+      "intent_margin": 0.998442000214709,
+      "actual_entities": [
+        {
+          "entity": "student_id",
+          "start": 21,
+          "end": 28,
+          "confidence_entity": 0.9998325109481812,
+          "value": "2122209",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": null,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC004",
+      "user_message": "what is the GPA of student 2122136",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122136"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for the given student ID.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.997760534286499,
+      "intent_margin": 0.9966485243057832,
+      "actual_entities": [
+        {
+          "entity": "student_id",
+          "start": 27,
+          "end": 34,
+          "confidence_entity": 0.9997894167900085,
+          "value": "2122136",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC005",
+      "user_message": "calculate GPA for 2122248",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122248"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for the given student ID.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9989909529685974,
+      "intent_margin": 0.998513111815555,
+      "actual_entities": [
+        {
+          "entity": "student_id",
+          "start": 18,
+          "end": 25,
+          "confidence_entity": 0.9995809197425842,
+          "value": "2122248",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC006",
+      "user_message": "what is Mazen GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Detect multiple Mazen students and ask which one.",
+      "expected_response_contains": [
+        "Which one"
+      ],
+      "session_id": "amb_mazen",
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9994415640830994,
+      "intent_margin": 0.9991697871882934,
+      "actual_entities": [
+        {
+          "entity": "student_name",
+          "start": 8,
+          "end": 13,
+          "confidence_entity": 0.9971024394035339,
+          "value": "Mazen",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": null,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC007",
+      "user_message": "show Mazen Mohamed GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen Mohamed"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Clarify if more than one Mazen Mohamed exists.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9992365837097168,
+      "intent_margin": 0.9990569667716045,
+      "actual_entities": [
+        {
+          "entity": "student_name",
+          "start": 5,
+          "end": 18,
+          "confidence_entity": 0.9961481094360352,
+          "value": "Mazen Mohamed",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC008",
+      "user_message": "gpa for Sama",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Sama"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Find Sama student if unique, otherwise clarify.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9989420771598816,
+      "intent_margin": 0.998699185467558,
+      "actual_entities": [
+        {
+          "entity": "metric",
+          "start": 8,
+          "end": 12,
+          "confidence_entity": 0.7890806794166565,
+          "value": "Sama",
+          "extractor": "DIETClassifier"
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "student_name=['Sama']",
+        "metric=['GPA'] actual=['Sama']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC009",
+      "user_message": "and the gpa",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use prior selected student context.",
+      "expected_response_contains": [],
+      "session_id": "ctx_student",
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9928455948829651,
+      "intent_margin": 0.9895860231481493,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC010",
+      "user_message": "what about his cgpa",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Resolve pronoun to selected student.",
+      "expected_response_contains": [],
+      "session_id": "ctx_student",
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.7710222005844116,
+      "intent_margin": 0.5699620991945267,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    }
+  ],
+  "confusing_cases": [],
+  "results": [
+    {
+      "id": "TC001",
+      "user_message": "show my GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use selected/current student and return GPA.",
+      "expected_response_contains": [
+        "GPA"
+      ],
+      "session_id": "ctx_student",
+      "pass_fail": "PASS",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9993494153022766,
+      "intent_margin": 0.9992613857975812,
+      "actual_entities": [
+        {
+          "entity": "metric",
+          "start": 8,
+          "end": 11,
+          "confidence_entity": 0.9974445104598999,
+          "value": "GPA",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": true,
+      "route_pass": true,
+      "behavior_pass": null,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC002",
+      "user_message": "what is my CGPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use selected/current student and return cumulative GPA.",
+      "expected_response_contains": [
+        "GPA"
+      ],
+      "session_id": "ctx_student",
+      "pass_fail": "PASS",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.999332845211029,
+      "intent_margin": 0.9992118283480522,
+      "actual_entities": [
+        {
+          "entity": "metric",
+          "start": 11,
+          "end": 15,
+          "confidence_entity": 0.9956181049346924,
+          "value": "GPA",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": true,
+      "route_pass": true,
+      "behavior_pass": null,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC003",
+      "user_message": "show GPA for student 2122209",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122209"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for StudentID 2122209.",
+      "expected_response_contains": [
+        "2122209"
+      ],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9987781643867493,
+      "intent_margin": 0.998442000214709,
+      "actual_entities": [
+        {
+          "entity": "student_id",
+          "start": 21,
+          "end": 28,
+          "confidence_entity": 0.9998325109481812,
+          "value": "2122209",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": null,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC004",
+      "user_message": "what is the GPA of student 2122136",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122136"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for the given student ID.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.997760534286499,
+      "intent_margin": 0.9966485243057832,
+      "actual_entities": [
+        {
+          "entity": "student_id",
+          "start": 27,
+          "end": 34,
+          "confidence_entity": 0.9997894167900085,
+          "value": "2122136",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC005",
+      "user_message": "calculate GPA for 2122248",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122248"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for the given student ID.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9989909529685974,
+      "intent_margin": 0.998513111815555,
+      "actual_entities": [
+        {
+          "entity": "student_id",
+          "start": 18,
+          "end": 25,
+          "confidence_entity": 0.9995809197425842,
+          "value": "2122248",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC006",
+      "user_message": "what is Mazen GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Detect multiple Mazen students and ask which one.",
+      "expected_response_contains": [
+        "Which one"
+      ],
+      "session_id": "amb_mazen",
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9994415640830994,
+      "intent_margin": 0.9991697871882934,
+      "actual_entities": [
+        {
+          "entity": "student_name",
+          "start": 8,
+          "end": 13,
+          "confidence_entity": 0.9971024394035339,
+          "value": "Mazen",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": null,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC007",
+      "user_message": "show Mazen Mohamed GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen Mohamed"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Clarify if more than one Mazen Mohamed exists.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9992365837097168,
+      "intent_margin": 0.9990569667716045,
+      "actual_entities": [
+        {
+          "entity": "student_name",
+          "start": 5,
+          "end": 18,
+          "confidence_entity": 0.9961481094360352,
+          "value": "Mazen Mohamed",
+          "extractor": "DIETClassifier",
+          "processors": [
+            "EntitySynonymMapper"
+          ]
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC008",
+      "user_message": "gpa for Sama",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Sama"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Find Sama student if unique, otherwise clarify.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9989420771598816,
+      "intent_margin": 0.998699185467558,
+      "actual_entities": [
+        {
+          "entity": "metric",
+          "start": 8,
+          "end": 12,
+          "confidence_entity": 0.7890806794166565,
+          "value": "Sama",
+          "extractor": "DIETClassifier"
+        }
+      ],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "student_name=['Sama']",
+        "metric=['GPA'] actual=['Sama']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC009",
+      "user_message": "and the gpa",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use prior selected student context.",
+      "expected_response_contains": [],
+      "session_id": "ctx_student",
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.9928455948829651,
+      "intent_margin": 0.9895860231481493,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    },
+    {
+      "id": "TC010",
+      "user_message": "what about his cgpa",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Resolve pronoun to selected student.",
+      "expected_response_contains": [],
+      "session_id": "ctx_student",
+      "pass_fail": "FAIL",
+      "predicted_intent": "student_gpa_query",
+      "intent_confidence": 0.7710222005844116,
+      "intent_margin": 0.5699620991945267,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": true,
+      "entity_pass": false,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [
+        "metric=['GPA']"
+      ],
+      "sql_engine_error": null,
+      "sql_engine_domain": null,
+      "sql_engine_row_count": null,
+      "sql_engine_answer": "",
+      "confusing": false
+    }
+  ]
+}

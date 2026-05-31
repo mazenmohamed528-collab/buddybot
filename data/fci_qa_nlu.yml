@@ -1,0 +1,2850 @@
+version: '3.1'
+nlu:
+- intent: fci_qa_admission_requirements_admission_requirements_en_1c37b4
+  examples: '- What are the admission requirements for FCI
+
+    - Can you explain what are the admission requirements for FCI
+
+    - Tell me what are the admission requirements for FCI
+
+    - I want to know what are the admission requirements for FCI
+
+    - Give me details about what are the admission requirements for FCI
+
+    - quick answer: what are the admission requirements for FCI
+
+    - Can you explain what are the admission requirements for fci?
+
+    - I want to know what are the admission requirements for fci?
+
+    - Tell me what are the admission requirements for fci?
+
+    - Give me details about what are the admission requirements for fci?
+
+    '
+- intent: fci_qa_admission_documents_documents_required_application_en_0db160
+  examples: '- What documents are required for application
+
+    - Can you explain what documents are required for application
+
+    - Tell me what documents are required for application
+
+    - I want to know what documents are required for application
+
+    - Give me details about what documents are required for application
+
+    - quick answer: what documents are required for application
+
+    - Can you explain what documents are required for application?
+
+    - I want to know what documents are required for application?
+
+    - Tell me what documents are required for application?
+
+    - Give me details about what documents are required for application?
+
+    '
+- intent: fci_qa_departments_departments_available_en_ca75cf
+  examples: '- What departments are available
+
+    - Can you explain what departments are available
+
+    - Tell me what departments are available
+
+    - I want to know what departments are available
+
+    - Give me details about what departments are available
+
+    - quick answer: what departments are available
+
+    - Can you explain what departments are available?
+
+    - I want to know what departments are available?
+
+    - Tell me what departments are available?
+
+    - Give me details about what departments are available?
+
+    '
+- intent: fci_qa_specialization_specialization_begin_en_7a076e
+  examples: '- When does specialization begin
+
+    - Can you explain when does specialization begin
+
+    - Tell me when does specialization begin
+
+    - I want to know when does specialization begin
+
+    - Give me details about when does specialization begin
+
+    - quick answer: when does specialization begin
+
+    - Can you explain when does specialization begin?
+
+    - I want to know when does specialization begin?
+
+    - Tell me when does specialization begin?
+
+    - Give me details about when does specialization begin?
+
+    '
+- intent: fci_qa_attendance_maximum_allowed_absence_percentage_en_0e491c
+  examples: '- What is the maximum allowed absence percentage
+
+    - Can you explain what is the maximum allowed absence percentage
+
+    - Tell me what is the maximum allowed absence percentage
+
+    - I want to know what is the maximum allowed absence percentage
+
+    - Give me details about what is the maximum allowed absence percentage
+
+    - quick answer: what is the maximum allowed absence percentage
+
+    - Can you explain what is the maximum allowed absence percentage?
+
+    - I want to know what is the maximum allowed absence percentage?
+
+    - Tell me what is the maximum allowed absence percentage?
+
+    - Give me details about what is the maximum allowed absence percentage?
+
+    '
+- intent: fci_qa_guide_grades_distributed_en_f17d8a
+  examples: '- How are grades distributed
+
+    - Can you explain how are grades distributed
+
+    - Tell me how are grades distributed
+
+    - I want to know how are grades distributed
+
+    - Give me details about how are grades distributed
+
+    - quick answer: how are grades distributed
+
+    - Can you explain how are grades distributed?
+
+    - I want to know how are grades distributed?
+
+    - Tell me how are grades distributed?
+
+    - Give me details about how are grades distributed?
+
+    '
+- intent: fci_qa_admission_requirements_a83d7e85_ar_994a75
+  examples: '- ما هي شروط القبول في كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما هي شروط القبول في كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما هي شروط القبول في كلية الحاسبات والمعلومات
+
+    - اشرح ما هي شروط القبول في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما هي شروط القبول في كلية الحاسبات والمعلومات
+
+    - ما هي شروط القبول في كلية الحاسبات والمعلومات؟ في FCI
+
+    - ممكن توضح ما هي شروط القبول في كلية الحاسبات والمعلومات؟
+
+    - عايز أعرف ما هي شروط القبول في كلية الحاسبات والمعلومات؟
+
+    - اشرح ما هي شروط القبول في كلية الحاسبات والمعلومات؟
+
+    - اديني تفاصيل عن ما هي شروط القبول في كلية الحاسبات والمعلومات؟
+
+    '
+- intent: fci_qa_admission_documents_677cb02b_ar_3ccf19
+  examples: '- ما الأوراق المطلوبة للتقديم
+
+    - ممكن توضح ما الأوراق المطلوبة للتقديم
+
+    - عايز أعرف ما الأوراق المطلوبة للتقديم
+
+    - اشرح ما الأوراق المطلوبة للتقديم
+
+    - اديني تفاصيل عن ما الأوراق المطلوبة للتقديم
+
+    - ما الأوراق المطلوبة للتقديم؟ في FCI
+
+    - ممكن توضح ما الأوراق المطلوبة للتقديم؟
+
+    - عايز أعرف ما الأوراق المطلوبة للتقديم؟
+
+    - اشرح ما الأوراق المطلوبة للتقديم؟
+
+    - اديني تفاصيل عن ما الأوراق المطلوبة للتقديم؟
+
+    '
+- intent: fci_qa_departments_5cf7c8ae_ar_526316
+  examples: '- ما الأقسام المتاحة
+
+    - ممكن توضح ما الأقسام المتاحة
+
+    - عايز أعرف ما الأقسام المتاحة
+
+    - اشرح ما الأقسام المتاحة
+
+    - اديني تفاصيل عن ما الأقسام المتاحة
+
+    - ما الأقسام المتاحة؟ في FCI
+
+    - ممكن توضح ما الأقسام المتاحة؟
+
+    - عايز أعرف ما الأقسام المتاحة؟
+
+    - اشرح ما الأقسام المتاحة؟
+
+    - اديني تفاصيل عن ما الأقسام المتاحة؟
+
+    '
+- intent: fci_qa_specialization_248d0ef1_ar_b54f75
+  examples: '- متى يبدأ التخصص
+
+    - ممكن توضح متى يبدأ التخصص
+
+    - عايز أعرف متى يبدأ التخصص
+
+    - اشرح متى يبدأ التخصص
+
+    - اديني تفاصيل عن متى يبدأ التخصص
+
+    - متى يبدأ التخصص؟ في FCI
+
+    - ممكن توضح متى يبدأ التخصص؟
+
+    - عايز أعرف متى يبدأ التخصص؟
+
+    - اشرح متى يبدأ التخصص؟
+
+    - اديني تفاصيل عن متى يبدأ التخصص؟
+
+    '
+- intent: fci_qa_attendance_cd9a2926_ar_cd4e27
+  examples: '- ما نسبة الغياب المسموح بها
+
+    - ممكن توضح ما نسبة الغياب المسموح بها
+
+    - عايز أعرف ما نسبة الغياب المسموح بها
+
+    - اشرح ما نسبة الغياب المسموح بها
+
+    - اديني تفاصيل عن ما نسبة الغياب المسموح بها
+
+    - ما نسبة الغياب المسموح بها؟ في FCI
+
+    - ممكن توضح ما نسبة الغياب المسموح بها؟
+
+    - عايز أعرف ما نسبة الغياب المسموح بها؟
+
+    - اشرح ما نسبة الغياب المسموح بها؟
+
+    - اديني تفاصيل عن ما نسبة الغياب المسموح بها؟
+
+    '
+- intent: fci_qa_grading_dd0f77e9_ar_36e871
+  examples: '- كيف يتم توزيع الدرجات
+
+    - ممكن توضح كيف يتم توزيع الدرجات
+
+    - عايز أعرف كيف يتم توزيع الدرجات
+
+    - اشرح كيف يتم توزيع الدرجات
+
+    - اديني تفاصيل عن كيف يتم توزيع الدرجات
+
+    - كيف يتم توزيع الدرجات؟ في FCI
+
+    - ممكن توضح كيف يتم توزيع الدرجات؟
+
+    - عايز أعرف كيف يتم توزيع الدرجات؟
+
+    - اشرح كيف يتم توزيع الدرجات؟
+
+    - اديني تفاصيل عن كيف يتم توزيع الدرجات؟
+
+    '
+- intent: fci_qa_vision_vision_en_c6887d
+  examples: '- What is the vision of the Faculty of Computers and Information (FCI)
+
+    - Can you explain what is the vision of the Faculty of Computers and Information (FCI)
+
+    - Tell me what is the vision of the Faculty of Computers and Information (FCI)
+
+    - I want to know what is the vision of the Faculty of Computers and Information (FCI)
+
+    - Give me details about what is the vision of the Faculty of Computers and Information (FCI)
+
+    - quick answer: what is the vision of the Faculty of Computers and Information (FCI)
+
+    '
+- intent: fci_qa_mission_mission_en_0d17d2
+  examples: '- What is the mission of FCI
+
+    - Can you explain what is the mission of FCI
+
+    - Tell me what is the mission of FCI
+
+    - I want to know what is the mission of FCI
+
+    - Give me details about what is the mission of FCI
+
+    - quick answer: what is the mission of FCI
+
+    '
+- intent: fci_qa_goals_main_goals_list_all_en_555d93
+  examples: '- What are the main goals of FCI? (list all)
+
+    - Can you explain what are the main goals of FCI? (list all)
+
+    - Tell me what are the main goals of FCI? (list all)
+
+    - I want to know what are the main goals of FCI? (list all)
+
+    - Give me details about what are the main goals of FCI? (list all)
+
+    - quick answer: what are the main goals of FCI? (list all)
+
+    '
+- intent: fci_qa_guide_under_ministry_legal_framework_sadat_en_0ce8df
+  examples: '- Under which ministry and legal framework does Sadat Academy operate
+
+    - Can you explain under which ministry and legal framework does Sadat Academy operate
+
+    - Tell me under which ministry and legal framework does Sadat Academy operate
+
+    - I want to know under which ministry and legal framework does Sadat Academy operate
+
+    - Give me details about under which ministry and legal framework does Sadat Academy operate
+
+    - quick answer: under which ministry and legal framework does Sadat Academy operate
+
+    '
+- intent: fci_qa_departments_many_departments_have_they_en_e119a9
+  examples: '- How many departments does FCI have and what are they
+
+    - Can you explain how many departments does FCI have and what are they
+
+    - Tell me how many departments does FCI have and what are they
+
+    - I want to know how many departments does FCI have and what are they
+
+    - Give me details about how many departments does FCI have and what are they
+
+    - quick answer: how many departments does FCI have and what are they
+
+    '
+- intent: fci_qa_guide_degree_grant_en_aa8e18
+  examples: '- What degree does FCI grant
+
+    - Can you explain what degree does FCI grant
+
+    - Tell me what degree does FCI grant
+
+    - I want to know what degree does FCI grant
+
+    - Give me details about what degree does FCI grant
+
+    - quick answer: what degree does FCI grant
+
+    '
+- intent: fci_qa_guide_language_all_instruction_conducted_en_dee583
+  examples: '- In which language is all instruction conducted at FCI
+
+    - Can you explain in which language is all instruction conducted at FCI
+
+    - Tell me in which language is all instruction conducted at FCI
+
+    - I want to know in which language is all instruction conducted at FCI
+
+    - Give me details about in which language is all instruction conducted at FCI
+
+    - quick answer: in which language is all instruction conducted at FCI
+
+    '
+- intent: fci_qa_specialization_must_student_choose_their_major_en_cdf978
+  examples: '- When must a student choose their major and minor specialization
+
+    - Can you explain when must a student choose their major and minor specialization
+
+    - Tell me when must a student choose their major and minor specialization
+
+    - I want to know when must a student choose their major and minor specialization
+
+    - Give me details about when must a student choose their major and minor specialization
+
+    - quick answer: when must a student choose their major and minor specialization
+
+    '
+- intent: fci_qa_departments_can_major_minor_specializations_same_en_875f93
+  examples: '- Can the major and minor specializations be in the same field
+
+    - Can you explain can the major and minor specializations be in the same field
+
+    - Tell me can the major and minor specializations be in the same field
+
+    - I want to know can the major and minor specializations be in the same field
+
+    - Give me details about can the major and minor specializations be in the same field
+
+    - quick answer: can the major and minor specializations be in the same field
+
+    '
+- intent: fci_qa_specialization_dual_specialization_bachelor_degree_can_en_a4db69
+  examples: '- What is a dual specialization bachelor''s degree and how can a student earn it
+
+    - Can you explain what is a dual specialization bachelor''s degree and how can a student earn it
+
+    - Tell me what is a dual specialization bachelor''s degree and how can a student earn it
+
+    - I want to know what is a dual specialization bachelor''s degree and how can a student earn it
+
+    - Give me details about what is a dual specialization bachelor''s degree and how can a student earn it
+
+    - quick answer: what is a dual specialization bachelor''s degree and how can a student earn it
+
+    '
+- intent: fci_qa_specialization_many_times_can_student_change_en_38a3d3
+  examples: '- How many times can a student change their specialization
+
+    - Can you explain how many times can a student change their specialization
+
+    - Tell me how many times can a student change their specialization
+
+    - I want to know how many times can a student change their specialization
+
+    - Give me details about how many times can a student change their specialization
+
+    - quick answer: how many times can a student change their specialization
+
+    '
+- intent: fci_qa_guide_topics_covered_sciences_department_en_e76267
+  examples: '- What topics are covered in the Computer Sciences department
+
+    - Can you explain what topics are covered in the Computer Sciences department
+
+    - Tell me what topics are covered in the Computer Sciences department
+
+    - I want to know what topics are covered in the Computer Sciences department
+
+    - Give me details about what topics are covered in the Computer Sciences department
+
+    - quick answer: what topics are covered in the Computer Sciences department
+
+    '
+- intent: fci_qa_guide_focus_systems_department_en_a3998e
+  examples: '- What is the focus of the Information Systems department
+
+    - Can you explain what is the focus of the Information Systems department
+
+    - Tell me what is the focus of the Information Systems department
+
+    - I want to know what is the focus of the Information Systems department
+
+    - Give me details about what is the focus of the Information Systems department
+
+    - quick answer: what is the focus of the Information Systems department
+
+    '
+- intent: fci_qa_guide_software_engineering_department_cover_en_337572
+  examples: '- What does the Software Engineering department cover
+
+    - Can you explain what does the Software Engineering department cover
+
+    - Tell me what does the Software Engineering department cover
+
+    - I want to know what does the Software Engineering department cover
+
+    - Give me details about what does the Software Engineering department cover
+
+    - quick answer: what does the Software Engineering department cover
+
+    '
+- intent: fci_qa_specialization_request_must_made_change_specialization_en_1b5b85
+  examples: '- What request must be made to change specialization and when is the deadline
+
+    - Can you explain what request must be made to change specialization and when is the deadline
+
+    - Tell me what request must be made to change specialization and when is the deadline
+
+    - I want to know what request must be made to change specialization and when is the deadline
+
+    - Give me details about what request must be made to change specialization and when is the deadline
+
+    - quick answer: what request must be made to change specialization and when is the deadline
+
+    '
+- intent: fci_qa_guide_secondary_school_streams_eligible_admission_en_438237
+  examples: '- What secondary school streams are eligible for admission to FCI
+
+    - Can you explain what secondary school streams are eligible for admission to FCI
+
+    - Tell me what secondary school streams are eligible for admission to FCI
+
+    - I want to know what secondary school streams are eligible for admission to FCI
+
+    - Give me details about what secondary school streams are eligible for admission to FCI
+
+    - quick answer: what secondary school streams are eligible for admission to FCI
+
+    '
+- intent: fci_qa_guide_minimum_english_language_percentage_required_en_689175
+  examples: '- What is the minimum English language percentage required for admission
+
+    - Can you explain what is the minimum English language percentage required for admission
+
+    - Tell me what is the minimum English language percentage required for admission
+
+    - I want to know what is the minimum English language percentage required for admission
+
+    - Give me details about what is the minimum English language percentage required for admission
+
+    - quick answer: what is the minimum English language percentage required for admission
+
+    '
+- intent: fci_qa_guide_tests_must_student_pass_admitted_en_a76e82
+  examples: '- What tests must a student pass to be admitted to FCI
+
+    - Can you explain what tests must a student pass to be admitted to FCI
+
+    - Tell me what tests must a student pass to be admitted to FCI
+
+    - I want to know what tests must a student pass to be admitted to FCI
+
+    - Give me details about what tests must a student pass to be admitted to FCI
+
+    - quick answer: what tests must a student pass to be admitted to FCI
+
+    '
+- intent: fci_qa_admission_documents_list_all_required_documents_application_en_73addf
+  examples: '- List all required documents for an FCI application.
+
+    - Can you explain list all required documents for an FCI application.
+
+    - Tell me list all required documents for an FCI application.
+
+    - I want to know list all required documents for an FCI application.
+
+    - Give me details about list all required documents for an FCI application.
+
+    - quick answer: list all required documents for an FCI application.
+
+    '
+- intent: fci_qa_admission_documents_within_long_must_original_documents_en_835915
+  examples: '- Within how long must original documents be submitted after acceptance
+
+    - Can you explain within how long must original documents be submitted after acceptance
+
+    - Tell me within how long must original documents be submitted after acceptance
+
+    - I want to know within how long must original documents be submitted after acceptance
+
+    - Give me details about within how long must original documents be submitted after acceptance
+
+    - quick answer: within how long must original documents be submitted after acceptance
+
+    '
+- intent: fci_qa_guide_steps_admission_process_en_a5004c
+  examples: '- What are the steps of the FCI admission process
+
+    - Can you explain what are the steps of the FCI admission process
+
+    - Tell me what are the steps of the FCI admission process
+
+    - I want to know what are the steps of the FCI admission process
+
+    - Give me details about what are the steps of the FCI admission process
+
+    - quick answer: what are the steps of the FCI admission process
+
+    '
+- intent: fci_qa_transfer_transfer_conditions_from_equivalent_en_992d9a
+  examples: '- What are the transfer conditions from an equivalent faculty
+
+    - Can you explain what are the transfer conditions from an equivalent faculty
+
+    - Tell me what are the transfer conditions from an equivalent faculty
+
+    - I want to know what are the transfer conditions from an equivalent faculty
+
+    - Give me details about what are the transfer conditions from an equivalent faculty
+
+    - quick answer: what are the transfer conditions from an equivalent faculty
+
+    '
+- intent: fci_qa_transfer_transfer_conditions_from_non_equivalent_en_294276
+  examples: '- What are the transfer conditions from a non-equivalent faculty
+
+    - Can you explain what are the transfer conditions from a non-equivalent faculty
+
+    - Tell me what are the transfer conditions from a non-equivalent faculty
+
+    - I want to know what are the transfer conditions from a non-equivalent faculty
+
+    - Give me details about what are the transfer conditions from a non-equivalent faculty
+
+    - quick answer: what are the transfer conditions from a non-equivalent faculty
+
+    '
+- intent: fci_qa_guide_can_student_was_permanently_expelled_en_56daa6
+  examples: '- Can a student who was permanently expelled for disciplinary reasons be transferred to FCI
+
+    - Can you explain can a student who was permanently expelled for disciplinary reasons be transferred to FCI
+
+    - Tell me can a student who was permanently expelled for disciplinary reasons be transferred to FCI
+
+    - I want to know can a student who was permanently expelled for disciplinary reasons be transferred to FCI
+
+    - Give me details about can a student who was permanently expelled for disciplinary reasons be transferred to FCI
+
+    - quick answer: can a student who was permanently expelled for disciplinary reasons be transferred to FCI
+
+    '
+- intent: fci_qa_transfer_must_transfer_student_have_had_en_5b6fd7
+  examples: '- Must a transfer student have had uninterrupted study before transferring
+
+    - Can you explain must a transfer student have had uninterrupted study before transferring
+
+    - Tell me must a transfer student have had uninterrupted study before transferring
+
+    - I want to know must a transfer student have had uninterrupted study before transferring
+
+    - Give me details about must a transfer student have had uninterrupted study before transferring
+
+    - quick answer: must a transfer student have had uninterrupted study before transferring
+
+    '
+- intent: fci_qa_graduation_many_total_credit_hours_required_en_8fec8b
+  examples: '- How many total credit hours are required to graduate from FCI
+
+    - Can you explain how many total credit hours are required to graduate from FCI
+
+    - Tell me how many total credit hours are required to graduate from FCI
+
+    - I want to know how many total credit hours are required to graduate from FCI
+
+    - Give me details about how many total credit hours are required to graduate from FCI
+
+    - quick answer: how many total credit hours are required to graduate from FCI
+
+    '
+- intent: fci_qa_guide_144_credit_hours_distributed_across_en_9d85fd
+  examples: '- How are the 144 credit hours distributed across requirements
+
+    - Can you explain how are the 144 credit hours distributed across requirements
+
+    - Tell me how are the 144 credit hours distributed across requirements
+
+    - I want to know how are the 144 credit hours distributed across requirements
+
+    - Give me details about how are the 144 credit hours distributed across requirements
+
+    - quick answer: how are the 144 credit hours distributed across requirements
+
+    '
+- intent: fci_qa_graduation_many_years_semesters_bachelor_program_en_31cd45
+  examples: '- How many years and semesters does the bachelor''s program take
+
+    - Can you explain how many years and semesters does the bachelor''s program take
+
+    - Tell me how many years and semesters does the bachelor''s program take
+
+    - I want to know how many years and semesters does the bachelor''s program take
+
+    - Give me details about how many years and semesters does the bachelor''s program take
+
+    - quick answer: how many years and semesters does the bachelor''s program take
+
+    '
+- intent: fci_qa_guide_long_each_academic_semester_en_88e911
+  examples: '- How long is each academic semester
+
+    - Can you explain how long is each academic semester
+
+    - Tell me how long is each academic semester
+
+    - I want to know how long is each academic semester
+
+    - Give me details about how long is each academic semester
+
+    - quick answer: how long is each academic semester
+
+    '
+- intent: fci_qa_specialization_specialization_start_years_shared_all_en_e424a0
+  examples: '- When does specialization start and which years are shared by all students
+
+    - Can you explain when does specialization start and which years are shared by all students
+
+    - Tell me when does specialization start and which years are shared by all students
+
+    - I want to know when does specialization start and which years are shared by all students
+
+    - Give me details about when does specialization start and which years are shared by all students
+
+    - quick answer: when does specialization start and which years are shared by all students
+
+    '
+- intent: fci_qa_study_system_credit_hour_ranges_define_each_en_b517af
+  examples: '- What credit hour ranges define each academic level
+
+    - Can you explain what credit hour ranges define each academic level
+
+    - Tell me what credit hour ranges define each academic level
+
+    - I want to know what credit hour ranges define each academic level
+
+    - Give me details about what credit hour ranges define each academic level
+
+    - quick answer: what credit hour ranges define each academic level
+
+    '
+- intent: fci_qa_graduation_can_student_take_extra_courses_en_a9a828
+  examples: '- Can a student take extra courses after completing all graduation requirements
+
+    - Can you explain can a student take extra courses after completing all graduation requirements
+
+    - Tell me can a student take extra courses after completing all graduation requirements
+
+    - I want to know can a student take extra courses after completing all graduation requirements
+
+    - Give me details about can a student take extra courses after completing all graduation requirements
+
+    - quick answer: can a student take extra courses after completing all graduation requirements
+
+    '
+- intent: fci_qa_graduation_graduation_project_requirement_year_students_en_993a73
+  examples: '- What is the graduation project requirement for Year 4 students
+
+    - Can you explain what is the graduation project requirement for Year 4 students
+
+    - Tell me what is the graduation project requirement for Year 4 students
+
+    - I want to know what is the graduation project requirement for Year 4 students
+
+    - Give me details about what is the graduation project requirement for Year 4 students
+
+    - quick answer: what is the graduation project requirement for Year 4 students
+
+    '
+- intent: fci_qa_graduation_practical_training_required_graduation_en_187817
+  examples: '- What practical training is required for graduation
+
+    - Can you explain what practical training is required for graduation
+
+    - Tell me what practical training is required for graduation
+
+    - I want to know what practical training is required for graduation
+
+    - Give me details about what practical training is required for graduation
+
+    - quick answer: what practical training is required for graduation
+
+    '
+- intent: fci_qa_guide_hybrid_education_system_applied_en_f1694a
+  examples: '- What is the hybrid education system applied at FCI
+
+    - Can you explain what is the hybrid education system applied at FCI
+
+    - Tell me what is the hybrid education system applied at FCI
+
+    - I want to know what is the hybrid education system applied at FCI
+
+    - Give me details about what is the hybrid education system applied at FCI
+
+    - quick answer: what is the hybrid education system applied at FCI
+
+    '
+- intent: fci_qa_graduation_graduation_ceremonies_held_each_academic_en_06c58f
+  examples: '- When are graduation ceremonies held each academic year
+
+    - Can you explain when are graduation ceremonies held each academic year
+
+    - Tell me when are graduation ceremonies held each academic year
+
+    - I want to know when are graduation ceremonies held each academic year
+
+    - Give me details about when are graduation ceremonies held each academic year
+
+    - quick answer: when are graduation ceremonies held each academic year
+
+    '
+- intent: fci_qa_guide_academic_advisors_their_role_en_234ee4
+  examples: '- Who are academic advisors and what is their role
+
+    - Can you explain who are academic advisors and what is their role
+
+    - Tell me who are academic advisors and what is their role
+
+    - I want to know who are academic advisors and what is their role
+
+    - Give me details about who are academic advisors and what is their role
+
+    - quick answer: who are academic advisors and what is their role
+
+    '
+- intent: fci_qa_registration_course_registration_begin_each_semester_en_7a9c4b
+  examples: '- When does course registration begin each semester
+
+    - Can you explain when does course registration begin each semester
+
+    - Tell me when does course registration begin each semester
+
+    - I want to know when does course registration begin each semester
+
+    - Give me details about when does course registration begin each semester
+
+    - quick answer: when does course registration begin each semester
+
+    '
+- intent: fci_qa_study_system_minimum_credit_hour_load_per_en_01ee12
+  examples: '- What is the minimum credit hour load per regular semester
+
+    - Can you explain what is the minimum credit hour load per regular semester
+
+    - Tell me what is the minimum credit hour load per regular semester
+
+    - I want to know what is the minimum credit hour load per regular semester
+
+    - Give me details about what is the minimum credit hour load per regular semester
+
+    - quick answer: what is the minimum credit hour load per regular semester
+
+    '
+- intent: fci_qa_study_system_maximum_credit_hour_load_per_en_8ba205
+  examples: '- What is the maximum credit hour load per regular semester
+
+    - Can you explain what is the maximum credit hour load per regular semester
+
+    - Tell me what is the maximum credit hour load per regular semester
+
+    - I want to know what is the maximum credit hour load per regular semester
+
+    - Give me details about what is the maximum credit hour load per regular semester
+
+    - quick answer: what is the maximum credit hour load per regular semester
+
+    '
+- intent: fci_qa_registration_many_courses_can_student_register_en_85d8c0
+  examples: '- How many courses can a student register in the summer semester
+
+    - Can you explain how many courses can a student register in the summer semester
+
+    - Tell me how many courses can a student register in the summer semester
+
+    - I want to know how many courses can a student register in the summer semester
+
+    - Give me details about how many courses can a student register in the summer semester
+
+    - quick answer: how many courses can a student register in the summer semester
+
+    '
+- intent: fci_qa_add_drop_many_courses_can_student_add_en_94829e
+  examples: '- How many courses can a student add or drop without a transcript record
+
+    - Can you explain how many courses can a student add or drop without a transcript record
+
+    - Tell me how many courses can a student add or drop without a transcript record
+
+    - I want to know how many courses can a student add or drop without a transcript record
+
+    - Give me details about how many courses can a student add or drop without a transcript record
+
+    - quick answer: how many courses can a student add or drop without a transcript record
+
+    '
+- intent: fci_qa_guide_notation_recorded_student_withdraws_after_en_e9ede9
+  examples: '- What notation is recorded if a student withdraws after the advising period but before midterms
+
+    - Can you explain what notation is recorded if a student withdraws after the advising period but before midterms
+
+    - Tell me what notation is recorded if a student withdraws after the advising period but before midterms
+
+    - I want to know what notation is recorded if a student withdraws after the advising period but before midterms
+
+    - Give me details about what notation is recorded if a student withdraws after the advising period but before midterms
+
+    - quick answer: what notation is recorded if a student withdraws after the advising period but before midterms
+
+    '
+- intent: fci_qa_registration_sets_registration_plan_procedures_before_en_b05dcc
+  examples: '- Who sets the registration plan and procedures before each semester
+
+    - Can you explain who sets the registration plan and procedures before each semester
+
+    - Tell me who sets the registration plan and procedures before each semester
+
+    - I want to know who sets the registration plan and procedures before each semester
+
+    - Give me details about who sets the registration plan and procedures before each semester
+
+    - quick answer: who sets the registration plan and procedures before each semester
+
+    '
+- intent: fci_qa_attendance_maximum_allowed_absence_rate_per_en_30c8ab
+  examples: '- What is the maximum allowed absence rate per course
+
+    - Can you explain what is the maximum allowed absence rate per course
+
+    - Tell me what is the maximum allowed absence rate per course
+
+    - I want to know what is the maximum allowed absence rate per course
+
+    - Give me details about what is the maximum allowed absence rate per course
+
+    - quick answer: what is the maximum allowed absence rate per course
+
+    '
+- intent: fci_qa_attendance_consequences_exceeding_absence_rate_en_ce38b7
+  examples: '- What are the consequences of exceeding the 25% absence rate
+
+    - Can you explain what are the consequences of exceeding the 25% absence rate
+
+    - Tell me what are the consequences of exceeding the 25% absence rate
+
+    - I want to know what are the consequences of exceeding the 25% absence rate
+
+    - Give me details about what are the consequences of exceeding the 25% absence rate
+
+    - quick answer: what are the consequences of exceeding the 25% absence rate
+
+    '
+- intent: fci_qa_attendance_grade_student_receive_their_excess_en_f12716
+  examples: '- What grade does a student receive if their excess absence is excused
+
+    - Can you explain what grade does a student receive if their excess absence is excused
+
+    - Tell me what grade does a student receive if their excess absence is excused
+
+    - I want to know what grade does a student receive if their excess absence is excused
+
+    - Give me details about what grade does a student receive if their excess absence is excused
+
+    - quick answer: what grade does a student receive if their excess absence is excused
+
+    '
+- intent: fci_qa_attendance_must_students_they_absent_from_en_fc18e5
+  examples: '- What must students do when they are absent from any class
+
+    - Can you explain what must students do when they are absent from any class
+
+    - Tell me what must students do when they are absent from any class
+
+    - I want to know what must students do when they are absent from any class
+
+    - Give me details about what must students do when they are absent from any class
+
+    - quick answer: what must students do when they are absent from any class
+
+    '
+- intent: fci_qa_attendance_students_national_patriotic_duties_exempt_en_2b7a8d
+  examples: '- Are students with national/patriotic duties exempt from the 25% absence rule
+
+    - Can you explain are students with national/patriotic duties exempt from the 25% absence rule
+
+    - Tell me are students with national/patriotic duties exempt from the 25% absence rule
+
+    - I want to know are students with national/patriotic duties exempt from the 25% absence rule
+
+    - Give me details about are students with national/patriotic duties exempt from the 25% absence rule
+
+    - quick answer: are students with national/patriotic duties exempt from the 25% absence rule
+
+    '
+- intent: fci_qa_exams_exam_arrangement_made_students_national_en_484caa
+  examples: '- What exam arrangement is made for students with national duties who miss the midterm
+
+    - Can you explain what exam arrangement is made for students with national duties who miss the midterm
+
+    - Tell me what exam arrangement is made for students with national duties who miss the midterm
+
+    - I want to know what exam arrangement is made for students with national duties who miss the midterm
+
+    - Give me details about what exam arrangement is made for students with national duties who miss the midterm
+
+    - quick answer: what exam arrangement is made for students with national duties who miss the midterm
+
+    '
+- intent: fci_qa_exams_midterm_exam_held_each_semester_en_f35e57
+  examples: '- When is the midterm exam held in each semester
+
+    - Can you explain when is the midterm exam held in each semester
+
+    - Tell me when is the midterm exam held in each semester
+
+    - I want to know when is the midterm exam held in each semester
+
+    - Give me details about when is the midterm exam held in each semester
+
+    - quick answer: when is the midterm exam held in each semester
+
+    '
+- intent: fci_qa_exams_final_exam_held_en_e4ac70
+  examples: '- When is the final exam held
+
+    - Can you explain when is the final exam held
+
+    - Tell me when is the final exam held
+
+    - I want to know when is the final exam held
+
+    - Give me details about when is the final exam held
+
+    - quick answer: when is the final exam held
+
+    '
+- intent: fci_qa_exams_long_each_midterm_final_exam_en_cb4080
+  examples: '- How long is each midterm and final exam
+
+    - Can you explain how long is each midterm and final exam
+
+    - Tell me how long is each midterm and final exam
+
+    - I want to know how long is each midterm and final exam
+
+    - Give me details about how long is each midterm and final exam
+
+    - quick answer: how long is each midterm and final exam
+
+    '
+- intent: fci_qa_grading_total_grade_100_distributed_per_en_418384
+  examples: '- How is the total grade (100%) distributed per course
+
+    - Can you explain how is the total grade (100%) distributed per course
+
+    - Tell me how is the total grade (100%) distributed per course
+
+    - I want to know how is the total grade (100%) distributed per course
+
+    - Give me details about how is the total grade (100%) distributed per course
+
+    - quick answer: how is the total grade (100%) distributed per course
+
+    '
+- intent: fci_qa_grading_complete_course_level_grading_scale_en_1f7f09
+  examples: '- What is the complete course-level grading scale
+
+    - Can you explain what is the complete course-level grading scale
+
+    - Tell me what is the complete course-level grading scale
+
+    - I want to know what is the complete course-level grading scale
+
+    - Give me details about what is the complete course-level grading scale
+
+    - quick answer: what is the complete course-level grading scale
+
+    '
+- intent: fci_qa_grading_cumulative_annual_gpa_grading_scale_en_487916
+  examples: '- What is the cumulative/annual GPA grading scale
+
+    - Can you explain what is the cumulative/annual GPA grading scale
+
+    - Tell me what is the cumulative/annual GPA grading scale
+
+    - I want to know what is the cumulative/annual GPA grading scale
+
+    - Give me details about what is the cumulative/annual GPA grading scale
+
+    - quick answer: what is the cumulative/annual GPA grading scale
+
+    '
+- intent: fci_qa_grading_formula_annual_gpa_en_c84d62
+  examples: '- What is the formula for the annual GPA
+
+    - Can you explain what is the formula for the annual GPA
+
+    - Tell me what is the formula for the annual GPA
+
+    - I want to know what is the formula for the annual GPA
+
+    - Give me details about what is the formula for the annual GPA
+
+    - quick answer: what is the formula for the annual GPA
+
+    '
+- intent: fci_qa_guide_happens_student_fails_mandatory_course_en_f5ebf9
+  examples: '- What happens if a student fails a mandatory course
+
+    - Can you explain what happens if a student fails a mandatory course
+
+    - Tell me what happens if a student fails a mandatory course
+
+    - I want to know what happens if a student fails a mandatory course
+
+    - Give me details about what happens if a student fails a mandatory course
+
+    - quick answer: what happens if a student fails a mandatory course
+
+    '
+- intent: fci_qa_graduation_honors_distinction_requirement_graduation_en_f79579
+  examples: '- What is the Honors Distinction (مرتبة الشرف) requirement at graduation
+
+    - Can you explain what is the Honors Distinction (مرتبة الشرف) requirement at graduation
+
+    - Tell me what is the Honors Distinction (مرتبة الشرف) requirement at graduation
+
+    - I want to know what is the Honors Distinction (مرتبة الشرف) requirement at graduation
+
+    - Give me details about what is the Honors Distinction (مرتبة الشرف) requirement at graduation
+
+    - quick answer: what is the Honors Distinction (مرتبة الشرف) requirement at graduation
+
+    '
+- intent: fci_qa_grading_incomplete_grade_mean_must_resolved_en_2c73df
+  examples: '- What does the Incomplete (I) grade mean and how must it be resolved
+
+    - Can you explain what does the Incomplete (I) grade mean and how must it be resolved
+
+    - Tell me what does the Incomplete (I) grade mean and how must it be resolved
+
+    - I want to know what does the Incomplete (I) grade mean and how must it be resolved
+
+    - Give me details about what does the Incomplete (I) grade mean and how must it be resolved
+
+    - quick answer: what does the Incomplete (I) grade mean and how must it be resolved
+
+    '
+- intent: fci_qa_attendance_happens_student_absent_from_final_en_e2138a
+  examples: '- What happens if a student is absent from final exams with no excuse
+
+    - Can you explain what happens if a student is absent from final exams with no excuse
+
+    - Tell me what happens if a student is absent from final exams with no excuse
+
+    - I want to know what happens if a student is absent from final exams with no excuse
+
+    - Give me details about what happens if a student is absent from final exams with no excuse
+
+    - quick answer: what happens if a student is absent from final exams with no excuse
+
+    '
+- intent: fci_qa_exams_exam_results_officially_approved_announced_en_265466
+  examples: '- When are exam results officially approved and announced
+
+    - Can you explain when are exam results officially approved and announced
+
+    - Tell me when are exam results officially approved and announced
+
+    - I want to know when are exam results officially approved and announced
+
+    - Give me details about when are exam results officially approved and announced
+
+    - quick answer: when are exam results officially approved and announced
+
+    '
+- intent: fci_qa_guide_electronic_online_examination_allowed_en_31eeaf
+  examples: '- Is electronic (online) examination allowed at FCI
+
+    - Can you explain is electronic (online) examination allowed at FCI
+
+    - Tell me is electronic (online) examination allowed at FCI
+
+    - I want to know is electronic (online) examination allowed at FCI
+
+    - Give me details about is electronic (online) examination allowed at FCI
+
+    - quick answer: is electronic (online) examination allowed at FCI
+
+    '
+- intent: fci_qa_attendance_grade_student_receive_absent_from_en_2ab96d
+  examples: '- What grade does a student receive if absent from an exam (ABS)
+
+    - Can you explain what grade does a student receive if absent from an exam (ABS)
+
+    - Tell me what grade does a student receive if absent from an exam (ABS)
+
+    - I want to know what grade does a student receive if absent from an exam (ABS)
+
+    - Give me details about what grade does a student receive if absent from an exam (ABS)
+
+    - quick answer: what grade does a student receive if absent from an exam (ABS)
+
+    '
+- intent: fci_qa_academic_warning_student_receive_academic_warning_en_0c0a99
+  examples: '- When does a student receive an Academic Warning
+
+    - Can you explain when does a student receive an Academic Warning
+
+    - Tell me when does a student receive an Academic Warning
+
+    - I want to know when does a student receive an Academic Warning
+
+    - Give me details about when does a student receive an Academic Warning
+
+    - quick answer: when does a student receive an Academic Warning
+
+    '
+- intent: fci_qa_academic_warning_long_student_have_clear_academic_en_7ef134
+  examples: '- How long does a student have to clear an Academic Warning
+
+    - Can you explain how long does a student have to clear an Academic Warning
+
+    - Tell me how long does a student have to clear an Academic Warning
+
+    - I want to know how long does a student have to clear an Academic Warning
+
+    - Give me details about how long does a student have to clear an Academic Warning
+
+    - quick answer: how long does a student have to clear an Academic Warning
+
+    '
+- intent: fci_qa_academic_warning_happens_student_cannot_clear_academic_en_bbfe07
+  examples: '- What happens if a student cannot clear the Academic Warning within 2 semesters
+
+    - Can you explain what happens if a student cannot clear the Academic Warning within 2 semesters
+
+    - Tell me what happens if a student cannot clear the Academic Warning within 2 semesters
+
+    - I want to know what happens if a student cannot clear the Academic Warning within 2 semesters
+
+    - Give me details about what happens if a student cannot clear the Academic Warning within 2 semesters
+
+    - quick answer: what happens if a student cannot clear the Academic Warning within 2 semesters
+
+    '
+- intent: fci_qa_specialization_can_student_academic_warning_change_en_bbb10d
+  examples: '- Can a student on Academic Warning change their major specialization
+
+    - Can you explain can a student on Academic Warning change their major specialization
+
+    - Tell me can a student on Academic Warning change their major specialization
+
+    - I want to know can a student on Academic Warning change their major specialization
+
+    - Give me details about can a student on Academic Warning change their major specialization
+
+    - quick answer: can a student on Academic Warning change their major specialization
+
+    '
+- intent: fci_qa_registration_registration_suspension_enrollment_freeze_its_en_9f0e62
+  examples: '- What is registration suspension (enrollment freeze) and what are its conditions
+
+    - Can you explain what is registration suspension (enrollment freeze) and what are its conditions
+
+    - Tell me what is registration suspension (enrollment freeze) and what are its conditions
+
+    - I want to know what is registration suspension (enrollment freeze) and what are its conditions
+
+    - Give me details about what is registration suspension (enrollment freeze) and what are its conditions
+
+    - quick answer: what is registration suspension (enrollment freeze) and what are its conditions
+
+    '
+- intent: fci_qa_registration_maximum_total_registration_suspension_allowed_en_80528e
+  examples: '- What is the maximum total registration suspension allowed throughout a student''s study
+
+    - Can you explain what is the maximum total registration suspension allowed throughout a student''s study
+
+    - Tell me what is the maximum total registration suspension allowed throughout a student''s study
+
+    - I want to know what is the maximum total registration suspension allowed throughout a student''s study
+
+    - Give me details about what is the maximum total registration suspension allowed throughout a student''s study
+
+    - quick answer: what is the maximum total registration suspension allowed throughout a student''s study
+
+    '
+- intent: fci_qa_graduation_registration_suspension_count_toward_allowed_en_d71489
+  examples: '- Does registration suspension count toward the allowed time to earn the bachelor''s degree
+
+    - Can you explain does registration suspension count toward the allowed time to earn the bachelor''s degree
+
+    - Tell me does registration suspension count toward the allowed time to earn the bachelor''s degree
+
+    - I want to know does registration suspension count toward the allowed time to earn the bachelor''s degree
+
+    - Give me details about does registration suspension count toward the allowed time to earn the bachelor''s degree
+
+    - quick answer: does registration suspension count toward the allowed time to earn the bachelor''s degree
+
+    '
+- intent: fci_qa_registration_suspension_happens_student_excuse_suspension_not_en_3f915c
+  examples: '- What happens if a student''s excuse for suspension is not accepted
+
+    - Can you explain what happens if a student''s excuse for suspension is not accepted
+
+    - Tell me what happens if a student''s excuse for suspension is not accepted
+
+    - I want to know what happens if a student''s excuse for suspension is not accepted
+
+    - Give me details about what happens if a student''s excuse for suspension is not accepted
+
+    - quick answer: what happens if a student''s excuse for suspension is not accepted
+
+    '
+- intent: fci_qa_attendance_student_excused_absence_accepted_they_en_8c0ad4
+  examples: '- If a student''s excused absence is accepted and they later request suspension, what happens
+
+    - Can you explain if a student''s excused absence is accepted and they later request suspension, what happens
+
+    - Tell me if a student''s excused absence is accepted and they later request suspension, what happens
+
+    - I want to know if a student''s excused absence is accepted and they later request suspension, what happens
+
+    - Give me details about if a student''s excused absence is accepted and they later request suspension, what happens
+
+    - quick answer: if a student''s excused absence is accepted and they later request suspension, what happens
+
+    '
+- intent: fci_qa_discipline_law_governs_student_discipline_en_73fd62
+  examples: '- Which law governs student discipline at FCI
+
+    - Can you explain which law governs student discipline at FCI
+
+    - Tell me which law governs student discipline at FCI
+
+    - I want to know which law governs student discipline at FCI
+
+    - Give me details about which law governs student discipline at FCI
+
+    - quick answer: which law governs student discipline at FCI
+
+    '
+- intent: fci_qa_discipline_actions_considered_disciplinary_violations_en_7e9777
+  examples: '- What actions are considered disciplinary violations at FCI
+
+    - Can you explain what actions are considered disciplinary violations at FCI
+
+    - Tell me what actions are considered disciplinary violations at FCI
+
+    - I want to know what actions are considered disciplinary violations at FCI
+
+    - Give me details about what actions are considered disciplinary violations at FCI
+
+    - quick answer: what actions are considered disciplinary violations at FCI
+
+    '
+- intent: fci_qa_exams_happens_student_caught_cheating_during_en_edf605
+  examples: '- What happens to a student caught cheating during an exam
+
+    - Can you explain what happens to a student caught cheating during an exam
+
+    - Tell me what happens to a student caught cheating during an exam
+
+    - I want to know what happens to a student caught cheating during an exam
+
+    - Give me details about what happens to a student caught cheating during an exam
+
+    - quick answer: what happens to a student caught cheating during an exam
+
+    '
+- intent: fci_qa_discipline_list_all_disciplinary_penalties_order_en_9c6321
+  examples: '- List all disciplinary penalties in order from least to most severe.
+
+    - Can you explain list all disciplinary penalties in order from least to most severe.
+
+    - Tell me list all disciplinary penalties in order from least to most severe.
+
+    - I want to know list all disciplinary penalties in order from least to most severe.
+
+    - Give me details about list all disciplinary penalties in order from least to most severe.
+
+    - quick answer: list all disciplinary penalties in order from least to most severe.
+
+    '
+- intent: fci_qa_guide_consequences_permanent_expulsion_from_university_en_4dc824
+  examples: '- What are the consequences of permanent expulsion from the university
+
+    - Can you explain what are the consequences of permanent expulsion from the university
+
+    - Tell me what are the consequences of permanent expulsion from the university
+
+    - I want to know what are the consequences of permanent expulsion from the university
+
+    - Give me details about what are the consequences of permanent expulsion from the university
+
+    - quick answer: what are the consequences of permanent expulsion from the university
+
+    '
+- intent: fci_qa_guide_disciplinary_decisions_recorded_notified_en_294b69
+  examples: '- Where are disciplinary decisions recorded and who is notified
+
+    - Can you explain where are disciplinary decisions recorded and who is notified
+
+    - Tell me where are disciplinary decisions recorded and who is notified
+
+    - I want to know where are disciplinary decisions recorded and who is notified
+
+    - Give me details about where are disciplinary decisions recorded and who is notified
+
+    - quick answer: where are disciplinary decisions recorded and who is notified
+
+    '
+- intent: fci_qa_fees_sets_tuition_fees_en_2a4a77
+  examples: '- Who sets the tuition fees at FCI
+
+    - Can you explain who sets the tuition fees at FCI
+
+    - Tell me who sets the tuition fees at FCI
+
+    - I want to know who sets the tuition fees at FCI
+
+    - Give me details about who sets the tuition fees at FCI
+
+    - quick answer: who sets the tuition fees at FCI
+
+    '
+- intent: fci_qa_fees_within_long_must_tuition_fees_en_12cccd
+  examples: '- Within how long must tuition fees be paid each semester
+
+    - Can you explain within how long must tuition fees be paid each semester
+
+    - Tell me within how long must tuition fees be paid each semester
+
+    - I want to know within how long must tuition fees be paid each semester
+
+    - Give me details about within how long must tuition fees be paid each semester
+
+    - quick answer: within how long must tuition fees be paid each semester
+
+    '
+- intent: fci_qa_admission_documents_application_exam_fees_refundable_en_1dbb4a
+  examples: '- Are the application and exam fees refundable
+
+    - Can you explain are the application and exam fees refundable
+
+    - Tell me are the application and exam fees refundable
+
+    - I want to know are the application and exam fees refundable
+
+    - Give me details about are the application and exam fees refundable
+
+    - quick answer: are the application and exam fees refundable
+
+    '
+- intent: fci_qa_fees_percentage_tuition_refunded_within_weeks_en_e9e334
+  examples: '- What percentage of tuition is refunded within 3 weeks of semester start
+
+    - Can you explain what percentage of tuition is refunded within 3 weeks of semester start
+
+    - Tell me what percentage of tuition is refunded within 3 weeks of semester start
+
+    - I want to know what percentage of tuition is refunded within 3 weeks of semester start
+
+    - Give me details about what percentage of tuition is refunded within 3 weeks of semester start
+
+    - quick answer: what percentage of tuition is refunded within 3 weeks of semester start
+
+    '
+- intent: fci_qa_exams_percentage_tuition_refunded_after_weeks_en_672e65
+  examples: '- What percentage of tuition is refunded after 3 weeks but before midterm exams
+
+    - Can you explain what percentage of tuition is refunded after 3 weeks but before midterm exams
+
+    - Tell me what percentage of tuition is refunded after 3 weeks but before midterm exams
+
+    - I want to know what percentage of tuition is refunded after 3 weeks but before midterm exams
+
+    - Give me details about what percentage of tuition is refunded after 3 weeks but before midterm exams
+
+    - quick answer: what percentage of tuition is refunded after 3 weeks but before midterm exams
+
+    '
+- intent: fci_qa_exams_can_tuition_fees_refunded_after_en_275199
+  examples: '- Can tuition fees be refunded after midterm exams begin
+
+    - Can you explain can tuition fees be refunded after midterm exams begin
+
+    - Tell me can tuition fees be refunded after midterm exams begin
+
+    - I want to know can tuition fees be refunded after midterm exams begin
+
+    - Give me details about can tuition fees be refunded after midterm exams begin
+
+    - quick answer: can tuition fees be refunded after midterm exams begin
+
+    '
+- intent: fci_qa_fees_document_must_student_present_proof_en_b09346
+  examples: '- What document must a student present as proof of tuition payment
+
+    - Can you explain what document must a student present as proof of tuition payment
+
+    - Tell me what document must a student present as proof of tuition payment
+
+    - I want to know what document must a student present as proof of tuition payment
+
+    - Give me details about what document must a student present as proof of tuition payment
+
+    - quick answer: what document must a student present as proof of tuition payment
+
+    '
+- intent: fci_qa_medical_have_medical_unit_operate_services_en_f75a7c
+  examples: '- Does FCI have a medical unit? When does it operate and what services does it provide
+
+    - Can you explain does FCI have a medical unit? When does it operate and what services does it provide
+
+    - Tell me does FCI have a medical unit? When does it operate and what services does it provide
+
+    - I want to know does FCI have a medical unit? When does it operate and what services does it provide
+
+    - Give me details about does FCI have a medical unit? When does it operate and what services does it provide
+
+    - quick answer: does FCI have a medical unit? When does it operate and what services does it provide
+
+    '
+- intent: fci_qa_guide_academy_website_en_749c68
+  examples: '- What is the Academy''s website
+
+    - Can you explain what is the Academy''s website
+
+    - Tell me what is the Academy''s website
+
+    - I want to know what is the Academy''s website
+
+    - Give me details about what is the Academy''s website
+
+    - quick answer: what is the Academy''s website
+
+    '
+- intent: fci_qa_graduation_approves_granting_bachelor_degrees_en_2af989
+  examples: '- Who approves the granting of bachelor''s degrees at FCI
+
+    - Can you explain who approves the granting of bachelor''s degrees at FCI
+
+    - Tell me who approves the granting of bachelor''s degrees at FCI
+
+    - I want to know who approves the granting of bachelor''s degrees at FCI
+
+    - Give me details about who approves the granting of bachelor''s degrees at FCI
+
+    - quick answer: who approves the granting of bachelor''s degrees at FCI
+
+    '
+- intent: fci_qa_departments_responsible_setting_transitional_rules_new_en_aff66c
+  examples: '- Who is responsible for setting transitional rules when new study plans (specializations) are introduced
+
+    - Can you explain who is responsible for setting transitional rules when new study plans (specializations) are introduced
+
+    - Tell me who is responsible for setting transitional rules when new study plans (specializations) are introduced
+
+    - I want to know who is responsible for setting transitional rules when new study plans (specializations) are introduced
+
+    - Give me details about who is responsible for setting transitional rules when new study plans (specializations) are introduced
+
+    - quick answer: who is responsible for setting transitional rules when new study plans (specializations) are introduced
+
+    '
+- intent: fci_qa_vision_0fc2872b_ar_2078e1
+  examples: '- ما هي رؤية كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما هي رؤية كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما هي رؤية كلية الحاسبات والمعلومات
+
+    - اشرح ما هي رؤية كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما هي رؤية كلية الحاسبات والمعلومات
+
+    - ما هي رؤية كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_mission_23253a33_ar_ff7b5b
+  examples: '- ما هي رسالة كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما هي رسالة كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما هي رسالة كلية الحاسبات والمعلومات
+
+    - اشرح ما هي رسالة كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما هي رسالة كلية الحاسبات والمعلومات
+
+    - ما هي رسالة كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_goals_3c55a2e5_ar_ac894f
+  examples: '- ما هي الأهداف الرئيسية لكلية الحاسبات والمعلومات؟ (اذكرها جميعًا)
+
+    - ممكن توضح ما هي الأهداف الرئيسية لكلية الحاسبات والمعلومات؟ (اذكرها جميعًا)
+
+    - عايز أعرف ما هي الأهداف الرئيسية لكلية الحاسبات والمعلومات؟ (اذكرها جميعًا)
+
+    - اشرح ما هي الأهداف الرئيسية لكلية الحاسبات والمعلومات؟ (اذكرها جميعًا)
+
+    - اديني تفاصيل عن ما هي الأهداف الرئيسية لكلية الحاسبات والمعلومات؟ (اذكرها جميعًا)
+
+    - ما هي الأهداف الرئيسية لكلية الحاسبات والمعلومات؟ (اذكرها جميعًا) في FCI
+
+    '
+- intent: fci_qa_guide_601cbeac_ar_7c6594
+  examples: '- تحت أي وصاية قانونية تعمل أكاديمية السادات للعلوم الإدارية
+
+    - ممكن توضح تحت أي وصاية قانونية تعمل أكاديمية السادات للعلوم الإدارية
+
+    - عايز أعرف تحت أي وصاية قانونية تعمل أكاديمية السادات للعلوم الإدارية
+
+    - اشرح تحت أي وصاية قانونية تعمل أكاديمية السادات للعلوم الإدارية
+
+    - اديني تفاصيل عن تحت أي وصاية قانونية تعمل أكاديمية السادات للعلوم الإدارية
+
+    - تحت أي وصاية قانونية تعمل أكاديمية السادات للعلوم الإدارية؟ في FCI
+
+    '
+- intent: fci_qa_departments_bfbecf4f_ar_baf29a
+  examples: '- كم عدد الأقسام في كلية الحاسبات والمعلومات وما هي
+
+    - ممكن توضح كم عدد الأقسام في كلية الحاسبات والمعلومات وما هي
+
+    - عايز أعرف كم عدد الأقسام في كلية الحاسبات والمعلومات وما هي
+
+    - اشرح كم عدد الأقسام في كلية الحاسبات والمعلومات وما هي
+
+    - اديني تفاصيل عن كم عدد الأقسام في كلية الحاسبات والمعلومات وما هي
+
+    - كم عدد الأقسام في كلية الحاسبات والمعلومات وما هي؟ في FCI
+
+    '
+- intent: fci_qa_guide_ce20edf1_ar_0b0a28
+  examples: '- ما الدرجة العلمية التي تمنحها كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما الدرجة العلمية التي تمنحها كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما الدرجة العلمية التي تمنحها كلية الحاسبات والمعلومات
+
+    - اشرح ما الدرجة العلمية التي تمنحها كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما الدرجة العلمية التي تمنحها كلية الحاسبات والمعلومات
+
+    - ما الدرجة العلمية التي تمنحها كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_guide_0b520edd_ar_55e5f7
+  examples: '- بأي لغة تُدرَّس جميع المواد في كلية الحاسبات والمعلومات
+
+    - ممكن توضح بأي لغة تُدرَّس جميع المواد في كلية الحاسبات والمعلومات
+
+    - عايز أعرف بأي لغة تُدرَّس جميع المواد في كلية الحاسبات والمعلومات
+
+    - اشرح بأي لغة تُدرَّس جميع المواد في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن بأي لغة تُدرَّس جميع المواد في كلية الحاسبات والمعلومات
+
+    - بأي لغة تُدرَّس جميع المواد في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_specialization_057c18fb_ar_b17c85
+  examples: '- متى يجب على الطالب اختيار تخصصه الرئيسي والفرعي
+
+    - ممكن توضح متى يجب على الطالب اختيار تخصصه الرئيسي والفرعي
+
+    - عايز أعرف متى يجب على الطالب اختيار تخصصه الرئيسي والفرعي
+
+    - اشرح متى يجب على الطالب اختيار تخصصه الرئيسي والفرعي
+
+    - اديني تفاصيل عن متى يجب على الطالب اختيار تخصصه الرئيسي والفرعي
+
+    - متى يجب على الطالب اختيار تخصصه الرئيسي والفرعي؟ في FCI
+
+    '
+- intent: fci_qa_specialization_78fe3713_ar_243dd0
+  examples: '- هل يمكن أن يكون التخصصان الرئيسي والفرعي في نفس المجال
+
+    - ممكن توضح هل يمكن أن يكون التخصصان الرئيسي والفرعي في نفس المجال
+
+    - عايز أعرف هل يمكن أن يكون التخصصان الرئيسي والفرعي في نفس المجال
+
+    - اشرح هل يمكن أن يكون التخصصان الرئيسي والفرعي في نفس المجال
+
+    - اديني تفاصيل عن هل يمكن أن يكون التخصصان الرئيسي والفرعي في نفس المجال
+
+    - هل يمكن أن يكون التخصصان الرئيسي والفرعي في نفس المجال؟ في FCI
+
+    '
+- intent: fci_qa_specialization_5a1e7492_ar_5edacd
+  examples: '- ما هو التخصص المزدوج وكيف يحصل عليه الطالب
+
+    - ممكن توضح ما هو التخصص المزدوج وكيف يحصل عليه الطالب
+
+    - عايز أعرف ما هو التخصص المزدوج وكيف يحصل عليه الطالب
+
+    - اشرح ما هو التخصص المزدوج وكيف يحصل عليه الطالب
+
+    - اديني تفاصيل عن ما هو التخصص المزدوج وكيف يحصل عليه الطالب
+
+    - ما هو التخصص المزدوج وكيف يحصل عليه الطالب؟ في FCI
+
+    '
+- intent: fci_qa_specialization_170e426a_ar_9cde2b
+  examples: '- كم مرة يمكن للطالب تغيير تخصصه
+
+    - ممكن توضح كم مرة يمكن للطالب تغيير تخصصه
+
+    - عايز أعرف كم مرة يمكن للطالب تغيير تخصصه
+
+    - اشرح كم مرة يمكن للطالب تغيير تخصصه
+
+    - اديني تفاصيل عن كم مرة يمكن للطالب تغيير تخصصه
+
+    - كم مرة يمكن للطالب تغيير تخصصه؟ في FCI
+
+    '
+- intent: fci_qa_guide_141796f7_ar_0b4152
+  examples: '- ما المواضيع التي يشملها قسم علوم الحاسب
+
+    - ممكن توضح ما المواضيع التي يشملها قسم علوم الحاسب
+
+    - عايز أعرف ما المواضيع التي يشملها قسم علوم الحاسب
+
+    - اشرح ما المواضيع التي يشملها قسم علوم الحاسب
+
+    - اديني تفاصيل عن ما المواضيع التي يشملها قسم علوم الحاسب
+
+    - ما المواضيع التي يشملها قسم علوم الحاسب؟ في FCI
+
+    '
+- intent: fci_qa_guide_c7fe361a_ar_e55039
+  examples: '- ما هو تركيز قسم نظم المعلومات
+
+    - ممكن توضح ما هو تركيز قسم نظم المعلومات
+
+    - عايز أعرف ما هو تركيز قسم نظم المعلومات
+
+    - اشرح ما هو تركيز قسم نظم المعلومات
+
+    - اديني تفاصيل عن ما هو تركيز قسم نظم المعلومات
+
+    - ما هو تركيز قسم نظم المعلومات؟ في FCI
+
+    '
+- intent: fci_qa_guide_458f38d8_ar_85477c
+  examples: '- ماذا يتضمن قسم هندسة البرمجيات
+
+    - ممكن توضح ماذا يتضمن قسم هندسة البرمجيات
+
+    - عايز أعرف ماذا يتضمن قسم هندسة البرمجيات
+
+    - اشرح ماذا يتضمن قسم هندسة البرمجيات
+
+    - اديني تفاصيل عن ماذا يتضمن قسم هندسة البرمجيات
+
+    - ماذا يتضمن قسم هندسة البرمجيات؟ في FCI
+
+    '
+- intent: fci_qa_specialization_81f9f633_ar_f73c4c
+  examples: '- ما إجراءات طلب تغيير التخصص وما الموعد النهائي لتقديمه
+
+    - ممكن توضح ما إجراءات طلب تغيير التخصص وما الموعد النهائي لتقديمه
+
+    - عايز أعرف ما إجراءات طلب تغيير التخصص وما الموعد النهائي لتقديمه
+
+    - اشرح ما إجراءات طلب تغيير التخصص وما الموعد النهائي لتقديمه
+
+    - اديني تفاصيل عن ما إجراءات طلب تغيير التخصص وما الموعد النهائي لتقديمه
+
+    - ما إجراءات طلب تغيير التخصص وما الموعد النهائي لتقديمه؟ في FCI
+
+    '
+- intent: fci_qa_guide_bd25dd05_ar_f85bda
+  examples: '- ما الشعب الثانوية المؤهلة للقبول في كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما الشعب الثانوية المؤهلة للقبول في كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما الشعب الثانوية المؤهلة للقبول في كلية الحاسبات والمعلومات
+
+    - اشرح ما الشعب الثانوية المؤهلة للقبول في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما الشعب الثانوية المؤهلة للقبول في كلية الحاسبات والمعلومات
+
+    - ما الشعب الثانوية المؤهلة للقبول في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_guide_c65a6bc1_ar_c88f11
+  examples: '- ما الحد الأدنى لنسبة اللغة الإنجليزية المطلوبة للقبول
+
+    - ممكن توضح ما الحد الأدنى لنسبة اللغة الإنجليزية المطلوبة للقبول
+
+    - عايز أعرف ما الحد الأدنى لنسبة اللغة الإنجليزية المطلوبة للقبول
+
+    - اشرح ما الحد الأدنى لنسبة اللغة الإنجليزية المطلوبة للقبول
+
+    - اديني تفاصيل عن ما الحد الأدنى لنسبة اللغة الإنجليزية المطلوبة للقبول
+
+    - ما الحد الأدنى لنسبة اللغة الإنجليزية المطلوبة للقبول؟ في FCI
+
+    '
+- intent: fci_qa_guide_7b053824_ar_1bc538
+  examples: '- ما الاختبارات التي يجب على الطالب اجتيازها للقبول في الكلية
+
+    - ممكن توضح ما الاختبارات التي يجب على الطالب اجتيازها للقبول في الكلية
+
+    - عايز أعرف ما الاختبارات التي يجب على الطالب اجتيازها للقبول في الكلية
+
+    - اشرح ما الاختبارات التي يجب على الطالب اجتيازها للقبول في الكلية
+
+    - اديني تفاصيل عن ما الاختبارات التي يجب على الطالب اجتيازها للقبول في الكلية
+
+    - ما الاختبارات التي يجب على الطالب اجتيازها للقبول في الكلية؟ في FCI
+
+    '
+- intent: fci_qa_admission_documents_fe41609f_ar_08cd1c
+  examples: '- اذكر جميع الوثائق المطلوبة للتقدم إلى كلية الحاسبات والمعلومات.
+
+    - ممكن توضح اذكر جميع الوثائق المطلوبة للتقدم إلى كلية الحاسبات والمعلومات.
+
+    - عايز أعرف اذكر جميع الوثائق المطلوبة للتقدم إلى كلية الحاسبات والمعلومات.
+
+    - اشرح اذكر جميع الوثائق المطلوبة للتقدم إلى كلية الحاسبات والمعلومات.
+
+    - اديني تفاصيل عن اذكر جميع الوثائق المطلوبة للتقدم إلى كلية الحاسبات والمعلومات.
+
+    - اذكر جميع الوثائق المطلوبة للتقدم إلى كلية الحاسبات والمعلومات. في FCI
+
+    '
+- intent: fci_qa_admission_documents_53d26911_ar_d19497
+  examples: '- خلال كم أسبوع يجب تقديم المستندات الأصلية بعد قبول الطالب
+
+    - ممكن توضح خلال كم أسبوع يجب تقديم المستندات الأصلية بعد قبول الطالب
+
+    - عايز أعرف خلال كم أسبوع يجب تقديم المستندات الأصلية بعد قبول الطالب
+
+    - اشرح خلال كم أسبوع يجب تقديم المستندات الأصلية بعد قبول الطالب
+
+    - اديني تفاصيل عن خلال كم أسبوع يجب تقديم المستندات الأصلية بعد قبول الطالب
+
+    - خلال كم أسبوع يجب تقديم المستندات الأصلية بعد قبول الطالب؟ في FCI
+
+    '
+- intent: fci_qa_guide_a62f00f3_ar_861c2e
+  examples: '- ما هي خطوات عملية القبول في كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما هي خطوات عملية القبول في كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما هي خطوات عملية القبول في كلية الحاسبات والمعلومات
+
+    - اشرح ما هي خطوات عملية القبول في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما هي خطوات عملية القبول في كلية الحاسبات والمعلومات
+
+    - ما هي خطوات عملية القبول في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_transfer_6e35bba3_ar_37e7f7
+  examples: '- ما شروط التحويل من كلية مناظرة لكلية الحاسبات والمعلومات
+
+    - ممكن توضح ما شروط التحويل من كلية مناظرة لكلية الحاسبات والمعلومات
+
+    - عايز أعرف ما شروط التحويل من كلية مناظرة لكلية الحاسبات والمعلومات
+
+    - اشرح ما شروط التحويل من كلية مناظرة لكلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما شروط التحويل من كلية مناظرة لكلية الحاسبات والمعلومات
+
+    - ما شروط التحويل من كلية مناظرة لكلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_transfer_6390d1c5_ar_e54399
+  examples: '- ما شروط التحويل من كلية غير مناظرة
+
+    - ممكن توضح ما شروط التحويل من كلية غير مناظرة
+
+    - عايز أعرف ما شروط التحويل من كلية غير مناظرة
+
+    - اشرح ما شروط التحويل من كلية غير مناظرة
+
+    - اديني تفاصيل عن ما شروط التحويل من كلية غير مناظرة
+
+    - ما شروط التحويل من كلية غير مناظرة؟ في FCI
+
+    '
+- intent: fci_qa_transfer_c92e1ae6_ar_9d5629
+  examples: '- هل يقبل التحويل لكلية الحاسبات لطالب سبق فصله تأديبيًا
+
+    - ممكن توضح هل يقبل التحويل لكلية الحاسبات لطالب سبق فصله تأديبيًا
+
+    - عايز أعرف هل يقبل التحويل لكلية الحاسبات لطالب سبق فصله تأديبيًا
+
+    - اشرح هل يقبل التحويل لكلية الحاسبات لطالب سبق فصله تأديبيًا
+
+    - اديني تفاصيل عن هل يقبل التحويل لكلية الحاسبات لطالب سبق فصله تأديبيًا
+
+    - هل يقبل التحويل لكلية الحاسبات لطالب سبق فصله تأديبيًا؟ في FCI
+
+    '
+- intent: fci_qa_transfer_417f4d6e_ar_279348
+  examples: '- هل يشترط في الطالب المحوَّل ألا يكون قد انقطع عن الدراسة قبل التحويل
+
+    - ممكن توضح هل يشترط في الطالب المحوَّل ألا يكون قد انقطع عن الدراسة قبل التحويل
+
+    - عايز أعرف هل يشترط في الطالب المحوَّل ألا يكون قد انقطع عن الدراسة قبل التحويل
+
+    - اشرح هل يشترط في الطالب المحوَّل ألا يكون قد انقطع عن الدراسة قبل التحويل
+
+    - اديني تفاصيل عن هل يشترط في الطالب المحوَّل ألا يكون قد انقطع عن الدراسة قبل التحويل
+
+    - هل يشترط في الطالب المحوَّل ألا يكون قد انقطع عن الدراسة قبل التحويل؟ في FCI
+
+    '
+- intent: fci_qa_study_system_b24d7e6f_ar_ca9710
+  examples: '- كم إجمالي الساعات المعتمدة المطلوبة للتخرج من كلية الحاسبات والمعلومات
+
+    - ممكن توضح كم إجمالي الساعات المعتمدة المطلوبة للتخرج من كلية الحاسبات والمعلومات
+
+    - عايز أعرف كم إجمالي الساعات المعتمدة المطلوبة للتخرج من كلية الحاسبات والمعلومات
+
+    - اشرح كم إجمالي الساعات المعتمدة المطلوبة للتخرج من كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن كم إجمالي الساعات المعتمدة المطلوبة للتخرج من كلية الحاسبات والمعلومات
+
+    - كم إجمالي الساعات المعتمدة المطلوبة للتخرج من كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_guide_205d5eca_ar_ba4711
+  examples: '- كيف تُوزَّع الـ 144 ساعة معتمدة على أنواع المتطلبات
+
+    - ممكن توضح كيف تُوزَّع الـ 144 ساعة معتمدة على أنواع المتطلبات
+
+    - عايز أعرف كيف تُوزَّع الـ 144 ساعة معتمدة على أنواع المتطلبات
+
+    - اشرح كيف تُوزَّع الـ 144 ساعة معتمدة على أنواع المتطلبات
+
+    - اديني تفاصيل عن كيف تُوزَّع الـ 144 ساعة معتمدة على أنواع المتطلبات
+
+    - كيف تُوزَّع الـ 144 ساعة معتمدة على أنواع المتطلبات؟ في FCI
+
+    '
+- intent: fci_qa_graduation_cb4b28db_ar_e42a0e
+  examples: '- كم تبلغ مدة الدراسة للحصول على درجة البكالوريوس
+
+    - ممكن توضح كم تبلغ مدة الدراسة للحصول على درجة البكالوريوس
+
+    - عايز أعرف كم تبلغ مدة الدراسة للحصول على درجة البكالوريوس
+
+    - اشرح كم تبلغ مدة الدراسة للحصول على درجة البكالوريوس
+
+    - اديني تفاصيل عن كم تبلغ مدة الدراسة للحصول على درجة البكالوريوس
+
+    - كم تبلغ مدة الدراسة للحصول على درجة البكالوريوس؟ في FCI
+
+    '
+- intent: fci_qa_guide_0bb4693f_ar_6f4f46
+  examples: '- كم أسبوعًا يستمر كل فصل دراسي
+
+    - ممكن توضح كم أسبوعًا يستمر كل فصل دراسي
+
+    - عايز أعرف كم أسبوعًا يستمر كل فصل دراسي
+
+    - اشرح كم أسبوعًا يستمر كل فصل دراسي
+
+    - اديني تفاصيل عن كم أسبوعًا يستمر كل فصل دراسي
+
+    - كم أسبوعًا يستمر كل فصل دراسي؟ في FCI
+
+    '
+- intent: fci_qa_specialization_72666783_ar_1f2aa8
+  examples: '- متى يبدأ التخصص وأي الفرق تشارك في الدراسة العامة
+
+    - ممكن توضح متى يبدأ التخصص وأي الفرق تشارك في الدراسة العامة
+
+    - عايز أعرف متى يبدأ التخصص وأي الفرق تشارك في الدراسة العامة
+
+    - اشرح متى يبدأ التخصص وأي الفرق تشارك في الدراسة العامة
+
+    - اديني تفاصيل عن متى يبدأ التخصص وأي الفرق تشارك في الدراسة العامة
+
+    - متى يبدأ التخصص وأي الفرق تشارك في الدراسة العامة؟ في FCI
+
+    '
+- intent: fci_qa_study_system_ee166c8f_ar_a6d5dc
+  examples: '- ما نطاقات الساعات المعتمدة التي تحدد المستوى الدراسي للطالب
+
+    - ممكن توضح ما نطاقات الساعات المعتمدة التي تحدد المستوى الدراسي للطالب
+
+    - عايز أعرف ما نطاقات الساعات المعتمدة التي تحدد المستوى الدراسي للطالب
+
+    - اشرح ما نطاقات الساعات المعتمدة التي تحدد المستوى الدراسي للطالب
+
+    - اديني تفاصيل عن ما نطاقات الساعات المعتمدة التي تحدد المستوى الدراسي للطالب
+
+    - ما نطاقات الساعات المعتمدة التي تحدد المستوى الدراسي للطالب؟ في FCI
+
+    '
+- intent: fci_qa_graduation_13424d0c_ar_70e867
+  examples: '- هل يجوز للطالب تسجيل مواد إضافية بعد إنهاء جميع ساعات التخرج
+
+    - ممكن توضح هل يجوز للطالب تسجيل مواد إضافية بعد إنهاء جميع ساعات التخرج
+
+    - عايز أعرف هل يجوز للطالب تسجيل مواد إضافية بعد إنهاء جميع ساعات التخرج
+
+    - اشرح هل يجوز للطالب تسجيل مواد إضافية بعد إنهاء جميع ساعات التخرج
+
+    - اديني تفاصيل عن هل يجوز للطالب تسجيل مواد إضافية بعد إنهاء جميع ساعات التخرج
+
+    - هل يجوز للطالب تسجيل مواد إضافية بعد إنهاء جميع ساعات التخرج؟ في FCI
+
+    '
+- intent: fci_qa_graduation_0f401897_ar_fffda5
+  examples: '- ما متطلبات مشروع التخرج لطلاب الفرقة الرابعة
+
+    - ممكن توضح ما متطلبات مشروع التخرج لطلاب الفرقة الرابعة
+
+    - عايز أعرف ما متطلبات مشروع التخرج لطلاب الفرقة الرابعة
+
+    - اشرح ما متطلبات مشروع التخرج لطلاب الفرقة الرابعة
+
+    - اديني تفاصيل عن ما متطلبات مشروع التخرج لطلاب الفرقة الرابعة
+
+    - ما متطلبات مشروع التخرج لطلاب الفرقة الرابعة؟ في FCI
+
+    '
+- intent: fci_qa_graduation_3404e10c_ar_badd95
+  examples: '- ما متطلبات التدريب العملي اللازمة للتخرج
+
+    - ممكن توضح ما متطلبات التدريب العملي اللازمة للتخرج
+
+    - عايز أعرف ما متطلبات التدريب العملي اللازمة للتخرج
+
+    - اشرح ما متطلبات التدريب العملي اللازمة للتخرج
+
+    - اديني تفاصيل عن ما متطلبات التدريب العملي اللازمة للتخرج
+
+    - ما متطلبات التدريب العملي اللازمة للتخرج؟ في FCI
+
+    '
+- intent: fci_qa_guide_44afcb95_ar_bd726c
+  examples: '- ما نظام التعليم الهجين المطبق في كلية الحاسبات والمعلومات
+
+    - ممكن توضح ما نظام التعليم الهجين المطبق في كلية الحاسبات والمعلومات
+
+    - عايز أعرف ما نظام التعليم الهجين المطبق في كلية الحاسبات والمعلومات
+
+    - اشرح ما نظام التعليم الهجين المطبق في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن ما نظام التعليم الهجين المطبق في كلية الحاسبات والمعلومات
+
+    - ما نظام التعليم الهجين المطبق في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_graduation_5bca3368_ar_dd0088
+  examples: '- متى تُقام حفلات التخرج خلال العام الدراسي
+
+    - ممكن توضح متى تُقام حفلات التخرج خلال العام الدراسي
+
+    - عايز أعرف متى تُقام حفلات التخرج خلال العام الدراسي
+
+    - اشرح متى تُقام حفلات التخرج خلال العام الدراسي
+
+    - اديني تفاصيل عن متى تُقام حفلات التخرج خلال العام الدراسي
+
+    - متى تُقام حفلات التخرج خلال العام الدراسي؟ في FCI
+
+    '
+- intent: fci_qa_guide_4ba13fe7_ar_0edf2e
+  examples: '- من هم المرشدون الأكاديميون وما دورهم
+
+    - ممكن توضح من هم المرشدون الأكاديميون وما دورهم
+
+    - عايز أعرف من هم المرشدون الأكاديميون وما دورهم
+
+    - اشرح من هم المرشدون الأكاديميون وما دورهم
+
+    - اديني تفاصيل عن من هم المرشدون الأكاديميون وما دورهم
+
+    - من هم المرشدون الأكاديميون وما دورهم؟ في FCI
+
+    '
+- intent: fci_qa_registration_1fe9e497_ar_3c629f
+  examples: '- متى يبدأ تسجيل المواد في كل فصل دراسي
+
+    - ممكن توضح متى يبدأ تسجيل المواد في كل فصل دراسي
+
+    - عايز أعرف متى يبدأ تسجيل المواد في كل فصل دراسي
+
+    - اشرح متى يبدأ تسجيل المواد في كل فصل دراسي
+
+    - اديني تفاصيل عن متى يبدأ تسجيل المواد في كل فصل دراسي
+
+    - متى يبدأ تسجيل المواد في كل فصل دراسي؟ في FCI
+
+    '
+- intent: fci_qa_guide_db7a476a_ar_590afb
+  examples: '- ما الحد الأدنى للعبء الدراسي في الفصل الاعتيادي
+
+    - ممكن توضح ما الحد الأدنى للعبء الدراسي في الفصل الاعتيادي
+
+    - عايز أعرف ما الحد الأدنى للعبء الدراسي في الفصل الاعتيادي
+
+    - اشرح ما الحد الأدنى للعبء الدراسي في الفصل الاعتيادي
+
+    - اديني تفاصيل عن ما الحد الأدنى للعبء الدراسي في الفصل الاعتيادي
+
+    - ما الحد الأدنى للعبء الدراسي في الفصل الاعتيادي؟ في FCI
+
+    '
+- intent: fci_qa_guide_97f79660_ar_3cb19b
+  examples: '- ما الحد الأقصى للعبء الدراسي في الفصل الاعتيادي
+
+    - ممكن توضح ما الحد الأقصى للعبء الدراسي في الفصل الاعتيادي
+
+    - عايز أعرف ما الحد الأقصى للعبء الدراسي في الفصل الاعتيادي
+
+    - اشرح ما الحد الأقصى للعبء الدراسي في الفصل الاعتيادي
+
+    - اديني تفاصيل عن ما الحد الأقصى للعبء الدراسي في الفصل الاعتيادي
+
+    - ما الحد الأقصى للعبء الدراسي في الفصل الاعتيادي؟ في FCI
+
+    '
+- intent: fci_qa_registration_d58f5e09_ar_1f8438
+  examples: '- كم مادة يمكن للطالب تسجيلها في الفصل الدراسي الصيفي
+
+    - ممكن توضح كم مادة يمكن للطالب تسجيلها في الفصل الدراسي الصيفي
+
+    - عايز أعرف كم مادة يمكن للطالب تسجيلها في الفصل الدراسي الصيفي
+
+    - اشرح كم مادة يمكن للطالب تسجيلها في الفصل الدراسي الصيفي
+
+    - اديني تفاصيل عن كم مادة يمكن للطالب تسجيلها في الفصل الدراسي الصيفي
+
+    - كم مادة يمكن للطالب تسجيلها في الفصل الدراسي الصيفي؟ في FCI
+
+    '
+- intent: fci_qa_add_drop_b837e065_ar_ec44ac
+  examples: '- كم مادة يمكن إضافتها أو الانسحاب منها دون إثبات ذلك في السجل الدراسي
+
+    - ممكن توضح كم مادة يمكن إضافتها أو الانسحاب منها دون إثبات ذلك في السجل الدراسي
+
+    - عايز أعرف كم مادة يمكن إضافتها أو الانسحاب منها دون إثبات ذلك في السجل الدراسي
+
+    - اشرح كم مادة يمكن إضافتها أو الانسحاب منها دون إثبات ذلك في السجل الدراسي
+
+    - اديني تفاصيل عن كم مادة يمكن إضافتها أو الانسحاب منها دون إثبات ذلك في السجل الدراسي
+
+    - كم مادة يمكن إضافتها أو الانسحاب منها دون إثبات ذلك في السجل الدراسي؟ في FCI
+
+    '
+- intent: fci_qa_exams_b822ca70_ar_5b765c
+  examples: '- ما الرمز الذي يُسجَّل إذا انسحب الطالب بعد فترة الإرشاد وقبل امتحانات منتصف الفصل
+
+    - ممكن توضح ما الرمز الذي يُسجَّل إذا انسحب الطالب بعد فترة الإرشاد وقبل امتحانات منتصف الفصل
+
+    - عايز أعرف ما الرمز الذي يُسجَّل إذا انسحب الطالب بعد فترة الإرشاد وقبل امتحانات منتصف الفصل
+
+    - اشرح ما الرمز الذي يُسجَّل إذا انسحب الطالب بعد فترة الإرشاد وقبل امتحانات منتصف الفصل
+
+    - اديني تفاصيل عن ما الرمز الذي يُسجَّل إذا انسحب الطالب بعد فترة الإرشاد وقبل امتحانات منتصف الفصل
+
+    - ما الرمز الذي يُسجَّل إذا انسحب الطالب بعد فترة الإرشاد وقبل امتحانات منتصف الفصل؟ في FCI
+
+    '
+- intent: fci_qa_registration_eef8482b_ar_85101b
+  examples: '- من يضع خطة التسجيل وإجراءاته قبل كل فصل دراسي
+
+    - ممكن توضح من يضع خطة التسجيل وإجراءاته قبل كل فصل دراسي
+
+    - عايز أعرف من يضع خطة التسجيل وإجراءاته قبل كل فصل دراسي
+
+    - اشرح من يضع خطة التسجيل وإجراءاته قبل كل فصل دراسي
+
+    - اديني تفاصيل عن من يضع خطة التسجيل وإجراءاته قبل كل فصل دراسي
+
+    - من يضع خطة التسجيل وإجراءاته قبل كل فصل دراسي؟ في FCI
+
+    '
+- intent: fci_qa_attendance_bf1a93a3_ar_c38740
+  examples: '- ما الحد الأقصى لنسبة الغياب المسموح بها في أي مقرر
+
+    - ممكن توضح ما الحد الأقصى لنسبة الغياب المسموح بها في أي مقرر
+
+    - عايز أعرف ما الحد الأقصى لنسبة الغياب المسموح بها في أي مقرر
+
+    - اشرح ما الحد الأقصى لنسبة الغياب المسموح بها في أي مقرر
+
+    - اديني تفاصيل عن ما الحد الأقصى لنسبة الغياب المسموح بها في أي مقرر
+
+    - ما الحد الأقصى لنسبة الغياب المسموح بها في أي مقرر؟ في FCI
+
+    '
+- intent: fci_qa_attendance_9b30240d_ar_db0bd2
+  examples: '- ما عواقب تجاوز نسبة الغياب الـ 25%
+
+    - ممكن توضح ما عواقب تجاوز نسبة الغياب الـ 25%
+
+    - عايز أعرف ما عواقب تجاوز نسبة الغياب الـ 25%
+
+    - اشرح ما عواقب تجاوز نسبة الغياب الـ 25%
+
+    - اديني تفاصيل عن ما عواقب تجاوز نسبة الغياب الـ 25%
+
+    - ما عواقب تجاوز نسبة الغياب الـ 25%؟ في FCI
+
+    '
+- intent: fci_qa_attendance_a0f77888_ar_f686ca
+  examples: '- ما التقدير الذي يحصل عليه الطالب إذا كان غيابه الزائد بعذر مقبول
+
+    - ممكن توضح ما التقدير الذي يحصل عليه الطالب إذا كان غيابه الزائد بعذر مقبول
+
+    - عايز أعرف ما التقدير الذي يحصل عليه الطالب إذا كان غيابه الزائد بعذر مقبول
+
+    - اشرح ما التقدير الذي يحصل عليه الطالب إذا كان غيابه الزائد بعذر مقبول
+
+    - اديني تفاصيل عن ما التقدير الذي يحصل عليه الطالب إذا كان غيابه الزائد بعذر مقبول
+
+    - ما التقدير الذي يحصل عليه الطالب إذا كان غيابه الزائد بعذر مقبول؟ في FCI
+
+    '
+- intent: fci_qa_attendance_93ed2a9f_ar_fb64b0
+  examples: '- ماذا يجب على الطالب أن يفعل عند الغياب
+
+    - ممكن توضح ماذا يجب على الطالب أن يفعل عند الغياب
+
+    - عايز أعرف ماذا يجب على الطالب أن يفعل عند الغياب
+
+    - اشرح ماذا يجب على الطالب أن يفعل عند الغياب
+
+    - اديني تفاصيل عن ماذا يجب على الطالب أن يفعل عند الغياب
+
+    - ماذا يجب على الطالب أن يفعل عند الغياب؟ في FCI
+
+    '
+- intent: fci_qa_attendance_62dea312_ar_31017d
+  examples: '- هل يُعفى الطالب المكلف بمهام وطنية من تطبيق نسبة الغياب الـ 25%
+
+    - ممكن توضح هل يُعفى الطالب المكلف بمهام وطنية من تطبيق نسبة الغياب الـ 25%
+
+    - عايز أعرف هل يُعفى الطالب المكلف بمهام وطنية من تطبيق نسبة الغياب الـ 25%
+
+    - اشرح هل يُعفى الطالب المكلف بمهام وطنية من تطبيق نسبة الغياب الـ 25%
+
+    - اديني تفاصيل عن هل يُعفى الطالب المكلف بمهام وطنية من تطبيق نسبة الغياب الـ 25%
+
+    - هل يُعفى الطالب المكلف بمهام وطنية من تطبيق نسبة الغياب الـ 25%؟ في FCI
+
+    '
+- intent: fci_qa_exams_aee3a74e_ar_d65c47
+  examples: '- ما الترتيب الامتحاني للطلاب ذوي المهام الوطنية الذين يتغيبون عن امتحان منتصف الفصل
+
+    - ممكن توضح ما الترتيب الامتحاني للطلاب ذوي المهام الوطنية الذين يتغيبون عن امتحان منتصف الفصل
+
+    - عايز أعرف ما الترتيب الامتحاني للطلاب ذوي المهام الوطنية الذين يتغيبون عن امتحان منتصف الفصل
+
+    - اشرح ما الترتيب الامتحاني للطلاب ذوي المهام الوطنية الذين يتغيبون عن امتحان منتصف الفصل
+
+    - اديني تفاصيل عن ما الترتيب الامتحاني للطلاب ذوي المهام الوطنية الذين يتغيبون عن امتحان منتصف الفصل
+
+    - ما الترتيب الامتحاني للطلاب ذوي المهام الوطنية الذين يتغيبون عن امتحان منتصف الفصل؟ في FCI
+
+    '
+- intent: fci_qa_guide_4b78c0e1_ar_5b9552
+  examples: '- متى يُعقد الاختبار النصفي في كل فصل دراسي
+
+    - ممكن توضح متى يُعقد الاختبار النصفي في كل فصل دراسي
+
+    - عايز أعرف متى يُعقد الاختبار النصفي في كل فصل دراسي
+
+    - اشرح متى يُعقد الاختبار النصفي في كل فصل دراسي
+
+    - اديني تفاصيل عن متى يُعقد الاختبار النصفي في كل فصل دراسي
+
+    - متى يُعقد الاختبار النصفي في كل فصل دراسي؟ في FCI
+
+    '
+- intent: fci_qa_guide_f59fa303_ar_4ee44c
+  examples: '- متى يُعقد الاختبار النهائي
+
+    - ممكن توضح متى يُعقد الاختبار النهائي
+
+    - عايز أعرف متى يُعقد الاختبار النهائي
+
+    - اشرح متى يُعقد الاختبار النهائي
+
+    - اديني تفاصيل عن متى يُعقد الاختبار النهائي
+
+    - متى يُعقد الاختبار النهائي؟ في FCI
+
+    '
+- intent: fci_qa_guide_55130e95_ar_8c243f
+  examples: '- ما مدة كل من الاختبار النصفي والنهائي
+
+    - ممكن توضح ما مدة كل من الاختبار النصفي والنهائي
+
+    - عايز أعرف ما مدة كل من الاختبار النصفي والنهائي
+
+    - اشرح ما مدة كل من الاختبار النصفي والنهائي
+
+    - اديني تفاصيل عن ما مدة كل من الاختبار النصفي والنهائي
+
+    - ما مدة كل من الاختبار النصفي والنهائي؟ في FCI
+
+    '
+- intent: fci_qa_guide_eae84880_ar_b0cceb
+  examples: '- كيف تُوزَّع الدرجة الكلية (100%) على كل مقرر دراسي
+
+    - ممكن توضح كيف تُوزَّع الدرجة الكلية (100%) على كل مقرر دراسي
+
+    - عايز أعرف كيف تُوزَّع الدرجة الكلية (100%) على كل مقرر دراسي
+
+    - اشرح كيف تُوزَّع الدرجة الكلية (100%) على كل مقرر دراسي
+
+    - اديني تفاصيل عن كيف تُوزَّع الدرجة الكلية (100%) على كل مقرر دراسي
+
+    - كيف تُوزَّع الدرجة الكلية (100%) على كل مقرر دراسي؟ في FCI
+
+    '
+- intent: fci_qa_grading_dc5310f7_ar_313e40
+  examples: '- ما سلم التقديرات الكامل لتقييم الطالب في المقرر
+
+    - ممكن توضح ما سلم التقديرات الكامل لتقييم الطالب في المقرر
+
+    - عايز أعرف ما سلم التقديرات الكامل لتقييم الطالب في المقرر
+
+    - اشرح ما سلم التقديرات الكامل لتقييم الطالب في المقرر
+
+    - اديني تفاصيل عن ما سلم التقديرات الكامل لتقييم الطالب في المقرر
+
+    - ما سلم التقديرات الكامل لتقييم الطالب في المقرر؟ في FCI
+
+    '
+- intent: fci_qa_grading_1099686d_ar_60aecd
+  examples: '- ما سلم المعدلات المستخدم في تحديد المعدل السنوي والتراكمي
+
+    - ممكن توضح ما سلم المعدلات المستخدم في تحديد المعدل السنوي والتراكمي
+
+    - عايز أعرف ما سلم المعدلات المستخدم في تحديد المعدل السنوي والتراكمي
+
+    - اشرح ما سلم المعدلات المستخدم في تحديد المعدل السنوي والتراكمي
+
+    - اديني تفاصيل عن ما سلم المعدلات المستخدم في تحديد المعدل السنوي والتراكمي
+
+    - ما سلم المعدلات المستخدم في تحديد المعدل السنوي والتراكمي؟ في FCI
+
+    '
+- intent: fci_qa_grading_e92ccfa5_ar_f6ef42
+  examples: '- ما صيغة حساب المعدل السنوي للطالب
+
+    - ممكن توضح ما صيغة حساب المعدل السنوي للطالب
+
+    - عايز أعرف ما صيغة حساب المعدل السنوي للطالب
+
+    - اشرح ما صيغة حساب المعدل السنوي للطالب
+
+    - اديني تفاصيل عن ما صيغة حساب المعدل السنوي للطالب
+
+    - ما صيغة حساب المعدل السنوي للطالب؟ في FCI
+
+    '
+- intent: fci_qa_guide_cbf9df8b_ar_80bf5a
+  examples: '- ماذا يحدث إذا رسب الطالب في مادة إجبارية
+
+    - ممكن توضح ماذا يحدث إذا رسب الطالب في مادة إجبارية
+
+    - عايز أعرف ماذا يحدث إذا رسب الطالب في مادة إجبارية
+
+    - اشرح ماذا يحدث إذا رسب الطالب في مادة إجبارية
+
+    - اديني تفاصيل عن ماذا يحدث إذا رسب الطالب في مادة إجبارية
+
+    - ماذا يحدث إذا رسب الطالب في مادة إجبارية؟ في FCI
+
+    '
+- intent: fci_qa_graduation_ebb125ec_ar_3cb7b6
+  examples: '- ما متطلبات الحصول على مرتبة الشرف عند التخرج
+
+    - ممكن توضح ما متطلبات الحصول على مرتبة الشرف عند التخرج
+
+    - عايز أعرف ما متطلبات الحصول على مرتبة الشرف عند التخرج
+
+    - اشرح ما متطلبات الحصول على مرتبة الشرف عند التخرج
+
+    - اديني تفاصيل عن ما متطلبات الحصول على مرتبة الشرف عند التخرج
+
+    - ما متطلبات الحصول على مرتبة الشرف عند التخرج؟ في FCI
+
+    '
+- intent: fci_qa_grading_41780493_ar_978211
+  examples: '- ما معنى تقدير ''غير مكتمل'' (I) وكيف يُزال
+
+    - ممكن توضح ما معنى تقدير ''غير مكتمل'' (I) وكيف يُزال
+
+    - عايز أعرف ما معنى تقدير ''غير مكتمل'' (I) وكيف يُزال
+
+    - اشرح ما معنى تقدير ''غير مكتمل'' (I) وكيف يُزال
+
+    - اديني تفاصيل عن ما معنى تقدير ''غير مكتمل'' (I) وكيف يُزال
+
+    - ما معنى تقدير ''غير مكتمل'' (I) وكيف يُزال؟ في FCI
+
+    '
+- intent: fci_qa_exams_9657c71b_ar_d70789
+  examples: '- ماذا يحدث إذا تغيب الطالب عن امتحانات نهاية الفصل بدون عذر
+
+    - ممكن توضح ماذا يحدث إذا تغيب الطالب عن امتحانات نهاية الفصل بدون عذر
+
+    - عايز أعرف ماذا يحدث إذا تغيب الطالب عن امتحانات نهاية الفصل بدون عذر
+
+    - اشرح ماذا يحدث إذا تغيب الطالب عن امتحانات نهاية الفصل بدون عذر
+
+    - اديني تفاصيل عن ماذا يحدث إذا تغيب الطالب عن امتحانات نهاية الفصل بدون عذر
+
+    - ماذا يحدث إذا تغيب الطالب عن امتحانات نهاية الفصل بدون عذر؟ في FCI
+
+    '
+- intent: fci_qa_exams_8e6d3d53_ar_91a55b
+  examples: '- متى تُعتمد وتُعلن نتائج الامتحانات رسميًا
+
+    - ممكن توضح متى تُعتمد وتُعلن نتائج الامتحانات رسميًا
+
+    - عايز أعرف متى تُعتمد وتُعلن نتائج الامتحانات رسميًا
+
+    - اشرح متى تُعتمد وتُعلن نتائج الامتحانات رسميًا
+
+    - اديني تفاصيل عن متى تُعتمد وتُعلن نتائج الامتحانات رسميًا
+
+    - متى تُعتمد وتُعلن نتائج الامتحانات رسميًا؟ في FCI
+
+    '
+- intent: fci_qa_exams_54317f8d_ar_69cd16
+  examples: '- هل يُسمح بإجراء الامتحانات إلكترونيًا في كلية الحاسبات والمعلومات
+
+    - ممكن توضح هل يُسمح بإجراء الامتحانات إلكترونيًا في كلية الحاسبات والمعلومات
+
+    - عايز أعرف هل يُسمح بإجراء الامتحانات إلكترونيًا في كلية الحاسبات والمعلومات
+
+    - اشرح هل يُسمح بإجراء الامتحانات إلكترونيًا في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن هل يُسمح بإجراء الامتحانات إلكترونيًا في كلية الحاسبات والمعلومات
+
+    - هل يُسمح بإجراء الامتحانات إلكترونيًا في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_exams_c24c9c9c_ar_212e79
+  examples: '- ما التقدير الذي يحصل عليه الطالب الغائب عن الامتحان (ABS)
+
+    - ممكن توضح ما التقدير الذي يحصل عليه الطالب الغائب عن الامتحان (ABS)
+
+    - عايز أعرف ما التقدير الذي يحصل عليه الطالب الغائب عن الامتحان (ABS)
+
+    - اشرح ما التقدير الذي يحصل عليه الطالب الغائب عن الامتحان (ABS)
+
+    - اديني تفاصيل عن ما التقدير الذي يحصل عليه الطالب الغائب عن الامتحان (ABS)
+
+    - ما التقدير الذي يحصل عليه الطالب الغائب عن الامتحان (ABS)؟ في FCI
+
+    '
+- intent: fci_qa_academic_warning_5808fe15_ar_e7c4b1
+  examples: '- متى يتلقى الطالب الإنذار الأكاديمي
+
+    - ممكن توضح متى يتلقى الطالب الإنذار الأكاديمي
+
+    - عايز أعرف متى يتلقى الطالب الإنذار الأكاديمي
+
+    - اشرح متى يتلقى الطالب الإنذار الأكاديمي
+
+    - اديني تفاصيل عن متى يتلقى الطالب الإنذار الأكاديمي
+
+    - متى يتلقى الطالب الإنذار الأكاديمي؟ في FCI
+
+    '
+- intent: fci_qa_academic_warning_5795f97d_ar_23414f
+  examples: '- كم فصلًا دراسيًا لدى الطالب لإزالة الإنذار الأكاديمي
+
+    - ممكن توضح كم فصلًا دراسيًا لدى الطالب لإزالة الإنذار الأكاديمي
+
+    - عايز أعرف كم فصلًا دراسيًا لدى الطالب لإزالة الإنذار الأكاديمي
+
+    - اشرح كم فصلًا دراسيًا لدى الطالب لإزالة الإنذار الأكاديمي
+
+    - اديني تفاصيل عن كم فصلًا دراسيًا لدى الطالب لإزالة الإنذار الأكاديمي
+
+    - كم فصلًا دراسيًا لدى الطالب لإزالة الإنذار الأكاديمي؟ في FCI
+
+    '
+- intent: fci_qa_academic_warning_6b1322e6_ar_becfa2
+  examples: '- ماذا يحدث إذا عجز الطالب عن إزالة الإنذار الأكاديمي خلال الفصلين
+
+    - ممكن توضح ماذا يحدث إذا عجز الطالب عن إزالة الإنذار الأكاديمي خلال الفصلين
+
+    - عايز أعرف ماذا يحدث إذا عجز الطالب عن إزالة الإنذار الأكاديمي خلال الفصلين
+
+    - اشرح ماذا يحدث إذا عجز الطالب عن إزالة الإنذار الأكاديمي خلال الفصلين
+
+    - اديني تفاصيل عن ماذا يحدث إذا عجز الطالب عن إزالة الإنذار الأكاديمي خلال الفصلين
+
+    - ماذا يحدث إذا عجز الطالب عن إزالة الإنذار الأكاديمي خلال الفصلين؟ في FCI
+
+    '
+- intent: fci_qa_specialization_2f582eda_ar_c1721f
+  examples: '- هل يمكن للطالب المُنذَر أكاديميًا تغيير تخصصه الرئيسي داخل الكلية
+
+    - ممكن توضح هل يمكن للطالب المُنذَر أكاديميًا تغيير تخصصه الرئيسي داخل الكلية
+
+    - عايز أعرف هل يمكن للطالب المُنذَر أكاديميًا تغيير تخصصه الرئيسي داخل الكلية
+
+    - اشرح هل يمكن للطالب المُنذَر أكاديميًا تغيير تخصصه الرئيسي داخل الكلية
+
+    - اديني تفاصيل عن هل يمكن للطالب المُنذَر أكاديميًا تغيير تخصصه الرئيسي داخل الكلية
+
+    - هل يمكن للطالب المُنذَر أكاديميًا تغيير تخصصه الرئيسي داخل الكلية؟ في FCI
+
+    '
+- intent: fci_qa_registration_69b2ea36_ar_b848f2
+  examples: '- ما هو وقف التسجيل وما شروطه
+
+    - ممكن توضح ما هو وقف التسجيل وما شروطه
+
+    - عايز أعرف ما هو وقف التسجيل وما شروطه
+
+    - اشرح ما هو وقف التسجيل وما شروطه
+
+    - اديني تفاصيل عن ما هو وقف التسجيل وما شروطه
+
+    - ما هو وقف التسجيل وما شروطه؟ في FCI
+
+    '
+- intent: fci_qa_registration_af46bc8f_ar_0e9fba
+  examples: '- ما الحد الأقصى لمدة وقف التسجيل الإجمالية طوال مدة الدراسة
+
+    - ممكن توضح ما الحد الأقصى لمدة وقف التسجيل الإجمالية طوال مدة الدراسة
+
+    - عايز أعرف ما الحد الأقصى لمدة وقف التسجيل الإجمالية طوال مدة الدراسة
+
+    - اشرح ما الحد الأقصى لمدة وقف التسجيل الإجمالية طوال مدة الدراسة
+
+    - اديني تفاصيل عن ما الحد الأقصى لمدة وقف التسجيل الإجمالية طوال مدة الدراسة
+
+    - ما الحد الأقصى لمدة وقف التسجيل الإجمالية طوال مدة الدراسة؟ في FCI
+
+    '
+- intent: fci_qa_registration_551d2935_ar_92b703
+  examples: '- هل يُحتسب وقف التسجيل ضمن مدة الدراسة المقررة للبكالوريوس
+
+    - ممكن توضح هل يُحتسب وقف التسجيل ضمن مدة الدراسة المقررة للبكالوريوس
+
+    - عايز أعرف هل يُحتسب وقف التسجيل ضمن مدة الدراسة المقررة للبكالوريوس
+
+    - اشرح هل يُحتسب وقف التسجيل ضمن مدة الدراسة المقررة للبكالوريوس
+
+    - اديني تفاصيل عن هل يُحتسب وقف التسجيل ضمن مدة الدراسة المقررة للبكالوريوس
+
+    - هل يُحتسب وقف التسجيل ضمن مدة الدراسة المقررة للبكالوريوس؟ في FCI
+
+    '
+- intent: fci_qa_registration_4afe799f_ar_b2a8a6
+  examples: '- ماذا يحدث إذا لم يُقبَل العذر المقدم من الطالب لوقف التسجيل
+
+    - ممكن توضح ماذا يحدث إذا لم يُقبَل العذر المقدم من الطالب لوقف التسجيل
+
+    - عايز أعرف ماذا يحدث إذا لم يُقبَل العذر المقدم من الطالب لوقف التسجيل
+
+    - اشرح ماذا يحدث إذا لم يُقبَل العذر المقدم من الطالب لوقف التسجيل
+
+    - اديني تفاصيل عن ماذا يحدث إذا لم يُقبَل العذر المقدم من الطالب لوقف التسجيل
+
+    - ماذا يحدث إذا لم يُقبَل العذر المقدم من الطالب لوقف التسجيل؟ في FCI
+
+    '
+- intent: fci_qa_registration_9ddb169f_ar_fb4104
+  examples: '- إذا كان الانقطاع عن الدراسة بعذر مقبول وتقدم الطالب بعدها بطلب وقف التسجيل، ماذا يحدث
+
+    - ممكن توضح إذا كان الانقطاع عن الدراسة بعذر مقبول وتقدم الطالب بعدها بطلب وقف التسجيل، ماذا يحدث
+
+    - عايز أعرف إذا كان الانقطاع عن الدراسة بعذر مقبول وتقدم الطالب بعدها بطلب وقف التسجيل، ماذا يحدث
+
+    - اشرح إذا كان الانقطاع عن الدراسة بعذر مقبول وتقدم الطالب بعدها بطلب وقف التسجيل، ماذا يحدث
+
+    - اديني تفاصيل عن إذا كان الانقطاع عن الدراسة بعذر مقبول وتقدم الطالب بعدها بطلب وقف التسجيل، ماذا يحدث
+
+    - إذا كان الانقطاع عن الدراسة بعذر مقبول وتقدم الطالب بعدها بطلب وقف التسجيل، ماذا يحدث؟ في FCI
+
+    '
+- intent: fci_qa_discipline_2ecc39cd_ar_ebf61d
+  examples: '- أي قانون يحكم نظام تأديب الطلاب في كلية الحاسبات والمعلومات
+
+    - ممكن توضح أي قانون يحكم نظام تأديب الطلاب في كلية الحاسبات والمعلومات
+
+    - عايز أعرف أي قانون يحكم نظام تأديب الطلاب في كلية الحاسبات والمعلومات
+
+    - اشرح أي قانون يحكم نظام تأديب الطلاب في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن أي قانون يحكم نظام تأديب الطلاب في كلية الحاسبات والمعلومات
+
+    - أي قانون يحكم نظام تأديب الطلاب في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_discipline_f49bd90e_ar_431f03
+  examples: '- ما الأفعال التي تُعدُّ مخالفات تأديبية في الكلية
+
+    - ممكن توضح ما الأفعال التي تُعدُّ مخالفات تأديبية في الكلية
+
+    - عايز أعرف ما الأفعال التي تُعدُّ مخالفات تأديبية في الكلية
+
+    - اشرح ما الأفعال التي تُعدُّ مخالفات تأديبية في الكلية
+
+    - اديني تفاصيل عن ما الأفعال التي تُعدُّ مخالفات تأديبية في الكلية
+
+    - ما الأفعال التي تُعدُّ مخالفات تأديبية في الكلية؟ في FCI
+
+    '
+- intent: fci_qa_exams_80c1b510_ar_47cd63
+  examples: '- ماذا يحدث للطالب الذي يُضبط متلبسًا بالغش في الامتحان
+
+    - ممكن توضح ماذا يحدث للطالب الذي يُضبط متلبسًا بالغش في الامتحان
+
+    - عايز أعرف ماذا يحدث للطالب الذي يُضبط متلبسًا بالغش في الامتحان
+
+    - اشرح ماذا يحدث للطالب الذي يُضبط متلبسًا بالغش في الامتحان
+
+    - اديني تفاصيل عن ماذا يحدث للطالب الذي يُضبط متلبسًا بالغش في الامتحان
+
+    - ماذا يحدث للطالب الذي يُضبط متلبسًا بالغش في الامتحان؟ في FCI
+
+    '
+- intent: fci_qa_discipline_33953da8_ar_e93944
+  examples: '- اذكر جميع العقوبات التأديبية بالترتيب من الأخف إلى الأشد.
+
+    - ممكن توضح اذكر جميع العقوبات التأديبية بالترتيب من الأخف إلى الأشد.
+
+    - عايز أعرف اذكر جميع العقوبات التأديبية بالترتيب من الأخف إلى الأشد.
+
+    - اشرح اذكر جميع العقوبات التأديبية بالترتيب من الأخف إلى الأشد.
+
+    - اديني تفاصيل عن اذكر جميع العقوبات التأديبية بالترتيب من الأخف إلى الأشد.
+
+    - اذكر جميع العقوبات التأديبية بالترتيب من الأخف إلى الأشد. في FCI
+
+    '
+- intent: fci_qa_guide_7f89f460_ar_eeeb8a
+  examples: '- ما عواقب الفصل النهائي من الجامعة
+
+    - ممكن توضح ما عواقب الفصل النهائي من الجامعة
+
+    - عايز أعرف ما عواقب الفصل النهائي من الجامعة
+
+    - اشرح ما عواقب الفصل النهائي من الجامعة
+
+    - اديني تفاصيل عن ما عواقب الفصل النهائي من الجامعة
+
+    - ما عواقب الفصل النهائي من الجامعة؟ في FCI
+
+    '
+- intent: fci_qa_discipline_bb5db20b_ar_a60421
+  examples: '- أين تُحفَظ قرارات العقوبات التأديبية ومن يُبلَّغ بها
+
+    - ممكن توضح أين تُحفَظ قرارات العقوبات التأديبية ومن يُبلَّغ بها
+
+    - عايز أعرف أين تُحفَظ قرارات العقوبات التأديبية ومن يُبلَّغ بها
+
+    - اشرح أين تُحفَظ قرارات العقوبات التأديبية ومن يُبلَّغ بها
+
+    - اديني تفاصيل عن أين تُحفَظ قرارات العقوبات التأديبية ومن يُبلَّغ بها
+
+    - أين تُحفَظ قرارات العقوبات التأديبية ومن يُبلَّغ بها؟ في FCI
+
+    '
+- intent: fci_qa_fees_a0feb44b_ar_d01f46
+  examples: '- من يحدد الرسوم الدراسية في كلية الحاسبات والمعلومات
+
+    - ممكن توضح من يحدد الرسوم الدراسية في كلية الحاسبات والمعلومات
+
+    - عايز أعرف من يحدد الرسوم الدراسية في كلية الحاسبات والمعلومات
+
+    - اشرح من يحدد الرسوم الدراسية في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن من يحدد الرسوم الدراسية في كلية الحاسبات والمعلومات
+
+    - من يحدد الرسوم الدراسية في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_fees_00261cc3_ar_51ed7e
+  examples: '- خلال كم أسبوع يجب سداد الرسوم الدراسية في كل فصل
+
+    - ممكن توضح خلال كم أسبوع يجب سداد الرسوم الدراسية في كل فصل
+
+    - عايز أعرف خلال كم أسبوع يجب سداد الرسوم الدراسية في كل فصل
+
+    - اشرح خلال كم أسبوع يجب سداد الرسوم الدراسية في كل فصل
+
+    - اديني تفاصيل عن خلال كم أسبوع يجب سداد الرسوم الدراسية في كل فصل
+
+    - خلال كم أسبوع يجب سداد الرسوم الدراسية في كل فصل؟ في FCI
+
+    '
+- intent: fci_qa_fees_bfcdd912_ar_20ac14
+  examples: '- هل تُرد رسوم التقديم والاختبارات
+
+    - ممكن توضح هل تُرد رسوم التقديم والاختبارات
+
+    - عايز أعرف هل تُرد رسوم التقديم والاختبارات
+
+    - اشرح هل تُرد رسوم التقديم والاختبارات
+
+    - اديني تفاصيل عن هل تُرد رسوم التقديم والاختبارات
+
+    - هل تُرد رسوم التقديم والاختبارات؟ في FCI
+
+    '
+- intent: fci_qa_fees_0abe4584_ar_f0da42
+  examples: '- ما نسبة الرسوم التي تُرد خلال ثلاثة أسابيع من بدء الدراسة
+
+    - ممكن توضح ما نسبة الرسوم التي تُرد خلال ثلاثة أسابيع من بدء الدراسة
+
+    - عايز أعرف ما نسبة الرسوم التي تُرد خلال ثلاثة أسابيع من بدء الدراسة
+
+    - اشرح ما نسبة الرسوم التي تُرد خلال ثلاثة أسابيع من بدء الدراسة
+
+    - اديني تفاصيل عن ما نسبة الرسوم التي تُرد خلال ثلاثة أسابيع من بدء الدراسة
+
+    - ما نسبة الرسوم التي تُرد خلال ثلاثة أسابيع من بدء الدراسة؟ في FCI
+
+    '
+- intent: fci_qa_fees_982b4221_ar_eaf644
+  examples: '- ما نسبة الرسوم التي تُرد بعد مرور ثلاثة أسابيع وقبل اختبارات منتصف الفصل الأول
+
+    - ممكن توضح ما نسبة الرسوم التي تُرد بعد مرور ثلاثة أسابيع وقبل اختبارات منتصف الفصل الأول
+
+    - عايز أعرف ما نسبة الرسوم التي تُرد بعد مرور ثلاثة أسابيع وقبل اختبارات منتصف الفصل الأول
+
+    - اشرح ما نسبة الرسوم التي تُرد بعد مرور ثلاثة أسابيع وقبل اختبارات منتصف الفصل الأول
+
+    - اديني تفاصيل عن ما نسبة الرسوم التي تُرد بعد مرور ثلاثة أسابيع وقبل اختبارات منتصف الفصل الأول
+
+    - ما نسبة الرسوم التي تُرد بعد مرور ثلاثة أسابيع وقبل اختبارات منتصف الفصل الأول؟ في FCI
+
+    '
+- intent: fci_qa_fees_e83d2560_ar_829569
+  examples: '- هل تُرد الرسوم الدراسية بعد بدء اختبارات منتصف الفصل
+
+    - ممكن توضح هل تُرد الرسوم الدراسية بعد بدء اختبارات منتصف الفصل
+
+    - عايز أعرف هل تُرد الرسوم الدراسية بعد بدء اختبارات منتصف الفصل
+
+    - اشرح هل تُرد الرسوم الدراسية بعد بدء اختبارات منتصف الفصل
+
+    - اديني تفاصيل عن هل تُرد الرسوم الدراسية بعد بدء اختبارات منتصف الفصل
+
+    - هل تُرد الرسوم الدراسية بعد بدء اختبارات منتصف الفصل؟ في FCI
+
+    '
+- intent: fci_qa_fees_e9a18bf3_ar_aa14d4
+  examples: '- ما الوثيقة التي يجب على الطالب تقديمها إثباتًا لسداد الرسوم
+
+    - ممكن توضح ما الوثيقة التي يجب على الطالب تقديمها إثباتًا لسداد الرسوم
+
+    - عايز أعرف ما الوثيقة التي يجب على الطالب تقديمها إثباتًا لسداد الرسوم
+
+    - اشرح ما الوثيقة التي يجب على الطالب تقديمها إثباتًا لسداد الرسوم
+
+    - اديني تفاصيل عن ما الوثيقة التي يجب على الطالب تقديمها إثباتًا لسداد الرسوم
+
+    - ما الوثيقة التي يجب على الطالب تقديمها إثباتًا لسداد الرسوم؟ في FCI
+
+    '
+- intent: fci_qa_guide_70ca8a30_ar_9187ac
+  examples: '- هل توجد وحدة طبية في الأكاديمية؟ متى تعمل وما الخدمات التي تقدمها
+
+    - ممكن توضح هل توجد وحدة طبية في الأكاديمية؟ متى تعمل وما الخدمات التي تقدمها
+
+    - عايز أعرف هل توجد وحدة طبية في الأكاديمية؟ متى تعمل وما الخدمات التي تقدمها
+
+    - اشرح هل توجد وحدة طبية في الأكاديمية؟ متى تعمل وما الخدمات التي تقدمها
+
+    - اديني تفاصيل عن هل توجد وحدة طبية في الأكاديمية؟ متى تعمل وما الخدمات التي تقدمها
+
+    - هل توجد وحدة طبية في الأكاديمية؟ متى تعمل وما الخدمات التي تقدمها؟ في FCI
+
+    '
+- intent: fci_qa_guide_80351ff1_ar_1231f8
+  examples: '- ما موقع الأكاديمية الإلكتروني
+
+    - ممكن توضح ما موقع الأكاديمية الإلكتروني
+
+    - عايز أعرف ما موقع الأكاديمية الإلكتروني
+
+    - اشرح ما موقع الأكاديمية الإلكتروني
+
+    - اديني تفاصيل عن ما موقع الأكاديمية الإلكتروني
+
+    - ما موقع الأكاديمية الإلكتروني؟ في FCI
+
+    '
+- intent: fci_qa_graduation_7491f51d_ar_c2bd24
+  examples: '- من يعتمد منح درجات البكالوريوس في كلية الحاسبات والمعلومات
+
+    - ممكن توضح من يعتمد منح درجات البكالوريوس في كلية الحاسبات والمعلومات
+
+    - عايز أعرف من يعتمد منح درجات البكالوريوس في كلية الحاسبات والمعلومات
+
+    - اشرح من يعتمد منح درجات البكالوريوس في كلية الحاسبات والمعلومات
+
+    - اديني تفاصيل عن من يعتمد منح درجات البكالوريوس في كلية الحاسبات والمعلومات
+
+    - من يعتمد منح درجات البكالوريوس في كلية الحاسبات والمعلومات؟ في FCI
+
+    '
+- intent: fci_qa_guide_fb03ec94_ar_9cd56f
+  examples: '- من المسؤول عن وضع القواعد الانتقالية عند تطبيق خطط دراسية جديدة
+
+    - ممكن توضح من المسؤول عن وضع القواعد الانتقالية عند تطبيق خطط دراسية جديدة
+
+    - عايز أعرف من المسؤول عن وضع القواعد الانتقالية عند تطبيق خطط دراسية جديدة
+
+    - اشرح من المسؤول عن وضع القواعد الانتقالية عند تطبيق خطط دراسية جديدة
+
+    - اديني تفاصيل عن من المسؤول عن وضع القواعد الانتقالية عند تطبيق خطط دراسية جديدة
+
+    - من المسؤول عن وضع القواعد الانتقالية عند تطبيق خطط دراسية جديدة؟ في FCI
+
+    '
+- intent: fci_qa_change_specialization_short_ar
+  examples: '- تغيير التخصص
+
+    - تغيير المسار
+
+    - تغيير القسم
+
+    - ازاي اغير التخصص
+
+    - ممكن اغير تخصصي
+
+    - عايز اغير المسار
+
+    - قواعد تغيير التخصص
+
+    - شروط تغيير التخصص
+
+    '
+- intent: fci_qa_departments_short_ar
+  examples: '- الاقسام
+
+    - الأقسام
+
+    - اقسام الكلية
+
+    - أقسام الكلية
+
+    - التخصصات
+
+    - ما هي الاقسام
+
+    - ايه الاقسام
+
+    - ايه تخصصات الكلية
+
+    '
+- intent: fci_qa_specialization_short_ar
+  examples: '- التخصص
+
+    - نظام التخصص
+
+    - التخصص في الكلية
+
+    - متى التخصص
+
+    - امتى التخصص
+
+    - ازاي بيكون التخصص
+
+    - التخصص الرئيسي والفرعي
+
+    '
+- intent: fci_qa_change_specialization_short_en
+  examples: '- change specialization
+
+    - change major
+
+    - can i change my major
+
+    - rules for changing specialization
+
+    - how do i change my specialization
+
+    '

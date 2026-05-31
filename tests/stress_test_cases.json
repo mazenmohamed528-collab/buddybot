@@ -1,0 +1,2780 @@
+[
+  {
+    "id": "TC001",
+    "user_message": "show my GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected/current student and return GPA.",
+    "expected_response_contains": [
+      "GPA"
+    ],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC002",
+    "user_message": "what is my CGPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected/current student and return cumulative GPA.",
+    "expected_response_contains": [
+      "GPA"
+    ],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC003",
+    "user_message": "show GPA for student 2122209",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return GPA for StudentID 2122209.",
+    "expected_response_contains": [
+      "2122209"
+    ],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC004",
+    "user_message": "what is the GPA of student 2122136",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_id": [
+        "2122136"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return GPA for the given student ID.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC005",
+    "user_message": "calculate GPA for 2122248",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_id": [
+        "2122248"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return GPA for the given student ID.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC006",
+    "user_message": "what is Mazen GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Detect multiple Mazen students and ask which one.",
+    "expected_response_contains": [
+      "Which one"
+    ],
+    "session_id": "amb_mazen",
+    "pass_fail": null
+  },
+  {
+    "id": "TC007",
+    "user_message": "show Mazen Mohamed GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen Mohamed"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify if more than one Mazen Mohamed exists.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC008",
+    "user_message": "gpa for Sama",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_name": [
+        "Sama"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify which Sama because several students match.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC009",
+    "user_message": "and the gpa",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use prior selected student context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC010",
+    "user_message": "what about his cgpa",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pronoun to selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC011",
+    "user_message": "average GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return aggregate average GPA.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC012",
+    "user_message": "highest GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ],
+      "sort_order": [
+        "highest"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return highest GPA students.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC013",
+    "user_message": "lowest GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ],
+      "sort_order": [
+        "lowest"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return lowest GPA students.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC014",
+    "user_message": "show top GPA students",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ],
+      "sort_order": [
+        "top"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return top students by GPA.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC015",
+    "user_message": "average gpa by department",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA",
+        "department"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Group GPA by department.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC016",
+    "user_message": "average gpa by group",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA",
+        "group"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Group GPA by group.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC017",
+    "user_message": "can u show my gpa",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Slang version of current student GPA.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC018",
+    "user_message": "cgpa?",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete GPA follow-up should use context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC019",
+    "user_message": "grades for 2122209",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return grades for StudentID 2122209.",
+    "expected_response_contains": [
+      "2122209"
+    ],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC020",
+    "user_message": "show grades for student 2122136",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122136"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return grade rows for the student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC021",
+    "user_message": "marks of student 2122136",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122136"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return marks for the student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC022",
+    "user_message": "show marks for Mazen",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify which Mazen before returning marks.",
+    "expected_response_contains": [
+      "Which one"
+    ],
+    "session_id": "amb_grades",
+    "pass_fail": null
+  },
+  {
+    "id": "TC023",
+    "user_message": "what are Mazen grades",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify which Mazen before returning grades.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC024",
+    "user_message": "show my grades",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use current student context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC025",
+    "user_message": "what about his grades",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pronoun to selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC026",
+    "user_message": "what marks did he get",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pronoun and return marks.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC027",
+    "user_message": "result for student 2122209",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return grade result summary.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC028",
+    "user_message": "score for AI301 for student 2122209",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ],
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return one course score.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC029",
+    "user_message": "what did student 2122136 get in AI301",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122136"
+      ],
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return course mark for the given student/course.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC030",
+    "user_message": "show course marks for 2122209",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return all course marks.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC031",
+    "user_message": "grades?",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete follow-up should use selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC032",
+    "user_message": "marks plz",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Slang request should use selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC033",
+    "user_message": "show his AI301 mark",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pronoun and course code.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC034",
+    "user_message": "did she get A in database",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "course_name": [
+        "database"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pronoun and course phrase.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC035",
+    "user_message": "what courses did Mazen fail",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify which Mazen before listing failed courses.",
+    "expected_response_contains": [],
+    "session_id": "amb_fail",
+    "pass_fail": null
+  },
+  {
+    "id": "TC036",
+    "user_message": "failed courses for Mazen",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify ambiguous student name.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC037",
+    "user_message": "show failed subjects for student 2122209",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return failed courses for student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC038",
+    "user_message": "did student 2122136 fail anything",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_id": [
+        "2122136"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return failed/passed status for student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC039",
+    "user_message": "who failed Database",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "course_name": [
+        "Database"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return students who failed course phrase Database.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC040",
+    "user_message": "students who failed AI301",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return failed rows for AI301.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC041",
+    "user_message": "list failing students",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return all failing student records.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC042",
+    "user_message": "show all failed courses",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return failed course records.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC043",
+    "user_message": "what subjects did he fail",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve selected student context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC044",
+    "user_message": "show his failed courses",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve selected student context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC045",
+    "user_message": "failed marks for 2122209",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return failed marks for student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC046",
+    "user_message": "courses below pass for Mazen Mohamed",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen Mohamed"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify among matching Mazen Mohamed students.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC047",
+    "user_message": "any fails?",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete follow-up should use selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC048",
+    "user_message": "did Mazen drop below pass",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify ambiguous Mazen name.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC049",
+    "user_message": "show my schedule",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected/current student and return timetable.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC050",
+    "user_message": "what classes do I have tomorrow",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected student and tomorrow day filter.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC051",
+    "user_message": "do I have lectures tomorrow",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return tomorrow lectures for selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC052",
+    "user_message": "do i have class today",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "today"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return today's classes for selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC053",
+    "user_message": "my timetable for Sunday",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "Sunday"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return Sunday schedule for selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC054",
+    "user_message": "schedule for student 2122209",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return schedule for StudentID 2122209.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC055",
+    "user_message": "show schedule for Mazen",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify ambiguous Mazen before schedule.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC056",
+    "user_message": "what about his schedule",
+    "expected_intent": "followup_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pronoun and return schedule.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC057",
+    "user_message": "show his timetable",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve selected student and return timetable.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC058",
+    "user_message": "schedule for group AI 1",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "group_code": [
+        "AI 1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return schedule for AI group.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC059",
+    "user_message": "what is the schedule for AI 1",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "group_code": [
+        "AI 1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return schedule for AI group.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC060",
+    "user_message": "show CS1 timetable",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "group_code": [
+        "CS1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return CS1 timetable.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC061",
+    "user_message": "labs on Sunday",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "Sunday"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return lab schedule on Sunday.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC062",
+    "user_message": "show labs on Tuesday",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "Tuesday"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return labs on Tuesday.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC063",
+    "user_message": "lectures on Monday",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "Monday"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return lectures on Monday.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC064",
+    "user_message": "which room has AI301",
+    "expected_intent": "room_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return room/location for AI301.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC065",
+    "user_message": "when is Database Systems",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "course_name": [
+        "Database Systems"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return schedule for course phrase.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC066",
+    "user_message": "schedule tmrw",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Typo/slang tomorrow schedule.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC067",
+    "user_message": "class now?",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete current class query.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC068",
+    "user_message": "do we have lab sunday",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "day": [
+        "Sunday"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Lab schedule Sunday.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC069",
+    "user_message": "where is my next lecture",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected student context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC070",
+    "user_message": "same group tomorrow",
+    "expected_intent": "followup_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use previous group context and tomorrow filter.",
+    "expected_response_contains": [],
+    "session_id": "ctx_group",
+    "pass_fail": null
+  },
+  {
+    "id": "TC071",
+    "user_message": "list rooms",
+    "expected_intent": "room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC072",
+    "user_message": "show all rooms",
+    "expected_intent": "room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return all rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC073",
+    "user_message": "show labs",
+    "expected_intent": "room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return lab rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC074",
+    "user_message": "list halls",
+    "expected_intent": "room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return halls.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC075",
+    "user_message": "show classrooms",
+    "expected_intent": "room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return classrooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC076",
+    "user_message": "room capacity",
+    "expected_intent": "room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return room capacities.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC077",
+    "user_message": "capacity of Hall 3",
+    "expected_intent": "room_query",
+    "expected_entities": {
+      "room": [
+        "Hall 3"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return Hall 3 capacity.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC078",
+    "user_message": "what course is in Hall 3",
+    "expected_intent": "room_query",
+    "expected_entities": {
+      "room": [
+        "Hall 3"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return schedule for Hall 3.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC079",
+    "user_message": "classes in Lab 1",
+    "expected_intent": "room_query",
+    "expected_entities": {
+      "room": [
+        "Lab 1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return classes scheduled in Lab 1.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC080",
+    "user_message": "show room schedule for Room B1",
+    "expected_intent": "room_query",
+    "expected_entities": {
+      "room": [
+        "Room B1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return Room B1 schedule.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC081",
+    "user_message": "free rooms now",
+    "expected_intent": "free_room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return currently free rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC082",
+    "user_message": "which rooms are free now",
+    "expected_intent": "free_room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return currently free rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC083",
+    "user_message": "available rooms",
+    "expected_intent": "free_room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return available rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC084",
+    "user_message": "empty rooms",
+    "expected_intent": "free_room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return empty rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC085",
+    "user_message": "vacant labs",
+    "expected_intent": "free_room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return vacant labs.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC086",
+    "user_message": "free labs on Sunday",
+    "expected_intent": "free_room_query",
+    "expected_entities": {
+      "day": [
+        "Sunday"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return free labs on Sunday.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC087",
+    "user_message": "rooms available at 2 PM",
+    "expected_intent": "free_room_query",
+    "expected_entities": {
+      "time": [
+        "2 PM"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return rooms free at 2 PM.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC088",
+    "user_message": "free rooms tomorrow",
+    "expected_intent": "free_room_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return rooms free tomorrow.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC089",
+    "user_message": "is Hall 3 free now",
+    "expected_intent": "free_room_query",
+    "expected_entities": {
+      "room": [
+        "Hall 3"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Check Hall 3 availability.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC090",
+    "user_message": "any lab free at 10:00",
+    "expected_intent": "free_room_query",
+    "expected_entities": {
+      "time": [
+        "10:00"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return labs free at 10:00.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC091",
+    "user_message": "who teaches AI301",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructors for AI301.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC092",
+    "user_message": "who is teaching Database Systems",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_name": [
+        "Database Systems"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructor for course phrase.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC093",
+    "user_message": "instructor for AI301",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return AI301 instructor.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC094",
+    "user_message": "teacher of Machine Learning",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_name": [
+        "Machine Learning"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructor for course phrase.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC095",
+    "user_message": "which faculty teaches DBMS",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_name": [
+        "DBMS"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return DBMS instructor.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC096",
+    "user_message": "who teaches AI",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructors teaching AI courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC097",
+    "user_message": "who teaches CS courses",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "department": [
+        "CS"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructors for CS courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC098",
+    "user_message": "professor for AI301",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return professor for AI301.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC099",
+    "user_message": "faculty assigned to Natural Language Processing",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_name": [
+        "Natural Language Processing"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return NLP faculty.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC100",
+    "user_message": "list instructors",
+    "expected_intent": "instructor_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC101",
+    "user_message": "list faculty",
+    "expected_intent": "instructor_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return faculty/instructors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC102",
+    "user_message": "show professors",
+    "expected_intent": "instructor_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return professors/instructors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC103",
+    "user_message": "show all instructors",
+    "expected_intent": "instructor_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return all instructors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC104",
+    "user_message": "instructors in Software Engineering",
+    "expected_intent": "instructor_query",
+    "expected_entities": {
+      "department": [
+        "Software Engineering"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return SE instructors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC105",
+    "user_message": "who are the instructors in AI",
+    "expected_intent": "instructor_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return AI instructors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC106",
+    "user_message": "show instructor workload report",
+    "expected_intent": "instructor_query",
+    "expected_entities": {
+      "metric": [
+        "workload"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructor workload.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC107",
+    "user_message": "which instructor teaches the most courses",
+    "expected_intent": "instructor_query",
+    "expected_entities": {
+      "sort_order": [
+        "top"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return highest workload instructor.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC108",
+    "user_message": "classes taught by Yasser Salah Eldin",
+    "expected_intent": "instructor_query",
+    "expected_entities": {
+      "instructor_name": [
+        "Yasser Salah Eldin"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructor schedule/classes.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC109",
+    "user_message": "list all courses",
+    "expected_intent": "course_info_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return course list.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC110",
+    "user_message": "show courses",
+    "expected_intent": "course_info_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return course list.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC111",
+    "user_message": "list AI courses",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return AI courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC112",
+    "user_message": "list CS subjects",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "CS"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return CS courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC113",
+    "user_message": "courses for Software Engineering",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "Software Engineering"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return SE courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC114",
+    "user_message": "what courses belong to third year AI",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return third-year AI courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC115",
+    "user_message": "show year 3 semester 1 courses",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "semester": [
+        "1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return year 3 semester 1 courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC116",
+    "user_message": "credit hours for AI301",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return credit hours for AI301.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC117",
+    "user_message": "what is AI301",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return course info for AI301.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC118",
+    "user_message": "tell me about Database Systems",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "course_name": [
+        "Database Systems"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return course info for Database Systems.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC119",
+    "user_message": "course info for Machine Learning",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "course_name": [
+        "Machine Learning"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return course info for Machine Learning.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC120",
+    "user_message": "subjects in DS",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "DS"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return ISDS courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC121",
+    "user_message": "how many courses are in the database",
+    "expected_intent": "course_info_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return course count.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC122",
+    "user_message": "show general courses",
+    "expected_intent": "course_info_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return general courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC123",
+    "user_message": "show major courses",
+    "expected_intent": "course_info_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return major courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC124",
+    "user_message": "AI301 credits?",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete credit-hours query.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC125",
+    "user_message": "subjcts for AI",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should still route to courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC126",
+    "user_message": "3rd year SE subjects",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "department": [
+        "SE"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return third-year SE subjects.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC127",
+    "user_message": "list departments",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return departments.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC128",
+    "user_message": "show all departments",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return all departments.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC129",
+    "user_message": "what departments exist",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return department list.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC130",
+    "user_message": "show majors",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return majors/departments.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC131",
+    "user_message": "list majors",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return majors.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC132",
+    "user_message": "how many students are in AI",
+    "expected_intent": "department_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return AI student count.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC133",
+    "user_message": "how many students are in CS",
+    "expected_intent": "department_query",
+    "expected_entities": {
+      "department": [
+        "CS"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return CS student count.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC134",
+    "user_message": "student breakdown by department",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return department breakdown.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC135",
+    "user_message": "percentage of students by department",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return department percentages.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC136",
+    "user_message": "count students by major",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return student counts by major.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC137",
+    "user_message": "tell me about Software Engineering",
+    "expected_intent": "department_query",
+    "expected_entities": {
+      "department": [
+        "Software Engineering"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return SE department info.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC138",
+    "user_message": "show Information Systems and Data Science",
+    "expected_intent": "department_query",
+    "expected_entities": {
+      "department": [
+        "Information Systems and Data Science"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return ISDS department info.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC139",
+    "user_message": "departmnts",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should route to department list.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC140",
+    "user_message": "majors?",
+    "expected_intent": "department_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Short department query.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC141",
+    "user_message": "show reset subjects",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return reset/repeated course records or none found.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC142",
+    "user_message": "show reset courses",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return reset course records.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC143",
+    "user_message": "list reset subjects",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return reset subjects.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC144",
+    "user_message": "reset courses for student 2122209",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return reset courses for student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC145",
+    "user_message": "does Mazen have reset courses",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Clarify ambiguous Mazen before reset query.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC146",
+    "user_message": "which students have reset subjects",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return students with reset subjects.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC147",
+    "user_message": "repeated courses",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return repeated courses.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC148",
+    "user_message": "retaken subjects",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return retaken subjects.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC149",
+    "user_message": "subjects repeated by 2122136",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {
+      "student_id": [
+        "2122136"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return repeated subjects for student.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC150",
+    "user_message": "any reset?",
+    "expected_intent": "reset_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete reset query.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC151",
+    "user_message": "top students by GPA",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ],
+      "sort_order": [
+        "top"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return top GPA ranking.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC152",
+    "user_message": "highest gpa students",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return highest GPA students.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC153",
+    "user_message": "lowest gpa students",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return lowest GPA students.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC154",
+    "user_message": "average GPA by department",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return average GPA by department.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC155",
+    "user_message": "average GPA by group",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return average GPA by group.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC156",
+    "user_message": "how many students by group",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return student counts by group.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC157",
+    "user_message": "count students by department",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return student counts by department.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC158",
+    "user_message": "instructor workload",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "workload"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return workload analytics.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC159",
+    "user_message": "course statistics",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return course analytics.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC160",
+    "user_message": "department analytics",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return department analytics.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC161",
+    "user_message": "schedule conflicts",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return schedule conflict analytics if supported.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC162",
+    "user_message": "busiest instructor",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "sort_order": [
+        "top"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return instructor with highest workload.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC163",
+    "user_message": "courses with most failures",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "metric": [
+        "failures"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return failure counts by course.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC164",
+    "user_message": "students on academic warning",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return academic warning list if stored.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC165",
+    "user_message": "show top 5 students by gpa",
+    "expected_intent": "analytics_query",
+    "expected_entities": {
+      "limit": [
+        "5"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Return top 5 GPA students.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC166",
+    "user_message": "which department has the most students",
+    "expected_intent": "analytics_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Return largest department by student count.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC167",
+    "user_message": "show Mazen GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ],
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Ask which Mazen.",
+    "expected_response_contains": [
+      "Which one"
+    ],
+    "session_id": "amb_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC168",
+    "user_message": "the one in DS",
+    "expected_intent": "clarification_response",
+    "expected_entities": {
+      "group_code": [
+        "DS"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pending candidate by group and answer pending question.",
+    "expected_response_contains": [
+      "Got it"
+    ],
+    "session_id": "amb_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC169",
+    "user_message": "show his failed courses",
+    "expected_intent": "student_failed_courses_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected Mazen from previous clarification.",
+    "expected_response_contains": [],
+    "session_id": "amb_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC170",
+    "user_message": "show his schedule",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected Mazen from previous clarification.",
+    "expected_response_contains": [],
+    "session_id": "amb_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC171",
+    "user_message": "show Mazen grades",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Ask which Mazen for grades.",
+    "expected_response_contains": [
+      "Which one"
+    ],
+    "session_id": "amb_grades_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC172",
+    "user_message": "number 3",
+    "expected_intent": "clarification_response",
+    "expected_entities": {
+      "limit": [
+        "3"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve pending candidate by ordinal number.",
+    "expected_response_contains": [],
+    "session_id": "amb_grades_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC173",
+    "user_message": "what about his GPA",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected candidate from previous turn.",
+    "expected_response_contains": [],
+    "session_id": "amb_grades_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC174",
+    "user_message": "show Mazen schedule",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Ask which Mazen for schedule.",
+    "expected_response_contains": [],
+    "session_id": "amb_schedule_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC175",
+    "user_message": "student 2122323",
+    "expected_intent": "clarification_response",
+    "expected_entities": {
+      "student_id": [
+        "2122323"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Resolve by full student ID.",
+    "expected_response_contains": [],
+    "session_id": "amb_schedule_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC176",
+    "user_message": "what about his grades",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use selected student after ID resolution.",
+    "expected_response_contains": [],
+    "session_id": "amb_schedule_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC177",
+    "user_message": "first one",
+    "expected_intent": "clarification_response",
+    "expected_entities": {},
+    "expected_route": "clarification",
+    "expected_behavior": "Should only work when pending candidates exist; otherwise ask for context.",
+    "expected_response_contains": [],
+    "session_id": "no_pending",
+    "pass_fail": null
+  },
+  {
+    "id": "TC178",
+    "user_message": "the AI one",
+    "expected_intent": "clarification_response",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Resolve by department/group when pending candidates exist.",
+    "expected_response_contains": [],
+    "session_id": "amb_department_flow",
+    "pass_fail": null
+  },
+  {
+    "id": "TC179",
+    "user_message": "same group",
+    "expected_intent": "followup_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use previous group context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_group",
+    "pass_fail": null
+  },
+  {
+    "id": "TC180",
+    "user_message": "same student",
+    "expected_intent": "followup_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Use previous selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC181",
+    "user_message": "what about tomorrow",
+    "expected_intent": "followup_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Use previous schedule/group/student context plus tomorrow.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC182",
+    "user_message": "only labs",
+    "expected_intent": "followup_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Apply lab filter to previous schedule context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_group",
+    "pass_fail": null
+  },
+  {
+    "id": "TC183",
+    "user_message": "sort by highest",
+    "expected_intent": "followup_query",
+    "expected_entities": {
+      "sort_order": [
+        "highest"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Apply sort order to previous analytics context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_analytics",
+    "pass_fail": null
+  },
+  {
+    "id": "TC184",
+    "user_message": "show top 5",
+    "expected_intent": "followup_query",
+    "expected_entities": {
+      "limit": [
+        "5"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Apply limit to previous analytics context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_analytics",
+    "pass_fail": null
+  },
+  {
+    "id": "TC185",
+    "user_message": "shw my gpa",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should still route to GPA.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC186",
+    "user_message": "garde for 2122209",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {
+      "student_id": [
+        "2122209"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should still route to grades.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC187",
+    "user_message": "schedual for AI 1",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {
+      "group_code": [
+        "AI 1"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should still route to schedule.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC188",
+    "user_message": "free roms now",
+    "expected_intent": "free_room_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should still route to free rooms.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC189",
+    "user_message": "who teches AI301",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Typo should still route to course instructor.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC190",
+    "user_message": "dept students AI",
+    "expected_intent": "department_query",
+    "expected_entities": {
+      "department": [
+        "AI"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Slang department-count style query.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC191",
+    "user_message": "Mazen?",
+    "expected_intent": "student_profile_query",
+    "expected_entities": {
+      "student_name": [
+        "Mazen"
+      ]
+    },
+    "expected_route": "clarification",
+    "expected_behavior": "Incomplete ambiguous name should clarify.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC192",
+    "user_message": "AI301?",
+    "expected_intent": "course_info_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete course-code query should return course info.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC193",
+    "user_message": "tomorrow?",
+    "expected_intent": "followup_query",
+    "expected_entities": {
+      "day": [
+        "tomorrow"
+      ]
+    },
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete temporal follow-up should use context.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC194",
+    "user_message": "marks?",
+    "expected_intent": "student_grades_query",
+    "expected_entities": {},
+    "expected_route": "SQL",
+    "expected_behavior": "Incomplete marks follow-up should use selected student.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC195",
+    "user_message": "who teaches AI301 and what is it about",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_code": [
+        "AI301"
+      ]
+    },
+    "expected_route": "SQL+RAG",
+    "expected_behavior": "Use SQL for instructor and RAG/course docs for explanation.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC196",
+    "user_message": "what is my GPA and explain academic warning policy",
+    "expected_intent": "student_gpa_query",
+    "expected_entities": {
+      "metric": [
+        "GPA"
+      ]
+    },
+    "expected_route": "SQL+RAG",
+    "expected_behavior": "Use SQL for GPA and RAG for policy.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC197",
+    "user_message": "show my schedule and explain where the lab is",
+    "expected_intent": "student_schedule_query",
+    "expected_entities": {},
+    "expected_route": "SQL+RAG",
+    "expected_behavior": "Use SQL schedule plus RAG/location knowledge if available.",
+    "expected_response_contains": [],
+    "session_id": "ctx_student",
+    "pass_fail": null
+  },
+  {
+    "id": "TC198",
+    "user_message": "who teaches database and explain the course",
+    "expected_intent": "course_instructor_query",
+    "expected_entities": {
+      "course_name": [
+        "database"
+      ]
+    },
+    "expected_route": "SQL+RAG",
+    "expected_behavior": "Use SQL instructor plus RAG course explanation.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC199",
+    "user_message": "tell me about fees",
+    "expected_intent": "ask_knowledge",
+    "expected_entities": {},
+    "expected_route": "RAG",
+    "expected_behavior": "Use RAG, not SQL.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  },
+  {
+    "id": "TC200",
+    "user_message": "does the college have a library",
+    "expected_intent": "ask_knowledge",
+    "expected_entities": {},
+    "expected_route": "RAG",
+    "expected_behavior": "Use RAG knowledge base.",
+    "expected_response_contains": [],
+    "session_id": null,
+    "pass_fail": null
+  }
+]

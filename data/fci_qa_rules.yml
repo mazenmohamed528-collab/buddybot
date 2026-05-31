@@ -1,0 +1,787 @@
+﻿version: '3.1'
+rules:
+- rule: answer fci_qa_admission_requirements_admission_requirements_en_1c37b4
+  steps:
+  - intent: fci_qa_admission_requirements_admission_requirements_en_1c37b4
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_documents_required_application_en_0db160
+  steps:
+  - intent: fci_qa_admission_documents_documents_required_application_en_0db160
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_departments_available_en_ca75cf
+  steps:
+  - intent: fci_qa_departments_departments_available_en_ca75cf
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_specialization_begin_en_7a076e
+  steps:
+  - intent: fci_qa_specialization_specialization_begin_en_7a076e
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_maximum_allowed_absence_percentage_en_0e491c
+  steps:
+  - intent: fci_qa_attendance_maximum_allowed_absence_percentage_en_0e491c
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_grades_distributed_en_f17d8a
+  steps:
+  - intent: fci_qa_guide_grades_distributed_en_f17d8a
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_requirements_a83d7e85_ar_994a75
+  steps:
+  - intent: fci_qa_admission_requirements_a83d7e85_ar_994a75
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_677cb02b_ar_3ccf19
+  steps:
+  - intent: fci_qa_admission_documents_677cb02b_ar_3ccf19
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_5cf7c8ae_ar_526316
+  steps:
+  - intent: fci_qa_departments_5cf7c8ae_ar_526316
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_248d0ef1_ar_b54f75
+  steps:
+  - intent: fci_qa_specialization_248d0ef1_ar_b54f75
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_cd9a2926_ar_cd4e27
+  steps:
+  - intent: fci_qa_attendance_cd9a2926_ar_cd4e27
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_dd0f77e9_ar_36e871
+  steps:
+  - intent: fci_qa_grading_dd0f77e9_ar_36e871
+  - action: action_conversation_router
+- rule: answer fci_qa_vision_vision_en_c6887d
+  steps:
+  - intent: fci_qa_vision_vision_en_c6887d
+  - action: action_conversation_router
+- rule: answer fci_qa_mission_mission_en_0d17d2
+  steps:
+  - intent: fci_qa_mission_mission_en_0d17d2
+  - action: action_conversation_router
+- rule: answer fci_qa_goals_main_goals_list_all_en_555d93
+  steps:
+  - intent: fci_qa_goals_main_goals_list_all_en_555d93
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_under_ministry_legal_framework_sadat_en_0ce8df
+  steps:
+  - intent: fci_qa_guide_under_ministry_legal_framework_sadat_en_0ce8df
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_many_departments_have_they_en_e119a9
+  steps:
+  - intent: fci_qa_departments_many_departments_have_they_en_e119a9
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_degree_grant_en_aa8e18
+  steps:
+  - intent: fci_qa_guide_degree_grant_en_aa8e18
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_language_all_instruction_conducted_en_dee583
+  steps:
+  - intent: fci_qa_guide_language_all_instruction_conducted_en_dee583
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_must_student_choose_their_major_en_cdf978
+  steps:
+  - intent: fci_qa_specialization_must_student_choose_their_major_en_cdf978
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_can_major_minor_specializations_same_en_875f93
+  steps:
+  - intent: fci_qa_departments_can_major_minor_specializations_same_en_875f93
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_dual_specialization_bachelor_degree_can_en_a4db69
+  steps:
+  - intent: fci_qa_specialization_dual_specialization_bachelor_degree_can_en_a4db69
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_many_times_can_student_change_en_38a3d3
+  steps:
+  - intent: fci_qa_specialization_many_times_can_student_change_en_38a3d3
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_topics_covered_sciences_department_en_e76267
+  steps:
+  - intent: fci_qa_guide_topics_covered_sciences_department_en_e76267
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_focus_systems_department_en_a3998e
+  steps:
+  - intent: fci_qa_guide_focus_systems_department_en_a3998e
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_software_engineering_department_cover_en_337572
+  steps:
+  - intent: fci_qa_guide_software_engineering_department_cover_en_337572
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_request_must_made_change_specialization_en_1b5b85
+  steps:
+  - intent: fci_qa_specialization_request_must_made_change_specialization_en_1b5b85
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_secondary_school_streams_eligible_admission_en_438237
+  steps:
+  - intent: fci_qa_guide_secondary_school_streams_eligible_admission_en_438237
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_minimum_english_language_percentage_required_en_689175
+  steps:
+  - intent: fci_qa_guide_minimum_english_language_percentage_required_en_689175
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_tests_must_student_pass_admitted_en_a76e82
+  steps:
+  - intent: fci_qa_guide_tests_must_student_pass_admitted_en_a76e82
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_list_all_required_documents_application_en_73addf
+  steps:
+  - intent: fci_qa_admission_documents_list_all_required_documents_application_en_73addf
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_within_long_must_original_documents_en_835915
+  steps:
+  - intent: fci_qa_admission_documents_within_long_must_original_documents_en_835915
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_steps_admission_process_en_a5004c
+  steps:
+  - intent: fci_qa_guide_steps_admission_process_en_a5004c
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_transfer_conditions_from_equivalent_en_992d9a
+  steps:
+  - intent: fci_qa_transfer_transfer_conditions_from_equivalent_en_992d9a
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_transfer_conditions_from_non_equivalent_en_294276
+  steps:
+  - intent: fci_qa_transfer_transfer_conditions_from_non_equivalent_en_294276
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_can_student_was_permanently_expelled_en_56daa6
+  steps:
+  - intent: fci_qa_guide_can_student_was_permanently_expelled_en_56daa6
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_must_transfer_student_have_had_en_5b6fd7
+  steps:
+  - intent: fci_qa_transfer_must_transfer_student_have_had_en_5b6fd7
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_many_total_credit_hours_required_en_8fec8b
+  steps:
+  - intent: fci_qa_graduation_many_total_credit_hours_required_en_8fec8b
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_144_credit_hours_distributed_across_en_9d85fd
+  steps:
+  - intent: fci_qa_guide_144_credit_hours_distributed_across_en_9d85fd
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_many_years_semesters_bachelor_program_en_31cd45
+  steps:
+  - intent: fci_qa_graduation_many_years_semesters_bachelor_program_en_31cd45
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_long_each_academic_semester_en_88e911
+  steps:
+  - intent: fci_qa_guide_long_each_academic_semester_en_88e911
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_specialization_start_years_shared_all_en_e424a0
+  steps:
+  - intent: fci_qa_specialization_specialization_start_years_shared_all_en_e424a0
+  - action: action_conversation_router
+- rule: answer fci_qa_study_system_credit_hour_ranges_define_each_en_b517af
+  steps:
+  - intent: fci_qa_study_system_credit_hour_ranges_define_each_en_b517af
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_can_student_take_extra_courses_en_a9a828
+  steps:
+  - intent: fci_qa_graduation_can_student_take_extra_courses_en_a9a828
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_graduation_project_requirement_year_students_en_993a73
+  steps:
+  - intent: fci_qa_graduation_graduation_project_requirement_year_students_en_993a73
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_practical_training_required_graduation_en_187817
+  steps:
+  - intent: fci_qa_graduation_practical_training_required_graduation_en_187817
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_hybrid_education_system_applied_en_f1694a
+  steps:
+  - intent: fci_qa_guide_hybrid_education_system_applied_en_f1694a
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_graduation_ceremonies_held_each_academic_en_06c58f
+  steps:
+  - intent: fci_qa_graduation_graduation_ceremonies_held_each_academic_en_06c58f
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_academic_advisors_their_role_en_234ee4
+  steps:
+  - intent: fci_qa_guide_academic_advisors_their_role_en_234ee4
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_course_registration_begin_each_semester_en_7a9c4b
+  steps:
+  - intent: fci_qa_registration_course_registration_begin_each_semester_en_7a9c4b
+  - action: action_conversation_router
+- rule: answer fci_qa_study_system_minimum_credit_hour_load_per_en_01ee12
+  steps:
+  - intent: fci_qa_study_system_minimum_credit_hour_load_per_en_01ee12
+  - action: action_conversation_router
+- rule: answer fci_qa_study_system_maximum_credit_hour_load_per_en_8ba205
+  steps:
+  - intent: fci_qa_study_system_maximum_credit_hour_load_per_en_8ba205
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_many_courses_can_student_register_en_85d8c0
+  steps:
+  - intent: fci_qa_registration_many_courses_can_student_register_en_85d8c0
+  - action: action_conversation_router
+- rule: answer fci_qa_add_drop_many_courses_can_student_add_en_94829e
+  steps:
+  - intent: fci_qa_add_drop_many_courses_can_student_add_en_94829e
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_notation_recorded_student_withdraws_after_en_e9ede9
+  steps:
+  - intent: fci_qa_guide_notation_recorded_student_withdraws_after_en_e9ede9
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_sets_registration_plan_procedures_before_en_b05dcc
+  steps:
+  - intent: fci_qa_registration_sets_registration_plan_procedures_before_en_b05dcc
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_maximum_allowed_absence_rate_per_en_30c8ab
+  steps:
+  - intent: fci_qa_attendance_maximum_allowed_absence_rate_per_en_30c8ab
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_consequences_exceeding_absence_rate_en_ce38b7
+  steps:
+  - intent: fci_qa_attendance_consequences_exceeding_absence_rate_en_ce38b7
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_grade_student_receive_their_excess_en_f12716
+  steps:
+  - intent: fci_qa_attendance_grade_student_receive_their_excess_en_f12716
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_must_students_they_absent_from_en_fc18e5
+  steps:
+  - intent: fci_qa_attendance_must_students_they_absent_from_en_fc18e5
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_students_national_patriotic_duties_exempt_en_2b7a8d
+  steps:
+  - intent: fci_qa_attendance_students_national_patriotic_duties_exempt_en_2b7a8d
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_exam_arrangement_made_students_national_en_484caa
+  steps:
+  - intent: fci_qa_exams_exam_arrangement_made_students_national_en_484caa
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_midterm_exam_held_each_semester_en_f35e57
+  steps:
+  - intent: fci_qa_exams_midterm_exam_held_each_semester_en_f35e57
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_final_exam_held_en_e4ac70
+  steps:
+  - intent: fci_qa_exams_final_exam_held_en_e4ac70
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_long_each_midterm_final_exam_en_cb4080
+  steps:
+  - intent: fci_qa_exams_long_each_midterm_final_exam_en_cb4080
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_total_grade_100_distributed_per_en_418384
+  steps:
+  - intent: fci_qa_grading_total_grade_100_distributed_per_en_418384
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_complete_course_level_grading_scale_en_1f7f09
+  steps:
+  - intent: fci_qa_grading_complete_course_level_grading_scale_en_1f7f09
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_cumulative_annual_gpa_grading_scale_en_487916
+  steps:
+  - intent: fci_qa_grading_cumulative_annual_gpa_grading_scale_en_487916
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_formula_annual_gpa_en_c84d62
+  steps:
+  - intent: fci_qa_grading_formula_annual_gpa_en_c84d62
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_happens_student_fails_mandatory_course_en_f5ebf9
+  steps:
+  - intent: fci_qa_guide_happens_student_fails_mandatory_course_en_f5ebf9
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_honors_distinction_requirement_graduation_en_f79579
+  steps:
+  - intent: fci_qa_graduation_honors_distinction_requirement_graduation_en_f79579
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_incomplete_grade_mean_must_resolved_en_2c73df
+  steps:
+  - intent: fci_qa_grading_incomplete_grade_mean_must_resolved_en_2c73df
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_happens_student_absent_from_final_en_e2138a
+  steps:
+  - intent: fci_qa_attendance_happens_student_absent_from_final_en_e2138a
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_exam_results_officially_approved_announced_en_265466
+  steps:
+  - intent: fci_qa_exams_exam_results_officially_approved_announced_en_265466
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_electronic_online_examination_allowed_en_31eeaf
+  steps:
+  - intent: fci_qa_guide_electronic_online_examination_allowed_en_31eeaf
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_grade_student_receive_absent_from_en_2ab96d
+  steps:
+  - intent: fci_qa_attendance_grade_student_receive_absent_from_en_2ab96d
+  - action: action_conversation_router
+- rule: answer fci_qa_academic_warning_student_receive_academic_warning_en_0c0a99
+  steps:
+  - intent: fci_qa_academic_warning_student_receive_academic_warning_en_0c0a99
+  - action: action_conversation_router
+- rule: answer fci_qa_academic_warning_long_student_have_clear_academic_en_7ef134
+  steps:
+  - intent: fci_qa_academic_warning_long_student_have_clear_academic_en_7ef134
+  - action: action_conversation_router
+- rule: answer fci_qa_academic_warning_happens_student_cannot_clear_academic_en_bbfe07
+  steps:
+  - intent: fci_qa_academic_warning_happens_student_cannot_clear_academic_en_bbfe07
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_can_student_academic_warning_change_en_bbb10d
+  steps:
+  - intent: fci_qa_specialization_can_student_academic_warning_change_en_bbb10d
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_registration_suspension_enrollment_freeze_its_en_9f0e62
+  steps:
+  - intent: fci_qa_registration_registration_suspension_enrollment_freeze_its_en_9f0e62
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_maximum_total_registration_suspension_allowed_en_80528e
+  steps:
+  - intent: fci_qa_registration_maximum_total_registration_suspension_allowed_en_80528e
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_registration_suspension_count_toward_allowed_en_d71489
+  steps:
+  - intent: fci_qa_graduation_registration_suspension_count_toward_allowed_en_d71489
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_suspension_happens_student_excuse_suspension_not_en_3f915c
+  steps:
+  - intent: fci_qa_registration_suspension_happens_student_excuse_suspension_not_en_3f915c
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_student_excused_absence_accepted_they_en_8c0ad4
+  steps:
+  - intent: fci_qa_attendance_student_excused_absence_accepted_they_en_8c0ad4
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_law_governs_student_discipline_en_73fd62
+  steps:
+  - intent: fci_qa_discipline_law_governs_student_discipline_en_73fd62
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_actions_considered_disciplinary_violations_en_7e9777
+  steps:
+  - intent: fci_qa_discipline_actions_considered_disciplinary_violations_en_7e9777
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_happens_student_caught_cheating_during_en_edf605
+  steps:
+  - intent: fci_qa_exams_happens_student_caught_cheating_during_en_edf605
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_list_all_disciplinary_penalties_order_en_9c6321
+  steps:
+  - intent: fci_qa_discipline_list_all_disciplinary_penalties_order_en_9c6321
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_consequences_permanent_expulsion_from_university_en_4dc824
+  steps:
+  - intent: fci_qa_guide_consequences_permanent_expulsion_from_university_en_4dc824
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_disciplinary_decisions_recorded_notified_en_294b69
+  steps:
+  - intent: fci_qa_guide_disciplinary_decisions_recorded_notified_en_294b69
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_sets_tuition_fees_en_2a4a77
+  steps:
+  - intent: fci_qa_fees_sets_tuition_fees_en_2a4a77
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_within_long_must_tuition_fees_en_12cccd
+  steps:
+  - intent: fci_qa_fees_within_long_must_tuition_fees_en_12cccd
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_application_exam_fees_refundable_en_1dbb4a
+  steps:
+  - intent: fci_qa_admission_documents_application_exam_fees_refundable_en_1dbb4a
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_percentage_tuition_refunded_within_weeks_en_e9e334
+  steps:
+  - intent: fci_qa_fees_percentage_tuition_refunded_within_weeks_en_e9e334
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_percentage_tuition_refunded_after_weeks_en_672e65
+  steps:
+  - intent: fci_qa_exams_percentage_tuition_refunded_after_weeks_en_672e65
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_can_tuition_fees_refunded_after_en_275199
+  steps:
+  - intent: fci_qa_exams_can_tuition_fees_refunded_after_en_275199
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_document_must_student_present_proof_en_b09346
+  steps:
+  - intent: fci_qa_fees_document_must_student_present_proof_en_b09346
+  - action: action_conversation_router
+- rule: answer fci_qa_medical_have_medical_unit_operate_services_en_f75a7c
+  steps:
+  - intent: fci_qa_medical_have_medical_unit_operate_services_en_f75a7c
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_academy_website_en_749c68
+  steps:
+  - intent: fci_qa_guide_academy_website_en_749c68
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_approves_granting_bachelor_degrees_en_2af989
+  steps:
+  - intent: fci_qa_graduation_approves_granting_bachelor_degrees_en_2af989
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_responsible_setting_transitional_rules_new_en_aff66c
+  steps:
+  - intent: fci_qa_departments_responsible_setting_transitional_rules_new_en_aff66c
+  - action: action_conversation_router
+- rule: answer fci_qa_vision_0fc2872b_ar_2078e1
+  steps:
+  - intent: fci_qa_vision_0fc2872b_ar_2078e1
+  - action: action_conversation_router
+- rule: answer fci_qa_mission_23253a33_ar_ff7b5b
+  steps:
+  - intent: fci_qa_mission_23253a33_ar_ff7b5b
+  - action: action_conversation_router
+- rule: answer fci_qa_goals_3c55a2e5_ar_ac894f
+  steps:
+  - intent: fci_qa_goals_3c55a2e5_ar_ac894f
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_601cbeac_ar_7c6594
+  steps:
+  - intent: fci_qa_guide_601cbeac_ar_7c6594
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_bfbecf4f_ar_baf29a
+  steps:
+  - intent: fci_qa_departments_bfbecf4f_ar_baf29a
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_ce20edf1_ar_0b0a28
+  steps:
+  - intent: fci_qa_guide_ce20edf1_ar_0b0a28
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_0b520edd_ar_55e5f7
+  steps:
+  - intent: fci_qa_guide_0b520edd_ar_55e5f7
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_057c18fb_ar_b17c85
+  steps:
+  - intent: fci_qa_specialization_057c18fb_ar_b17c85
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_78fe3713_ar_243dd0
+  steps:
+  - intent: fci_qa_specialization_78fe3713_ar_243dd0
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_5a1e7492_ar_5edacd
+  steps:
+  - intent: fci_qa_specialization_5a1e7492_ar_5edacd
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_170e426a_ar_9cde2b
+  steps:
+  - intent: fci_qa_specialization_170e426a_ar_9cde2b
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_141796f7_ar_0b4152
+  steps:
+  - intent: fci_qa_guide_141796f7_ar_0b4152
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_c7fe361a_ar_e55039
+  steps:
+  - intent: fci_qa_guide_c7fe361a_ar_e55039
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_458f38d8_ar_85477c
+  steps:
+  - intent: fci_qa_guide_458f38d8_ar_85477c
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_81f9f633_ar_f73c4c
+  steps:
+  - intent: fci_qa_specialization_81f9f633_ar_f73c4c
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_bd25dd05_ar_f85bda
+  steps:
+  - intent: fci_qa_guide_bd25dd05_ar_f85bda
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_c65a6bc1_ar_c88f11
+  steps:
+  - intent: fci_qa_guide_c65a6bc1_ar_c88f11
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_7b053824_ar_1bc538
+  steps:
+  - intent: fci_qa_guide_7b053824_ar_1bc538
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_fe41609f_ar_08cd1c
+  steps:
+  - intent: fci_qa_admission_documents_fe41609f_ar_08cd1c
+  - action: action_conversation_router
+- rule: answer fci_qa_admission_documents_53d26911_ar_d19497
+  steps:
+  - intent: fci_qa_admission_documents_53d26911_ar_d19497
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_a62f00f3_ar_861c2e
+  steps:
+  - intent: fci_qa_guide_a62f00f3_ar_861c2e
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_6e35bba3_ar_37e7f7
+  steps:
+  - intent: fci_qa_transfer_6e35bba3_ar_37e7f7
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_6390d1c5_ar_e54399
+  steps:
+  - intent: fci_qa_transfer_6390d1c5_ar_e54399
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_c92e1ae6_ar_9d5629
+  steps:
+  - intent: fci_qa_transfer_c92e1ae6_ar_9d5629
+  - action: action_conversation_router
+- rule: answer fci_qa_transfer_417f4d6e_ar_279348
+  steps:
+  - intent: fci_qa_transfer_417f4d6e_ar_279348
+  - action: action_conversation_router
+- rule: answer fci_qa_study_system_b24d7e6f_ar_ca9710
+  steps:
+  - intent: fci_qa_study_system_b24d7e6f_ar_ca9710
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_205d5eca_ar_ba4711
+  steps:
+  - intent: fci_qa_guide_205d5eca_ar_ba4711
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_cb4b28db_ar_e42a0e
+  steps:
+  - intent: fci_qa_graduation_cb4b28db_ar_e42a0e
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_0bb4693f_ar_6f4f46
+  steps:
+  - intent: fci_qa_guide_0bb4693f_ar_6f4f46
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_72666783_ar_1f2aa8
+  steps:
+  - intent: fci_qa_specialization_72666783_ar_1f2aa8
+  - action: action_conversation_router
+- rule: answer fci_qa_study_system_ee166c8f_ar_a6d5dc
+  steps:
+  - intent: fci_qa_study_system_ee166c8f_ar_a6d5dc
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_13424d0c_ar_70e867
+  steps:
+  - intent: fci_qa_graduation_13424d0c_ar_70e867
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_0f401897_ar_fffda5
+  steps:
+  - intent: fci_qa_graduation_0f401897_ar_fffda5
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_3404e10c_ar_badd95
+  steps:
+  - intent: fci_qa_graduation_3404e10c_ar_badd95
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_44afcb95_ar_bd726c
+  steps:
+  - intent: fci_qa_guide_44afcb95_ar_bd726c
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_5bca3368_ar_dd0088
+  steps:
+  - intent: fci_qa_graduation_5bca3368_ar_dd0088
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_4ba13fe7_ar_0edf2e
+  steps:
+  - intent: fci_qa_guide_4ba13fe7_ar_0edf2e
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_1fe9e497_ar_3c629f
+  steps:
+  - intent: fci_qa_registration_1fe9e497_ar_3c629f
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_db7a476a_ar_590afb
+  steps:
+  - intent: fci_qa_guide_db7a476a_ar_590afb
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_97f79660_ar_3cb19b
+  steps:
+  - intent: fci_qa_guide_97f79660_ar_3cb19b
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_d58f5e09_ar_1f8438
+  steps:
+  - intent: fci_qa_registration_d58f5e09_ar_1f8438
+  - action: action_conversation_router
+- rule: answer fci_qa_add_drop_b837e065_ar_ec44ac
+  steps:
+  - intent: fci_qa_add_drop_b837e065_ar_ec44ac
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_b822ca70_ar_5b765c
+  steps:
+  - intent: fci_qa_exams_b822ca70_ar_5b765c
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_eef8482b_ar_85101b
+  steps:
+  - intent: fci_qa_registration_eef8482b_ar_85101b
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_bf1a93a3_ar_c38740
+  steps:
+  - intent: fci_qa_attendance_bf1a93a3_ar_c38740
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_9b30240d_ar_db0bd2
+  steps:
+  - intent: fci_qa_attendance_9b30240d_ar_db0bd2
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_a0f77888_ar_f686ca
+  steps:
+  - intent: fci_qa_attendance_a0f77888_ar_f686ca
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_93ed2a9f_ar_fb64b0
+  steps:
+  - intent: fci_qa_attendance_93ed2a9f_ar_fb64b0
+  - action: action_conversation_router
+- rule: answer fci_qa_attendance_62dea312_ar_31017d
+  steps:
+  - intent: fci_qa_attendance_62dea312_ar_31017d
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_aee3a74e_ar_d65c47
+  steps:
+  - intent: fci_qa_exams_aee3a74e_ar_d65c47
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_4b78c0e1_ar_5b9552
+  steps:
+  - intent: fci_qa_guide_4b78c0e1_ar_5b9552
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_f59fa303_ar_4ee44c
+  steps:
+  - intent: fci_qa_guide_f59fa303_ar_4ee44c
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_55130e95_ar_8c243f
+  steps:
+  - intent: fci_qa_guide_55130e95_ar_8c243f
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_eae84880_ar_b0cceb
+  steps:
+  - intent: fci_qa_guide_eae84880_ar_b0cceb
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_dc5310f7_ar_313e40
+  steps:
+  - intent: fci_qa_grading_dc5310f7_ar_313e40
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_1099686d_ar_60aecd
+  steps:
+  - intent: fci_qa_grading_1099686d_ar_60aecd
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_e92ccfa5_ar_f6ef42
+  steps:
+  - intent: fci_qa_grading_e92ccfa5_ar_f6ef42
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_cbf9df8b_ar_80bf5a
+  steps:
+  - intent: fci_qa_guide_cbf9df8b_ar_80bf5a
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_ebb125ec_ar_3cb7b6
+  steps:
+  - intent: fci_qa_graduation_ebb125ec_ar_3cb7b6
+  - action: action_conversation_router
+- rule: answer fci_qa_grading_41780493_ar_978211
+  steps:
+  - intent: fci_qa_grading_41780493_ar_978211
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_9657c71b_ar_d70789
+  steps:
+  - intent: fci_qa_exams_9657c71b_ar_d70789
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_8e6d3d53_ar_91a55b
+  steps:
+  - intent: fci_qa_exams_8e6d3d53_ar_91a55b
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_54317f8d_ar_69cd16
+  steps:
+  - intent: fci_qa_exams_54317f8d_ar_69cd16
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_c24c9c9c_ar_212e79
+  steps:
+  - intent: fci_qa_exams_c24c9c9c_ar_212e79
+  - action: action_conversation_router
+- rule: answer fci_qa_academic_warning_5808fe15_ar_e7c4b1
+  steps:
+  - intent: fci_qa_academic_warning_5808fe15_ar_e7c4b1
+  - action: action_conversation_router
+- rule: answer fci_qa_academic_warning_5795f97d_ar_23414f
+  steps:
+  - intent: fci_qa_academic_warning_5795f97d_ar_23414f
+  - action: action_conversation_router
+- rule: answer fci_qa_academic_warning_6b1322e6_ar_becfa2
+  steps:
+  - intent: fci_qa_academic_warning_6b1322e6_ar_becfa2
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_2f582eda_ar_c1721f
+  steps:
+  - intent: fci_qa_specialization_2f582eda_ar_c1721f
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_69b2ea36_ar_b848f2
+  steps:
+  - intent: fci_qa_registration_69b2ea36_ar_b848f2
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_af46bc8f_ar_0e9fba
+  steps:
+  - intent: fci_qa_registration_af46bc8f_ar_0e9fba
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_551d2935_ar_92b703
+  steps:
+  - intent: fci_qa_registration_551d2935_ar_92b703
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_4afe799f_ar_b2a8a6
+  steps:
+  - intent: fci_qa_registration_4afe799f_ar_b2a8a6
+  - action: action_conversation_router
+- rule: answer fci_qa_registration_9ddb169f_ar_fb4104
+  steps:
+  - intent: fci_qa_registration_9ddb169f_ar_fb4104
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_2ecc39cd_ar_ebf61d
+  steps:
+  - intent: fci_qa_discipline_2ecc39cd_ar_ebf61d
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_f49bd90e_ar_431f03
+  steps:
+  - intent: fci_qa_discipline_f49bd90e_ar_431f03
+  - action: action_conversation_router
+- rule: answer fci_qa_exams_80c1b510_ar_47cd63
+  steps:
+  - intent: fci_qa_exams_80c1b510_ar_47cd63
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_33953da8_ar_e93944
+  steps:
+  - intent: fci_qa_discipline_33953da8_ar_e93944
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_7f89f460_ar_eeeb8a
+  steps:
+  - intent: fci_qa_guide_7f89f460_ar_eeeb8a
+  - action: action_conversation_router
+- rule: answer fci_qa_discipline_bb5db20b_ar_a60421
+  steps:
+  - intent: fci_qa_discipline_bb5db20b_ar_a60421
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_a0feb44b_ar_d01f46
+  steps:
+  - intent: fci_qa_fees_a0feb44b_ar_d01f46
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_00261cc3_ar_51ed7e
+  steps:
+  - intent: fci_qa_fees_00261cc3_ar_51ed7e
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_bfcdd912_ar_20ac14
+  steps:
+  - intent: fci_qa_fees_bfcdd912_ar_20ac14
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_0abe4584_ar_f0da42
+  steps:
+  - intent: fci_qa_fees_0abe4584_ar_f0da42
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_982b4221_ar_eaf644
+  steps:
+  - intent: fci_qa_fees_982b4221_ar_eaf644
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_e83d2560_ar_829569
+  steps:
+  - intent: fci_qa_fees_e83d2560_ar_829569
+  - action: action_conversation_router
+- rule: answer fci_qa_fees_e9a18bf3_ar_aa14d4
+  steps:
+  - intent: fci_qa_fees_e9a18bf3_ar_aa14d4
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_70ca8a30_ar_9187ac
+  steps:
+  - intent: fci_qa_guide_70ca8a30_ar_9187ac
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_80351ff1_ar_1231f8
+  steps:
+  - intent: fci_qa_guide_80351ff1_ar_1231f8
+  - action: action_conversation_router
+- rule: answer fci_qa_graduation_7491f51d_ar_c2bd24
+  steps:
+  - intent: fci_qa_graduation_7491f51d_ar_c2bd24
+  - action: action_conversation_router
+- rule: answer fci_qa_guide_fb03ec94_ar_9cd56f
+  steps:
+  - intent: fci_qa_guide_fb03ec94_ar_9cd56f
+  - action: action_conversation_router
+- rule: answer fci_qa_change_specialization_short_ar
+  steps:
+  - intent: fci_qa_change_specialization_short_ar
+  - action: action_conversation_router
+- rule: answer fci_qa_departments_short_ar
+  steps:
+  - intent: fci_qa_departments_short_ar
+  - action: action_conversation_router
+- rule: answer fci_qa_specialization_short_ar
+  steps:
+  - intent: fci_qa_specialization_short_ar
+  - action: action_conversation_router
+- rule: answer fci_qa_change_specialization_short_en
+  steps:
+  - intent: fci_qa_change_specialization_short_en
+  - action: action_conversation_router
+

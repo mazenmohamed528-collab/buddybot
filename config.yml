@@ -1,0 +1,34 @@
+# The config recipe.
+# https://rasa.com/docs/rasa/model-configuration/
+recipe: default.v1
+
+# The assistant project unique identifier
+# This default value must be replaced with a unique assistant name within your deployment
+assistant_id: 20260406-001710-principal-mole
+
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: en
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+    min_ngram: 1
+    max_ngram: 2
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 2
+    max_ngram: 5
+  - name: DIETClassifier
+    epochs: 100
+    constrain_similarities: true
+  - name: EntitySynonymMapper
+  - name: FallbackClassifier
+    threshold: 0.55
+    ambiguity_threshold: 0.1
+
+policies:
+  - name: RulePolicy
+  - name: MemoizationPolicy

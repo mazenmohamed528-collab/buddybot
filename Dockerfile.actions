@@ -1,0 +1,16 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gcc g++ unixodbc unixodbc-dev curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY actions/ actions/
+
+EXPOSE 5055
+
+CMD ["sh", "-c", "python -m rasa_sdk --actions actions --port ${PORT:-5055}"]

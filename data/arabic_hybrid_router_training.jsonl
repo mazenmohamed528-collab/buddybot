@@ -1,0 +1,244 @@
+{"text": "هات طلبة الداتا ساينس", "label": "structured_sql"}
+{"text": "اعرض طلاب علم البيانات", "label": "structured_sql"}
+{"text": "عايز كل الطلبة في هندسة البرمجيات", "label": "structured_sql"}
+{"text": "كام طالب في الذكاء الاصطناعي", "label": "structured_sql"}
+{"text": "جدول سنة رابعة داتا ساينس ترم تاني السبت", "label": "structured_sql"}
+{"text": "جدول AI 1", "label": "structured_sql"}
+{"text": "محاضرات داتا ساينس يوم السبت", "label": "structured_sql"}
+{"text": "مين بيدرس AI301", "label": "structured_sql"}
+{"text": "مين دكتور مادة Machine Learning", "label": "structured_sql"}
+{"text": "مواد قسم الذكاء الاصطناعي", "label": "structured_sql"}
+{"text": "مقررات سنة تالتة AI", "label": "structured_sql"}
+{"text": "درجات الطالب 2122209", "label": "structured_sql"}
+{"text": "معدل الطالب 2122209", "label": "structured_sql"}
+{"text": "gpa بتاع الطالب 2122209", "label": "structured_sql"}
+{"text": "الطالب اللي كوده 209", "label": "structured_sql"}
+{"text": "هات جدول الطالب ده", "label": "structured_sql"}
+{"text": "القاعات الفاضية دلوقتي", "label": "structured_sql"}
+{"text": "مين الطلبة اللي رسبوا في Database", "label": "structured_sql"}
+{"text": "show students in data science", "label": "structured_sql"}
+{"text": "students in software engineering", "label": "structured_sql"}
+{"text": "what's data science", "label": "educational_rag"}
+{"text": "ايه هو علم البيانات", "label": "educational_rag"}
+{"text": "اشرح الداتا ساينس ببساطة", "label": "educational_rag"}
+{"text": "tell me about software engineering", "label": "educational_rag"}
+{"text": "ايه قسم هندسة البرمجيات", "label": "educational_rag"}
+{"text": "اشرح قسم علوم الحاسب", "label": "educational_rag"}
+{"text": "ما هو الذكاء الاصطناعي", "label": "educational_rag"}
+{"text": "ايه الفرق بين AI و Data Science", "label": "educational_rag"}
+{"text": "شرح الامن السيبراني", "label": "educational_rag"}
+{"text": "ايه نظم المعلومات", "label": "educational_rag"}
+{"text": "ما هي اقسام الكلية", "label": "educational_rag"}
+{"text": "هات التخصصات الموجودة", "label": "educational_rag"}
+{"text": "give me the majors", "label": "educational_rag"}
+{"text": "roadmap للداتا ساينس", "label": "educational_rag"}
+{"text": "ايه المهارات المطلوبة للذكاء الاصطناعي", "label": "educational_rag"}
+{"text": "ادرس ايه عشان ابقى backend", "label": "educational_rag"}
+{"text": "what is Docker", "label": "educational_rag"}
+{"text": "اشرح GitHub", "label": "educational_rag"}
+{"text": "الغياب", "label": "policy_rag"}
+{"text": "الحضور والغياب", "label": "policy_rag"}
+{"text": "ايه سياسة الغياب", "label": "policy_rag"}
+{"text": "نظام الانذار الاكاديمي", "label": "policy_rag"}
+{"text": "ايه الانذار الاكاديمي", "label": "policy_rag"}
+{"text": "نظام الساعات المعتمدة", "label": "policy_rag"}
+{"text": "شرح نظام المعدل التراكمي", "label": "policy_rag"}
+{"text": "قواعد الانسحاب", "label": "policy_rag"}
+{"text": "الحذف والاضافة", "label": "policy_rag"}
+{"text": "شروط القبول في الكلية", "label": "policy_rag"}
+{"text": "الرسوم الدراسية", "label": "policy_rag"}
+{"text": "نظام التأديب", "label": "policy_rag"}
+{"text": "مرتبة الشرف شروطها ايه", "label": "policy_rag"}
+{"text": "attendance policy", "label": "policy_rag"}
+{"text": "academic warning rules", "label": "policy_rag"}
+{"text": "credit hours system", "label": "policy_rag"}
+{"text": "ابعتلي ملف الجدول", "label": "file_retrieval"}
+{"text": "عايز pdf الجدول", "label": "file_retrieval"}
+{"text": "send schedule pdf", "label": "file_retrieval"}
+{"text": "هات جدول الترم التاني كملف", "label": "file_retrieval"}
+{"text": "download official schedule", "label": "file_retrieval"}
+{"text": "وريني دليل الطالب pdf", "label": "file_retrieval"}
+{"text": "ابعت ملف اللائحة", "label": "file_retrieval"}
+{"text": "show it as a file", "label": "file_retrieval"}
+{"text": "اهلا", "label": "conversational"}
+{"text": "ازيك", "label": "conversational"}
+{"text": "شكرا", "label": "conversational"}
+{"text": "تمام", "label": "conversational"}
+{"text": "مش فاهم", "label": "conversational"}
+{"text": "ساعدني اذاكر", "label": "conversational"}
+{"text": "انا متوتر من الامتحانات", "label": "conversational"}
+{"text": "bye", "label": "conversational"}
+{"text": "رقم 3", "label": "clarification"}
+{"text": "التالت", "label": "clarification"}
+{"text": "اللي في DS", "label": "clarification"}
+{"text": "اختار الطالب 2122209", "label": "clarification"}
+{"text": "the one in data science", "label": "clarification"}
+{"text": "number 2", "label": "clarification"}
+{"text": "what departments does the college have?", "label": "educational_rag"}
+{"text": "what are the available specializations?", "label": "educational_rag"}
+{"text": "tell me about the college departments", "label": "educational_rag"}
+{"text": "what majors are offered?", "label": "educational_rag"}
+{"text": "what can I study at the college?", "label": "educational_rag"}
+{"text": "available programs in the college", "label": "educational_rag"}
+{"text": "list all departments", "label": "educational_rag"}
+{"text": "ايه الاقسام الموجودة في الكلية؟", "label": "educational_rag"}
+{"text": "ايه التخصصات المتاحة؟", "label": "educational_rag"}
+{"text": "عايز اعرف اقسام الكلية", "label": "educational_rag"}
+{"text": "فيه ايه تخصصات في الكلية؟", "label": "educational_rag"}
+{"text": "التخصصات الموجودة ايه؟", "label": "educational_rag"}
+{"text": "what is the software engineering department?", "label": "educational_rag"}
+{"text": "software engineering specialization details", "label": "educational_rag"}
+{"text": "what do software engineering students study?", "label": "educational_rag"}
+{"text": "هندسة البرمجيات ايه هي؟", "label": "educational_rag"}
+{"text": "عايز اعرف عن قسم هندسة البرمجيات", "label": "educational_rag"}
+{"text": "ايه اللي بيدرسوه في هندسة البرمجيات؟", "label": "educational_rag"}
+{"text": "تخصص هندسة البرمجيات بيدرس ايه؟", "label": "educational_rag"}
+{"text": "what is the information systems department?", "label": "educational_rag"}
+{"text": "information systems specialization details", "label": "educational_rag"}
+{"text": "what do information systems students study?", "label": "educational_rag"}
+{"text": "نظم المعلومات ايه هي؟", "label": "educational_rag"}
+{"text": "عايز اعرف عن قسم نظم المعلومات", "label": "educational_rag"}
+{"text": "ايه اللي بيدرسوه في نظم المعلومات؟", "label": "educational_rag"}
+{"text": "تخصص نظم المعلومات بيدرس ايه؟", "label": "educational_rag"}
+{"text": "what is the computer science department?", "label": "educational_rag"}
+{"text": "computer science specialization details", "label": "educational_rag"}
+{"text": "what do computer science students study?", "label": "educational_rag"}
+{"text": "علوم الحاسب ايه هي؟", "label": "educational_rag"}
+{"text": "عايز اعرف عن قسم علوم الحاسب", "label": "educational_rag"}
+{"text": "ايه اللي بيدرسوه في علوم الحاسب؟", "label": "educational_rag"}
+{"text": "تخصص علوم الحاسب بيدرس ايه؟", "label": "educational_rag"}
+{"text": "what documents are needed for admission?", "label": "policy_rag"}
+{"text": "what papers do I need to apply?", "label": "policy_rag"}
+{"text": "required documents for enrollment", "label": "policy_rag"}
+{"text": "what certificates are needed to apply?", "label": "policy_rag"}
+{"text": "ايه الأوراق المطلوبة للالتحاق بالكلية؟", "label": "policy_rag"}
+{"text": "محتاج ايه عشان اتسجل؟", "label": "policy_rag"}
+{"text": "ايه الوثائق المطلوبة للقبول؟", "label": "policy_rag"}
+{"text": "الأوراق المطلوبة للتسجيل ايه؟", "label": "policy_rag"}
+{"text": "what are the admission requirements?", "label": "policy_rag"}
+{"text": "what are the conditions to join the college?", "label": "policy_rag"}
+{"text": "minimum score required for admission", "label": "policy_rag"}
+{"text": "English language requirement for admission", "label": "policy_rag"}
+{"text": "is there an aptitude test for admission?", "label": "policy_rag"}
+{"text": "ايه شروط الالتحاق بالكلية؟", "label": "policy_rag"}
+{"text": "ايه الحد الادنى للقبول؟", "label": "policy_rag"}
+{"text": "محتاج كام في اللغة الانجليزية؟", "label": "policy_rag"}
+{"text": "فيه اختبار قدرات للقبول؟", "label": "policy_rag"}
+{"text": "can I transfer to this college?", "label": "policy_rag"}
+{"text": "transfer student requirements", "label": "policy_rag"}
+{"text": "I want to transfer from another college", "label": "policy_rag"}
+{"text": "conditions for transfer students", "label": "policy_rag"}
+{"text": "ممكن اتحول للكلية دي؟", "label": "policy_rag"}
+{"text": "ايه شروط التحويل للكلية؟", "label": "policy_rag"}
+{"text": "انا طالب محول عايز اعرف الشروط", "label": "policy_rag"}
+{"text": "how does the study system work?", "label": "policy_rag"}
+{"text": "how many credit hours to graduate?", "label": "policy_rag"}
+{"text": "what is the bachelor degree study system?", "label": "policy_rag"}
+{"text": "نظام الدراسة في الكلية ايه؟", "label": "policy_rag"}
+{"text": "محتاج كام ساعة معتمدة للتخرج؟", "label": "policy_rag"}
+{"text": "ايه نظام الساعات المعتمدة؟", "label": "policy_rag"}
+{"text": "what is the student discipline system?", "label": "policy_rag"}
+{"text": "what happens if a student breaks the rules?", "label": "policy_rag"}
+{"text": "college disciplinary rules", "label": "policy_rag"}
+{"text": "student code of conduct", "label": "policy_rag"}
+{"text": "نظام التأديب في الكلية ايه؟", "label": "policy_rag"}
+{"text": "ايه العقوبات على الطلاب؟", "label": "policy_rag"}
+{"text": "ايه الجزاءات التأديبية؟", "label": "policy_rag"}
+{"text": "how does the exam system work?", "label": "policy_rag"}
+{"text": "tell me about the exam rules", "label": "policy_rag"}
+{"text": "when are results announced?", "label": "policy_rag"}
+{"text": "نظام الامتحانات ايه؟", "label": "policy_rag"}
+{"text": "امتي بتتعلن النتايج؟", "label": "policy_rag"}
+{"text": "ايه قواعد الامتحانات؟", "label": "policy_rag"}
+{"text": "when are the exams?", "label": "policy_rag"}
+{"text": "exam schedule please", "label": "policy_rag"}
+{"text": "when is the midterm exam?", "label": "policy_rag"}
+{"text": "when is the final exam?", "label": "policy_rag"}
+{"text": "امتي الامتحانات؟", "label": "policy_rag"}
+{"text": "جدول الامتحانات امتي؟", "label": "policy_rag"}
+{"text": "امتي الميد تيرم؟", "label": "policy_rag"}
+{"text": "امتي الفاينل؟", "label": "policy_rag"}
+{"text": "can I suspend my registration?", "label": "policy_rag"}
+{"text": "how do I freeze my enrollment?", "label": "policy_rag"}
+{"text": "registration suspension rules", "label": "policy_rag"}
+{"text": "ممكن اوقف تسجيلي؟", "label": "policy_rag"}
+{"text": "ايه شروط وقف التسجيل؟", "label": "policy_rag"}
+{"text": "what happens if I exceed the absence limit?", "label": "policy_rag"}
+{"text": "can I be banned from exams due to absence?", "label": "policy_rag"}
+{"text": "ايه نسبة الغياب المسموح بيها؟", "label": "policy_rag"}
+{"text": "لو غبت اكتر من اللازم ايه اللي يحصل؟", "label": "policy_rag"}
+{"text": "ممكن يمنعوني من الامتحان بسبب الغياب؟", "label": "policy_rag"}
+{"text": "can I change my major?", "label": "policy_rag"}
+{"text": "how do I change my specialization?", "label": "policy_rag"}
+{"text": "rules for changing my specialization", "label": "policy_rag"}
+{"text": "ممكن اغير تخصصي؟", "label": "policy_rag"}
+{"text": "ايه شروط تغيير التخصص؟", "label": "policy_rag"}
+{"text": "عايز اتحول لقسم تاني جوا الكلية", "label": "policy_rag"}
+{"text": "what happens if I fail a subject?", "label": "policy_rag"}
+{"text": "rules for failing a course", "label": "policy_rag"}
+{"text": "what is an incomplete grade?", "label": "policy_rag"}
+{"text": "لو رسبت في مادة ايه اللي يحصل؟", "label": "policy_rag"}
+{"text": "ايه تقدير غير مكتمل؟", "label": "policy_rag"}
+{"text": "غبت عن الامتحان ايه اللي بيحصل؟", "label": "policy_rag"}
+{"text": "what is the grading system?", "label": "policy_rag"}
+{"text": "how are grades calculated?", "label": "policy_rag"}
+{"text": "grade percentages and GPA points", "label": "policy_rag"}
+{"text": "what is the midterm and final exam weight?", "label": "policy_rag"}
+{"text": "ايه نظام الدرجات؟", "label": "policy_rag"}
+{"text": "ازاي بيتحسب المعدل؟", "label": "policy_rag"}
+{"text": "نسبة الامتحانات والاعمال الفصلية كام؟", "label": "policy_rag"}
+{"text": "can I add or drop a course?", "label": "policy_rag"}
+{"text": "what are the add drop rules?", "label": "policy_rag"}
+{"text": "how do I withdraw from a subject?", "label": "policy_rag"}
+{"text": "ممكن اضيف او اسحب مادة؟", "label": "policy_rag"}
+{"text": "ايه مدة الاضافة والحذف؟", "label": "policy_rag"}
+{"text": "ايه معنى W في السجل الدراسي؟", "label": "policy_rag"}
+{"text": "minimum and maximum credit hours per semester", "label": "policy_rag"}
+{"text": "summer semester credit hours limit", "label": "policy_rag"}
+{"text": "ايه الحد الادنى والاقصى للساعات في الفصل؟", "label": "policy_rag"}
+{"text": "في الفصل الصيفي اقدر اسجل كام مادة؟", "label": "policy_rag"}
+{"text": "what is academic advising?", "label": "policy_rag"}
+{"text": "when does registration open?", "label": "policy_rag"}
+{"text": "how do I register for courses?", "label": "policy_rag"}
+{"text": "ايه الإرشاد الأكاديمي؟", "label": "policy_rag"}
+{"text": "امتي بيفتح التسجيل؟", "label": "policy_rag"}
+{"text": "ازاي اسجل المواد؟", "label": "policy_rag"}
+{"text": "what is the study plan?", "label": "policy_rag"}
+{"text": "study plan for bachelor degree", "label": "policy_rag"}
+{"text": "what are the graduation requirements in the plan?", "label": "policy_rag"}
+{"text": "ايه خطة الدراسة؟", "label": "policy_rag"}
+{"text": "ايه متطلبات التخرج في الخطة؟", "label": "policy_rag"}
+{"text": "how long does it take to graduate?", "label": "policy_rag"}
+{"text": "how many years is the bachelor degree?", "label": "policy_rag"}
+{"text": "كام سنة الدراسة في الكلية؟", "label": "policy_rag"}
+{"text": "نظام الدراسة كام سنة؟", "label": "policy_rag"}
+{"text": "what is hybrid learning?", "label": "policy_rag"}
+{"text": "is study online or in person?", "label": "policy_rag"}
+{"text": "التعليم هجين ولا حضوري؟", "label": "policy_rag"}
+{"text": "الدراسة اونلاين ولا حضوري؟", "label": "policy_rag"}
+{"text": "what do I need to graduate?", "label": "policy_rag"}
+{"text": "what are the graduation requirements?", "label": "policy_rag"}
+{"text": "ايه متطلبات التخرج؟", "label": "policy_rag"}
+{"text": "محتاج تدريب عشان اتخرج؟", "label": "policy_rag"}
+{"text": "what is my GPA?", "label": "structured_sql"}
+{"text": "show me my GPA", "label": "structured_sql"}
+{"text": "what is my cumulative GPA?", "label": "structured_sql"}
+{"text": "معدلي كام؟", "label": "structured_sql"}
+{"text": "عايز اعرف معدلي التراكمي", "label": "structured_sql"}
+{"text": "what are my grades?", "label": "structured_sql"}
+{"text": "show me my grades", "label": "structured_sql"}
+{"text": "my results this semester", "label": "structured_sql"}
+{"text": "درجاتي كام؟", "label": "structured_sql"}
+{"text": "عايز اشوف نتايجي", "label": "structured_sql"}
+{"text": "what is my class schedule?", "label": "structured_sql"}
+{"text": "show me my timetable", "label": "structured_sql"}
+{"text": "when do my lectures start?", "label": "structured_sql"}
+{"text": "جدولي الدراسي ايه؟", "label": "structured_sql"}
+{"text": "عايز اشوف جدول المحاضرات", "label": "structured_sql"}
+{"text": "what is my attendance?", "label": "structured_sql"}
+{"text": "show my attendance record", "label": "structured_sql"}
+{"text": "نسبة حضوري كام؟", "label": "structured_sql"}
+{"text": "عايز اشوف سجل حضوري", "label": "structured_sql"}
+{"text": "ابعتلي ملف الجدول", "label": "file_retrieval"}
+{"text": "عايز pdf الجدول", "label": "file_retrieval"}
+{"text": "هات جدول الترم التاني كملف", "label": "file_retrieval"}

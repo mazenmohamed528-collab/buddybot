@@ -1,0 +1,415 @@
+{
+  "mode": "sql-engine",
+  "elapsed_seconds": 0.25,
+  "summary": {
+    "total_cases": 10,
+    "passed_cases": 8,
+    "overall_pass_rate": 80.0,
+    "intent_accuracy": 0.0,
+    "entity_accuracy": 0.0,
+    "routing_accuracy": 80.0,
+    "behavior_check_accuracy": 90.0,
+    "suggested_fixes": [
+      "Improve router/rules for route mismatches: [(('clarification', 'SQL'), 1), (('SQL', 'clarification'), 1)]"
+    ]
+  },
+  "failed_cases": [
+    {
+      "id": "TC006",
+      "user_message": "what is Mazen GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Detect multiple Mazen students and ask which one.",
+      "expected_response_contains": [
+        "Which one"
+      ],
+      "session_id": "amb_mazen",
+      "pass_fail": "FAIL",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": false,
+      "behavior_pass": false,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 20,
+      "sql_engine_answer": "I found GPA records for 20 students:\n- Menna Hesham Ali Mohamed (2122095): cumulative GPA 4\n- Shahd Ahmed Kamal Nower (2122230): cumulative GPA 3.98\n- Fatma Hesham Abdelrahman Habashy (2122187): cumulative GPA 3.98\n- Sama Waleed Hussein Ahmed (2122188): cumulative GPA 3.96\n- Merola Gerges Gadallah (2122048): cumulative GPA 3.92\n- Manar Ahmed Nayef Hamed Helmy Qoura (2122008): cumulative GPA 3.91\n- Sahar Wael Mohamed Soliman Hasan El Gendy (2122149): cumulative GPA 3.88\n- Sohila Ahmed Ibrahim Abdelghany (2122140): cumulative GPA 3.87\n- Mohamed Magdy Mohamed El-Bendary (2122003): cumulative GPA 3.87\n- Mahmoud Ali Mahmoud Abd El Wahab (2122217): cumulative GPA 3.86",
+      "confusing": false
+    },
+    {
+      "id": "TC008",
+      "user_message": "gpa for Sama",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Sama"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Find Sama student if unique, otherwise clarify.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "clarification",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": false,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 8,
+      "sql_engine_answer": "I found multiple students named Sama:\n1. Sama Adham Mahmoud Ahmed - AI 1 - Artificial Intelligence - 2122179\n2. Sama Mohamed Hassan Ali - CS1 - Cyber Security - 2122144\n3. Sama Nabil Fetouh Mostafa - SE1 - Software Engineering - 2122210\n4. Sama Waleed Hussein Ahmed - DS - Information Systems & Data Science - 2122188\n5. Samara Almursi Mahmoud Risha - CS2 - Cyber Security - 2122228\n6. Lauren Osama Adly William - DS - Information Systems & Data Science - 2122319\n7. Mahmoud Ossama Abo Elhassan Mohamed - SE2 - Software Engineering - 2122020\n8. Malak Osama Mohamed Mahani - CS3 - Cyber Security - 2122057\nWhich one do you mean? Reply with the number, student ID, group, or department.",
+      "confusing": false
+    }
+  ],
+  "confusing_cases": [],
+  "results": [
+    {
+      "id": "TC001",
+      "user_message": "show my GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use selected/current student and return GPA.",
+      "expected_response_contains": [
+        "GPA"
+      ],
+      "session_id": "ctx_student",
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 1,
+      "sql_engine_answer": "Mazen Mohamed Abd Elmageed Badawi (StudentID 2122209) has cumulative GPA 3.46. Third-year cumulative GPA: 3.46.",
+      "confusing": false
+    },
+    {
+      "id": "TC002",
+      "user_message": "what is my CGPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use selected/current student and return cumulative GPA.",
+      "expected_response_contains": [
+        "GPA"
+      ],
+      "session_id": "ctx_student",
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 1,
+      "sql_engine_answer": "Mazen Mohamed Abd Elmageed Badawi (StudentID 2122209) has cumulative GPA 3.46. Third-year cumulative GPA: 3.46.",
+      "confusing": false
+    },
+    {
+      "id": "TC003",
+      "user_message": "show GPA for student 2122209",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122209"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for StudentID 2122209.",
+      "expected_response_contains": [
+        "2122209"
+      ],
+      "session_id": null,
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 1,
+      "sql_engine_answer": "Mazen Mohamed Abd Elmageed Badawi (StudentID 2122209) has cumulative GPA 3.46. Third-year cumulative GPA: 3.46.",
+      "confusing": false
+    },
+    {
+      "id": "TC004",
+      "user_message": "what is the GPA of student 2122136",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122136"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for the given student ID.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 1,
+      "sql_engine_answer": "Abdullah Mohammed Abdullah Ibrahim (StudentID 2122136) has cumulative GPA 3.1. Third-year cumulative GPA: 3.1.",
+      "confusing": false
+    },
+    {
+      "id": "TC005",
+      "user_message": "calculate GPA for 2122248",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_id": [
+          "2122248"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Return GPA for the given student ID.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 20,
+      "sql_engine_answer": "I found GPA records for 20 students:\n- Menna Hesham Ali Mohamed (2122095): cumulative GPA 4\n- Shahd Ahmed Kamal Nower (2122230): cumulative GPA 3.98\n- Fatma Hesham Abdelrahman Habashy (2122187): cumulative GPA 3.98\n- Sama Waleed Hussein Ahmed (2122188): cumulative GPA 3.96\n- Merola Gerges Gadallah (2122048): cumulative GPA 3.92\n- Manar Ahmed Nayef Hamed Helmy Qoura (2122008): cumulative GPA 3.91\n- Sahar Wael Mohamed Soliman Hasan El Gendy (2122149): cumulative GPA 3.88\n- Sohila Ahmed Ibrahim Abdelghany (2122140): cumulative GPA 3.87\n- Mohamed Magdy Mohamed El-Bendary (2122003): cumulative GPA 3.87\n- Mahmoud Ali Mahmoud Abd El Wahab (2122217): cumulative GPA 3.86",
+      "confusing": false
+    },
+    {
+      "id": "TC006",
+      "user_message": "what is Mazen GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Detect multiple Mazen students and ask which one.",
+      "expected_response_contains": [
+        "Which one"
+      ],
+      "session_id": "amb_mazen",
+      "pass_fail": "FAIL",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": false,
+      "behavior_pass": false,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 20,
+      "sql_engine_answer": "I found GPA records for 20 students:\n- Menna Hesham Ali Mohamed (2122095): cumulative GPA 4\n- Shahd Ahmed Kamal Nower (2122230): cumulative GPA 3.98\n- Fatma Hesham Abdelrahman Habashy (2122187): cumulative GPA 3.98\n- Sama Waleed Hussein Ahmed (2122188): cumulative GPA 3.96\n- Merola Gerges Gadallah (2122048): cumulative GPA 3.92\n- Manar Ahmed Nayef Hamed Helmy Qoura (2122008): cumulative GPA 3.91\n- Sahar Wael Mohamed Soliman Hasan El Gendy (2122149): cumulative GPA 3.88\n- Sohila Ahmed Ibrahim Abdelghany (2122140): cumulative GPA 3.87\n- Mohamed Magdy Mohamed El-Bendary (2122003): cumulative GPA 3.87\n- Mahmoud Ali Mahmoud Abd El Wahab (2122217): cumulative GPA 3.86",
+      "confusing": false
+    },
+    {
+      "id": "TC007",
+      "user_message": "show Mazen Mohamed GPA",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Mazen Mohamed"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "clarification",
+      "expected_behavior": "Clarify if more than one Mazen Mohamed exists.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "clarification",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 4,
+      "sql_engine_answer": "I found multiple students named Mazen Mohamed:\n1. Mazen Mohamed Abd Elmageed Badawi - DS - Information Systems & Data Science - 2122209\n2. Mazen Akram Mohamed Saad - SE3 - Software Engineering - 2122321\n3. Mazen Hany Mohamed Nagah Mohamed - CS1 - Cyber Security - 2122322\n4. Mazen Wael Fawzy Mohamed - AI 1 - Artificial Intelligence - 2122323\nWhich one do you mean? Reply with the number, student ID, group, or department.",
+      "confusing": false
+    },
+    {
+      "id": "TC008",
+      "user_message": "gpa for Sama",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "student_name": [
+          "Sama"
+        ],
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Find Sama student if unique, otherwise clarify.",
+      "expected_response_contains": [],
+      "session_id": null,
+      "pass_fail": "FAIL",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "clarification",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": false,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 8,
+      "sql_engine_answer": "I found multiple students named Sama:\n1. Sama Adham Mahmoud Ahmed - AI 1 - Artificial Intelligence - 2122179\n2. Sama Mohamed Hassan Ali - CS1 - Cyber Security - 2122144\n3. Sama Nabil Fetouh Mostafa - SE1 - Software Engineering - 2122210\n4. Sama Waleed Hussein Ahmed - DS - Information Systems & Data Science - 2122188\n5. Samara Almursi Mahmoud Risha - CS2 - Cyber Security - 2122228\n6. Lauren Osama Adly William - DS - Information Systems & Data Science - 2122319\n7. Mahmoud Ossama Abo Elhassan Mohamed - SE2 - Software Engineering - 2122020\n8. Malak Osama Mohamed Mahani - CS3 - Cyber Security - 2122057\nWhich one do you mean? Reply with the number, student ID, group, or department.",
+      "confusing": false
+    },
+    {
+      "id": "TC009",
+      "user_message": "and the gpa",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Use prior selected student context.",
+      "expected_response_contains": [],
+      "session_id": "ctx_student",
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 20,
+      "sql_engine_answer": "I found GPA records for 20 students:\n- Menna Hesham Ali Mohamed (2122095): cumulative GPA 4\n- Shahd Ahmed Kamal Nower (2122230): cumulative GPA 3.98\n- Fatma Hesham Abdelrahman Habashy (2122187): cumulative GPA 3.98\n- Sama Waleed Hussein Ahmed (2122188): cumulative GPA 3.96\n- Merola Gerges Gadallah (2122048): cumulative GPA 3.92\n- Manar Ahmed Nayef Hamed Helmy Qoura (2122008): cumulative GPA 3.91\n- Sahar Wael Mohamed Soliman Hasan El Gendy (2122149): cumulative GPA 3.88\n- Sohila Ahmed Ibrahim Abdelghany (2122140): cumulative GPA 3.87\n- Mohamed Magdy Mohamed El-Bendary (2122003): cumulative GPA 3.87\n- Mahmoud Ali Mahmoud Abd El Wahab (2122217): cumulative GPA 3.86",
+      "confusing": false
+    },
+    {
+      "id": "TC010",
+      "user_message": "what about his cgpa",
+      "expected_intent": "student_gpa_query",
+      "expected_entities": {
+        "metric": [
+          "GPA"
+        ]
+      },
+      "expected_route": "SQL",
+      "expected_behavior": "Resolve pronoun to selected student.",
+      "expected_response_contains": [],
+      "session_id": "ctx_student",
+      "pass_fail": "PASS",
+      "predicted_intent": null,
+      "intent_confidence": NaN,
+      "intent_margin": NaN,
+      "actual_entities": [],
+      "predicted_route": "SQL",
+      "intent_pass": null,
+      "entity_pass": null,
+      "route_pass": true,
+      "behavior_pass": true,
+      "missing_entities": [],
+      "sql_engine_error": null,
+      "sql_engine_domain": "gpa",
+      "sql_engine_row_count": 1,
+      "sql_engine_answer": "Mazen Mohamed Abd Elmageed Badawi (StudentID 2122209) has cumulative GPA 3.46. Third-year cumulative GPA: 3.46.",
+      "confusing": false
+    }
+  ]
+}

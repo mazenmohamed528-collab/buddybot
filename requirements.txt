@@ -1,0 +1,6 @@
+rasa-sdk==3.6.2
+SQLAlchemy<2.0
+pyodbc
+psycopg2-binary
+requests
+numpy

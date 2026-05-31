@@ -1,0 +1,131 @@
+{
+  "total": 12,
+  "route_passed": 12,
+  "route_accuracy": 1.0,
+  "results": [
+    {
+      "message": "give me all students in data science",
+      "expected_route": "SQL",
+      "category": "pagination",
+      "predicted_route": "SQL",
+      "route_passed": true
+    },
+    {
+      "message": "all of them",
+      "expected_route": "SQL",
+      "category": "followup",
+      "predicted_route": "SQL",
+      "route_passed": true
+    },
+    {
+      "message": "4th year second semester data science saturday schedule",
+      "expected_route": "SQL",
+      "category": "schedule_filter",
+      "predicted_route": "SQL",
+      "route_passed": true
+    },
+    {
+      "message": "مين عميد الكلية؟",
+      "expected_route": "RAG",
+      "category": "arabic_official",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4016.32,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "ايه نظام الانذار الاكاديمي؟",
+      "expected_route": "RAG",
+      "category": "arabic_policy",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4033.33,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "show me official rules for attendance",
+      "expected_route": "RAG",
+      "category": "official_policy",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4015.24,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "What is the academic warning system?",
+      "expected_route": "RAG",
+      "category": "student_guide",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4029.88,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "what's data science",
+      "expected_route": "RAG",
+      "category": "educational",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4030.69,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "tell ne about software engineering",
+      "expected_route": "RAG",
+      "category": "educational",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4005.62,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "give me the majors",
+      "expected_route": "RAG",
+      "category": "departments",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4002.42,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "الغياب",
+      "expected_route": "RAG",
+      "category": "arabic_policy",
+      "predicted_route": "RAG",
+      "route_passed": true,
+      "rag": {
+        "available": false,
+        "latency_ms": 4012.91,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=4)"
+      }
+    },
+    {
+      "message": "all the students in data science",
+      "expected_route": "SQL",
+      "category": "pagination",
+      "predicted_route": "SQL",
+      "route_passed": true
+    }
+  ]
+}

@@ -1,0 +1,1393 @@
+version: '3.1'
+actions:
+- action_text_to_sql
+- action_rag_query
+- action_bot_creator
+- action_project_purpose
+- action_conversation_router
+- action_general_conversation
+intents:
+- ask_database_question
+- ask_knowledge
+- general_conversation
+- student_profile_query
+- student_gpa_query
+- student_grades_query
+- student_failed_courses_query
+- student_schedule_query
+- course_info_query
+- course_instructor_query
+- department_query
+- room_query
+- free_room_query
+- instructor_query
+- analytics_query
+- followup_query
+- clarification_response
+- reset_courses_query
+- academic_progress_query
+- greeting
+- ask_bot_status
+- ask_bot_identity
+- bot_challenge
+- ask_bot_creator
+- ask_project_purpose
+- thank_you
+- goodbye
+- casual_acknowledgement
+- nlu_fallback
+- fci_qa_admission_requirements_admission_requirements_en_1c37b4
+- fci_qa_admission_documents_documents_required_application_en_0db160
+- fci_qa_departments_departments_available_en_ca75cf
+- fci_qa_specialization_specialization_begin_en_7a076e
+- fci_qa_attendance_maximum_allowed_absence_percentage_en_0e491c
+- fci_qa_guide_grades_distributed_en_f17d8a
+- fci_qa_admission_requirements_a83d7e85_ar_994a75
+- fci_qa_admission_documents_677cb02b_ar_3ccf19
+- fci_qa_departments_5cf7c8ae_ar_526316
+- fci_qa_specialization_248d0ef1_ar_b54f75
+- fci_qa_attendance_cd9a2926_ar_cd4e27
+- fci_qa_grading_dd0f77e9_ar_36e871
+- fci_qa_vision_vision_en_c6887d
+- fci_qa_mission_mission_en_0d17d2
+- fci_qa_goals_main_goals_list_all_en_555d93
+- fci_qa_guide_under_ministry_legal_framework_sadat_en_0ce8df
+- fci_qa_departments_many_departments_have_they_en_e119a9
+- fci_qa_guide_degree_grant_en_aa8e18
+- fci_qa_guide_language_all_instruction_conducted_en_dee583
+- fci_qa_specialization_must_student_choose_their_major_en_cdf978
+- fci_qa_departments_can_major_minor_specializations_same_en_875f93
+- fci_qa_specialization_dual_specialization_bachelor_degree_can_en_a4db69
+- fci_qa_specialization_many_times_can_student_change_en_38a3d3
+- fci_qa_guide_topics_covered_sciences_department_en_e76267
+- fci_qa_guide_focus_systems_department_en_a3998e
+- fci_qa_guide_software_engineering_department_cover_en_337572
+- fci_qa_specialization_request_must_made_change_specialization_en_1b5b85
+- fci_qa_guide_secondary_school_streams_eligible_admission_en_438237
+- fci_qa_guide_minimum_english_language_percentage_required_en_689175
+- fci_qa_guide_tests_must_student_pass_admitted_en_a76e82
+- fci_qa_admission_documents_list_all_required_documents_application_en_73addf
+- fci_qa_admission_documents_within_long_must_original_documents_en_835915
+- fci_qa_guide_steps_admission_process_en_a5004c
+- fci_qa_transfer_transfer_conditions_from_equivalent_en_992d9a
+- fci_qa_transfer_transfer_conditions_from_non_equivalent_en_294276
+- fci_qa_guide_can_student_was_permanently_expelled_en_56daa6
+- fci_qa_transfer_must_transfer_student_have_had_en_5b6fd7
+- fci_qa_graduation_many_total_credit_hours_required_en_8fec8b
+- fci_qa_guide_144_credit_hours_distributed_across_en_9d85fd
+- fci_qa_graduation_many_years_semesters_bachelor_program_en_31cd45
+- fci_qa_guide_long_each_academic_semester_en_88e911
+- fci_qa_specialization_specialization_start_years_shared_all_en_e424a0
+- fci_qa_study_system_credit_hour_ranges_define_each_en_b517af
+- fci_qa_graduation_can_student_take_extra_courses_en_a9a828
+- fci_qa_graduation_graduation_project_requirement_year_students_en_993a73
+- fci_qa_graduation_practical_training_required_graduation_en_187817
+- fci_qa_guide_hybrid_education_system_applied_en_f1694a
+- fci_qa_graduation_graduation_ceremonies_held_each_academic_en_06c58f
+- fci_qa_guide_academic_advisors_their_role_en_234ee4
+- fci_qa_registration_course_registration_begin_each_semester_en_7a9c4b
+- fci_qa_study_system_minimum_credit_hour_load_per_en_01ee12
+- fci_qa_study_system_maximum_credit_hour_load_per_en_8ba205
+- fci_qa_registration_many_courses_can_student_register_en_85d8c0
+- fci_qa_add_drop_many_courses_can_student_add_en_94829e
+- fci_qa_guide_notation_recorded_student_withdraws_after_en_e9ede9
+- fci_qa_registration_sets_registration_plan_procedures_before_en_b05dcc
+- fci_qa_attendance_maximum_allowed_absence_rate_per_en_30c8ab
+- fci_qa_attendance_consequences_exceeding_absence_rate_en_ce38b7
+- fci_qa_attendance_grade_student_receive_their_excess_en_f12716
+- fci_qa_attendance_must_students_they_absent_from_en_fc18e5
+- fci_qa_attendance_students_national_patriotic_duties_exempt_en_2b7a8d
+- fci_qa_exams_exam_arrangement_made_students_national_en_484caa
+- fci_qa_exams_midterm_exam_held_each_semester_en_f35e57
+- fci_qa_exams_final_exam_held_en_e4ac70
+- fci_qa_exams_long_each_midterm_final_exam_en_cb4080
+- fci_qa_grading_total_grade_100_distributed_per_en_418384
+- fci_qa_grading_complete_course_level_grading_scale_en_1f7f09
+- fci_qa_grading_cumulative_annual_gpa_grading_scale_en_487916
+- fci_qa_grading_formula_annual_gpa_en_c84d62
+- fci_qa_guide_happens_student_fails_mandatory_course_en_f5ebf9
+- fci_qa_graduation_honors_distinction_requirement_graduation_en_f79579
+- fci_qa_grading_incomplete_grade_mean_must_resolved_en_2c73df
+- fci_qa_attendance_happens_student_absent_from_final_en_e2138a
+- fci_qa_exams_exam_results_officially_approved_announced_en_265466
+- fci_qa_guide_electronic_online_examination_allowed_en_31eeaf
+- fci_qa_attendance_grade_student_receive_absent_from_en_2ab96d
+- fci_qa_academic_warning_student_receive_academic_warning_en_0c0a99
+- fci_qa_academic_warning_long_student_have_clear_academic_en_7ef134
+- fci_qa_academic_warning_happens_student_cannot_clear_academic_en_bbfe07
+- fci_qa_specialization_can_student_academic_warning_change_en_bbb10d
+- fci_qa_registration_registration_suspension_enrollment_freeze_its_en_9f0e62
+- fci_qa_registration_maximum_total_registration_suspension_allowed_en_80528e
+- fci_qa_graduation_registration_suspension_count_toward_allowed_en_d71489
+- fci_qa_registration_suspension_happens_student_excuse_suspension_not_en_3f915c
+- fci_qa_attendance_student_excused_absence_accepted_they_en_8c0ad4
+- fci_qa_discipline_law_governs_student_discipline_en_73fd62
+- fci_qa_discipline_actions_considered_disciplinary_violations_en_7e9777
+- fci_qa_exams_happens_student_caught_cheating_during_en_edf605
+- fci_qa_discipline_list_all_disciplinary_penalties_order_en_9c6321
+- fci_qa_guide_consequences_permanent_expulsion_from_university_en_4dc824
+- fci_qa_guide_disciplinary_decisions_recorded_notified_en_294b69
+- fci_qa_fees_sets_tuition_fees_en_2a4a77
+- fci_qa_fees_within_long_must_tuition_fees_en_12cccd
+- fci_qa_admission_documents_application_exam_fees_refundable_en_1dbb4a
+- fci_qa_fees_percentage_tuition_refunded_within_weeks_en_e9e334
+- fci_qa_exams_percentage_tuition_refunded_after_weeks_en_672e65
+- fci_qa_exams_can_tuition_fees_refunded_after_en_275199
+- fci_qa_fees_document_must_student_present_proof_en_b09346
+- fci_qa_medical_have_medical_unit_operate_services_en_f75a7c
+- fci_qa_guide_academy_website_en_749c68
+- fci_qa_graduation_approves_granting_bachelor_degrees_en_2af989
+- fci_qa_departments_responsible_setting_transitional_rules_new_en_aff66c
+- fci_qa_vision_0fc2872b_ar_2078e1
+- fci_qa_mission_23253a33_ar_ff7b5b
+- fci_qa_goals_3c55a2e5_ar_ac894f
+- fci_qa_guide_601cbeac_ar_7c6594
+- fci_qa_departments_bfbecf4f_ar_baf29a
+- fci_qa_guide_ce20edf1_ar_0b0a28
+- fci_qa_guide_0b520edd_ar_55e5f7
+- fci_qa_specialization_057c18fb_ar_b17c85
+- fci_qa_specialization_78fe3713_ar_243dd0
+- fci_qa_specialization_5a1e7492_ar_5edacd
+- fci_qa_specialization_170e426a_ar_9cde2b
+- fci_qa_guide_141796f7_ar_0b4152
+- fci_qa_guide_c7fe361a_ar_e55039
+- fci_qa_guide_458f38d8_ar_85477c
+- fci_qa_specialization_81f9f633_ar_f73c4c
+- fci_qa_guide_bd25dd05_ar_f85bda
+- fci_qa_guide_c65a6bc1_ar_c88f11
+- fci_qa_guide_7b053824_ar_1bc538
+- fci_qa_admission_documents_fe41609f_ar_08cd1c
+- fci_qa_admission_documents_53d26911_ar_d19497
+- fci_qa_guide_a62f00f3_ar_861c2e
+- fci_qa_transfer_6e35bba3_ar_37e7f7
+- fci_qa_transfer_6390d1c5_ar_e54399
+- fci_qa_transfer_c92e1ae6_ar_9d5629
+- fci_qa_transfer_417f4d6e_ar_279348
+- fci_qa_study_system_b24d7e6f_ar_ca9710
+- fci_qa_guide_205d5eca_ar_ba4711
+- fci_qa_graduation_cb4b28db_ar_e42a0e
+- fci_qa_guide_0bb4693f_ar_6f4f46
+- fci_qa_specialization_72666783_ar_1f2aa8
+- fci_qa_study_system_ee166c8f_ar_a6d5dc
+- fci_qa_graduation_13424d0c_ar_70e867
+- fci_qa_graduation_0f401897_ar_fffda5
+- fci_qa_graduation_3404e10c_ar_badd95
+- fci_qa_guide_44afcb95_ar_bd726c
+- fci_qa_graduation_5bca3368_ar_dd0088
+- fci_qa_guide_4ba13fe7_ar_0edf2e
+- fci_qa_registration_1fe9e497_ar_3c629f
+- fci_qa_guide_db7a476a_ar_590afb
+- fci_qa_guide_97f79660_ar_3cb19b
+- fci_qa_registration_d58f5e09_ar_1f8438
+- fci_qa_add_drop_b837e065_ar_ec44ac
+- fci_qa_exams_b822ca70_ar_5b765c
+- fci_qa_registration_eef8482b_ar_85101b
+- fci_qa_attendance_bf1a93a3_ar_c38740
+- fci_qa_attendance_9b30240d_ar_db0bd2
+- fci_qa_attendance_a0f77888_ar_f686ca
+- fci_qa_attendance_93ed2a9f_ar_fb64b0
+- fci_qa_attendance_62dea312_ar_31017d
+- fci_qa_exams_aee3a74e_ar_d65c47
+- fci_qa_guide_4b78c0e1_ar_5b9552
+- fci_qa_guide_f59fa303_ar_4ee44c
+- fci_qa_guide_55130e95_ar_8c243f
+- fci_qa_guide_eae84880_ar_b0cceb
+- fci_qa_grading_dc5310f7_ar_313e40
+- fci_qa_grading_1099686d_ar_60aecd
+- fci_qa_grading_e92ccfa5_ar_f6ef42
+- fci_qa_guide_cbf9df8b_ar_80bf5a
+- fci_qa_graduation_ebb125ec_ar_3cb7b6
+- fci_qa_grading_41780493_ar_978211
+- fci_qa_exams_9657c71b_ar_d70789
+- fci_qa_exams_8e6d3d53_ar_91a55b
+- fci_qa_exams_54317f8d_ar_69cd16
+- fci_qa_exams_c24c9c9c_ar_212e79
+- fci_qa_academic_warning_5808fe15_ar_e7c4b1
+- fci_qa_academic_warning_5795f97d_ar_23414f
+- fci_qa_academic_warning_6b1322e6_ar_becfa2
+- fci_qa_specialization_2f582eda_ar_c1721f
+- fci_qa_registration_69b2ea36_ar_b848f2
+- fci_qa_registration_af46bc8f_ar_0e9fba
+- fci_qa_registration_551d2935_ar_92b703
+- fci_qa_registration_4afe799f_ar_b2a8a6
+- fci_qa_registration_9ddb169f_ar_fb4104
+- fci_qa_discipline_2ecc39cd_ar_ebf61d
+- fci_qa_discipline_f49bd90e_ar_431f03
+- fci_qa_exams_80c1b510_ar_47cd63
+- fci_qa_discipline_33953da8_ar_e93944
+- fci_qa_guide_7f89f460_ar_eeeb8a
+- fci_qa_discipline_bb5db20b_ar_a60421
+- fci_qa_fees_a0feb44b_ar_d01f46
+- fci_qa_fees_00261cc3_ar_51ed7e
+- fci_qa_fees_bfcdd912_ar_20ac14
+- fci_qa_fees_0abe4584_ar_f0da42
+- fci_qa_fees_982b4221_ar_eaf644
+- fci_qa_fees_e83d2560_ar_829569
+- fci_qa_fees_e9a18bf3_ar_aa14d4
+- fci_qa_guide_70ca8a30_ar_9187ac
+- fci_qa_guide_80351ff1_ar_1231f8
+- fci_qa_graduation_7491f51d_ar_c2bd24
+- fci_qa_guide_fb03ec94_ar_9cd56f
+- fci_qa_change_specialization_short_ar
+- fci_qa_departments_short_ar
+- fci_qa_specialization_short_ar
+- fci_qa_change_specialization_short_en
+entities:
+- student_name
+- student_id
+- course_code
+- course_name
+- department
+- group_code
+- semester
+- year_level
+- academic_year
+- day
+- time
+- room
+- instructor_name
+- metric
+- limit
+- sort_order
+slots:
+  student_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: student_name
+  student_id:
+    type: text
+    mappings:
+    - type: custom
+  course_code:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: course_code
+    - type: custom
+  course_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: course_name
+  department_code:
+    type: text
+    mappings:
+    - type: custom
+  department:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: department
+  group_code:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: group_code
+    - type: custom
+  semester:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: semester
+  year_level:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: year_level
+    - type: custom
+  academic_year:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: academic_year
+    - type: custom
+  day:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: day
+  time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: time
+  room:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: room
+  instructor_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: instructor_name
+    - type: custom
+  last_topic:
+    type: text
+    mappings:
+    - type: custom
+  last_entity_type:
+    type: text
+    mappings:
+    - type: custom
+  last_clarification_topic:
+    type: text
+    mappings:
+    - type: custom
+  last_conversation_topic:
+    type: text
+    mappings:
+    - type: custom
+  metric:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: metric
+  limit:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: limit
+  sort_order:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: sort_order
+  last_query_scope:
+    type: text
+    mappings:
+    - type: custom
+  pending_student_candidates:
+    type: any
+    mappings:
+    - type: custom
+  pending_sql_question:
+    type: text
+    mappings:
+    - type: custom
+  sql_result_cache:
+    type: any
+    mappings:
+    - type: custom
+  sql_result_plan:
+    type: any
+    mappings:
+    - type: custom
+  sql_result_offset:
+    type: float
+    mappings:
+    - type: custom
+  sql_result_page_size:
+    type: float
+    mappings:
+    - type: custom
+responses:
+  utter_greet:
+  - text: |-
+      Hey! 👋 I'm BuddyBot, FCI's campus assistant at Sadat Academy.
+      Ask me about students, GPA, courses, schedules, instructors,
+      FCI policies, official documents, or any campus service.
+      Arabic or English — your choice!
+  utter_bot_status:
+  - text: I'm good. I can help with FCI student profiles, GPA, courses, schedules, instructors, rooms, departments, campus-service
+      questions, and normal study advice.
+  - text: I'm here. We can chat normally, make a study plan, talk through stress, or check FCI university data.
+  utter_bot_identity:
+  - text: 'I''m BuddyBot, your campus buddy. I can chat, give student advice, show FCI student profiles, check GPA, list courses,
+      find schedules, and answer campus-service questions. For example: ''tell me about student 2122136'', ''what is the AI
+      schedule?'', ''list CS courses'', or ''help me make a study plan''.'
+  utter_fci_qa_admission_requirements_admission_requirements_en_1c37b4:
+  - text: 'According to the official FCI student guide Q&A: Students need the required secondary school score, 80% in English,
+      aptitude test success, and personal interview approval.
+
+      Source: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_admission_documents_documents_required_application_en_0db160:
+  - text: 'According to the official FCI student guide Q&A: Secondary certificate, birth certificate, ID copy, photos, and
+      medical checkup.
+
+      Source: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_departments_departments_available_en_ca75cf:
+  - text: 'According to the official FCI student guide Q&A: Computer Science, Information Systems, and Software Engineering.
+
+      Source: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_specialization_specialization_begin_en_7a076e:
+  - text: 'According to the official FCI student guide Q&A: Specialization begins in the third year.
+
+      Source: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_attendance_maximum_allowed_absence_percentage_en_0e491c:
+  - text: 'According to the official FCI student guide Q&A: 25% of total teaching hours.
+
+      Source: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_guide_grades_distributed_en_f17d8a:
+  - text: 'According to the official FCI student guide Q&A: 15% midterm, 60% final, 25% coursework.
+
+      Source: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_admission_requirements_a83d7e85_ar_994a75:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يجب تحقيق الحد الأدنى المطلوب و80٪ في اللغة الإنجليزية واجتياز الاختبارات
+      والمقابلة الشخصية.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_admission_documents_677cb02b_ar_3ccf19:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: شهادة الثانوية وشهادة الميلاد وصورة البطاقة والصور الشخصية والكشف الطبي.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_departments_5cf7c8ae_ar_526316:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: علوم الحاسب ونظم المعلومات وهندسة البرمجيات.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_specialization_248d0ef1_ar_b54f75:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يبدأ التخصص في الفرقة الثالثة.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_attendance_cd9a2926_ar_cd4e27:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 25٪ من إجمالي ساعات المقرر.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_grading_dd0f77e9_ar_36e871:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 15٪ ميدترم و60٪ فاينال و25٪ أعمال سنة.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx'
+  utter_fci_qa_vision_vision_en_c6887d:
+  - text: 'According to the official FCI student guide Q&A: FCI aspires to advance the scientific, applied, and research level
+      in Computer Science, Information Systems, and Software Engineering, achieving a distinguished standing among FCI faculties
+      locally, regionally, and globally, while upholding professional ethics, developing Egypt''s information society, and
+      managing its information resources and heritage.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_mission_mission_en_0d17d2:
+  - text: 'According to the official FCI student guide Q&A: The faculty strives to provide a distinguished educational and
+      research level in CS, IS, and SE for its graduates, preparing them academically and professionally to meet society''s
+      evolving aspirations, building the IT infrastructure of organizations, with attention to diversity in scientific research
+      and development, and providing an environment that encourages creativity, excellence, and professional ethical commitment.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_goals_main_goals_list_all_en_555d93:
+  - text: 'According to the official FCI student guide Q&A: 1) Prepare CS/IS specialists with theoretical and applied skills.
+      2) Conduct scientific and applied research in CS, IS, SE. 3) Provide scientific and technical consultations. 4) Train
+      technical staff in state sectors. 5) Raise societal awareness of computing technology. 6) Organize conferences and scientific
+      meetings. 7) Sign scientific agreements with local, regional, and global institutions. 8) Support scientific publishing
+      and research. 9) Establish advanced specialized research units.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_under_ministry_legal_framework_sadat_en_0ce8df:
+  - text: 'According to the official FCI student guide Q&A: Sadat Academy for Management Sciences is a governmental educational
+      body subject to Universities Organization Law No. 49 of 1972 and its amendments.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_departments_many_departments_have_they_en_e119a9:
+  - text: 'According to the official FCI student guide Q&A: Three departments: (1) Computer Sciences, (2) Information Systems,
+      (3) Software Engineering. Other departments may be created in the future per university organization law.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_degree_grant_en_aa8e18:
+  - text: 'According to the official FCI student guide Q&A: A Bachelor''s degree in Computers and Information in one of three
+      specializations: Computer Sciences, Information Systems, or Software Engineering.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_language_all_instruction_conducted_en_dee583:
+  - text: 'According to the official FCI student guide Q&A: All instruction is conducted entirely in English.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_must_student_choose_their_major_en_cdf978:
+  - text: 'According to the official FCI student guide Q&A: At the beginning of Year 3 (Level 3), when specialization begins.
+      The major and minor specializations cannot be in the same field.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_departments_can_major_minor_specializations_same_en_875f93:
+  - text: 'According to the official FCI student guide Q&A: No. The major and minor specializations must be in different fields.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_dual_specialization_bachelor_degree_can_en_a4db69:
+  - text: 'According to the official FCI student guide Q&A: A student may earn a dual-specialization Bachelor''s degree by
+      fulfilling all study requirements of both specializations offered by FCI. The Academy''s Scientific Council organizes
+      the procedures for completing a dual specialization.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_many_times_can_student_change_en_38a3d3:
+  - text: 'According to the official FCI student guide Q&A: Only once throughout the entire study period. Students in the
+      final year may not change their specialization, and changes are subject to available seats.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_topics_covered_sciences_department_en_e76267:
+  - text: 'According to the official FCI student guide Q&A: Algorithm Analysis & Design, Computer Architecture, Computer Programming,
+      OOP, Web Application Development, Compiler & Interpreter Design, Logic Design, Data Structures, Operating Systems, AI,
+      Intelligent Systems, NLP, Image Processing, Computer Graphics, Neural Networks, Machine Learning, Computer Security,
+      HCI, Cloud Computing, Computer Vision, Pattern Recognition, Virtual Reality, and Graduation Project.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_focus_systems_department_en_a3998e:
+  - text: 'According to the official FCI student guide Q&A: IS develops, operates, and maintains systems enabling information
+      and communication services in modern organizations. It bridges Computer Science and the business world by understanding
+      organizational problems and proposing technical solutions, drawing inputs from data, information, and knowledge.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_software_engineering_department_cover_en_337572:
+  - text: 'According to the official FCI student guide Q&A: Developing software systems efficiently, reliably, and at scale
+      with ongoing maintenance. It covers requirements specification and validation, software design and architecture, quality
+      analysis, construction, testing, maintenance, software project management, and SE economics.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_request_must_made_change_specialization_en_1b5b85:
+  - text: 'According to the official FCI student guide Q&A: Requests to change specialization are submitted to the Dean during
+      the last two weeks of the semester. The decision must be made by the end of the first week of the following semester.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_secondary_school_streams_eligible_admission_en_438237:
+  - text: 'According to the official FCI student guide Q&A: Mathematics stream and Science stream (or equivalent certificates
+      recognized by the Academy).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_minimum_english_language_percentage_required_en_689175:
+  - text: 'According to the official FCI student guide Q&A: At least 80% in the English language in the General Secondary
+      Education certificate or its equivalent.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_tests_must_student_pass_admitted_en_a76e82:
+  - text: 'According to the official FCI student guide Q&A: The student must pass the aptitude tests held by the faculty,
+      and then pass the personal interview for those who succeed in the tests.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_admission_documents_list_all_required_documents_application_en_73addf:
+  - text: 'According to the official FCI student guide Q&A: 1) Grade sheet from General Secondary Education or equivalent.
+      2) Copy or official extract of birth certificate. 3) Copy of national ID card. 4) Medical examination by the Academy.
+      5) Six personal photographs. 6) Any other requirements specified by the Academy''s admission policy. Male students must
+      also submit military service forms (Form 2 Jund & 6 Jund, or Form 7 Jund).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_admission_documents_within_long_must_original_documents_en_835915:
+  - text: 'According to the official FCI student guide Q&A: The student must submit all original documents (Secondary Certificate
+      and Birth Certificate) within one week of enrollment at the faculty.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_steps_admission_process_en_a5004c:
+  - text: 'According to the official FCI student guide Q&A: 1) Review submitted documents against originals. 2) Receive payment
+      order for the application envelope fee. 3) Pay envelope and examination fees at the treasury. 4) Student fills in all
+      data forms. 5) Submit file to the registration committee. 6) Receive file number (seat number). 7) Exam location and
+      date announced only after file submission.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_transfer_conditions_from_equivalent_en_992d9a:
+  - text: 'According to the official FCI student guide Q&A: The student must be passing at their current faculty, and their
+      secondary school total must not fall below the minimum set by the Academy''s Scientific Council in the year they obtained
+      their secondary certificate.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_transfer_conditions_from_non_equivalent_en_294276:
+  - text: 'According to the official FCI student guide Q&A: The student must hold a secondary certificate total that qualifies
+      for FCI admission in the year they obtained their certificate.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_can_student_was_permanently_expelled_en_56daa6:
+  - text: 'According to the official FCI student guide Q&A: No. In all cases, the student must not have been permanently dismissed
+      for disciplinary reasons from any faculty or scientific institute.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_must_transfer_student_have_had_en_5b6fd7:
+  - text: 'According to the official FCI student guide Q&A: Yes. In all cases, the student must not have discontinued studies
+      before the transfer to the faculty.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_many_total_credit_hours_required_en_8fec8b:
+  - text: 'According to the official FCI student guide Q&A: 144 credit hours.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_144_credit_hours_distributed_across_en_9d85fd:
+  - text: 'According to the official FCI student guide Q&A: General Requirements: 12 hrs (6 mandatory + 6 elective). College
+      Requirements: 72 hrs (66 mandatory + 6 elective). Major Specialization: 45 hrs (30 mandatory + 15 elective). Minor Specialization:
+      15 hrs (elective). Total: 144 hrs.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_many_years_semesters_bachelor_program_en_31cd45:
+  - text: 'According to the official FCI student guide Q&A: 4 years divided into 8 semesters, plus summer practical training
+      either inside or outside the faculty.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_long_each_academic_semester_en_88e911:
+  - text: 'According to the official FCI student guide Q&A: 16 weeks.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_specialization_start_years_shared_all_en_e424a0:
+  - text: 'According to the official FCI student guide Q&A: Study is general and shared for all students through the end of
+      Year 2. Major specialization begins at the start of Year 3 (covering the four semesters of Years 3 and 4).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_study_system_credit_hour_ranges_define_each_en_b517af:
+  - text: 'According to the official FCI student guide Q&A: Level 1: 1–36 hrs completed. Level 2: 37–72 hrs. Level 3: 73–108
+      hrs. Level 4: 109–144 hrs.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_can_student_take_extra_courses_en_a9a828:
+  - text: 'According to the official FCI student guide Q&A: Yes. Based on the academic advisor''s recommendation, a student
+      may register up to 3 additional elective courses (from those offered by the faculty) to improve their cumulative GPA.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_graduation_project_requirement_year_students_en_993a73:
+  - text: 'According to the official FCI student guide Q&A: Fourth-year students must prepare a graduation project on topics
+      specified by academic department councils. It spans two semesters, assessed practically and orally by a committee. Evaluation
+      coincides with 8th semester exams. The Faculty Council may extend by up to 4 weeks. Students who fail or are absent
+      must repeat it.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_practical_training_required_graduation_en_187817:
+  - text: 'According to the official FCI student guide Q&A: Three months of practical training (one month per year) either
+      inside or outside the faculty, as per departmental recommendations and Faculty Council approval.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_hybrid_education_system_applied_en_f1694a:
+  - text: 'According to the official FCI student guide Q&A: FCI applies a hybrid education system with at least 60% face-to-face
+      and 40% distance learning (or any other approved ratio), per Supreme Council of Universities decisions and Faculty Council
+      approval.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_graduation_ceremonies_held_each_academic_en_06c58f:
+  - text: 'According to the official FCI student guide Q&A: In June, November, and January of each academic year.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_academic_advisors_their_role_en_234ee4:
+  - text: 'According to the official FCI student guide Q&A: Academic advisors are faculty members assigned by the college
+      to guide students in choosing the required courses for their degree before the registration period.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_course_registration_begin_each_semester_en_7a9c4b:
+  - text: 'According to the official FCI student guide Q&A: One week before the semester starts. Students may also register
+      during the first and second weeks after study begins, after paying tuition and obtaining approval from their academic
+      advisor and Vice Dean.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_study_system_minimum_credit_hour_load_per_en_01ee12:
+  - text: 'According to the official FCI student guide Q&A: 15 credit hours.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_study_system_maximum_credit_hour_load_per_en_8ba205:
+  - text: 'According to the official FCI student guide Q&A: 21 credit hours.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_many_courses_can_student_register_en_85d8c0:
+  - text: 'According to the official FCI student guide Q&A: Maximum 2 courses (6 credit hours). The Dean may allow up to 3
+      courses if: the student has a GPA ≥ 3.7, or if maximum registration would enable graduation that summer, or with Faculty
+      Council approval.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_add_drop_many_courses_can_student_add_en_94829e:
+  - text: 'According to the official FCI student guide Q&A: Up to 2 courses, during the advising period (1 week before + 2
+      weeks after semester start, or 1st week of summer semester). No record appears on the transcript in these cases.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_notation_recorded_student_withdraws_after_en_e9ede9:
+  - text: 'According to the official FCI student guide Q&A: A ''W'' (Withdrawn) notation is recorded on the student''s transcript
+      for the withdrawn course(s).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_sets_registration_plan_procedures_before_en_b05dcc:
+  - text: 'According to the official FCI student guide Q&A: The Vice Dean sets the registration plan and procedures before
+      each semester.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_maximum_allowed_absence_rate_per_en_30c8ab:
+  - text: 'According to the official FCI student guide Q&A: 25% of the total teaching hours for the course.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_consequences_exceeding_absence_rate_en_ce38b7:
+  - text: 'According to the official FCI student guide Q&A: The student is considered FAILED in that course and is BARRED
+      from the final exam.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_grade_student_receive_their_excess_en_f12716:
+  - text: 'According to the official FCI student guide Q&A: If the absence is due to an excuse accepted by the Faculty Council,
+      the student is considered WITHDRAWN and receives a ''W'' grade on their transcript.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_must_students_they_absent_from_en_fc18e5:
+  - text: 'According to the official FCI student guide Q&A: They must report absences to Student Affairs immediately (first-hand,
+      as they occur).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_students_national_patriotic_duties_exempt_en_2b7a8d:
+  - text: 'According to the official FCI student guide Q&A: Yes. Absence for national duties is considered excused and does
+      not count toward the 25% limit, provided the excuse is approved by the FCI Dean. These students must complete coursework
+      in an alternative manner agreed upon with the course instructor.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_exam_arrangement_made_students_national_en_484caa:
+  - text: 'According to the official FCI student guide Q&A: They take an alternative exam at the end of the semester covering
+      the full course material, graded out of 70%, and lasting 3 hours.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_midterm_exam_held_each_semester_en_f35e57:
+  - text: 'According to the official FCI student guide Q&A: At the 7th lecture of each semester (in both main semesters and
+      the summer semester), as per the academic calendar.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_final_exam_held_en_e4ac70:
+  - text: 'According to the official FCI student guide Q&A: In the last week of each semester, per a schedule issued by the
+      Dean''s office. In emergency cases requiring earlier scheduling, the Dean''s approval is required.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_long_each_midterm_final_exam_en_cb4080:
+  - text: 'According to the official FCI student guide Q&A: 2 hours each. The Academy''s Scientific Council may modify the
+      duration for any course after consulting the Faculty Council and relevant department.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_total_grade_100_distributed_per_en_418384:
+  - text: 'According to the official FCI student guide Q&A: Exams: 75% — Midterm: 15%, Final: 60%. Coursework: 25% — including
+      oral/written tests, reports and research, lab experiments and field trips, weekly/monthly assignments.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_complete_course_level_grading_scale_en_1f7f09:
+  - text: 'According to the official FCI student guide Q&A: A+ (4.0 pts, 95–100%), A (3.7 pts, 90–94%), B+ (3.5 pts, 85–89%),
+      B (3.2 pts, 80–84%), C+ (2.9 pts, 73–79%), C (2.6 pts, 65–72%), D+ (2.3 pts, 58–64%), D (2.0 pts, 50–57%), F (0 pts,
+      below 50%), ABS (0 pts – Absent), I (Incomplete), W (Withdrawn), AUD (Auditor).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_cumulative_annual_gpa_grading_scale_en_487916:
+  - text: 'According to the official FCI student guide Q&A: A (Excellent): 3.7 and above. B (Very Good): 3.2 to less than
+      3.7. C (Good): 2.6 to less than 3.2. D (Pass): 2.0 to less than 2.6. F (Fail): below 2.0.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_formula_annual_gpa_en_c84d62:
+  - text: 'According to the official FCI student guide Q&A: Annual GPA = Sum of (credit hours × grade points for each course)
+      ÷ Total credit hours in the academic year (across both semesters).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_happens_student_fails_mandatory_course_en_f5ebf9:
+  - text: 'According to the official FCI student guide Q&A: The student must re-register in that course. Both the fail grade
+      and the new grade from re-taking the course are recorded on the transcript (شهادة التقديرات).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_honors_distinction_requirement_graduation_en_f79579:
+  - text: 'According to the official FCI student guide Q&A: A cumulative GPA of at least 3.7 at graduation, provided: 1) The
+      student studied at least 75% of graduation requirements at FCI with no failures in any course there. 2) The student
+      completed graduation requirements in no more than 4 years (excluding registration suspension periods).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_incomplete_grade_mean_must_resolved_en_2c73df:
+  - text: 'According to the official FCI student guide Q&A: It is given when a student misses the exam due to a serious legitimate
+      reason accepted by the Faculty Council, and the student''s absence did not exceed the allowed percentage. The student
+      must resolve the Incomplete before the start of the next semester, coordinated by the Vice Dean with the course instructor.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_happens_student_absent_from_final_en_e2138a:
+  - text: 'According to the official FCI student guide Q&A: The student is considered FAILED in those courses.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_exam_results_officially_approved_announced_en_265466:
+  - text: 'According to the official FCI student guide Q&A: The Faculty Council approves semester exam results. Results are
+      not announced until the student has paid all tuition and additional fees.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_electronic_online_examination_allowed_en_31eeaf:
+  - text: 'According to the official FCI student guide Q&A: Yes. A hybrid exam system (electronic + traditional) is applied
+      per the nature of each course and Supreme Council of Universities decisions. The Faculty Council may decide to conduct
+      one or more courses'' exams electronically.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_grade_student_receive_absent_from_en_2ab96d:
+  - text: 'According to the official FCI student guide Q&A: ABS (Absent) = 0 points, counted as FAILED.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_academic_warning_student_receive_academic_warning_en_0c0a99:
+  - text: 'According to the official FCI student guide Q&A: When their cumulative GPA falls below 2.0. Their maximum allowed
+      credit hours per semester are also reduced to 15.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_academic_warning_long_student_have_clear_academic_en_7ef134:
+  - text: 'According to the official FCI student guide Q&A: Two semesters following the warning. The student must raise their
+      cumulative GPA to at least 2.00 in this period.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_academic_warning_happens_student_cannot_clear_academic_en_bbfe07:
+  - text: 'According to the official FCI student guide Q&A: The student may only re-register in courses they have previously
+      failed. For elective courses, they may substitute with an alternative course; if passed, it replaces the original. The
+      student has exactly 2 chances to raise their GPA and clear the warning.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_can_student_academic_warning_change_en_bbb10d:
+  - text: 'According to the official FCI student guide Q&A: Yes. A student may transfer to another major within the faculty
+      if it improves their chances of clearing the warning, with the Vice Dean for Academic Affairs approving the new study
+      plan (excluding incompatible grades and courses).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_registration_suspension_enrollment_freeze_its_en_9f0e62:
+  - text: 'According to the official FCI student guide Q&A: A student may suspend registration with Faculty Council approval
+      if they submit a compelling reason within 8 weeks of the semester start. All previously earned grades are preserved.
+      If submitted after 8 weeks, Academy''s Scientific Council approval is required.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_maximum_total_registration_suspension_allowed_en_80528e:
+  - text: 'According to the official FCI student guide Q&A: 2 consecutive semesters OR 4 non-consecutive semesters throughout
+      the entire study period.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_registration_suspension_count_toward_allowed_en_d71489:
+  - text: 'According to the official FCI student guide Q&A: No. Suspension periods are NOT counted in the time allowed to
+      earn the Bachelor''s degree.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_suspension_happens_student_excuse_suspension_not_en_3f915c:
+  - text: 'According to the official FCI student guide Q&A: The student is considered absent. If they are absent for 4 consecutive
+      semesters, they are dismissed from the faculty. Otherwise, the interruption period is deducted from the suspension allowance.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_student_excused_absence_accepted_they_en_8c0ad4:
+  - text: 'According to the official FCI student guide Q&A: The absence period is deducted from the suspension allowance.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_law_governs_student_discipline_en_73fd62:
+  - text: 'According to the official FCI student guide Q&A: Universities Organization Law No. 49 of 1972 and its executive
+      regulations.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_actions_considered_disciplinary_violations_en_7e9777:
+  - text: 'According to the official FCI student guide Q&A: 1) Disrupting faculty or university order. 2) Obstructing studies
+      or inciting others to skip classes. 3) Any act contrary to honor or dignity inside or outside the university. 4) Disrupting
+      exam order or cheating. 5) Damaging university facilities, equipment, or books. 6) Organizing unauthorized associations
+      within the university. 7) Distributing flyers or wall newspapers without permission. 8) Sit-ins or unauthorized demonstrations.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_happens_student_caught_cheating_during_en_edf605:
+  - text: 'According to the official FCI student guide Q&A: The student is immediately removed from the exam room by the Dean
+      or their representative, is barred from the remaining exams of that session, is considered FAILED in ALL courses of
+      that exam session, and the case is referred to the Disciplinary Council.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_list_all_disciplinary_penalties_order_en_9c6321:
+  - text: 'According to the official FCI student guide Q&A: 1) Oral warning. 2) Written warning. 3) Denial of student services.
+      4) Barred from attending specific courses for up to 1 month. 5) Suspended from faculty for up to 1 month. 6) Barred
+      from one or more exams. 7) Exam cancelled for one or more courses. 8) Permanent expulsion from the university (reported
+      to all Egyptian universities).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_consequences_permanent_expulsion_from_university_en_4dc824:
+  - text: 'According to the official FCI student guide Q&A: The student is barred from enrollment or sitting for exams at
+      any Egyptian university. The decision is communicated to all other Egyptian universities.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_disciplinary_decisions_recorded_notified_en_294b69:
+  - text: 'According to the official FCI student guide Q&A: All disciplinary decisions (except oral warnings) are kept in
+      the student''s file, and the student''s guardian is notified.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_sets_tuition_fees_en_2a4a77:
+  - text: 'According to the official FCI student guide Q&A: The Academy''s Scientific Council sets the tuition fees.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_within_long_must_tuition_fees_en_12cccd:
+  - text: 'According to the official FCI student guide Q&A: Within 2 weeks of the semester start. Summer semester fees must
+      be paid before study begins. Year 1 students are not officially enrolled until fees are paid.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_admission_documents_application_exam_fees_refundable_en_1dbb4a:
+  - text: 'According to the official FCI student guide Q&A: No. Application and exam fees are non-refundable under any circumstances.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_percentage_tuition_refunded_within_weeks_en_e9e334:
+  - text: 'According to the official FCI student guide Q&A: 75%, provided the student has not attended any lectures.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_percentage_tuition_refunded_after_weeks_en_672e65:
+  - text: 'According to the official FCI student guide Q&A: 40% of the tuition fees.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_can_tuition_fees_refunded_after_en_275199:
+  - text: 'According to the official FCI student guide Q&A: No. No fees are refunded after midterm exams begin.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_document_must_student_present_proof_en_b09346:
+  - text: 'According to the official FCI student guide Q&A: The original payment receipt — Form 33 (نموذج 33 ع.ح).
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_medical_have_medical_unit_operate_services_en_f75a7c:
+  - text: 'According to the official FCI student guide Q&A: Yes. The Academy has a medical unit operating throughout the academic
+      year and summer vacation, providing: medical examinations for new students at the start of the academic year, and medical
+      services year-round with referrals to contracted hospitals.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_academy_website_en_749c68:
+  - text: 'According to the official FCI student guide Q&A: sams.edu.eg
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_approves_granting_bachelor_degrees_en_2af989:
+  - text: 'According to the official FCI student guide Q&A: The Academy''s Scientific Council approves the granting of Bachelor''s
+      degrees. The faculty issues temporary graduation certificates after Faculty Council approval of results, pending issuance
+      of the official Academy-approved certificates.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_departments_responsible_setting_transitional_rules_new_en_aff66c:
+  - text: 'According to the official FCI student guide Q&A: The Academy Council, after taking the Faculty Council''s opinion,
+      sets the transitional rules and procedures for implementing new study plans after equivalency approval from the Supreme
+      Council of Universities.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_vision_0fc2872b_ar_2078e1:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تتطلع الكلية إلى الارتقاء بالمستوى العلمي والتطبيقي والبحثي في مجالات
+      علوم الحاسب ونظم المعلومات وهندسة البرمجيات لتحقيق مكانة مرموقة بين كليات الحاسبات والمعلومات محليًا وإقليميًا وعالميًا،
+      مع الالتزام بأخلاقيات المهنة وتنمية المجتمع المصري معلوماتيًا وإدارة موارد معلوماته وتراثه.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_mission_23253a33_ar_ff7b5b:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تسعى الكلية لتقديم مستوى تعليمي وبحثي متميز في علوم الحاسب ونظم المعلومات
+      وهندسة البرمجيات لخريجيها وإعدادهم علميًا ومهنيًا لمجابهة تطلعات المجتمع المتغيرة، مع توفير مناخ يشجع على الإبداع والتميز
+      والالتزام الأخلاقي المهني.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_goals_3c55a2e5_ar_ac894f:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 1) إعداد المتخصصين في الحاسبات والمعلومات. 2) إجراء الدراسات والبحوث
+      العلمية والتطبيقية. 3) تقديم الاستشارات العلمية والفنية. 4) تدريب الكوادر الفنية في قطاعات الدولة. 5) نشر الوعي وتعميقه
+      في المجتمع بتكنولوجيا الحاسبات. 6) تنظيم المؤتمرات وعقد الاجتماعات العلمية. 7) عقد الاتفاقيات العلمية مع المؤسسات المناظرة.
+      8) توفير ودعم وسائل النشر والبحث العلمي. 9) إنشاء وحدات أبحاث متخصصة متقدمة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_601cbeac_ar_7c6594:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: أكاديمية السادات للعلوم الإدارية هيئة حكومية تعليمية تخضع لقانون تنظيم
+      الجامعات رقم (49) لسنة 1972 وتعديلاته.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_departments_bfbecf4f_ar_baf29a:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: ثلاثة أقسام: (1) علوم الحاسب، (2) نظم المعلومات، (3) هندسة البرمجيات.
+      ويجوز أن تنشأ أقسام أخرى مستقبلًا وفقًا لأحكام قانون تنظيم الجامعات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_ce20edf1_ar_0b0a28:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: درجة البكالوريوس في الحاسبات والمعلومات في أحد التخصصات الثلاثة: علوم
+      الحاسب، نظم المعلومات، أو هندسة البرمجيات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_0b520edd_ar_55e5f7:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تكون الدراسة لكل تخصصات الأقسام العلمية باللغة الإنجليزية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_057c18fb_ar_b17c85:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: في بداية انتقاله للفرقة الثالثة التي يبدأ فيها التخصص. ولا يجوز أن يكون
+      التخصصان الرئيسي والفرعي في ذات المجال.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_78fe3713_ar_243dd0:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: لا، لا يجوز أن يكون التخصصان الرئيسي والفرعي في ذات المجال.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_5a1e7492_ar_5edacd:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يمكن للطالب الحصول على بكالوريوس تخصص مزدوج من التخصصات التي تطرحها الكلية
+      بعد استكمال جميع المتطلبات الدراسية لكلا التخصصين. وينظم مجلس الأكاديمية العلمي إجراءات الاستكمال بناءً على عرض مجلس
+      الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_170e426a_ar_9cde2b:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: مرة واحدة فقط طوال مدة دراسته في الكلية. ولا يجوز لطلبة المستوى الأخير
+      تغيير التخصص، ويكون التغيير في حدود المقاعد الشاغرة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_141796f7_ar_0b4152:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تحليل وتصميم الخوارزميات، معمارية الحاسبات، برمجة الحاسبات، البرمجة الشيئية،
+      بناء تطبيقات الويب، التصميم المنطقي، هياكل البيانات، نظم التشغيل، شبكات الحاسبات، الذكاء الاصطناعي، النظم الذكية، معالجة
+      اللغات الطبيعية، معالجة الصور، الشبكات العصبية، تعلم الآلة، أمان الحاسبات، الحوسبة السحابية، الرؤية بالحاسب، التعرف
+      على الأنماط، الواقع الافتراضي، ومشروع التخرج.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_c7fe361a_ar_e55039:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يرتبط بتطوير وتشغيل وصيانة النظم التي تتيح خدمات المعلومات والاتصالات
+      في المنظمات الحديثة. وهو حلقة الوصل بين علوم الحاسب والمجال العملي للشركات، إذ يفهم مشاكل الأعمال ويطرح حلولًا تقنية،
+      مستقطبًا مدخلاته من البيانات والمعلومات والمعرفة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_458f38d8_ar_85477c:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يرتبط بتطوير نظم البرمجيات بكفاءة ووثوقية على نطاق واسع مع صيانتها المستمرة.
+      يشمل: توصيف المتطلبات والتحقق منها، تصميم البرمجيات ومعماريتها، تحليل الجودة، بناء البرمجيات، اختبارها، صيانتها، إدارة
+      مشروع البرمجيات، واقتصاديات هندسة البرمجيات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_81f9f633_ar_f73c4c:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تُقدَّم طلبات تغيير التخصص إلى عميد الكلية خلال الأسبوعين الأخيرين من
+      الفصل الدراسي، على أن يُبَّت في الطلب خلال مدة أقصاها نهاية الأسبوع الأول من الفصل الدراسي التالي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_bd25dd05_ar_f85bda:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: شعبة الرياضيات وشعبة العلمي علوم (أو ما يعادلها من الشهادات المعتمدة).
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_c65a6bc1_ar_c88f11:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نسبة 80% على الأقل في اللغة الإنجليزية بالثانوية العامة أو ما يعادلها.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_7b053824_ar_1bc538:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: اجتياز اختبارات القدرات التي تعقدها الكلية، ثم اجتياز المقابلة الشخصية
+      للناجحين في هذه الاختبارات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_admission_documents_fe41609f_ar_08cd1c:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 1) كشف درجات شهادة الثانوية العامة أو ما يعادلها. 2) نسخة أو مستخرج رسمي
+      من شهادة الميلاد. 3) صورة البطاقة الشخصية. 4) الكشف الطبي بمعرفة الأكاديمية. 5) ست صور شخصية. 6) أي متطلبات أخرى تحددها
+      سياسة القبول. كما يقدم الطلاب الذكور نموذج 2 جند و6 جند أو نموذج 7 جند.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_admission_documents_53d26911_ar_d19497:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: خلال أسبوع واحد من قيد الطالب بالكلية يجب استيفاء جميع المستندات الأصلية
+      (شهادة الثانوية العامة وشهادة الميلاد).
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_a62f00f3_ar_861c2e:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 1) مراجعة الأوراق المقدمة على أصول الشهادات. 2) إصدار أمر توريد بقيمة
+      المظروف. 3) سداد رسوم المظروف والاختبارات بالخزينة. 4) كتابة جميع البيانات بمعرفة الطالب. 5) تسليم الملف للجنة التسجيلات.
+      6) حصول الطالب على رقم الملف (رقم الجلوس). 7) تحديد مكان الاختبار وتاريخه بعد تسليم الملف فقط.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_6e35bba3_ar_37e7f7:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: أن يكون الطالب ناجحًا في كليته، وألا يقل مجموع درجاته في الثانوية العامة
+      عن الحد الأدنى الذي حدده مجلس الأكاديمية في سنة حصوله على الثانوية العامة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_6390d1c5_ar_e54399:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: أن يكون الطالب حاصلًا على مجموع في الثانوية العامة يؤهله للقبول بكلية
+      الحاسبات والمعلومات في سنة الحصول على شهادة الثانوية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_c92e1ae6_ar_9d5629:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: لا. في جميع الأحوال يجب ألا يكون الطالب قد سبق فصله فصلًا نهائيًا لأسباب
+      تأديبية من كلية أو معهد علمي آخر.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_transfer_417f4d6e_ar_279348:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نعم. في جميع الأحوال يجب ألا يكون الطالب قد انقطع عن الدراسة قبل التحويل
+      إلى الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_study_system_b24d7e6f_ar_ca9710:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 144 ساعة معتمدة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_205d5eca_ar_ba4711:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: متطلبات عامة: 12 ساعة (6 إجبارية + 6 اختيارية). متطلبات الكلية: 72 ساعة
+      (66 إجبارية + 6 اختيارية). متطلبات التخصص الرئيسي: 45 ساعة (30 إجبارية + 15 اختيارية). متطلبات التخصص الفرعي: 15 ساعة
+      اختيارية. المجموع: 144 ساعة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_cb4b28db_ar_e42a0e:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 4 سنوات تُقسَّم على 8 فصول دراسية، بالإضافة لتدريب عملي صيفي إما داخل
+      الكلية أو خارجها.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_0bb4693f_ar_6f4f46:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: ستة عشر (16) أسبوعًا.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_72666783_ar_1f2aa8:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تعتبر الدراسة عامة ومشتركة لكل طلاب الكلية حتى نهاية الفرقة الثانية،
+      ويبدأ التخصص الرئيسي من بداية الفرقة الثالثة أي الأربع فصول دراسية للفرقتين الثالثة والرابعة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_study_system_ee166c8f_ar_a6d5dc:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: المستوى الأول: 1–36 ساعة منجزة بنجاح. المستوى الثاني: 37–72. المستوى
+      الثالث: 73–108. المستوى الرابع: 109–144.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_13424d0c_ar_70e867:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نعم، بناءً على اقتراح المرشد الأكاديمي يُسمح للطالب بالتسجيل في عدد من
+      المواد الإضافية بحد أقصى ثلاثة مقررات من بين ما تطرحه الكلية لتحسين معدله التراكمي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_0f401897_ar_fffda5:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُلزَم طالب الفرقة الرابعة بإعداد مشروع تخرج في موضوعات تحددها مجالس
+      الأقسام، يمتد على فصلين دراسيين، يُقيَّم عمليًا وشفهيًا بمعرفة لجنة تُشكَّل بناءً على اقتراح مجلس القسم. تُعقد امتحانات
+      التقييم مع امتحانات الفصل الثامن مع إمكانية تمديد لا تتجاوز أربعة أسابيع.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_3404e10c_ar_badd95:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: ثلاثة أشهر تدريب بواقع شهر كل عام، إما داخل الكلية أو خارجها طبقًا لتوصيات
+      مجالس الأقسام المختصة واعتماد مجلس الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_44afcb95_ar_bd726c:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تطبق الكلية نظام التعليم الهجين (وجهًا لوجه وعن بُعد) بنسبة 60% وجهًا
+      لوجه و40% عن بُعد أو أي نسبة أخرى معتمدة، وفق قرارات المجلس الأعلى للجامعات وموافقة مجلس الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_5bca3368_ar_dd0088:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: في دور يونيه ودور نوفمبر ودور يناير من كل عام دراسي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_4ba13fe7_ar_0edf2e:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: المرشدون الأكاديميون هم أعضاء هيئة التدريس ومعاونوهم الذين تُخصصهم الكلية
+      للقيام بتوجيه الطلاب في اختيار المواد الدراسية المطلوبة للحصول على الدرجة العلمية وإرشادهم قبل فترة التسجيل.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_1fe9e497_ar_3c629f:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: قبل بداية الفصل الدراسي بأسبوع. ويجوز تسجيل الطالب خلال الأسبوعين الأول
+      والثاني من بدء الدراسة بعد سداد الرسوم وموافقة المرشد الأكاديمي ووكيل الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_db7a476a_ar_590afb:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 15 (خمس عشرة) ساعة معتمدة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_97f79660_ar_3cb19b:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 21 (إحدى وعشرون) ساعة معتمدة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_d58f5e09_ar_1f8438:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: مقررين كحد أقصى (6 ساعات معتمدة). يجوز بموافقة العميد السماح بما لا يتجاوز
+      ثلاثة مواد إذا كان المعدل التراكمي لا يقل عن 3.7، أو كان من شأن التسجيل الأقصى تمكينه من التخرج نهاية الصيف، أو بموافقة
+      مجلس الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_add_drop_b837e065_ar_ec44ac:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: مادتين على الأكثر خلال فترة الإرشاد الأكاديمي (أسبوع قبل بدء الدراسة
+      وأسبوعين من بدايتها، أو الأسبوع الأول من الفصل الصيفي). في هاتين الحالتين لا يثبت الانسحاب في السجل الدراسي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_b822ca70_ar_5b765c:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُقيَّد في السجل الدراسي للطالب أمام المادة أو المادتين المنسحب منهما
+      ملاحظة (منسحب W).
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_eef8482b_ar_85101b:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يضع وكيل الكلية خطة التسجيل وإجراءاته قبل كل فصل دراسي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_bf1a93a3_ar_c38740:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 25% من مجموع الساعات التدريسية للمقرر الدراسي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_9b30240d_ar_db0bd2:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُعتبر الطالب راسبًا في المقرر ويُمنع من دخول الاختبار النهائي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_a0f77888_ar_f686ca:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُعتبر الطالب منسحبًا من المقرر، ويُرصد له في شهادة التقديرات رمز (W
+      / منسحب).
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_93ed2a9f_ar_fb64b0:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يستلزم أن يقدم الغياب أولًا بأول إلى شؤون الطالب.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_attendance_62dea312_ar_31017d:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نعم. تُعتبر مدة الغياب لأداء المهام الوطنية غيابًا بعذر ولا تدخل في حساب
+      نسبة الغياب المنصوص عليها، ويُصدر قرار باعتماد العذر من عميد كلية الحاسبات والمعلومات. ويلتزم هؤلاء الطلاب بتأدية الأعمال
+      الفصلية بطريقة مناسبة يتفق فيها مع أستاذ المقرر.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_aee3a74e_ar_d65c47:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُعقد لهم اختبار في نهاية الفصل في كامل المقرر بنسبة 70% لمدة 3 ساعات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_4b78c0e1_ar_5b9552:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: في المحاضرة السابعة في الفصلين الرئيسيين والفصل الصيفي، ويحدد موعده في
+      التقويم الجامعي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_f59fa303_ar_4ee44c:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: في الأسبوع الأخير من كل فصل دراسي، بموجب جدول تصدره عمادة الكلية. وفي
+      الحالات الاضطرارية التي تستوجب تقديم اختبار مقرر ما عن موعده تشترط موافقة عميد الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_55130e95_ar_8c243f:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: ساعتان لكل منهما. ويجوز لمجلس الأكاديمية العلمي بعد أخذ رأي مجلس الكلية
+      والقسم المختص تعديل مدة الامتحان لأي مقرر.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_eae84880_ar_b0cceb:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: للاختبارات 75%: 15% للاختبار النصفي و60% للاختبار النهائي. للأعمال الفصلية
+      25% وتشمل: الاختبارات الشفوية والتحريرية، التقارير والبحوث، التجارب المعملية والرحلات الميدانية، الواجبات الأسبوعية
+      أو الشهرية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_dc5310f7_ar_313e40:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: A+ (4 نقاط، 95–100%)، A (3.7 نقاط، 90–94%)، B+ (3.5، 85–89%)، B (3.2،
+      80–84%)، C+ (2.9، 73–79%)، C (2.6، 65–72%)، D+ (2.3، 58–64%)، D (2.0، 50–57%)، F (صفر، أقل من 50%)، ABS (غائب–صفر)،
+      I (غير مكتمل)، W (منسحب)، AUD (مستمع).
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_1099686d_ar_60aecd:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: A (ممتاز): 3.7 فأكثر. B (جيد جدًا): من 3.2 إلى أقل من 3.7. C (جيد): من
+      2.6 إلى أقل من 3.2. D (مقبول): من 2.0 إلى أقل من 2.6. F (راسب): أقل من 2.0.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_e92ccfa5_ar_f6ef42:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: المعدل السنوي = مجموع حاصل (ضرب عدد الساعات الخاصة بكل مقرر × النقاط
+      التي حصل عليها الطالب) ÷ مجموع عدد الساعات في العام الدراسي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_cbf9df8b_ar_80bf5a:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يجب على الطالب إعادة التسجيل في تلك المادة. يُسجَّل في كشف تقديراته الرسوب
+      أولًا ثم التقدير الذي حصل عليه عند إعادة المقرر في الفصل الذي نجح فيه.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_ebb125ec_ar_3cb7b6:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: معدل تراكمي لا يقل عن 3.7 عند التخرج، بشرط: 1) أن يكون قد درس في الكلية
+      ما لا يقل عن 75% من متطلبات التخرج وألا يكون قد رسب في أي مادة. 2) أن يكون قد أكمل متطلبات التخرج في مدة لا تتجاوز أربع
+      سنوات بعد استبعاد فترات وقف القيد.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_grading_41780493_ar_978211:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُمنح للطالب الذي تغيب عن الامتحان لعذر جدي مشروع يقبله مجلس الكلية ولم
+      يتجاوز نسبة الغياب المسموح بها. على الطالب إزالة التقدير قبل بدء الفصل التالي بالتنسيق من جانب وكيل الكلية لشؤون التعليم
+      مع أستاذ المقرر.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_9657c71b_ar_d70789:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُعتبر الطالب راسبًا فيما تخلف عنه.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_8e6d3d53_ar_91a55b:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يعتمد مجلس الكلية نتائج امتحانات الفصول الدراسية. لا تُعلن نتائج الامتحان
+      إلا إذا سدد الطالب المصروفات الدراسية والرسوم الإضافية المقررة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_54317f8d_ar_69cd16:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نعم. يُطبَّق نظام الامتحان الهجين (إلكتروني وتقليدي) وفقًا لطبيعة المقررات
+      وقرارات المجلس الأعلى للجامعات. ويجوز لمجلس الكلية أن يقرر عقد الامتحان إلكترونيًا في مقرر أو أكثر.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_c24c9c9c_ar_212e79:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: ABS (غائب) = صفر نقاط، يُعدُّ راسبًا.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_academic_warning_5808fe15_ar_e7c4b1:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: إذا كان معدله التراكمي أقل من (2). ويكون الحد الأقصى للعبء الدراسي المسموح
+      به 15 ساعة معتمدة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_academic_warning_5795f97d_ar_23414f:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: الفصلان الدراسيان التاليان لحصوله على الإنذار. يجب خلالهما رفع معدله
+      التراكمي إلى 2.00 نقطة على الأقل.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_academic_warning_6b1322e6_ar_becfa2:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُسمح له فقط بتسجيل المواد الراسب فيها. في حالة المواد الاختيارية يمكن
+      تسجيل مادة بديلة فإذا نجح فيها تحل محل الأصلية. وللطالب فرصتان فقط لرفع معدله التراكمي بما يزيل الإنذار.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_2f582eda_ar_c1721f:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نعم، يمكن في جميع الأحوال التحويل إلى تخصص رئيسي آخر داخل الكلية إذا
+      كان من شأنه تحسين فرصته في إزالة الإنذار، على أن يعتمد وكيل الكلية لشؤون التعليم الخطة الدراسية اللازمة مع استبعاد المواد
+      والتقديرات التي لا تتفق مع الخطة الجديدة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_69b2ea36_ar_b848f2:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يجوز بقرار من مجلس الكلية وقف تسجيل الطالب بناءً على طلبه إذا قدم عذرًا
+      قهريًا خلال ثمانية أسابيع من بدء الدراسة، مع الاحتفاظ بتقديراته السابقة. إذا قُدِّم العذر بعد انقضاء الثمانية أسابيع
+      لا يجوز الوقف إلا بقرار من مجلس الأكاديمية العلمي بناءً على عرض عميد الكلية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_af46bc8f_ar_0e9fba:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: فصلان دراسيان متتاليان أو أربعة فصول متفرقة طوال مدة دراسة الطالب.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_551d2935_ar_92b703:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: لا. لا يدخل وقف التسجيل في حساب المدة المقررة للحصول على درجة البكالوريوس.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_4afe799f_ar_b2a8a6:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُعتبر الطالب منقطعًا عن الدراسة، ويُفصَل من الكلية إذا انقطع لمدة أربعة
+      فصول دراسية متتالية. وفي غير ذلك تُخصم فصول الانقطاع من مدة وقف التسجيل.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_registration_9ddb169f_ar_fb4104:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تُخصم مدة الانقطاع من مدة وقف التسجيل.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_2ecc39cd_ar_ebf61d:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: قانون تنظيم الجامعات رقم (49) لسنة 1972 ولائحته التنفيذية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_f49bd90e_ar_431f03:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 1) الأعمال المخلة بنظام الكلية أو المنشأة الجامعية. 2) تعطيل الدراسة
+      أو التحريض على الغياب. 3) أي فعل يتنافى مع الشرف والكرامة داخل الجامعة أو خارجها. 4) الإخلال بنظام الامتحان أو الغش.
+      5) إتلاف المنشآت والأجهزة أو الكتب الجامعية. 6) تنظيم جمعيات غير مرخصة. 7) توزيع النشرات أو إصدار جرائد حائط بدون ترخيص.
+      8) الاعتصام أو المشاركة في مظاهرات مخالفة للنظام العام.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_exams_80c1b510_ar_47cd63:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُخرَجه العميد أو من ينوب عنه من لجنة الامتحان، يُحرَم من دخول الامتحان
+      في باقي المواد، يُعتبر راسبًا في جميع مواد هذا الامتحان، ويُحال إلى مجلس التأديب.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_33953da8_ar_e93944:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 1) التنبيه شفهيًا. 2) الإنذار (التنبيه كتابةً). 3) الحرمان من بعض الخدمات
+      الطلابية. 4) الحرمان من حضور دروس أحد المقررات لمدة لا تتجاوز شهرًا. 5) الفصل من الكلية لمدة لا تتجاوز شهرًا. 6) الحرمان
+      من الامتحان في مقرر أو أكثر. 7) إلغاء امتحان الطالب في مقرر أو أكثر. 8) الفصل النهائي من الجامعة.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_7f89f460_ar_eeeb8a:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يترتب عليه عدم صلاحية الطالب للقيد أو التقدم للامتحانات في جامعات جمهورية
+      مصر العربية. يُبلَّغ قرار الفصل إلى الجامعات الأخرى.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_discipline_bb5db20b_ar_a60421:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: تُحفَظ القرارات الصادرة بالعقوبات التأديبية عدا التنبيه الشفوي في ملف
+      الطالب، ويُبلَّغ بها ولي أمر الطالب.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_a0feb44b_ar_d01f46:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يُحدِّد الرسوم الدراسية مجلس الأكاديمية العلمي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_00261cc3_ar_51ed7e:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: خلال أسبوعين من بداية الفصل الدراسي. وبالنسبة للفصل الصيفي تُسدَّد الرسوم
+      قبل بدء الدراسة. لا يُعتبر طالب المستوى الأول مسجلًا إلا بعد سداد الرسوم.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_bfcdd912_ar_20ac14:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: لا. رسوم التقديم لاختبارات القبول بالكلية لا تُرد نهائيًا.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_0abe4584_ar_f0da42:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 75% من الرسوم الدراسية، بشرط عدم حضور الطالب أي محاضرات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_982b4221_ar_eaf644:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: 40% من الرسوم الدراسية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_e83d2560_ar_829569:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: لا. لا تُرد أي رسوم بعد بدء اختبارات منتصف الفصل الأول.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_fees_e9a18bf3_ar_aa14d4:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: أصل إيصال السداد (33 ع.ح) الدال على السداد.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_70ca8a30_ar_9187ac:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: نعم. توجد باألكاديمية وحدة طبية تعمل طوال العام الدراسي والإجازة الصيفية،
+      وتقدم: الكشف الطبي على الطلبة المستجدين في أوائل العام الدراسي، وخدمات طبية على مدار العام مع تحويلهم إلى المستشفيات
+      المتعاقد معها.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_80351ff1_ar_1231f8:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: sams.edu.eg
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_graduation_7491f51d_ar_c2bd24:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يعتمد مجلس الأكاديمية العلمي اقتراح منح درجة البكالوريوس. تُحرِّر الكلية
+      شهادات مؤقتة للخريجين بعد اعتماد مجلس الكلية للنتائج لحين صدور الشهادات الرسمية المعتمدة من مجلس الأكاديمية.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_guide_fb03ec94_ar_9cd56f:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يضع مجلس الأكاديمية بعد أخذ رأي مجلس الكلية القواعد والإجراءات الانتقالية
+      لتطبيق الخطة الدراسية الجديدة (تخصصات جديدة) بعد معادلتها من المجلس الأعلى للجامعات.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_change_specialization_short_ar:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يمكن تغيير التخصص مرة واحدة فقط خلال فترة الدراسة، ولا يسمح لطلاب السنة
+      النهائية بتغيير التخصص. ويكون التغيير في حدود المقاعد الشاغرة. وتُقدَّم طلبات تغيير التخصص إلى عميد الكلية خلال الأسبوعين
+      الأخيرين من الفصل الدراسي.
+
+      المصدر: FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_departments_short_ar:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: الأقسام المتاحة هي: علوم الحاسب، نظم المعلومات، وهندسة البرمجيات.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx, FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_specialization_short_ar:
+  - text: 'حسب دليل كلية الحاسبات والمعلومات الرسمي: يبدأ التخصص في الفرقة الثالثة. يختار الطالب تخصصًا رئيسيًا وآخر فرعيًا،
+      ولا يجوز أن يكون التخصصان الرئيسي والفرعي في نفس المجال.
+
+      المصدر: FCI_Bilingual_QA_Dataset (1).docx, FCI_Bilingual_QA_Bank (1).docx'
+  utter_fci_qa_change_specialization_short_en:
+  - text: 'According to the official FCI student guide Q&A: A student may change specialization only once during the study
+      period. Final-year students may not change specialization, and changes depend on available seats. Requests are submitted
+      to the Dean during the last two weeks of the semester.
+
+      Source: FCI_Bilingual_QA_Bank (1).docx'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

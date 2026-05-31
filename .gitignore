@@ -1,0 +1,46 @@
+# Python / local environments
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Rasa / generated runtime files
+.rasa/
+.rasa_cache/
+logs/
+results/
+*.log
+
+# Local secrets and machine-specific config
+.env
+*.local
+
+# Editor / OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Node / frontend scratch
+node_modules/
+
+# Notebooks and temporary exports
+.ipynb_checkpoints/
+*.ipynb
+tmp_*
+
+# Database dumps and local database files
+*.bak
+*.mdf
+*.ldf
+*.sqlite
+*.sqlite3
+*.db
+chroma_db/
+
+# Large optional transformer router model.
+# Keep this local or move it to Git LFS / cloud model storage if needed.
+models/arabic_camelbert_intent_router/
+*.safetensors

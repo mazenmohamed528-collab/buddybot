@@ -1,0 +1,68 @@
+[
+  {
+    "name": "tools clarification reply resolves department",
+    "message": "data science",
+    "passed": false,
+    "response": "IS develops, operates, and maintains systems enabling information and communication services in modern organizations. It bridges Computer Science and the business world by understanding organizational problems and proposing technical solutions, drawing inputs from data, information, and knowledge. Suggested Roadmap Start with SQL and spreadsheets, then Python and data cleaning. Learn visualization with Power BI or Tableau. After that, build projects that combine a database, analysis notebook, and dashboard. Add machine learning after becoming comfortable with data quality and statistics.",
+    "expected_all": [
+      "Essential tools for Data Science",
+      "Python",
+      "Power BI"
+    ],
+    "expected_any": [],
+    "forbidden": [
+      "Information Systems department",
+      "Source:",
+      "course matches"
+    ]
+  },
+  {
+    "name": "unfiltered schedule asks for clarification",
+    "message": "schedule",
+    "passed": false,
+    "response": "What schedule are you looking for? You can ask by:\n- Course name: 'schedule for Data Visualization'\n- Group: 'schedule for ISDS group'\n- Day: 'Saturday schedule'\n- Instructor: 'Dr Ahmed Esmat's schedule'\n- Room: 'what's in Lab 4'",
+    "expected_all": [
+      "What schedule are you looking for?",
+      "schedule for Data Visualization",
+      "Lab 4"
+    ],
+    "expected_any": [],
+    "forbidden": [
+      "day:",
+      "start time:",
+      "course code:",
+      "target group:"
+    ]
+  },
+  {
+    "name": "Arabic fees typo is corrected",
+    "message": "الصاريف",
+    "passed": false,
+    "response": "لم أفهم سؤالك جيداً — ممكن تعيد صياغته؟",
+    "expected_all": [
+      "الرسوم الدراسية",
+      "40%"
+    ],
+    "expected_any": [],
+    "forbidden": [
+      "لم أفهم",
+      "Source:",
+      "StudentID"
+    ]
+  },
+  {
+    "name": "Arabic greeting uses warm template",
+    "message": "السلام عليكم",
+    "passed": false,
+    "response": "Hey, I'm BuddyBot. Ask me about FCI students, GPA, courses, schedules, instructors, rooms, departments, campus services, or just tell me what you need help with.",
+    "expected_all": [
+      "أهلاً وسهلاً",
+      "BuddyBot",
+      "بيانات الطلاب"
+    ],
+    "expected_any": [],
+    "forbidden": [
+      "Hey, I'm BuddyBot"
+    ]
+  }
+]

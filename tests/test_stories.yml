@@ -1,0 +1,32 @@
+version: "3.1"
+
+stories:
+- story: greet user
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+
+- story: answer analytics database question
+  steps:
+  - user: |
+      what is the attendance of student 3
+    intent: ask_database_question
+    entities:
+    - student_id: "3"
+  - action: action_text_to_sql
+
+- story: answer university knowledge question
+  steps:
+  - user: |
+      tell me about the computer department
+    intent: ask_knowledge
+  - action: action_rag_query
+
+- story: route fallback to rag
+  steps:
+  - user: |
+      can you explain that another way
+    intent: nlu_fallback
+  - action: action_rag_query
