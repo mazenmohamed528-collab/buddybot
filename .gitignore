@@ -38,6 +38,8 @@ tmp_*
 *.sqlite
 *.sqlite3
 *.db
+supabase_fci_import.sql
+*_export.sql
 chroma_db/
 
 # Large optional transformer router model.

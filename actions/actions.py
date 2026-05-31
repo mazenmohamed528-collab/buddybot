@@ -588,15 +588,85 @@ def adapt_sql_for_configured_database(sql: str) -> str:
         return sql
 
     adapted = sql.strip().rstrip(";")
-    top_match = re.match(r"(?is)^\s*SELECT\s+TOP\s*\(?\s*(\d+)\s*\)?\s+(.*)$", adapted)
+    adapted = re.sub(
+        r"(?is)CONVERT\s*\(\s*VARCHAR\s*\(\s*5\s*\)\s*,\s*([a-z_][a-z0-9_\.]*)\s*,\s*108\s*\)",
+        r"TO_CHAR(\1, 'HH24:MI')",
+        adapted,
+    )
+
+    top_match = re.match(r"(?is)^\s*SELECT\s+(DISTINCT\s+)?TOP\s*\(?\s*(\d+)\s*\)?\s+(.*)$", adapted)
     if top_match and not re.search(r"(?is)\bLIMIT\s+\d+\s*$", adapted):
-        adapted = f"SELECT {top_match.group(2).strip()} LIMIT {top_match.group(1)}"
+        distinct = top_match.group(1) or ""
+        adapted = f"SELECT {distinct}{top_match.group(3).strip()} LIMIT {top_match.group(2)}"
 
     adapted = re.sub(r"\bLEN\s*\(", "LENGTH(", adapted, flags=re.IGNORECASE)
     adapted = re.sub(r"\bISNULL\s*\(", "COALESCE(", adapted, flags=re.IGNORECASE)
     adapted = re.sub(r"\bGETDATE\s*\(\s*\)", "CURRENT_DATE", adapted, flags=re.IGNORECASE)
     adapted = adapted.replace("[", "").replace("]", "")
     return adapted
+
+
+CANONICAL_COLUMN_NAMES = {
+    "studentid": "StudentID",
+    "student_id": "StudentID",
+    "fullname": "FullName",
+    "full_name": "FullName",
+    "email": "Email",
+    "currentyear": "CurrentYear",
+    "current_year": "CurrentYear",
+    "currentsemester": "CurrentSemester",
+    "current_semester": "CurrentSemester",
+    "groupcode": "GroupCode",
+    "group_code": "GroupCode",
+    "departmentcode": "DepartmentCode",
+    "deptcode": "DepartmentCode",
+    "dept_code": "DepartmentCode",
+    "departmentname": "DepartmentName",
+    "deptname": "DepartmentName",
+    "dept_name": "DepartmentName",
+    "status": "Status",
+    "academic_year": "AcademicYear",
+    "academicyear": "AcademicYear",
+    "semester": "Semester",
+    "semestergpa": "SemesterGPA",
+    "semester_gpa": "SemesterGPA",
+    "cumulativegpa": "CumulativeGPA",
+    "cumulative_gpa": "CumulativeGPA",
+    "coursecode": "CourseCode",
+    "course_code": "CourseCode",
+    "coursename": "CourseName",
+    "course_name": "CourseName",
+    "credithours": "CreditHours",
+    "credit_hours": "CreditHours",
+    "instructor": "Instructor",
+    "instructorname": "Instructor",
+    "instructor_name": "Instructor",
+    "room": "Room",
+    "roomname": "Room",
+    "room_name": "Room",
+    "day": "Day",
+    "dayofweek": "Day",
+    "day_of_week": "Day",
+    "start": "Start",
+    "starttime": "StartTime",
+    "start_time": "StartTime",
+    "end": "End",
+    "endtime": "EndTime",
+    "end_time": "EndTime",
+    "sectiontype": "SectionType",
+    "section_type": "SectionType",
+    "targetgroup": "TargetGroup",
+    "target_group": "TargetGroup",
+}
+
+
+def cursor_column_names(cursor: Any) -> List[str]:
+    if not cursor.description:
+        return []
+    columns = [column[0] for column in cursor.description]
+    if not postgres_mode():
+        return columns
+    return [CANONICAL_COLUMN_NAMES.get(str(column).lower(), column) for column in columns]
 
 
 def call_ollama(prompt: str, timeout: int = 180) -> str:
@@ -4959,7 +5029,7 @@ def find_student_rows_by_name_tokens(tokens: Sequence[str]) -> List[Dict[str, An
             ORDER BY s.full_name
             """
         )
-        columns = [column[0] for column in cursor.description]
+        columns = cursor_column_names(cursor)
         rows = [dict(zip(columns, list(row))) for row in cursor.fetchall()]
     except Exception:
         return []
@@ -8104,7 +8174,7 @@ def answer_student_why_followup(dispatcher: CollectingDispatcher, student_id: st
         cursor = conn.cursor()
         cursor.execute(adapt_sql_for_configured_database(sql_query))
         rows = cursor.fetchall()
-        columns = [column[0] for column in cursor.description] if cursor.description else []
+        columns = cursor_column_names(cursor)
 
         if not rows:
             dispatcher.utter_message(text=database_no_match_fallback(f"student {student_id}"))
@@ -9094,7 +9164,7 @@ SQL:
             cursor = conn.cursor()
             cursor.execute(adapt_sql_for_configured_database(sql_query))
             rows = cursor.fetchall()
-            columns = [column[0] for column in cursor.description] if cursor.description else []
+            columns = cursor_column_names(cursor)
 
             if not rows:
                 catalog_events = dispatch_fci_catalog_answer(dispatcher, user_question, tracker)
