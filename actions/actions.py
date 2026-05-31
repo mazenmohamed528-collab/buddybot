@@ -632,6 +632,8 @@ CANONICAL_COLUMN_NAMES = {
     "semester_gpa": "SemesterGPA",
     "cumulativegpa": "CumulativeGPA",
     "cumulative_gpa": "CumulativeGPA",
+    "thirdyearcumulativegpa": "ThirdYearCumulativeGPA",
+    "third_year_cumulative_gpa": "ThirdYearCumulativeGPA",
     "coursecode": "CourseCode",
     "course_code": "CourseCode",
     "coursename": "CourseName",
@@ -639,14 +641,20 @@ CANONICAL_COLUMN_NAMES = {
     "credithours": "CreditHours",
     "credit_hours": "CreditHours",
     "instructor": "Instructor",
-    "instructorname": "Instructor",
-    "instructor_name": "Instructor",
+    "instructorid": "InstructorID",
+    "instructor_id": "InstructorID",
+    "instructortitle": "InstructorTitle",
+    "instructor_title": "InstructorTitle",
+    "instructorname": "InstructorName",
+    "instructor_name": "InstructorName",
     "room": "Room",
-    "roomname": "Room",
-    "room_name": "Room",
+    "roomtype": "RoomType",
+    "room_type": "RoomType",
+    "roomname": "RoomName",
+    "room_name": "RoomName",
     "day": "Day",
-    "dayofweek": "Day",
-    "day_of_week": "Day",
+    "dayofweek": "DayOfWeek",
+    "day_of_week": "DayOfWeek",
     "start": "Start",
     "starttime": "StartTime",
     "start_time": "StartTime",
@@ -4806,24 +4814,43 @@ def resolve_student_id_suffix(text: str) -> Optional[Dict[str, Any]]:
     try:
         conn = get_connection()
         cursor = conn.cursor()
-        cursor.execute(
-            """
-            SELECT TOP 6
-                s.student_id AS StudentID,
-                s.full_name AS FullName,
-                s.group_code AS GroupCode,
-                s.dept_name AS DepartmentName
-            FROM v_rasa_students s
-            WHERE s.student_id = ? OR s.student_id LIKE ?
-            ORDER BY
-                CASE WHEN s.student_id = ? THEN 0 ELSE 1 END,
-                LEN(s.student_id),
-                s.student_id
-            """,
-            candidate,
-            "%" + candidate,
-            candidate,
-        )
+        if postgres_mode():
+            cursor.execute(
+                """
+                SELECT
+                    s.student_id AS StudentID,
+                    s.full_name AS FullName,
+                    s.group_code AS GroupCode,
+                    s.dept_name AS DepartmentName
+                FROM v_rasa_students s
+                WHERE s.student_id = %s OR s.student_id LIKE %s
+                ORDER BY
+                    CASE WHEN s.student_id = %s THEN 0 ELSE 1 END,
+                    LENGTH(s.student_id),
+                    s.student_id
+                LIMIT 6
+                """,
+                (candidate, "%" + candidate, candidate),
+            )
+        else:
+            cursor.execute(
+                """
+                SELECT TOP 6
+                    s.student_id AS StudentID,
+                    s.full_name AS FullName,
+                    s.group_code AS GroupCode,
+                    s.dept_name AS DepartmentName
+                FROM v_rasa_students s
+                WHERE s.student_id = ? OR s.student_id LIKE ?
+                ORDER BY
+                    CASE WHEN s.student_id = ? THEN 0 ELSE 1 END,
+                    LEN(s.student_id),
+                    s.student_id
+                """,
+                candidate,
+                "%" + candidate,
+                candidate,
+            )
         rows = cursor.fetchall()
     except Exception:
         return None
