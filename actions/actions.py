@@ -469,8 +469,14 @@ THANKS_AR_RESPONSE = (
     "العفو! 😊 أنا هنا لو احتجت أي حاجة تانية."
 )
 
-QUESTION_OPENER_EN_RESPONSE = "Of course! What's your question? 😊"
-QUESTION_OPENER_AR_RESPONSE = "أكيد! اسأل براحتك 😊"
+QUESTION_OPENER_EN_RESPONSE = "Of course! Go ahead - what's your question? 😊"
+QUESTION_OPENER_AR_RESPONSE = "أكيد! اتفضل - اسأل براحتك 😊"
+
+STATUS_EN_RESPONSE = (
+    "I'm doing great, thanks for asking! 😊\n"
+    "What can I help you with today?"
+)
+STATUS_AR_RESPONSE = "تمام والحمد لله! 😊 بخدمتك - اسأل براحتك."
 
 ABUSE_EN_RESPONSE = (
     "I'm here to help with FCI-related questions. 😊\n"
@@ -2149,14 +2155,16 @@ def rag_payload_is_confident(payload: Dict[str, Any], question: str) -> bool:
 def query_rag_service(question: str) -> str:
     if is_abusive_input(question):
         return abuse_response(question)
-    if is_gibberish(question):
-        return gibberish_response(question)
-    if is_greeting(question):
-        return greeting_response(question)
     if is_question_opener(question):
         return question_opener_response(question)
+    if is_status_check(question):
+        return status_response(question)
     if is_thanks(question):
         return thanks_response(question)
+    if is_greeting(question):
+        return greeting_response(question)
+    if is_gibberish(question):
+        return gibberish_response(question)
     if is_conversation_continuation_reply(question):
         return continuation_answer_for_topic("general_chat")
     if is_bot_identity_question(question):
@@ -2665,12 +2673,18 @@ def general_conversation_answer(message: str, tracker: Tracker) -> str:
         return GENERAL_CHAT_FALLBACK_RESPONSE
     if is_abusive_input(message):
         return abuse_response(message)
-    if is_bot_identity_question(message):
-        return BOT_IDENTITY_RESPONSE
     if is_question_opener(message):
         return question_opener_response(message)
+    if is_status_check(message):
+        return status_response(message)
     if is_thanks(message):
         return thanks_response(message)
+    if is_greeting(message):
+        return greeting_response(message)
+    if is_gibberish(message):
+        return gibberish_response(message)
+    if is_bot_identity_question(message):
+        return BOT_IDENTITY_RESPONSE
     if is_fci_identity_query(message):
         return FCI_IDENTITY_RESPONSE
     academy_answer = sadat_academy_answer(message)
@@ -2679,9 +2693,6 @@ def general_conversation_answer(message: str, tracker: Tracker) -> str:
     compound_answer = compound_topic_answer(message)
     if compound_answer:
         return compound_answer
-    if is_status_check(message):
-        return "I'm good. I can help with FCI student data, schedules, GPA, courses, policies, or just talk through what you need."
-
     student_id = tracker.get_slot("student_id")
     last_scope = tracker.get_slot("last_query_scope")
     context = recent_conversation_context(tracker)
@@ -3247,20 +3258,36 @@ def greeting_response(text: str) -> str:
     return GREETING_AR_RESPONSE if contains_arabic(text) else GREETING_EN_RESPONSE
 
 
+def status_response(text: str) -> str:
+    return STATUS_AR_RESPONSE if contains_arabic(text) else STATUS_EN_RESPONSE
+
+
 def is_status_check(text: str) -> bool:
-    lowered = normalize_question(text).strip(" .?!؟")
+    lowered = semantic_normalize(text).strip(" .?!؟")
+    lowered = re.sub(r"\s+", " ", lowered)
     return lowered in {
         "hru",
         "hr u",
         "how are you",
         "how r u",
         "how are u",
+        "how's it going",
+        "hows it going",
+        "whats up",
+        "what's up",
+        "sup",
+        "wassup",
+        "how do you do",
         "how you doing",
         "how are you doing",
+        "كيف حالك",
         "عامل ايه",
         "عاملة ايه",
         "اخبارك",
         "ازيك",
+        "ازيك",
+        "كيفك",
+        "تمام ولا ايه",
     }
 
 
@@ -4091,33 +4118,82 @@ def thanks_response(text: str) -> str:
     return THANKS_AR_RESPONSE if contains_arabic(text) else THANKS_EN_RESPONSE
 
 
+def guard_clean_text(text: str, *, remove_fillers: bool = False) -> str:
+    cleaned = semantic_normalize(text)
+    cleaned = re.sub(r"[.,?!;:؟،؛]+", " ", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip().lower()
+    if remove_fillers:
+        cleaned = re.sub(
+            r"\b(?:just|like|actually|basically|so|well|hey|hi)\b",
+            " ",
+            cleaned,
+            flags=re.IGNORECASE,
+        )
+        cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
+
+
 def is_question_opener(text: str) -> bool:
-    lowered = semantic_normalize(text).strip(" .?!؟")
+    cleaned_variants = {
+        guard_clean_text(text),
+        guard_clean_text(text, remove_fillers=True),
+    }
     english_openers = {
-        "ok",
-        "okay",
+        "ok i have a question",
         "i have a question",
         "i have a query",
-        "can i ask",
-        "can i ask something",
-        "i want to ask",
-        "i need to ask",
-        "quick question",
-        "question",
         "i got a question",
         "got a question",
+        "quick question",
+        "can i ask",
+        "can i ask something",
+        "can i ask you something",
+        "i want to ask",
+        "i want to ask you",
+        "i need to ask",
+        "i need to ask you something",
+        "i have something to ask",
+        "may i ask",
+        "let me ask",
+        "i was wondering",
+        "i wanted to ask",
+        "before i ask",
+        "just a question",
+        "just wondering",
+        "one question",
+        "quick q",
+    }
+    english_single_word_openers = {
+        "question",
+        "query",
+        "ok question",
+        "so question",
+        "yeah question",
+        "yes question",
     }
     arabic_openers = {
-        "عندي سؤال",
+        "عندي سوال",
+        "عندي استفسار",
         "ممكن اسال",
-        "ممكن أسأل",
         "عايز اسال",
-        "عايز أسأل",
         "عاوز اسال",
-        "عاوز أسأل",
-        "لو سمحت",
+        "لو سمحت سوال",
+        "فيه سوال",
+        "سوال بس",
+        "سوال واحد",
+        "استفسار",
     }
-    return lowered in english_openers or lowered in {semantic_normalize(item) for item in arabic_openers}
+    normalized_arabic_openers = {guard_clean_text(item) for item in arabic_openers}
+    for cleaned in cleaned_variants:
+        if not cleaned:
+            continue
+        if cleaned in english_single_word_openers or cleaned in normalized_arabic_openers:
+            return True
+        if any(phrase in cleaned for phrase in english_openers):
+            return True
+        if any(phrase in cleaned for phrase in normalized_arabic_openers):
+            return True
+    return False
 
 
 def question_opener_response(text: str) -> str:
@@ -4562,6 +4638,16 @@ def dispatch_question_opener_answer(
         SlotSet("last_conversation_topic", "general_chat"),
         SlotSet("last_conversation_state", "waiting_for_question"),
     ]
+
+
+def dispatch_status_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+) -> Optional[List[Dict[Text, Any]]]:
+    if not is_status_check(text):
+        return None
+    dispatcher.utter_message(text=status_response(text))
+    return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
 
 
 def dispatch_gibberish_answer(
@@ -8492,18 +8578,21 @@ class ActionRagQuery(Action):
             abuse_events = dispatch_abuse_answer(dispatcher, user_message)
             if abuse_events is not None:
                 return abuse_events
-            gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
-            if gibberish_events is not None:
-                return gibberish_events
-            if is_greeting(user_message):
-                dispatcher.utter_message(text=greeting_response(user_message))
-                return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
             opener_events = dispatch_question_opener_answer(dispatcher, user_message)
             if opener_events is not None:
                 return opener_events
+            status_events = dispatch_status_answer(dispatcher, user_message)
+            if status_events is not None:
+                return status_events
             if is_thanks(user_message):
                 dispatcher.utter_message(text=thanks_response(user_message))
                 return [SlotSet("last_query_scope", "chat")]
+            if is_greeting(user_message):
+                dispatcher.utter_message(text=greeting_response(user_message))
+                return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+            gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
+            if gibberish_events is not None:
+                return gibberish_events
             continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_message, tracker)
             if continuation_events is not None:
                 return continuation_events
@@ -8584,25 +8673,29 @@ class ActionGeneralConversation(Action):
         if abuse_events is not None:
             return abuse_events
 
-        gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
-        if gibberish_events is not None:
-            return gibberish_events
+        opener_events = dispatch_question_opener_answer(dispatcher, user_message)
+        if opener_events is not None:
+            return opener_events
+
+        status_events = dispatch_status_answer(dispatcher, user_message)
+        if status_events is not None:
+            return status_events
+
+        if is_thanks(user_message):
+            dispatcher.utter_message(text=thanks_response(user_message))
+            return [SlotSet("last_query_scope", "chat")]
 
         if is_greeting(user_message):
             dispatcher.utter_message(text=greeting_response(user_message))
             return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
 
-        opener_events = dispatch_question_opener_answer(dispatcher, user_message)
-        if opener_events is not None:
-            return opener_events
+        gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
+        if gibberish_events is not None:
+            return gibberish_events
 
         if is_closing(user_message):
             dispatcher.utter_message(text=CLOSING_RESPONSE)
             return [SlotSet("student_id", None), SlotSet("last_query_scope", None)]
-
-        if is_thanks(user_message):
-            dispatcher.utter_message(text=thanks_response(user_message))
-            return [SlotSet("last_query_scope", "chat")]
 
         continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_message, tracker)
         if continuation_events is not None:
@@ -8714,25 +8807,29 @@ class ActionConversationRouter(Action):
         if abuse_events is not None:
             return abuse_events
 
-        gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
-        if gibberish_events is not None:
-            return gibberish_events
+        opener_events = dispatch_question_opener_answer(dispatcher, user_message)
+        if opener_events is not None:
+            return opener_events
+
+        status_events = dispatch_status_answer(dispatcher, user_message)
+        if status_events is not None:
+            return status_events
+
+        if is_thanks(user_message):
+            dispatcher.utter_message(text=thanks_response(user_message))
+            return [SlotSet("last_query_scope", "chat")]
 
         if is_greeting(user_message):
             dispatcher.utter_message(text=greeting_response(user_message))
             return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
 
-        opener_events = dispatch_question_opener_answer(dispatcher, user_message)
-        if opener_events is not None:
-            return opener_events
+        gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
+        if gibberish_events is not None:
+            return gibberish_events
 
         if is_closing(user_message):
             dispatcher.utter_message(text=CLOSING_RESPONSE)
             return [SlotSet("student_id", None), SlotSet("last_query_scope", None)]
-
-        if is_thanks(user_message):
-            dispatcher.utter_message(text=thanks_response(user_message))
-            return [SlotSet("last_query_scope", "chat")]
 
         continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_message, tracker)
         if continuation_events is not None:
@@ -8838,13 +8935,26 @@ class ActionProjectPurpose(Action):
         domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
 
-        lowered = normalize_question(tracker.latest_message.get("text", "")).strip()
-        gibberish_events = dispatch_gibberish_answer(dispatcher, lowered)
+        text = tracker.latest_message.get("text", "")
+        lowered = normalize_question(text).strip()
+        abuse_events = dispatch_abuse_answer(dispatcher, text)
+        if abuse_events is not None:
+            return abuse_events
+        opener_events = dispatch_question_opener_answer(dispatcher, text)
+        if opener_events is not None:
+            return opener_events
+        status_events = dispatch_status_answer(dispatcher, text)
+        if status_events is not None:
+            return status_events
+        if is_thanks(text):
+            dispatcher.utter_message(text=thanks_response(text))
+            return [SlotSet("last_query_scope", "chat")]
+        if is_greeting(text):
+            dispatcher.utter_message(text=greeting_response(text))
+            return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+        gibberish_events = dispatch_gibberish_answer(dispatcher, text)
         if gibberish_events is not None:
             return gibberish_events
-        if is_thanks(lowered):
-            dispatcher.utter_message(text=thanks_response(lowered))
-            return [SlotSet("last_query_scope", "chat")]
         if is_bot_identity_question(lowered):
             dispatcher.utter_message(text=BOT_IDENTITY_RESPONSE)
             return [SlotSet("last_query_scope", "chat")]
@@ -8871,12 +8981,24 @@ class ActionBotCreator(Action):
     ) -> List[Dict[Text, Any]]:
 
         text = tracker.latest_message.get("text", "")
-        gibberish_events = dispatch_gibberish_answer(dispatcher, text)
-        if gibberish_events is not None:
-            return gibberish_events
+        abuse_events = dispatch_abuse_answer(dispatcher, text)
+        if abuse_events is not None:
+            return abuse_events
+        opener_events = dispatch_question_opener_answer(dispatcher, text)
+        if opener_events is not None:
+            return opener_events
+        status_events = dispatch_status_answer(dispatcher, text)
+        if status_events is not None:
+            return status_events
         if is_thanks(text):
             dispatcher.utter_message(text=thanks_response(text))
             return [SlotSet("last_query_scope", "chat")]
+        if is_greeting(text):
+            dispatcher.utter_message(text=greeting_response(text))
+            return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+        gibberish_events = dispatch_gibberish_answer(dispatcher, text)
+        if gibberish_events is not None:
+            return gibberish_events
         if is_bot_identity_question(text):
             dispatcher.utter_message(text=BOT_IDENTITY_RESPONSE)
             return [SlotSet("last_query_scope", "chat")]
@@ -9119,25 +9241,29 @@ class ActionTextToSQL(Action):
         if abuse_events is not None:
             return abuse_events
 
-        gibberish_events = dispatch_gibberish_answer(dispatcher, user_question)
-        if gibberish_events is not None:
-            return gibberish_events
+        opener_events = dispatch_question_opener_answer(dispatcher, user_question)
+        if opener_events is not None:
+            return opener_events
+
+        status_events = dispatch_status_answer(dispatcher, user_question)
+        if status_events is not None:
+            return status_events
+
+        if is_thanks(user_question):
+            dispatcher.utter_message(text=thanks_response(user_question))
+            return [SlotSet("last_query_scope", "chat")]
 
         if is_greeting(user_question):
             dispatcher.utter_message(text=greeting_response(user_question))
             return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
 
-        opener_events = dispatch_question_opener_answer(dispatcher, user_question)
-        if opener_events is not None:
-            return opener_events
+        gibberish_events = dispatch_gibberish_answer(dispatcher, user_question)
+        if gibberish_events is not None:
+            return gibberish_events
 
         if is_closing(user_question):
             dispatcher.utter_message(text=CLOSING_RESPONSE)
             return [SlotSet("student_id", None), SlotSet("last_query_scope", None)]
-
-        if is_thanks(user_question):
-            dispatcher.utter_message(text=thanks_response(user_question))
-            return [SlotSet("last_query_scope", "chat")]
 
         continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_question, tracker)
         if continuation_events is not None:

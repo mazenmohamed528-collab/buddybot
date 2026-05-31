@@ -28,6 +28,8 @@ intents:
 - academic_progress_query
 - greeting
 - ask_bot_status
+- conversation_opener
+- small_talk_how_are_you
 - ask_bot_identity
 - bot_challenge
 - ask_bot_creator
@@ -394,9 +396,16 @@ responses:
       FCI policies, official documents, or any campus service.
       Arabic or English — your choice!
   utter_bot_status:
-  - text: I'm good. I can help with FCI student profiles, GPA, courses, schedules, instructors, rooms, departments, campus-service
-      questions, and normal study advice.
-  - text: I'm here. We can chat normally, make a study plan, talk through stress, or check FCI university data.
+  - text: |-
+      I'm doing great, thanks for asking! 😊
+      What can I help you with today?
+  utter_conversation_opener:
+  - text: "Of course! Go ahead - what's your question? 😊"
+  - text: "Sure thing! What would you like to know? 😊"
+  utter_small_talk_how_are_you:
+  - text: |-
+      I'm doing great, thanks for asking! 😊
+      What can I help you with today?
   utter_bot_identity:
   - text: 'I''m BuddyBot, your campus buddy. I can chat, give student advice, show FCI student profiles, check GPA, list courses,
       find schedules, and answer campus-service questions. For example: ''tell me about student 2122136'', ''what is the AI

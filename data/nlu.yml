@@ -19,9 +19,7 @@ nlu:
     - مرحبا
     - السلام عليكم
     - اهلا
-    - what's up
     - can you help me
-    - i have a question
 
 - intent: goodbye
   examples: |
@@ -88,15 +86,71 @@ nlu:
 
 - intent: ask_bot_status
   examples: |
-    - how are you
-    - how r u
-    - how are u
     - are you okay
     - are u okay
     - are you good
     - r u good
     - are you ready
     - are you working
+
+- intent: conversation_opener
+  examples: |
+    - ok i have a question
+    - i have a question
+    - i have a query
+    - i got a question
+    - got a question
+    - quick question
+    - can i ask
+    - can i ask something
+    - can i ask you something
+    - i want to ask
+    - i want to ask you
+    - i need to ask
+    - i need to ask you something
+    - i have something to ask
+    - may i ask
+    - let me ask
+    - i was wondering
+    - i wanted to ask
+    - before i ask
+    - just a question
+    - just wondering
+    - one question
+    - quick q
+    - question
+    - query
+    - ok question
+    - so question
+    - yeah question
+    - yes question
+    - عندي سؤال
+    - عندي استفسار
+    - ممكن أسأل
+    - عايز أسأل
+    - عاوز أسأل
+    - لو سمحت سؤال
+    - فيه سؤال
+    - سؤال بس
+    - سؤال واحد
+    - استفسار
+
+- intent: small_talk_how_are_you
+  examples: |
+    - how are you
+    - how r u
+    - how are u
+    - how's it going
+    - what's up
+    - sup
+    - wassup
+    - how do you do
+    - كيف حالك
+    - عامل ايه
+    - إزيك
+    - ازيك
+    - كيفك
+    - تمام ولا ايه
 
 - intent: ask_bot_creator
   examples: |
