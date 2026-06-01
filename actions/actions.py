@@ -503,6 +503,76 @@ GENERAL_CHAT_FALLBACK_RESPONSE = (
     "motivation, stress, campus life, or a student-data question."
 )
 
+EMOTIONAL_SUPPORT_EN_RESPONSE = (
+    "💙 I hear you, and what you're feeling is completely valid.\n"
+    "University can be genuinely hard, and feeling this way does not mean you're weak or failing.\n\n"
+    "Right now, try this:\n"
+    "- Stop and breathe. Not everything needs to be solved today.\n"
+    "- Talk to someone you trust: a friend, family member, or professor.\n"
+    "- Step outside for 15 minutes if you can. It genuinely helps.\n\n"
+    "If it feels bigger than you can handle alone, Student Affairs can guide you to support services.\n"
+    "📍 FCI, Sadat Academy, Maadi Campus.\n\n"
+    "What's specifically bothering you? Tell me more and I'll do my best to help. 😊"
+)
+
+EMOTIONAL_SUPPORT_AR_RESPONSE = (
+    "💙 سامعك، وده طبيعي جداً إنك تحس كده.\n"
+    "الدراسة صعبة، ومش معناها إنك ضعيف أو فاشل.\n\n"
+    "دلوقتي جرّب:\n"
+    "- وقف شوية. مش لازم تحل كل حاجة دلوقتي.\n"
+    "- كلم حد بتثق فيه: صاحب، أهل، أو دكتور في الكلية.\n"
+    "- خد نفس واطلع 15 دقيقة بره لو تقدر.\n\n"
+    "لو حاسس إن الموضوع أكبر من كده، مكتب شؤون الطلاب ممكن يساعدك تلاقي دعم.\n"
+    "📍 كلية الحاسبات والمعلومات، أكاديمية السادات، المعادي.\n\n"
+    "إيه اللي بيضايقك بالظبط؟ ممكن أساعدك أكتر. 😊"
+)
+
+WASTING_TIME_EN_RESPONSE = (
+    "⏰ Feeling like you're wasting time is one of the most common student struggles. You're not alone.\n\n"
+    "Try this right now:\n"
+    "1. Write down just 3 things you want to finish today.\n"
+    "2. Start with the smallest one, even if it takes only 2 minutes.\n"
+    "3. Put your phone in another room for one focused hour.\n\n"
+    "Pomodoro helps a lot: 25 minutes focus, then 5 minutes break. After 4 rounds, take a longer break.\n"
+    "Want me to help you build a study plan for this week? 😊"
+)
+
+WASTING_TIME_AR_RESPONSE = (
+    "⏰ إحساس إنك بتضيّع وقتك ده من أكتر الحاجات اللي بتضايق طلاب الجامعة، وانت مش لوحدك.\n\n"
+    "جرّب دلوقتي:\n"
+    "1. اكتب 3 حاجات بس عايز تخلصهم النهارده.\n"
+    "2. ابدأ بأصغر واحدة فيهم، حتى لو دقيقتين.\n"
+    "3. شيل التليفون بره الأوضة ساعة واحدة بس.\n\n"
+    "تقنية Pomodoro بتساعد جداً: 25 دقيقة تركيز، بعدها 5 دقايق راحة.\n"
+    "عايز أساعدك تعمل خطة دراسة للأسبوع ده؟ 😊"
+)
+
+HELP_EN_RESPONSE = (
+    "I'm here! 😊 Tell me exactly what you need help with:\n\n"
+    "- 📋 FCI policies: absence, warnings, fees, major change\n"
+    "- 📚 Courses and instructors\n"
+    "- 🎓 Student profiles and GPA\n"
+    "- 🗓️ Class schedules\n"
+    "- 📄 Official documents: enrollment certificates, transcripts\n"
+    "- 💼 Career advice: CV, internships, job search\n"
+    "- 📖 Study advice: techniques, time management, stress\n"
+    "- 🏫 Campus services and activities\n\n"
+    "Tell me what's on your mind and I'll help. 💙"
+)
+
+HELP_AR_RESPONSE = (
+    "أنا هنا! 😊 قولي بالظبط عايز مساعدة في إيه:\n\n"
+    "- 📋 سياسات الكلية: غياب، إنذار، رسوم، تغيير تخصص\n"
+    "- 📚 المقررات والدكاترة\n"
+    "- 🎓 بيانات الطلاب والمعدلات\n"
+    "- 🗓️ الجداول الدراسية\n"
+    "- 📄 الأوراق الرسمية: إثبات قيد، تجنيد، ترانسكريبت\n"
+    "- 💼 نصائح مهنية: CV، تدريب، شغل\n"
+    "- 📖 نصائح دراسية: مذاكرة، تنظيم وقت، ضغط\n"
+    "- 🏫 خدمات وأنشطة الكلية\n\n"
+    "قولي إيه اللي بيضايقك وهساعدك. 💙"
+)
+
 TYPO_NORMALIZATIONS = {
     "analuze": "analyze",
     "analize": "analyze",
@@ -2714,6 +2784,9 @@ def general_conversation_answer(message: str, tracker: Tracker) -> str:
         return thanks_response(message)
     if is_greeting(message):
         return greeting_response(message)
+    support_answer = emotional_support_answer(message)
+    if support_answer:
+        return support_answer
     if is_gibberish(message):
         return gibberish_response(message)
     if is_bot_identity_question(message):
@@ -4753,6 +4826,134 @@ def dispatch_status_answer(
         return None
     dispatcher.utter_message(text=status_response(text))
     return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+
+
+def emotional_support_answer(text: str) -> Optional[str]:
+    lowered = semantic_normalize(text).strip(" .?!؟")
+    is_arabic = contains_arabic(text)
+
+    time_terms = [
+        "wasting time",
+        "wasting my time",
+        "time is wasted",
+        "manage my time",
+        "organize my time",
+        "organise my time",
+        "time management",
+        "بضيع وقت",
+        "بضيع وقتي",
+        "وقتي بيضيع",
+        "وقتي بيضيع مني",
+        "ازاي انظم وقتي",
+        "ازاي انظم",
+        "انظم وقتي",
+        "مش قادر انظم",
+        "مفيش وقت",
+        "معنديش وقت",
+        "معنديس وقت",
+    ]
+    if text_has_any(lowered, time_terms):
+        return WASTING_TIME_AR_RESPONSE if is_arabic else WASTING_TIME_EN_RESPONSE
+
+    help_exact = {
+        "help me",
+        "i need help",
+        "need help",
+        "i need some help",
+        "can you help me",
+        "ساعدني",
+        "محتاج مساعدة",
+        "محتاج مساعده",
+        "عايز مساعدة",
+        "عايز مساعده",
+        "عاوز مساعدة",
+        "عاوز مساعده",
+    }
+    if lowered in help_exact:
+        return HELP_AR_RESPONSE if is_arabic else HELP_EN_RESPONSE
+
+    support_terms = [
+        "i'm tired",
+        "im tired",
+        "i am tired",
+        "i'm exhausted",
+        "im exhausted",
+        "i'm lost",
+        "i feel lost",
+        "i'm struggling",
+        "im struggling",
+        "i don't know what to do",
+        "i dont know what to do",
+        "i'm stressed",
+        "im stressed",
+        "i'm overwhelmed",
+        "im overwhelmed",
+        "i give up",
+        "i feel like giving up",
+        "i'm failing",
+        "im failing",
+        "i feel like a failure",
+        "i'm scared",
+        "im scared",
+        "i'm anxious",
+        "im anxious",
+        "i'm worried",
+        "im worried",
+        "i can't do this",
+        "i cant do this",
+        "i'm burning out",
+        "im burning out",
+        "i'm burnt out",
+        "im burnt out",
+        "everything is going wrong",
+        "i feel stuck",
+        "i'm not okay",
+        "im not okay",
+        "this is too much",
+        "i can't handle this",
+        "i cant handle this",
+        "i feel alone",
+        "تعبت",
+        "انا تعبت",
+        "انا تعبان",
+        "زهقت",
+        "انا زهقت",
+        "مش عارف اعمل ايه",
+        "خايف",
+        "انا خايف",
+        "خايف من المستقبل",
+        "مش لاقي نفسي",
+        "حاسس اني بتضيع",
+        "مش قادر اكمل",
+        "مبقتش قادر",
+        "مضغوط",
+        "انا مضغوط",
+        "في ضغط كبير",
+        "الدراسة صعبة",
+        "الدراسه صعبه",
+        "مش قادر اذاكر",
+        "مش ماشي معايا حاجة",
+        "كل حاجة غلط",
+        "حاسس اني فاشل",
+    ]
+    if text_has_any(lowered, support_terms):
+        return EMOTIONAL_SUPPORT_AR_RESPONSE if is_arabic else EMOTIONAL_SUPPORT_EN_RESPONSE
+
+    return None
+
+
+def dispatch_emotional_support_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+) -> Optional[List[Dict[Text, Any]]]:
+    answer = emotional_support_answer(text)
+    if not answer:
+        return None
+    dispatcher.utter_message(text=answer)
+    return [
+        SlotSet("last_query_scope", "chat"),
+        SlotSet("last_conversation_topic", "stress" if answer in {EMOTIONAL_SUPPORT_EN_RESPONSE, EMOTIONAL_SUPPORT_AR_RESPONSE} else "time_management"),
+    ]
 
 
 def dispatch_gibberish_answer(
@@ -8784,6 +8985,9 @@ class ActionRagQuery(Action):
             if is_greeting(user_message):
                 dispatcher.utter_message(text=greeting_response(user_message))
                 return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+            emotional_events = dispatch_emotional_support_answer(dispatcher, user_message)
+            if emotional_events is not None:
+                return emotional_events
             gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
             if gibberish_events is not None:
                 return gibberish_events
@@ -8886,6 +9090,10 @@ class ActionGeneralConversation(Action):
         if is_greeting(user_message):
             dispatcher.utter_message(text=greeting_response(user_message))
             return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+
+        emotional_events = dispatch_emotional_support_answer(dispatcher, user_message)
+        if emotional_events is not None:
+            return emotional_events
 
         gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
         if gibberish_events is not None:
@@ -9023,6 +9231,10 @@ class ActionConversationRouter(Action):
         if is_greeting(user_message):
             dispatcher.utter_message(text=greeting_response(user_message))
             return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+
+        emotional_events = dispatch_emotional_support_answer(dispatcher, user_message)
+        if emotional_events is not None:
+            return emotional_events
 
         gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
         if gibberish_events is not None:
@@ -9461,6 +9673,10 @@ class ActionTextToSQL(Action):
         if is_greeting(user_question):
             dispatcher.utter_message(text=greeting_response(user_question))
             return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+
+        emotional_events = dispatch_emotional_support_answer(dispatcher, user_question)
+        if emotional_events is not None:
+            return emotional_events
 
         gibberish_events = dispatch_gibberish_answer(dispatcher, user_question)
         if gibberish_events is not None:
