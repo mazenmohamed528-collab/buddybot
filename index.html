@@ -763,6 +763,76 @@
             transform: scale(0.96);
         }
 
+        .chatbot-input-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .suggestions-box {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+            max-height: 220px;
+            overflow-y: auto;
+            display: none;
+            z-index: 999;
+        }
+
+        .suggestions-box.visible {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            border-bottom: 1px solid #f5f5f5;
+            transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover,
+        .suggestion-item.active {
+            background: #f0f4f8;
+            color: #1e4d7b;
+        }
+
+        .suggestion-icon {
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .suggestion-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .suggestion-match {
+            font-weight: 700;
+            color: #1e4d7b;
+        }
+
+        .suggestion-category {
+            font-size: 10px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
         .chatbot-input {
             border-top: 1px solid #eee;
             padding: 15px;
@@ -2334,15 +2404,21 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                 <button class="policy-chip" data-msg="How can I change my specialisation?">&#x1F504; Change Major</button>
             </div>
         </div>
-        <div class="chatbot-input" id="chatbotInputBar">
-            <input 
-                type="text" 
-                id="chatbotInput" 
-                placeholder="Ask us anything..."
-                onkeypress="handleChatInput(event)"
-            >
-            <button class="chatbot-send" onclick="sendChatMessage()">Send</button>
-            <button class="chatbot-stop" id="chatbotStop" onclick="stopChatResponse()">Stop</button>
+        <div class="chatbot-input-wrapper">
+            <div class="suggestions-box" id="suggestionsBox"></div>
+            <div class="chatbot-input" id="chatbotInputBar">
+                <input
+                    type="text"
+                    id="chatbotInput"
+                    placeholder="Ask us anything..."
+                    onkeypress="handleChatInput(event)"
+                    oninput="showSuggestions(this.value)"
+                    onkeydown="handleSuggestionNav(event)"
+                    autocomplete="off"
+                >
+                <button class="chatbot-send" onclick="sendChatMessage()">Send</button>
+                <button class="chatbot-stop" id="chatbotStop" onclick="stopChatResponse()">Stop</button>
+            </div>
         </div>
     </div>
 
@@ -2383,6 +2459,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             const widget = document.getElementById('chatbotWidget');
             const toggle = document.getElementById('chatbotToggle');
 
+            hideSuggestions();
             widget.classList.toggle('active');
             toggle.classList.toggle('hidden');
         }
@@ -2391,6 +2468,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             const widget = document.getElementById('chatbotWidget');
             const toggle = document.getElementById('chatbotToggle');
 
+            hideSuggestions();
             widget.classList.remove('active');
             toggle.classList.remove('hidden');
         }
@@ -2443,6 +2521,183 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
         let activeChatController = null;
         let activeChatRequestId = 0;
         let activeChatTimeoutId = null;
+        let activeSuggestionIndex = -1;
+        let currentSuggestions = [];
+
+        const SUGGESTIONS = [
+            { text: "What is the absence policy at FCI?", icon: "📋", category: "Policy" },
+            { text: "What is an academic warning and how do I avoid it?", icon: "⚠️", category: "Policy" },
+            { text: "What is the tuition fee refund policy?", icon: "💰", category: "Policy" },
+            { text: "How can I change my specialisation?", icon: "🔄", category: "Policy" },
+            { text: "What happens if I exceed the absence limit?", icon: "📋", category: "Policy" },
+            { text: "How do I freeze my registration?", icon: "⏸️", category: "Policy" },
+            { text: "What is the add/drop policy?", icon: "📝", category: "Policy" },
+            { text: "How do I appeal my exam result?", icon: "📋", category: "Policy" },
+            { text: "What is the grading scale at FCI?", icon: "📊", category: "Policy" },
+            { text: "What happens if I fail a course?", icon: "⚠️", category: "Policy" },
+            { text: "What is Data Science?", icon: "📊", category: "Department" },
+            { text: "What is Cyber Security?", icon: "🔐", category: "Department" },
+            { text: "What is Artificial Intelligence?", icon: "🤖", category: "Department" },
+            { text: "What is Software Engineering?", icon: "💻", category: "Department" },
+            { text: "What is Computer Science?", icon: "🖥️", category: "Department" },
+            { text: "What is the difference between Data Science and AI?", icon: "🔄", category: "Department" },
+            { text: "What is FCI?", icon: "🏫", category: "Department" },
+            { text: "What is Sadat Academy?", icon: "🏛️", category: "Department" },
+            { text: "What are the courses in Data Science?", icon: "📚", category: "Courses" },
+            { text: "What are the courses in Cyber Security?", icon: "📚", category: "Courses" },
+            { text: "What are the courses in AI?", icon: "📚", category: "Courses" },
+            { text: "What courses does Dr Wael teach?", icon: "👤", category: "Courses" },
+            { text: "Show me students in Data Science", icon: "🎓", category: "Students" },
+            { text: "Show me students in Cyber Security", icon: "🎓", category: "Students" },
+            { text: "Show me student 209", icon: "🎓", category: "Students" },
+            { text: "What is the schedule for Data Science?", icon: "🗓️", category: "Schedule" },
+            { text: "What is the Saturday schedule?", icon: "🗓️", category: "Schedule" },
+            { text: "What room is Data Visualization in?", icon: "🏛️", category: "Schedule" },
+            { text: "How do I get an enrollment certificate?", icon: "📄", category: "Documents" },
+            { text: "How do I get a military deferral certificate?", icon: "📄", category: "Documents" },
+            { text: "How do I get my transcript?", icon: "📄", category: "Documents" },
+            { text: "How do I write a CV?", icon: "💼", category: "Career" },
+            { text: "How do I find an internship?", icon: "💼", category: "Career" },
+            { text: "What certifications should I get?", icon: "🏆", category: "Career" },
+            { text: "What are the tools for Data Science?", icon: "🛠️", category: "Career" },
+            { text: "What are the tools for Cyber Security?", icon: "🛠️", category: "Career" },
+            { text: "How do I start learning programming?", icon: "💻", category: "Career" },
+            { text: "What jobs can I get with a CS degree?", icon: "💼", category: "Career" },
+            { text: "How do I manage my time as a student?", icon: "⏰", category: "Study" },
+            { text: "How do I study effectively?", icon: "📖", category: "Study" },
+            { text: "What is the Pomodoro technique?", icon: "🍅", category: "Study" },
+            { text: "I'm tired and stressed", icon: "💙", category: "Support" },
+            { text: "I feel lost", icon: "💙", category: "Support" },
+            { text: "I'm wasting my time", icon: "⏰", category: "Support" },
+            { text: "Help me manage my time", icon: "⏰", category: "Study" },
+            { text: "I'm overwhelmed", icon: "💙", category: "Support" },
+            { text: "I give up", icon: "💙", category: "Support" },
+            { text: "ما هي نسبة الغياب المسموح بها؟", icon: "📋", category: "سياسة" },
+            { text: "ما هو الإنذار الأكاديمي؟", icon: "⚠️", category: "سياسة" },
+            { text: "كيف يمكنني تغيير تخصصي؟", icon: "🔄", category: "سياسة" },
+            { text: "ما هي سياسة الرسوم الدراسية؟", icon: "💰", category: "سياسة" },
+            { text: "كيف أحصل على إثبات قيد؟", icon: "📄", category: "وثائق" },
+            { text: "كيف أحصل على شهادة تأجيل تجنيد؟", icon: "📄", category: "وثائق" },
+            { text: "كيف أحصل على كشف درجات؟", icon: "📄", category: "وثائق" },
+            { text: "ما هي أنشطة الطلاب في الكلية؟", icon: "🏫", category: "خدمات" },
+            { text: "كيف أحصل على تدريب صيفي؟", icon: "💼", category: "مهني" },
+            { text: "ازاي اذاكر بطريقة صح؟", icon: "📖", category: "دراسة" },
+            { text: "ازاي انظم وقتي؟", icon: "⏰", category: "دراسة" },
+            { text: "انا تعبت", icon: "💙", category: "دعم" },
+            { text: "انا زهقت", icon: "💙", category: "دعم" },
+            { text: "ساعدني", icon: "💙", category: "دعم" },
+            { text: "انا بضيع وقتي", icon: "⏰", category: "دعم" }
+        ];
+
+        function escapeSuggestionHtml(value) {
+            return String(value).replace(/[&<>"']/g, ch => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[ch]));
+        }
+
+        function showSuggestions(query) {
+            const box = document.getElementById('suggestionsBox');
+            if (!box) return;
+
+            const q = query.trim().toLowerCase();
+            if (q.length < 2) {
+                hideSuggestions();
+                return;
+            }
+
+            currentSuggestions = SUGGESTIONS
+                .filter(s => s.text.toLowerCase().includes(q))
+                .slice(0, 6);
+            activeSuggestionIndex = -1;
+
+            if (currentSuggestions.length === 0) {
+                hideSuggestions();
+                return;
+            }
+
+            box.innerHTML = currentSuggestions.map((s, i) => `
+                <div class="suggestion-item" data-index="${i}" onclick="selectSuggestion(${i})">
+                    <span class="suggestion-icon">${escapeSuggestionHtml(s.icon)}</span>
+                    <span class="suggestion-text">${highlightMatch(s.text, q)}</span>
+                    <span class="suggestion-category">${escapeSuggestionHtml(s.category)}</span>
+                </div>
+            `).join('');
+            box.classList.add('visible');
+        }
+
+        function highlightMatch(text, query) {
+            const lower = text.toLowerCase();
+            const idx = lower.indexOf(query.toLowerCase());
+            if (idx === -1) return escapeSuggestionHtml(text);
+            return escapeSuggestionHtml(text.substring(0, idx))
+                + '<span class="suggestion-match">'
+                + escapeSuggestionHtml(text.substring(idx, idx + query.length))
+                + '</span>'
+                + escapeSuggestionHtml(text.substring(idx + query.length));
+        }
+
+        function selectSuggestion(index) {
+            const suggestion = currentSuggestions[index];
+            if (!suggestion) return;
+
+            const input = document.getElementById('chatbotInput');
+            input.value = suggestion.text;
+            hideSuggestions();
+            input.focus();
+            sendChatMessage();
+        }
+
+        function handleSuggestionNav(event) {
+            const box = document.getElementById('suggestionsBox');
+            if (!box || !box.classList.contains('visible')) return;
+
+            const items = box.querySelectorAll('.suggestion-item');
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                activeSuggestionIndex = Math.min(activeSuggestionIndex + 1, items.length - 1);
+                updateActiveSuggestion(items);
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                activeSuggestionIndex = Math.max(activeSuggestionIndex - 1, -1);
+                updateActiveSuggestion(items);
+            } else if (event.key === 'Enter' && activeSuggestionIndex >= 0) {
+                event.preventDefault();
+                selectSuggestion(activeSuggestionIndex);
+            } else if (event.key === 'Escape') {
+                hideSuggestions();
+            }
+        }
+
+        function updateActiveSuggestion(items) {
+            items.forEach((item, i) => {
+                const active = i === activeSuggestionIndex;
+                item.classList.toggle('active', active);
+                if (active) {
+                    item.scrollIntoView({ block: 'nearest' });
+                    document.getElementById('chatbotInput').value = currentSuggestions[i].text;
+                }
+            });
+        }
+
+        function hideSuggestions() {
+            const box = document.getElementById('suggestionsBox');
+            if (!box) return;
+            box.classList.remove('visible');
+            box.innerHTML = '';
+            currentSuggestions = [];
+            activeSuggestionIndex = -1;
+        }
+
+        document.addEventListener('click', function(e) {
+            const wrapper = document.querySelector('.chatbot-input-wrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                hideSuggestions();
+            }
+        });
 
         function getBuddyBotSenderId() {
             return sessionStorage.getItem('bb_sid') || (() => {
@@ -2487,6 +2742,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
 
             addMessageToChat(message, 'user');
             updateChipLanguage(message);
+            hideSuggestions();
             input.value = '';
 
             sendMessageToRasa(message);
@@ -2505,6 +2761,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             const msg = chip.dataset.msg;
             addMessageToChat(msg, 'user');
             updateChipLanguage(msg);
+            hideSuggestions();
             document.getElementById('chatbotInput').value = '';
             sendMessageToRasa(msg);
         });
