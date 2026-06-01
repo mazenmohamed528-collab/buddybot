@@ -1616,6 +1616,8 @@ def english_hardcoded_topic_answer(question: str) -> Optional[str]:
         tools_answer = tools_answer_for_department_text(question)
         if tools_answer:
             return tools_answer
+    if fci_department_code_from_text(question) and looks_like_bare_fci_department_query(question):
+        return None
     priority_policy_map: Sequence[tuple[Sequence[str], str]] = [
         (
             [
@@ -1796,6 +1798,8 @@ def compound_topic_answer(question: str) -> Optional[str]:
         if tools_answer:
             return tools_answer
         return TOOLS_CLARIFICATION_RESPONSE
+    if not contains_arabic(question) and fci_department_code_from_text(question) and looks_like_bare_fci_department_query(question):
+        return None
     if contains_arabic(question):
         extended_answer = extended_topic_answer(question)
         if extended_answer:
@@ -3126,7 +3130,22 @@ def extract_student_id(text: str) -> Optional[str]:
 
 
 def normalize_question(text: str) -> str:
-    lowered = text.lower()
+    normalized = unicodedata.normalize("NFKC", text or "")
+    normalized = normalized.translate(
+        str.maketrans(
+            {
+                "’": "'",
+                "‘": "'",
+                "`": "'",
+                "´": "'",
+                "“": '"',
+                "”": '"',
+                "–": "-",
+                "—": "-",
+            }
+        )
+    )
+    lowered = normalized.lower()
     for typo, correction in TYPO_NORMALIZATIONS.items():
         lowered = re.sub(rf"\b{re.escape(typo)}\b", correction, lowered)
     return lowered
@@ -6034,6 +6053,19 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
     comparison = department_comparison_result(text)
     if comparison:
         return comparison
+
+    if department_code and looks_like_bare_fci_department_query(text):
+        answer = format_department_catalog_answer(department_code)
+        if answer:
+            return {
+                "answer": answer,
+                "events": [
+                    SlotSet("last_query_scope", "course_catalog"),
+                    SlotSet("department_code", department_code),
+                    SlotSet("last_topic", department_code),
+                    SlotSet("last_entity_type", "department"),
+                ],
+            }
 
     context_department_code = str(tracker.get_slot("department_code") or "") if tracker else ""
     context_instructor_name = str(tracker.get_slot("instructor_name") or "") if tracker else ""
