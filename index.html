@@ -2320,22 +2320,20 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                 </div>
             </div>
         </div>
-
         <div class="policy-chips" id="policyChips">
             <div class="chips-row" id="chipsAr">
-                <button class="policy-chip" data-msg="ما هي نسبة الغياب المسموح بها؟">📋 نسبة الغياب</button>
-                <button class="policy-chip" data-msg="ما هو الإنذار الأكاديمي وكيف أتجنبه؟">⚠️ الإنذار الأكاديمي</button>
-                <button class="policy-chip" data-msg="ما هي سياسة الرسوم الدراسية والاسترداد؟">💰 الرسوم الدراسية</button>
-                <button class="policy-chip" data-msg="كيف يمكنني تغيير تخصصي؟">🔄 تغيير التخصص</button>
+                <button class="policy-chip" data-msg="&#x0645;&#x0627; &#x0647;&#x064A; &#x0646;&#x0633;&#x0628;&#x0629; &#x0627;&#x0644;&#x063A;&#x064A;&#x0627;&#x0628; &#x0627;&#x0644;&#x0645;&#x0633;&#x0645;&#x0648;&#x062D; &#x0628;&#x0647;&#x0627;&#x061F;">&#x1F4CB; &#x0646;&#x0633;&#x0628;&#x0629; &#x0627;&#x0644;&#x063A;&#x064A;&#x0627;&#x0628;</button>
+                <button class="policy-chip" data-msg="&#x0645;&#x0627; &#x0647;&#x0648; &#x0627;&#x0644;&#x0625;&#x0646;&#x0630;&#x0627;&#x0631; &#x0627;&#x0644;&#x0623;&#x0643;&#x0627;&#x062F;&#x064A;&#x0645;&#x064A; &#x0648;&#x0643;&#x064A;&#x0641; &#x0623;&#x062A;&#x062C;&#x0646;&#x0628;&#x0647;&#x061F;">&#x26A0;&#xFE0F; &#x0627;&#x0644;&#x0625;&#x0646;&#x0630;&#x0627;&#x0631; &#x0627;&#x0644;&#x0623;&#x0643;&#x0627;&#x062F;&#x064A;&#x0645;&#x064A;</button>
+                <button class="policy-chip" data-msg="&#x0645;&#x0627; &#x0647;&#x064A; &#x0633;&#x064A;&#x0627;&#x0633;&#x0629; &#x0627;&#x0644;&#x0631;&#x0633;&#x0648;&#x0645; &#x0627;&#x0644;&#x062F;&#x0631;&#x0627;&#x0633;&#x064A;&#x0629; &#x0648;&#x0627;&#x0644;&#x0627;&#x0633;&#x062A;&#x0631;&#x062F;&#x0627;&#x062F;&#x061F;">&#x1F4B0; &#x0627;&#x0644;&#x0631;&#x0633;&#x0648;&#x0645; &#x0627;&#x0644;&#x062F;&#x0631;&#x0627;&#x0633;&#x064A;&#x0629;</button>
+                <button class="policy-chip" data-msg="&#x0643;&#x064A;&#x0641; &#x064A;&#x0645;&#x0643;&#x0646;&#x0646;&#x064A; &#x062A;&#x063A;&#x064A;&#x064A;&#x0631; &#x062A;&#x062E;&#x0635;&#x0635;&#x064A;&#x061F;">&#x1F504; &#x062A;&#x063A;&#x064A;&#x064A;&#x0631; &#x0627;&#x0644;&#x062A;&#x062E;&#x0635;&#x0635;</button>
             </div>
             <div class="chips-row" id="chipsEn" style="display:none">
-                <button class="policy-chip" data-msg="What is the absence policy at FCI?">📋 Absence Policy</button>
-                <button class="policy-chip" data-msg="What is an academic warning and how do I avoid it?">⚠️ Academic Warning</button>
-                <button class="policy-chip" data-msg="What is the tuition fee refund policy?">💰 Tuition &amp; Fees</button>
-                <button class="policy-chip" data-msg="How can I change my specialisation?">🔄 Change Major</button>
+                <button class="policy-chip" data-msg="What is the absence policy at FCI?">&#x1F4CB; Absence Policy</button>
+                <button class="policy-chip" data-msg="What is an academic warning and how do I avoid it?">&#x26A0;&#xFE0F; Academic Warning</button>
+                <button class="policy-chip" data-msg="What is the tuition fee refund policy?">&#x1F4B0; Tuition &amp; Fees</button>
+                <button class="policy-chip" data-msg="How can I change my specialisation?">&#x1F504; Change Major</button>
             </div>
         </div>
-
         <div class="chatbot-input" id="chatbotInputBar">
             <input 
                 type="text" 
@@ -2510,7 +2508,6 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             document.getElementById('chatbotInput').value = '';
             sendMessageToRasa(msg);
         });
-
         const abuseEnglishTerms = [
             "stupid", "idiot", "dumb", "moron", "bitch", "bastard", "asshole",
             "crap", "shit", "damn", "hate you", "useless", "worthless",
@@ -2518,8 +2515,8 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             "horrible", "terrible", "suck", "sucks", "pathetic"
         ];
         const abuseArabicTerms = [
-            "غبي", "أحمق", "احمق", "بليد", "متخلف", "كلب", "حمار",
-            "زبالة", "تافه", "اخرس", "اغرب", "مش محتاجك", "عديم الفايدة"
+            "\u063A\u0628\u064A", "\u0623\u062D\u0645\u0642", "\u0627\u062D\u0645\u0642", "\u0628\u0644\u064A\u062F", "\u0645\u062A\u062E\u0644\u0641", "\u0643\u0644\u0628", "\u062D\u0645\u0627\u0631",
+            "\u0632\u0628\u0627\u0644\u0629", "\u062A\u0627\u0641\u0647", "\u0627\u062E\u0631\u0633", "\u0627\u063A\u0631\u0628", "\u0645\u0634 \u0645\u062D\u062A\u0627\u062C\u0643", "\u0639\u062F\u064A\u0645 \u0627\u0644\u0641\u0627\u064A\u062F\u0629"
         ];
         const questionOpenersEnglish = [
             "ok i have a question", "i have a question", "i have a query",
@@ -2536,9 +2533,9 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             "yeah question", "yes question"
         ]);
         const questionOpenersArabic = [
-            "عندي سؤال", "عندي استفسار", "ممكن اسأل", "ممكن أسأل",
-            "عايز اسأل", "عايز أسأل", "عاوز اسأل", "عاوز أسأل",
-            "لو سمحت سؤال", "فيه سؤال", "سؤال بس", "سؤال واحد", "استفسار"
+            "\u0639\u0646\u062F\u064A \u0633\u0624\u0627\u0644", "\u0639\u0646\u062F\u064A \u0627\u0633\u062A\u0641\u0633\u0627\u0631", "\u0645\u0645\u0643\u0646 \u0627\u0633\u0623\u0644", "\u0645\u0645\u0643\u0646 \u0623\u0633\u0623\u0644",
+            "\u0639\u0627\u064A\u0632 \u0627\u0633\u0623\u0644", "\u0639\u0627\u064A\u0632 \u0623\u0633\u0623\u0644", "\u0639\u0627\u0648\u0632 \u0627\u0633\u0623\u0644", "\u0639\u0627\u0648\u0632 \u0623\u0633\u0623\u0644",
+            "\u0644\u0648 \u0633\u0645\u062D\u062A \u0633\u0624\u0627\u0644", "\u0641\u064A\u0647 \u0633\u0624\u0627\u0644", "\u0633\u0624\u0627\u0644 \u0628\u0633", "\u0633\u0624\u0627\u0644 \u0648\u0627\u062D\u062F", "\u0627\u0633\u062A\u0641\u0633\u0627\u0631"
         ];
         const smallTalkEnglish = new Set([
             "how are you", "how r u", "how are u", "hows it going",
@@ -2546,22 +2543,22 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             "how do you do"
         ]);
         const smallTalkArabic = new Set([
-            "كيف حالك", "عامل ايه", "عاملة ايه", "ازيك", "إزيك",
-            "كيفك", "تمام ولا ايه"
+            "\u0643\u064A\u0641 \u062D\u0627\u0644\u0643", "\u0639\u0627\u0645\u0644 \u0627\u064A\u0647", "\u0639\u0627\u0645\u0644\u0629 \u0627\u064A\u0647", "\u0627\u0632\u064A\u0643", "\u0625\u0632\u064A\u0643",
+            "\u0643\u064A\u0641\u0643", "\u062A\u0645\u0627\u0645 \u0648\u0644\u0627 \u0627\u064A\u0647"
         ]);
 
         function normaliseArabicLetters(text) {
             return text
-                .replace(/[إأآ]/g, "ا")
-                .replace(/ى/g, "ي")
-                .replace(/ؤ/g, "و")
-                .replace(/ئ/g, "ي");
+                .replace(/[\u0625\u0623\u0622]/g, "\u0627")
+                .replace(/\u0649/g, "\u064A")
+                .replace(/\u0624/g, "\u0648")
+                .replace(/\u0626/g, "\u064A");
         }
 
         function normaliseChatText(text, removeFillers = false) {
             let cleaned = normaliseArabicLetters(text.toLowerCase())
                 .trim()
-                .replace(/[؟?!.,;:،؛]+/g, ' ')
+                .replace(/[\u061F?!.,;:\u060C\u061B]+/g, ' ')
                 .replace(/\s+/g, ' ');
             if (removeFillers) {
                 cleaned = cleaned
@@ -2602,25 +2599,24 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
 
             if (hasEnglishAbuse || hasArabicAbuse) {
                 return isArabic
-                    ? "أنا هنا لمساعدتك في أسئلة كلية الحاسبات والمعلومات. 😊\nاسألني عن أي حاجة تخص الكلية."
-                    : "I'm here to help with FCI-related questions. 😊\nLet me know if you need anything about courses, students, schedules, or campus policies.";
+                    ? "\u0623\u0646\u0627 \u0647\u0646\u0627 \u0644\u0645\u0633\u0627\u0639\u062F\u062A\u0643 \u0641\u064A \u0623\u0633\u0626\u0644\u0629 \u0643\u0644\u064A\u0629 \u0627\u0644\u062D\u0627\u0633\u0628\u0627\u062A \u0648\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A. \uD83D\uDE0A\n\u0627\u0633\u0623\u0644\u0646\u064A \u0639\u0646 \u0623\u064A \u062D\u0627\u062C\u0629 \u062A\u062E\u0635 \u0627\u0644\u0643\u0644\u064A\u0629."
+                    : "I'm here to help with FCI-related questions. \uD83D\uDE0A\nLet me know if you need anything about courses, students, schedules, or campus policies.";
             }
 
             if (isQuestionOpener(message)) {
                 return isArabic
-                    ? "أكيد! اتفضل - اسأل براحتك 😊"
-                    : "Of course! Go ahead - what's your question? 😊";
+                    ? "\u0623\u0643\u064A\u062F! \u0627\u062A\u0641\u0636\u0644 - \u0627\u0633\u0623\u0644 \u0628\u0631\u0627\u062D\u062A\u0643 \uD83D\uDE0A"
+                    : "Of course! Go ahead - what's your question? \uD83D\uDE0A";
             }
 
             if (isSmallTalk(message)) {
                 return isArabic
-                    ? "تمام والحمد لله! 😊 بخدمتك - اسأل براحتك."
-                    : "I'm doing great, thanks for asking! 😊\nWhat can I help you with today?";
+                    ? "\u062A\u0645\u0627\u0645 \u0648\u0627\u0644\u062D\u0645\u062F \u0644\u0644\u0647! \uD83D\uDE0A \u0628\u062E\u062F\u0645\u062A\u0643 - \u0627\u0633\u0623\u0644 \u0628\u0631\u0627\u062D\u062A\u0643."
+                    : "I'm doing great, thanks for asking! \uD83D\uDE0A\nWhat can I help you with today?";
             }
 
             return "";
         }
-
         async function sendMessageToRasa(message) {
             const localGuardResponse = guardedLocalChatResponse(message);
             if (localGuardResponse) {
