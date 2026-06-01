@@ -2968,13 +2968,12 @@ def with_duplicate_prompt(answer: str, current_text: str, tracker: Optional[Trac
 def student_not_found_fallback(name_or_id: str, text: str = "") -> str:
     if contains_arabic(text):
         return (
-            f"لم أجد طالبا باسم أو كود {name_or_id} في النظام. تأكد من الاسم أو استخدم الرقم الجامعي. "
+            f"لا يتوفر لديّ سجل طالب مطابق لـ {name_or_id} في النظام الحالي. "
             "للمزيد من المساعدة، يُرجى التوجه إلى مكتب شؤون الطلاب في كلية الحاسبات والمعلومات، فرع المعادي."
         )
     return (
-        f"I couldn't find a student named {name_or_id} in the system. Please check the spelling "
-        "or use their student ID. If you need further help, visit the Student Affairs office "
-        "at FCI, Maadi Campus."
+        f"I don't have a student record matching {name_or_id} in the current system. "
+        "For further help, please visit the Student Affairs office at FCI, Maadi Campus."
     )
 
 
@@ -3109,6 +3108,7 @@ def resolve_student_id(raw_input: str) -> Optional[str]:
 
 def extract_student_id(text: str) -> Optional[str]:
     stripped = (text or "").strip()
+    stripped = re.sub(r"^(?:or|maybe|try)\s+", "", stripped, flags=re.IGNORECASE).strip()
     if re.fullmatch(r"\d{4,12}", stripped):
         return resolve_student_id(stripped) or stripped
     patterns = [
@@ -3171,6 +3171,7 @@ def strip_filler_prefix(text: str) -> str:
         "also",
         "btw",
         "just",
+        "or",
         "okay",
         "well",
         "like",
@@ -5023,6 +5024,7 @@ def mentions_student_attribute(text: str) -> bool:
         "semester",
         "year",
         "credit",
+        "major",
     ]
     return any(term in lowered for term in detail_terms)
 
@@ -5233,7 +5235,24 @@ def fci_extract_student_name_words(text: str) -> List[str]:
     words = [
         word
         for word in re.findall(r"[a-z]+", phrase.lower())
-        if len(word) > 1 and word not in {"what", "which", "show", "tell", "me", "about", "for"}
+        if len(word) > 1
+        and word
+        not in {
+            "what",
+            "which",
+            "show",
+            "tell",
+            "me",
+            "about",
+            "for",
+            "his",
+            "her",
+            "him",
+            "he",
+            "she",
+            "their",
+            "them",
+        }
     ]
     return words[:5]
 
@@ -6816,6 +6835,8 @@ def build_fci_known_sql(question: str, context_student_id: Optional[str]) -> Opt
     student_id = message_student_id or (context_student_id if should_use_context_student(question) else None)
     instructor_name = extract_fci_instructor_name(question)
     name_words = fci_extract_student_name_words(question)
+    if student_id and wants_current_student(question):
+        name_words = []
 
     asks_schedule = any(word in lowered for word in ["schedule", "timetable", "class", "classes", "lecture", "lectures", "lab", "labs", "when", "where"])
     asks_gpa = any(word in lowered for word in ["gpa", "cgpa", "cumulative"])
@@ -8740,6 +8761,10 @@ class ActionRagQuery(Action):
             pending_events = dispatch_pending_clarification_answer(dispatcher, user_message, tracker, domain)
             if pending_events is not None:
                 return pending_events
+            if extract_student_id(user_message):
+                return ActionTextToSQL().run(dispatcher, tracker, domain)
+            if tracker.get_slot("student_id") and wants_current_student(user_message):
+                return ActionTextToSQL().run(dispatcher, tracker, domain)
             if looks_like_result_continuation(user_message):
                 return ActionTextToSQL().run(dispatcher, tracker, domain)
             if is_bot_identity_question(user_message):
@@ -8845,6 +8870,9 @@ class ActionGeneralConversation(Action):
         pending_events = dispatch_pending_clarification_answer(dispatcher, user_message, tracker, domain)
         if pending_events is not None:
             return pending_events
+
+        if extract_student_id(user_message) or (tracker.get_slot("student_id") and wants_current_student(user_message)):
+            return ActionTextToSQL().run(dispatcher, tracker, domain)
 
         if is_short_why(user_message) and tracker.get_slot("student_id") and tracker.get_slot("last_query_scope") == "student":
             return answer_student_why_followup(dispatcher, tracker.get_slot("student_id"))
@@ -8979,6 +9007,9 @@ class ActionConversationRouter(Action):
         pending_events = dispatch_pending_clarification_answer(dispatcher, user_message, tracker, domain)
         if pending_events is not None:
             return pending_events
+
+        if extract_student_id(user_message) or (tracker.get_slot("student_id") and wants_current_student(user_message)):
+            return ActionTextToSQL().run(dispatcher, tracker, domain)
 
         if is_short_why(user_message) and tracker.get_slot("student_id") and tracker.get_slot("last_query_scope") == "student":
             return answer_student_why_followup(dispatcher, tracker.get_slot("student_id"))
@@ -9482,8 +9513,14 @@ class ActionTextToSQL(Action):
                 except Exception:
                     pass
 
+        context_student_followup = bool(tracker.get_slot("student_id") and wants_current_student(user_question))
+        explicit_student_id_lookup = bool(extract_student_id(user_question))
         route_decision = hybrid_route(user_question, tracker)
-        if route_decision["route"] in {"policy_rag", "educational_rag", "file_retrieval"}:
+        if (
+            not context_student_followup
+            and not explicit_student_id_lookup
+            and route_decision["route"] in {"policy_rag", "educational_rag", "file_retrieval"}
+        ):
             try:
                 dispatcher.utter_message(text=query_rag_service(user_question))
             except Exception as e:
@@ -9509,7 +9546,9 @@ class ActionTextToSQL(Action):
         known_sql_query = build_fci_known_sql(effective_question, context_student_id)
 
         if (
-            looks_like_knowledge_question(user_question)
+            not context_student_followup
+            and not explicit_student_id_lookup
+            and looks_like_knowledge_question(user_question)
             and not looks_like_fci_database_request(user_question)
             and not has_hard_database_signal(user_question)
             and not known_sql_query
@@ -9635,7 +9674,10 @@ SQL:
                 catalog_events = dispatch_fci_catalog_answer(dispatcher, user_question, tracker)
                 if catalog_events is not None:
                     return catalog_events
-                dispatcher.utter_message(text=unanswered_question_fallback(user_question))
+                if message_student_id:
+                    dispatcher.utter_message(text=student_not_found_fallback(message_student_id, user_question))
+                else:
+                    dispatcher.utter_message(text=unanswered_question_fallback(user_question))
                 return [SlotSet("student_id", message_student_id)] if message_student_id else []
 
             if len(rows) == 1 and str(rows[0][0]) == "DATA_NOT_AVAILABLE":
