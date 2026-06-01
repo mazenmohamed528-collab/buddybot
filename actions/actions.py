@@ -9513,8 +9513,19 @@ class ActionTextToSQL(Action):
                 except Exception:
                     pass
 
-        context_student_followup = bool(tracker.get_slot("student_id") and wants_current_student(user_question))
-        explicit_student_id_lookup = bool(extract_student_id(user_question))
+        message_student_id = extract_student_id(user_question)
+        current_student_id = tracker.get_slot("student_id")
+        if wants_current_student(user_question) and not current_student_id and not message_student_id:
+            dispatcher.utter_message(
+                text=(
+                    "Which student do you mean? Please send the student ID or ask "
+                    "\"show me student [name]\" first."
+                )
+            )
+            return [SlotSet("last_query_scope", "student")]
+
+        context_student_followup = bool(current_student_id and wants_current_student(user_question))
+        explicit_student_id_lookup = bool(message_student_id)
         route_decision = hybrid_route(user_question, tracker)
         if (
             not context_student_followup
@@ -9536,10 +9547,8 @@ class ActionTextToSQL(Action):
             dispatcher.utter_message(text=general_conversation_answer(user_question, tracker))
             return [SlotSet("last_query_scope", "chat")]
 
-        message_student_id = extract_student_id(user_question)
         last_query_scope = tracker.get_slot("last_query_scope")
         effective_question = expand_followup_question(user_question, last_query_scope)
-        current_student_id = tracker.get_slot("student_id")
         context_student_id = message_student_id or (
             current_student_id if should_use_context_student(user_question) else None
         )
