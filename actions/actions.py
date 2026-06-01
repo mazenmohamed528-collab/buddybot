@@ -1,6 +1,7 @@
 ﻿import os
 import re
 import sys
+import time
 import unicodedata
 from decimal import Decimal
 from difflib import SequenceMatcher
@@ -562,38 +563,66 @@ TYPO_NORMALIZATIONS = {
 }
 
 
-def get_connection():
-    if DB_URL:
-        if DB_URL.startswith(("postgres://", "postgresql://")):
-            if psycopg2 is None:
-                raise RuntimeError("psycopg2 is required for PostgreSQL/Supabase connections.")
-            return psycopg2.connect(DB_URL, sslmode=DB_SSLMODE)
-        if pyodbc is None:
-            raise RuntimeError("pyodbc is required for SQL Server connections.")
-        return pyodbc.connect(DB_URL)
+def get_connection(retries: int = 3):
+    last_error = None
+    for attempt in range(max(retries, 1)):
+        try:
+            if DB_URL:
+                if DB_URL.startswith(("postgres://", "postgresql://")):
+                    if psycopg2 is None:
+                        raise RuntimeError("psycopg2 is required for PostgreSQL/Supabase connections.")
+                    return psycopg2.connect(DB_URL, sslmode=DB_SSLMODE, connect_timeout=10)
+                if pyodbc is None:
+                    raise RuntimeError("pyodbc is required for SQL Server connections.")
+                return pyodbc.connect(DB_URL, timeout=10)
 
-    if DB_DIALECT in {"postgres", "postgresql", "supabase"}:
-        if psycopg2 is None:
-            raise RuntimeError("psycopg2 is required for PostgreSQL/Supabase connections.")
-        return psycopg2.connect(
-            host=DB_SERVER,
-            database=DB_NAME,
-            user=DB_USER,
-            password=DB_PASSWORD,
-            port=int(DB_PORT or 5432),
-            sslmode=DB_SSLMODE,
-        )
+            if DB_DIALECT in {"postgres", "postgresql", "supabase"}:
+                if psycopg2 is None:
+                    raise RuntimeError("psycopg2 is required for PostgreSQL/Supabase connections.")
+                return psycopg2.connect(
+                    host=DB_SERVER,
+                    database=DB_NAME,
+                    user=DB_USER,
+                    password=DB_PASSWORD,
+                    port=int(DB_PORT or 5432),
+                    sslmode=DB_SSLMODE,
+                    connect_timeout=10,
+                )
 
-    if pyodbc is None:
-        raise RuntimeError("pyodbc is required for SQL Server connections.")
-    return pyodbc.connect(
-        f"DRIVER={{{DB_DRIVER}}};"
-        f"SERVER={DB_SERVER};"
-        f"DATABASE={DB_NAME};"
-        "Trusted_Connection=yes;"
-        "Encrypt=no;"
-        "TrustServerCertificate=yes;"
-    )
+            if pyodbc is None:
+                raise RuntimeError("pyodbc is required for SQL Server connections.")
+            return pyodbc.connect(
+                f"DRIVER={{{DB_DRIVER}}};"
+                f"SERVER={DB_SERVER};"
+                f"DATABASE={DB_NAME};"
+                "Trusted_Connection=yes;"
+                "Encrypt=no;"
+                "TrustServerCertificate=yes;",
+                timeout=10,
+            )
+        except Exception as exc:
+            last_error = exc
+            if attempt < retries - 1:
+                time.sleep(1)
+    raise last_error
+
+
+def safe_query(query: str, params: Optional[Sequence[Any]] = None) -> Optional[List[Any]]:
+    conn = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        if params:
+            cursor.execute(query, params)
+        else:
+            cursor.execute(query)
+        return cursor.fetchall()
+    except Exception as exc:
+        print(f"Database error: {exc}", file=sys.stderr)
+        return None
+    finally:
+        if conn:
+            conn.close()
 
 
 def postgres_mode() -> bool:
@@ -3063,10 +3092,25 @@ def unanswered_question_fallback(text: str) -> str:
     return student_affairs_fallback(text)
 
 
+def resolve_student_id(raw_input: str) -> Optional[str]:
+    digits = re.sub(r"\D", "", raw_input or "")
+    if not digits:
+        return None
+    if len(digits) == 7 and digits.startswith("212"):
+        return digits
+    if len(digits) == 3:
+        return "2122" + digits
+    if len(digits) == 4:
+        return "212" + digits
+    if len(digits) == 5:
+        return "21" + digits
+    return None
+
+
 def extract_student_id(text: str) -> Optional[str]:
     stripped = (text or "").strip()
     if re.fullmatch(r"\d{4,12}", stripped):
-        return stripped
+        return resolve_student_id(stripped) or stripped
     patterns = [
         r"\b(?:student\s*)?(?:id|code|number|no\.?|#)\s*(?:of|is|=|:|-)?\s*(\d{1,12})\b",
         r"\bstudent[\s_-]*(?:id|number|no\.?|#)\s*[:#-]?\s*(\d{1,12})\b",
@@ -3076,7 +3120,8 @@ def extract_student_id(text: str) -> Optional[str]:
     for pattern in patterns:
         match = re.search(pattern, text, flags=re.IGNORECASE)
         if match:
-            return match.group(1)
+            digits = match.group(1)
+            return resolve_student_id(digits) or digits
     return None
 
 
@@ -3110,6 +3155,46 @@ def normalize_arabic_text(text: str) -> str:
 
 def semantic_normalize(text: str) -> str:
     return normalize_arabic_text(normalize_question(text)).strip()
+
+
+def strip_filler_prefix(text: str) -> str:
+    fillers = [
+        "by the way",
+        "you know",
+        "i mean",
+        "i guess",
+        "anyway",
+        "basically",
+        "actually",
+        "honestly",
+        "literally",
+        "also",
+        "btw",
+        "just",
+        "okay",
+        "well",
+        "like",
+        "look",
+        "listen",
+        "right",
+        "yeah",
+        "yep",
+        "hey",
+        "ok",
+        "so",
+    ]
+    cleaned = (text or "").strip()
+    changed = True
+    while changed:
+        changed = False
+        for filler in fillers:
+            pattern = r"^\s*" + re.escape(filler) + r"[\s,\.!?:;-]+"
+            next_text = re.sub(pattern, "", cleaned, count=1, flags=re.IGNORECASE).strip()
+            if next_text != cleaned:
+                cleaned = next_text
+                changed = True
+                break
+    return cleaned
 
 
 def text_has_any(text: str, terms: Sequence[str]) -> bool:
@@ -9288,7 +9373,8 @@ class ActionTextToSQL(Action):
         return "action_text_to_sql"
 
     def run(self, dispatcher, tracker, domain):
-        user_question = (tracker.latest_message.get("text") or "").strip()
+        raw_user_question = (tracker.latest_message.get("text") or "").strip()
+        user_question = strip_filler_prefix(raw_user_question) or raw_user_question
         if not user_question:
             dispatcher.utter_message(text="Please ask a university data question.")
             return []
