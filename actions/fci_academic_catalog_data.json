@@ -135,6 +135,83 @@
     }
   },
   "courses": {
+    "CP101": {
+      "name": "Computer Programming (1)",
+      "dept": "GEN",
+      "year": 1,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "First programming course — variables, conditionals, loops, functions, and arrays in a structured language. Students write, run, and debug small programs, building computational thinking from the ground up.",
+      "instructors": [
+        "Hoda Waguih",
+        "Mohamed Hassan",
+        "Rabab Emad",
+        "Walaa El Hady"
+      ],
+      "keywords": [
+        "arrays",
+        "coding",
+        "computer programming",
+        "computer programming (1)",
+        "cp101",
+        "debugging",
+        "functions",
+        "gen",
+        "loops",
+        "programming"
+      ]
+    },
+    "DS101": {
+      "name": "Discrete Structures",
+      "dept": "GEN",
+      "year": 1,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "Logic, sets, relations, functions, proof techniques, graphs, and combinatorics. The mathematical backbone of computer science — nearly every theoretical topic in later courses depends on this material.",
+      "instructors": [
+        "Ahmed Ebrahim",
+        "Nabil El Dakhly",
+        "Ossama Khozayem",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "combinatorics",
+        "discrete",
+        "discrete structures",
+        "ds101",
+        "gen",
+        "graphs",
+        "logic",
+        "proofs",
+        "sets"
+      ]
+    },
+    "ENG101": {
+      "name": "English (1)",
+      "dept": "GEN",
+      "year": 1,
+      "semester": 1,
+      "credit_hours": 2,
+      "category": "general",
+      "description": "Develops academic reading and writing in English, with a focus on comprehension, vocabulary in context, and structured paragraph writing. Prepares students for technical documentation and report writing.",
+      "instructors": [
+        "Ahmed Nour",
+        "Iman El Bahai",
+        "Reham Atef"
+      ],
+      "keywords": [
+        "academic",
+        "eng101",
+        "english",
+        "english (1)",
+        "gen",
+        "language",
+        "reading",
+        "writing"
+      ]
+    },
     "ICS101": {
       "name": "Introduction to Computer Science",
       "dept": "GEN",
@@ -144,14 +221,21 @@
       "category": "general",
       "description": "An entry-level tour of the discipline: what computers are, how they process data, the history of computing, binary representation, logic gates, and an introduction to problem-solving and algorithm thinking. Sets the language every subsequent course builds on.",
       "instructors": [
-        "Yasser Salah Eldin",
-        "Nabil El Dakhly"
+        "Nabil El Dakhly",
+        "Ola Mahmoud",
+        "Walaa El Hady",
+        "Yasmeen Zafer",
+        "Yasser Salah Eldin"
       ],
       "keywords": [
-        "intro",
-        "computer science",
         "basics",
         "binary",
+        "computer science",
+        "cs",
+        "gen",
+        "ics101",
+        "intro",
+        "introduction to computer science",
         "problem solving"
       ]
     },
@@ -164,54 +248,23 @@
       "category": "general",
       "description": "Calculus and precalculus foundations: limits, derivatives, integration, sequences, and series. Essential mathematical fluency for algorithm analysis, signal processing, and AI courses in later years.",
       "instructors": [
+        "Ahmed Samy",
+        "Ebrahim Taha",
+        "Hisham",
+        "Moamen",
         "Rana Mohamed",
-        "Amr Galal"
+        "Sherif El Prince"
       ],
       "keywords": [
         "calculus",
         "derivatives",
+        "gen",
         "integration",
         "limits",
+        "math",
+        "math (1)",
+        "math101",
         "sequences"
-      ]
-    },
-    "DS101": {
-      "name": "Discrete Structures",
-      "dept": "GEN",
-      "year": 1,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Logic, sets, relations, functions, proof techniques, graphs, and combinatorics. The mathematical backbone of computer science — nearly every theoretical topic in later courses depends on this material.",
-      "instructors": [
-        "Nasr Gad"
-      ],
-      "keywords": [
-        "discrete",
-        "logic",
-        "sets",
-        "graphs",
-        "combinatorics",
-        "proofs"
-      ]
-    },
-    "ENG101": {
-      "name": "English (1)",
-      "dept": "GEN",
-      "year": 1,
-      "semester": 1,
-      "credit_hours": 2,
-      "category": "general",
-      "description": "Develops academic reading and writing in English, with a focus on comprehension, vocabulary in context, and structured paragraph writing. Prepares students for technical documentation and report writing.",
-      "instructors": [
-        "Reham Atef"
-      ],
-      "keywords": [
-        "english",
-        "language",
-        "writing",
-        "reading",
-        "academic"
       ]
     },
     "PHYS101": {
@@ -223,75 +276,17 @@
       "category": "general",
       "description": "Classical mechanics, waves, optics, and an introduction to electricity and magnetism. Provides the physical intuition behind hardware, signals, and electronics studied in subsequent semesters.",
       "instructors": [
-        "Rabab Emad",
-        "Walaa El Hady"
+        "Ahmed Masoud",
+        "Nasr Gad"
       ],
       "keywords": [
-        "physics",
-        "mechanics",
         "electricity",
-        "waves",
-        "magnetism"
-      ]
-    },
-    "CP101": {
-      "name": "Computer Programming (1)",
-      "dept": "GEN",
-      "year": 1,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "First programming course — variables, conditionals, loops, functions, and arrays in a structured language. Students write, run, and debug small programs, building computational thinking from the ground up.",
-      "instructors": [
-        "Reham Adel",
-        "Yasmeen Zafer",
-        "Moamen"
-      ],
-      "keywords": [
-        "programming",
-        "coding",
-        "loops",
-        "functions",
-        "arrays",
-        "debugging"
-      ]
-    },
-    "MATH102": {
-      "name": "Math (2)",
-      "dept": "GEN",
-      "year": 1,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Continues from Math (1): multivariable calculus, linear algebra (vectors, matrices, eigenvalues), and differential equations. Linear algebra is foundational to machine learning and graphics in upper years.",
-      "instructors": [
-        "Amr Galal",
-        "Rana Mohamed"
-      ],
-      "keywords": [
-        "linear algebra",
-        "matrices",
-        "eigenvalues",
-        "differential equations"
-      ]
-    },
-    "ENGIT102": {
-      "name": "English for IT Professionals",
-      "dept": "GEN",
-      "year": 1,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "general",
-      "description": "Technical English: reading IT documentation, writing specifications, presenting ideas in English, and understanding the vocabulary of software engineering and systems administration.",
-      "instructors": [
-        "Reham Atef"
-      ],
-      "keywords": [
-        "english",
-        "technical",
-        "IT",
-        "documentation",
-        "writing"
+        "gen",
+        "magnetism",
+        "mechanics",
+        "phys101",
+        "physics",
+        "waves"
       ]
     },
     "DC102": {
@@ -303,35 +298,19 @@
       "category": "general",
       "description": "Boolean algebra, logic gates, combinational and sequential circuits, flip-flops, registers, and counters. Bridges the gap between software abstraction and physical hardware reality.",
       "instructors": [
-        "Hisham",
-        "Iman El Bahai"
+        "Nabil El Dakhly",
+        "Ossama Khozayem"
       ],
       "keywords": [
-        "digital",
-        "circuits",
         "boolean",
-        "flip-flops",
-        "registers",
-        "logic gates"
-      ]
-    },
-    "ELEC102": {
-      "name": "Electronics",
-      "dept": "GEN",
-      "year": 1,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Electronic components (diodes, transistors, op-amps), circuit analysis, and basic signal theory. Background knowledge for hardware interfacing, IoT, and embedded systems courses.",
-      "instructors": [
-        "Ahmed Samy"
-      ],
-      "keywords": [
-        "electronics",
-        "diodes",
-        "transistors",
         "circuits",
-        "signals"
+        "dc102",
+        "digital",
+        "digital circuitry",
+        "flip-flops",
+        "gen",
+        "logic gates",
+        "registers"
       ]
     },
     "DSTR102": {
@@ -343,16 +322,92 @@
       "category": "general",
       "description": "Linked lists, stacks, queues, trees, heaps, hash tables, and graphs — with analysis of time and space complexity. One of the most important courses in the curriculum; the basis for algorithms and database courses.",
       "instructors": [
-        "Ahmed Nour",
-        "Ahmed Masoud"
+        "Aya Ashraf",
+        "Ayman Zaki",
+        "Doaa Hany",
+        "Heba Zaki",
+        "Magdy Aboulela",
+        "Nabil El Dakhly",
+        "Walaa El Hady"
       ],
       "keywords": [
         "data structures",
+        "dstr102",
+        "gen",
+        "hashing",
         "linked list",
-        "trees",
-        "stacks",
         "queues",
-        "hashing"
+        "stacks",
+        "trees"
+      ]
+    },
+    "ELEC102": {
+      "name": "Electronics",
+      "dept": "GEN",
+      "year": 1,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "Electronic components (diodes, transistors, op-amps), circuit analysis, and basic signal theory. Background knowledge for hardware interfacing, IoT, and embedded systems courses.",
+      "instructors": [
+        "Ahmed Masoud",
+        "Nasr Gad"
+      ],
+      "keywords": [
+        "circuits",
+        "diodes",
+        "elec102",
+        "electronics",
+        "gen",
+        "signals",
+        "transistors"
+      ]
+    },
+    "ENGIT102": {
+      "name": "English for IT Professionals",
+      "dept": "GEN",
+      "year": 1,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "general",
+      "description": "Technical English: reading IT documentation, writing specifications, presenting ideas in English, and understanding the vocabulary of software engineering and systems administration.",
+      "instructors": [
+        "Ahmed Nour",
+        "Iman El Bahai",
+        "Reham Atef"
+      ],
+      "keywords": [
+        "documentation",
+        "engit102",
+        "english",
+        "english for it professionals",
+        "gen",
+        "it",
+        "technical",
+        "writing"
+      ]
+    },
+    "MATH102": {
+      "name": "Math (2)",
+      "dept": "GEN",
+      "year": 1,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "Continues from Math (1): multivariable calculus, linear algebra (vectors, matrices, eigenvalues), and differential equations. Linear algebra is foundational to machine learning and graphics in upper years.",
+      "instructors": [
+        "Abd El Hamid",
+        "Amr Galal"
+      ],
+      "keywords": [
+        "differential equations",
+        "eigenvalues",
+        "gen",
+        "linear algebra",
+        "math",
+        "math (2)",
+        "math102",
+        "matrices"
       ]
     },
     "TIS102": {
@@ -364,32 +419,102 @@
       "category": "general",
       "description": "Overview of how organisations use information systems: ERP, CRM, transaction processing, decision support, and the role of IT governance. Bridges computer science with business context.",
       "instructors": [
-        "Ossama Khozayem"
+        "Kholoud Farag",
+        "Maha Talaat",
+        "Yasmeen Zafer"
       ],
       "keywords": [
+        "crm",
+        "decision support",
+        "erp",
+        "gen",
         "information systems",
-        "ERP",
-        "CRM",
-        "IT governance",
-        "decision support"
+        "it governance",
+        "technology of information systems",
+        "technology of is",
+        "tis102"
       ]
     },
-    "OR201": {
-      "name": "Operations Research",
+    "AAD201": {
+      "name": "Algorithms Analysis and Design",
       "dept": "GEN",
       "year": 2,
       "semester": 1,
       "credit_hours": 3,
       "category": "general",
-      "description": "Optimisation techniques: linear programming, simplex method, transportation models, assignment problems, and network analysis. Used in scheduling, resource allocation, and AI planning.",
+      "description": "Algorithm correctness and complexity (Big-O, Omega, Theta), sorting algorithms, divide and conquer, dynamic programming, greedy algorithms, and NP-completeness. Core theory for every upper-year major.",
       "instructors": [
-        "Hoda Waguih"
+        "Ahmed Ebrahim",
+        "Antony Noshy",
+        "Aya Ashraf",
+        "Doaa Hany",
+        "Heba Zaki",
+        "Magdy Aboulela"
       ],
       "keywords": [
-        "operations research",
-        "linear programming",
-        "simplex",
-        "optimisation",
+        "aad201",
+        "algorithms",
+        "algorithms analysis and design",
+        "big-o",
+        "dynamic programming",
+        "gen",
+        "greedy",
+        "np-completeness",
+        "sorting"
+      ]
+    },
+    "CN201": {
+      "name": "Computer Networks",
+      "dept": "GEN",
+      "year": 2,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "OSI and TCP/IP models, IP addressing, routing protocols, Ethernet, HTTP, DNS, and network security basics. The foundation for advanced networking and cyber security courses.",
+      "instructors": [
+        "Ahmed Gamal",
+        "Doaa Hany",
+        "Heba Sabry",
+        "Rabab Emad",
+        "Yasmeen Zafer"
+      ],
+      "keywords": [
+        "cn201",
+        "computer networks",
+        "dns",
+        "gen",
+        "http",
+        "networks",
+        "osi",
+        "routing",
+        "tcp/ip"
+      ]
+    },
+    "COS201": {
+      "name": "Computer Operating Systems",
+      "dept": "GEN",
+      "year": 2,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "Process management, scheduling, memory management (paging, segmentation), file systems, I/O management, and concurrency (semaphores, monitors). Essential for systems programming and security.",
+      "instructors": [
+        "Asmaa Said",
+        "Hesham Ramadan",
+        "Mai Hesham",
+        "Marwa Ahmed",
+        "Mohamed Ragaey",
+        "Yasser Salah Eldin"
+      ],
+      "keywords": [
+        "computer operating systems",
+        "concurrency",
+        "cos201",
+        "file systems",
+        "gen",
+        "memory",
+        "operating systems",
+        "processes",
         "scheduling"
       ]
     },
@@ -402,79 +527,49 @@
       "category": "general",
       "description": "Relational model, ER diagrams, SQL, normalisation (1NF–BCNF), transactions, concurrency control, and an introduction to NoSQL. Students design and query databases across every specialisation.",
       "instructors": [
-        "Sherif El Prince",
-        "Ebrahim Taha"
+        "Ahmed Sayed",
+        "Badria Nabil",
+        "Ghaidaa Zain",
+        "Maha Talaat",
+        "Ola Mahmoud"
       ],
       "keywords": [
         "database",
-        "SQL",
-        "NoSQL",
-        "ER diagram",
+        "database systems",
+        "dbs201",
+        "er diagram",
+        "gen",
         "normalisation",
+        "nosql",
+        "sql",
         "transactions"
       ]
     },
-    "CN201": {
-      "name": "Computer Networks",
+    "OR201": {
+      "name": "Operations Research",
       "dept": "GEN",
       "year": 2,
       "semester": 1,
       "credit_hours": 3,
       "category": "general",
-      "description": "OSI and TCP/IP models, IP addressing, routing protocols, Ethernet, HTTP, DNS, and network security basics. The foundation for advanced networking and cyber security courses.",
+      "description": "Optimisation techniques: linear programming, simplex method, transportation models, assignment problems, and network analysis. Used in scheduling, resource allocation, and AI planning.",
       "instructors": [
+        "Abd Al Hamid",
+        "Abd El Hamid",
         "Hazem",
-        "Badria Nabil"
+        "Hisham",
+        "Mai Mohsen",
+        "Sherif El Prince"
       ],
       "keywords": [
-        "networks",
-        "TCP/IP",
-        "OSI",
-        "routing",
-        "DNS",
-        "HTTP"
-      ]
-    },
-    "AAD201": {
-      "name": "Algorithms Analysis and Design",
-      "dept": "GEN",
-      "year": 2,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Algorithm correctness and complexity (Big-O, Omega, Theta), sorting algorithms, divide and conquer, dynamic programming, greedy algorithms, and NP-completeness. Core theory for every upper-year major.",
-      "instructors": [
-        "Doaa Hany",
-        "Mai Hesham"
-      ],
-      "keywords": [
-        "algorithms",
-        "Big-O",
-        "sorting",
-        "dynamic programming",
-        "greedy",
-        "NP-completeness"
-      ]
-    },
-    "COS201": {
-      "name": "Computer Operating Systems",
-      "dept": "GEN",
-      "year": 2,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Process management, scheduling, memory management (paging, segmentation), file systems, I/O management, and concurrency (semaphores, monitors). Essential for systems programming and security.",
-      "instructors": [
-        "Hesham Ramadan",
-        "Antony Noshy"
-      ],
-      "keywords": [
-        "operating systems",
-        "processes",
+        "gen",
+        "linear programming",
+        "operation research",
+        "operations research",
+        "optimisation",
+        "or201",
         "scheduling",
-        "memory",
-        "file systems",
-        "concurrency"
+        "simplex"
       ]
     },
     "STAT201": {
@@ -487,14 +582,21 @@
       "description": "Descriptive statistics, probability theory, distributions (binomial, Poisson, normal), expectation, hypothesis testing, and regression. The mathematical language of data science and machine learning.",
       "instructors": [
         "Amr Galal",
-        "Rana Mohamed"
+        "Hisham",
+        "Moamen",
+        "Mohamed Hashem",
+        "Sherif El Prince"
       ],
       "keywords": [
-        "statistics",
-        "probability",
         "distributions",
+        "gen",
         "hypothesis testing",
-        "regression"
+        "probability",
+        "regression",
+        "stat201",
+        "statistics",
+        "statistics & probability (1)",
+        "statistics and probability 1"
       ]
     },
     "BAI202": {
@@ -506,35 +608,26 @@
       "category": "general",
       "description": "Classic AI: search algorithms (BFS, DFS, A*), knowledge representation, constraint satisfaction, and a first look at machine learning and expert systems. Gateway to the AI specialisation.",
       "instructors": [
-        "Marwa Ahmed",
-        "Mohamed Hashem"
+        "Ayman Zaki",
+        "Heba Samy",
+        "Heba Zaki",
+        "Hoda Waguih",
+        "Magdy Aboulela",
+        "Randa El Wakeel",
+        "Yasser Salah Eldin"
       ],
       "keywords": [
-        "AI",
-        "search",
-        "BFS",
-        "A*",
+        "a*",
+        "ai",
+        "artificial intelligence",
+        "artificial intelligence (1)",
+        "bai202",
+        "basics of artificial intelligence",
+        "bfs",
+        "expert systems",
+        "gen",
         "knowledge representation",
-        "expert systems"
-      ]
-    },
-    "SAD202": {
-      "name": "System Analysis and Design",
-      "dept": "GEN",
-      "year": 2,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Requirements engineering, UML diagrams, structured and object-oriented analysis, prototyping, and project scoping. Critical for software engineering and information systems majors.",
-      "instructors": [
-        "Magdy Aboulela"
-      ],
-      "keywords": [
-        "system analysis",
-        "UML",
-        "requirements",
-        "prototyping",
-        "SAD"
+        "search"
       ]
     },
     "BCS202": {
@@ -546,53 +639,23 @@
       "category": "general",
       "description": "Threat landscape, attack types (phishing, malware, MITM), basic cryptography, authentication, secure coding principles, and an introduction to risk management. Feeds into the Cyber Security specialisation.",
       "instructors": [
-        "Heba Zaki",
-        "Heba Sabry"
+        "Ahmed Ibrahim",
+        "Doaa Hany",
+        "Heba Samy",
+        "Marwa Ahmed",
+        "Rabab Emad"
       ],
       "keywords": [
-        "cyber security",
-        "phishing",
-        "malware",
+        "authentication",
+        "basics of cyber security",
+        "bcs202",
         "cryptography",
-        "authentication"
-      ]
-    },
-    "SEF202": {
-      "name": "Software Engineering Fundamentals",
-      "dept": "GEN",
-      "year": 2,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Software development life cycle, agile and waterfall methodologies, version control, software quality, and an introduction to testing and maintenance.",
-      "instructors": [
-        "Maha Talaat"
-      ],
-      "keywords": [
-        "software engineering",
-        "SDLC",
-        "agile",
-        "waterfall",
-        "version control"
-      ]
-    },
-    "MS202": {
-      "name": "Modeling and Simulation",
-      "dept": "GEN",
-      "year": 2,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "general",
-      "description": "Mathematical modelling of systems, Monte Carlo simulation, queuing theory, and event-driven simulation. Supports data science, AI, and operations research in advanced years.",
-      "instructors": [
-        "Ahmed Gamal"
-      ],
-      "keywords": [
-        "modeling",
-        "simulation",
-        "Monte Carlo",
-        "queuing",
-        "event-driven"
+        "cscs",
+        "cyber security",
+        "gen",
+        "malware",
+        "phishing",
+        "security"
       ]
     },
     "CA202": {
@@ -604,484 +667,95 @@
       "category": "general",
       "description": "CPU organisation, instruction set architecture, pipelining, cache memory, virtual memory, and I/O systems. Explains how software maps to hardware — foundational for CS and AI majors.",
       "instructors": [
-        "Marwa Ahmed"
-      ],
-      "keywords": [
-        "computer architecture",
-        "CPU",
-        "pipelining",
-        "cache",
-        "ISA"
-      ]
-    },
-    "CS301": {
-      "name": "Computer Graphics",
-      "dept": "CS",
-      "year": 3,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "2D and 3D rendering pipeline, transformations, rasterisation, shading, texture mapping, and OpenGL basics. Powers game development, simulation, and visualisation applications.",
-      "instructors": [
-        "Sherif El Prince",
-        "Sherif Hendawy"
-      ],
-      "keywords": [
-        "graphics",
-        "rendering",
-        "OpenGL",
-        "3D",
-        "shading",
-        "rasterisation"
-      ]
-    },
-    "CS302": {
-      "name": "Report Writing Skills & Communication",
-      "dept": "CS",
-      "year": 3,
-      "semester": 1,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Technical writing for computing professionals: structuring reports, academic citation, presenting findings, and communicating with non-technical stakeholders.",
-      "instructors": [
+        "Mai Hesham",
+        "Marwa Ahmed",
+        "Mohamed Ragaey",
         "Ola Mahmoud",
-        "Ola Nour"
+        "Yasser Salah Eldin"
       ],
       "keywords": [
-        "report writing",
-        "communication",
-        "technical writing",
-        "presentation"
+        "ca202",
+        "cache",
+        "computer architecture",
+        "cpu",
+        "gen",
+        "isa",
+        "pipelining"
       ]
     },
-    "CS303": {
-      "name": "Artificial Intelligence II",
-      "dept": "CS",
-      "year": 3,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Advanced AI: neural networks, Bayesian networks, genetic algorithms, fuzzy logic, and reinforcement learning — building on the Year 2 AI foundation.",
-      "instructors": [
-        "Randa El Wakeel"
-      ],
-      "keywords": [
-        "AI",
-        "neural networks",
-        "Bayesian",
-        "genetic algorithms",
-        "reinforcement learning"
-      ]
-    },
-    "CS304": {
-      "name": "Object Oriented Programming",
-      "dept": "CS",
-      "year": 3,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "OOP principles in depth: encapsulation, inheritance, polymorphism, design patterns (GoF), and refactoring. Strengthens software design skills across all languages.",
-      "instructors": [
-        "Ahmed Warad",
-        "Kareem Kamal"
-      ],
-      "keywords": [
-        "OOP",
-        "object oriented",
-        "design patterns",
-        "polymorphism",
-        "encapsulation"
-      ]
-    },
-    "CS305": {
-      "name": "Business Intelligence",
-      "dept": "CS",
-      "year": 3,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Data warehousing, ETL pipelines, OLAP cubes, dashboarding, and KPI design. Connects computing skills to business decision-making contexts.",
-      "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "business intelligence",
-        "BI",
-        "data warehouse",
-        "ETL",
-        "OLAP",
-        "dashboards"
-      ]
-    },
-    "CS306": {
-      "name": "Computer Infrastructure & Organization",
-      "dept": "CS",
-      "year": 3,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Deep dive into hardware organisation: memory hierarchies, bus architectures, multiprocessor systems, and embedded systems design.",
-      "instructors": [
-        "Nasser Dorgham"
-      ],
-      "keywords": [
-        "infrastructure",
-        "hardware",
-        "memory hierarchy",
-        "multiprocessor",
-        "embedded"
-      ]
-    },
-    "CS351": {
-      "name": "Digital Image Processing",
-      "dept": "CS",
-      "year": 3,
+    "MS202": {
+      "name": "Modeling and Simulation",
+      "dept": "GEN",
+      "year": 2,
       "semester": 2,
       "credit_hours": 3,
-      "category": "major",
-      "description": "Image acquisition, spatial filtering, frequency domain analysis (Fourier), edge detection, segmentation, morphological operations, and applications in medical and satellite imaging.",
+      "category": "general",
+      "description": "Mathematical modelling of systems, Monte Carlo simulation, queuing theory, and event-driven simulation. Supports data science, AI, and operations research in advanced years.",
+      "instructors": [
+        "Rabab Emad",
+        "Walaa El Hady"
+      ],
+      "keywords": [
+        "event-driven",
+        "gen",
+        "modeling",
+        "modeling and simulation",
+        "monte carlo",
+        "ms202",
+        "queuing",
+        "simulation"
+      ]
+    },
+    "SAD202": {
+      "name": "System Analysis and Design",
+      "dept": "GEN",
+      "year": 2,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "Requirements engineering, UML diagrams, structured and object-oriented analysis, prototyping, and project scoping. Critical for software engineering and information systems majors.",
+      "instructors": [
+        "Ahmed Gamal",
+        "Ahmed Sayed",
+        "Badria Nabil",
+        "Heba Samy"
+      ],
+      "keywords": [
+        "gen",
+        "prototyping",
+        "requirements",
+        "sad",
+        "sad202",
+        "system analysis",
+        "system analysis and design",
+        "uml"
+      ]
+    },
+    "SEF202": {
+      "name": "Software Engineering Fundamentals",
+      "dept": "GEN",
+      "year": 2,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "general",
+      "description": "Software development life cycle, agile and waterfall methodologies, version control, software quality, and an introduction to testing and maintenance.",
       "instructors": [
         "Amira Mohey",
-        "Mai Katar"
-      ],
-      "keywords": [
-        "image processing",
-        "Fourier",
-        "edge detection",
-        "segmentation",
-        "filtering"
-      ]
-    },
-    "CS352": {
-      "name": "Introduction to Data Science",
-      "dept": "CS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Data wrangling, exploratory data analysis, feature engineering, supervised and unsupervised learning, and model evaluation using Python and standard libraries.",
-      "instructors": [
-        "Randa El Wakeel"
-      ],
-      "keywords": [
-        "data science",
-        "EDA",
-        "machine learning",
-        "Python",
-        "feature engineering"
-      ]
-    },
-    "CS353": {
-      "name": "Computer Networks 2",
-      "dept": "CS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Advanced networking: routing algorithms, QoS, SDN, wireless standards, IPv6 migration, and network management. Extends the Year 2 Networks course.",
-      "instructors": [
-        "Kareem Kamal"
-      ],
-      "keywords": [
-        "networks",
-        "routing",
-        "SDN",
-        "QoS",
-        "IPv6",
-        "wireless"
-      ]
-    },
-    "CS354": {
-      "name": "Network Security, Firewalls, and VPNs",
-      "dept": "CS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Firewall architecture, VPN protocols (IPSec, SSL/TLS), intrusion detection systems, penetration testing methodology, and practical lab work on network hardening.",
-      "instructors": [
-        "Kareem Kamal"
-      ],
-      "keywords": [
-        "network security",
-        "firewall",
-        "VPN",
-        "IDS",
-        "IPSec",
-        "TLS"
-      ]
-    },
-    "CS355": {
-      "name": "Compilers & Interpreter Design",
-      "dept": "CS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Lexical analysis, parsing (LL, LR), semantic analysis, intermediate code generation, and optimisation. Demystifies how programming languages are implemented.",
-      "instructors": [
-        "Nasser Dorgham"
-      ],
-      "keywords": [
-        "compilers",
-        "interpreter",
-        "lexer",
-        "parser",
-        "code generation"
-      ]
-    },
-    "CS356": {
-      "name": "Principles of Law",
-      "dept": "CS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Legal frameworks relevant to computing: intellectual property, software licensing, data protection legislation, cyber crime law, and professional ethics.",
-      "instructors": [
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "law",
-        "IP",
-        "licensing",
-        "data protection",
-        "cyber crime",
-        "ethics"
-      ]
-    },
-    "CS401": {
-      "name": "Cloud and Mobile Computing",
-      "dept": "CS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Cloud service models (IaaS, PaaS, SaaS), containerisation (Docker, Kubernetes), serverless computing, mobile app architecture, and cross-platform development.",
-      "instructors": [
+        "Dalia Magdy",
+        "Hesham Ramadan",
         "Kareem Kamal",
-        "Nasser Dorgham"
+        "Mai Hesham"
       ],
       "keywords": [
-        "cloud",
-        "mobile",
-        "Docker",
-        "Kubernetes",
-        "serverless",
-        "IaaS",
-        "PaaS"
-      ]
-    },
-    "CS402": {
-      "name": "Human Computer Interfacing",
-      "dept": "CS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "User-centred design, usability principles, prototyping tools, accessibility, interaction design patterns, and usability evaluation methods.",
-      "instructors": [
-        "Mai Katar"
-      ],
-      "keywords": [
-        "HCI",
-        "usability",
-        "UX",
-        "interaction design",
-        "accessibility",
-        "prototyping"
-      ]
-    },
-    "CS403": {
-      "name": "Computer Vision",
-      "dept": "CS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Feature extraction, object detection (YOLO, R-CNN), image classification with CNNs, optical flow, and real-world applications in autonomous vehicles and surveillance.",
-      "instructors": [
-        "Randa El Wakeel"
-      ],
-      "keywords": [
-        "computer vision",
-        "CNN",
-        "YOLO",
-        "object detection",
-        "optical flow"
-      ]
-    },
-    "CS404": {
-      "name": "Computer Security Techniques",
-      "dept": "CS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Symmetric and asymmetric cryptography, PKI, digital signatures, authentication protocols, secure system design, and security auditing practices.",
-      "instructors": [
-        "Kareem Kamal"
-      ],
-      "keywords": [
-        "security",
-        "cryptography",
-        "PKI",
-        "digital signatures",
-        "authentication"
-      ]
-    },
-    "CS405": {
-      "name": "Advanced Programming Tools",
-      "dept": "CS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Productive use of modern development ecosystems: IDEs, build automation, containerisation, CI/CD pipelines, testing frameworks, and profiling tools.",
-      "instructors": [
-        "Ahmed Warad"
-      ],
-      "keywords": [
-        "programming tools",
-        "CI/CD",
-        "Docker",
-        "testing",
-        "build automation",
-        "profiling"
-      ]
-    },
-    "CS406": {
-      "name": "Analytic and Creative Thinking",
-      "dept": "CS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Frameworks for structured problem-solving, lateral thinking, brainstorming techniques, design thinking, and applying creative approaches to technical challenges.",
-      "instructors": [
-        "Ola Mahmoud"
-      ],
-      "keywords": [
-        "problem solving",
-        "design thinking",
-        "creativity",
-        "brainstorming"
-      ]
-    },
-    "CS451": {
-      "name": "Parallel Processing and Distributed Systems",
-      "dept": "CS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Concurrency models, thread safety, distributed architectures, consensus algorithms (Raft, Paxos), MapReduce, and practical work with distributed data stores.",
-      "instructors": [
-        "Nashaat El Khameesy"
-      ],
-      "keywords": [
-        "parallel",
-        "distributed",
-        "concurrency",
-        "MapReduce",
-        "Raft",
-        "Paxos"
-      ]
-    },
-    "CS452": {
-      "name": "Advanced Computer Networks & Mobile Computing",
-      "dept": "CS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "5G architecture, mobile edge computing, software-defined networking, network virtualisation, and emerging protocols for the Internet of Things.",
-      "instructors": [
-        "Kareem Kamal"
-      ],
-      "keywords": [
-        "5G",
-        "mobile computing",
-        "SDN",
-        "network virtualisation",
-        "IoT"
-      ]
-    },
-    "CS453": {
-      "name": "Information Technology Project Management",
-      "dept": "CS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Agile and traditional project management, risk assessment, budgeting, stakeholder communication, and IT governance frameworks (ITIL, COBIT).",
-      "instructors": [
-        "Ramy Ebrahim"
-      ],
-      "keywords": [
-        "project management",
         "agile",
-        "ITIL",
-        "COBIT",
-        "risk",
-        "budgeting"
-      ]
-    },
-    "CS454": {
-      "name": "Principles of Economics & Feasibility Studies",
-      "dept": "CS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Micro and macroeconomic principles applied to technology ventures: cost-benefit analysis, feasibility studies, market analysis, and financial modelling for IT projects.",
-      "instructors": [
-        "Ramy Ebrahim"
-      ],
-      "keywords": [
-        "economics",
-        "feasibility",
-        "cost-benefit",
-        "financial modelling",
-        "market analysis"
-      ]
-    },
-    "CS455": {
-      "name": "Human Rights",
-      "dept": "CS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Fundamental human rights frameworks, digital rights, privacy legislation, algorithmic fairness, and the ethical responsibilities of computing professionals.",
-      "instructors": [
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "human rights",
-        "digital rights",
-        "privacy",
-        "algorithmic fairness",
-        "ethics"
-      ]
-    },
-    "CS456": {
-      "name": "Digital Marketing",
-      "dept": "CS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "SEO, social media strategy, content marketing, analytics, pay-per-click advertising, and how computing skills apply to marketing automation and data-driven campaigns.",
-      "instructors": [
-        "Mostafa Yakoub"
-      ],
-      "keywords": [
-        "digital marketing",
-        "SEO",
-        "social media",
-        "analytics",
-        "content marketing"
+        "gen",
+        "sdlc",
+        "se",
+        "sef202",
+        "software engineering",
+        "software engineering fundamentals",
+        "version control",
+        "waterfall"
       ]
     },
     "AI301": {
@@ -1093,20 +767,25 @@
       "category": "major",
       "description": "Supervised and unsupervised learning, neural network architectures (CNNs, RNNs, Transformers), backpropagation, regularisation, and hands-on training with TensorFlow/PyTorch.",
       "instructors": [
-        "Randa El Wakeel",
-        "Heba Zaki"
+        "Heba Zaki",
+        "Magdy Aboulela",
+        "Mai Hesham",
+        "Yasser Salah Eldin"
       ],
       "keywords": [
-        "machine learning",
+        "ai",
+        "ai301",
+        "backpropagation",
+        "cnn",
         "deep learning",
-        "CNN",
-        "RNN",
-        "transformers",
-        "backpropagation"
+        "machine and deep learning",
+        "machine learning",
+        "rnn",
+        "transformers"
       ]
     },
     "AI302": {
-      "name": "Principles of IoT",
+      "name": "Principles of IOT",
       "dept": "AI",
       "year": 3,
       "semester": 1,
@@ -1114,16 +793,22 @@
       "category": "major",
       "description": "IoT ecosystem: sensors, actuators, embedded microcontrollers (Arduino, Raspberry Pi), communication protocols (MQTT, CoAP), cloud integration, and IoT data analytics.",
       "instructors": [
-        "Wael Karam",
-        "Ibrahim Shalaby"
+        "Ibrahim Shalaby",
+        "Magdy Aboulela",
+        "Nashaat El Khameesy",
+        "Wael Karam"
       ],
       "keywords": [
-        "IoT",
-        "sensors",
-        "Arduino",
-        "Raspberry Pi",
-        "MQTT",
-        "CoAP"
+        "ai",
+        "ai302",
+        "arduino",
+        "coap",
+        "internet of things",
+        "iot",
+        "mqtt",
+        "principles of iot",
+        "raspberry pi",
+        "sensors"
       ]
     },
     "AI303": {
@@ -1135,15 +820,17 @@
       "category": "major",
       "description": "Logic programming (Prolog), constraint solving, SAT and SMT solvers, planning algorithms, and their applications in AI agents and verification systems.",
       "instructors": [
-        "Maha Abd El Hamid",
-        "Salwa Al Aasar"
+        "Magdy Aboulela",
+        "Yasser Salah Eldin"
       ],
       "keywords": [
+        "ai",
+        "ai303",
         "automated reasoning",
-        "Prolog",
         "constraint solving",
-        "SAT",
-        "planning"
+        "planning",
+        "prolog",
+        "sat"
       ]
     },
     "AI304": {
@@ -1155,14 +842,18 @@
       "category": "major",
       "description": "Cutting-edge AI research: adversarial machine learning, explainable AI (XAI), federated learning, and recent breakthroughs in large language models and multimodal systems.",
       "instructors": [
-        "Dalia Magdy"
+        "Heba Zaki",
+        "Mai Hesham"
       ],
       "keywords": [
-        "selected topics",
-        "XAI",
-        "explainable AI",
+        "ai",
+        "ai304",
+        "explainable ai",
         "federated learning",
-        "LLM"
+        "llm",
+        "selected topics",
+        "selected topics in ai",
+        "xai"
       ]
     },
     "AI305": {
@@ -1174,11 +865,18 @@
       "category": "major",
       "description": "Research writing for AI practitioners: structuring technical papers, citing literature, presenting experiments, and communicating model results to technical and non-technical audiences.",
       "instructors": [
-        "Ola Mahmoud"
+        "Christine Karmy",
+        "Fatma Ayman",
+        "Maha Abd El Hamid",
+        "Mai Katar"
       ],
       "keywords": [
-        "report writing",
+        "ai",
+        "ai305",
         "communication",
+        "report writing",
+        "report writing skills & communication",
+        "report writing skills and communication",
         "research",
         "technical writing"
       ]
@@ -1192,359 +890,161 @@
       "category": "major",
       "description": "Python-based data science toolkit: pandas, NumPy, scikit-learn, data visualisation, and end-to-end ML pipelines from raw data to deployed model.",
       "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "data science",
-        "python",
-        "pandas",
-        "scikit-learn",
-        "ML pipeline"
-      ]
-    },
-    "AI351": {
-      "name": "Computational Cognitive Science",
-      "dept": "AI",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "How the mind computes: cognitive architectures (ACT-R, SOAR), attention models, memory systems, and the intersection of AI and human cognition.",
-      "instructors": [
-        "Maha Abd El Hamid"
-      ],
-      "keywords": [
-        "cognitive science",
-        "ACT-R",
-        "SOAR",
-        "attention",
-        "memory",
-        "cognition"
-      ]
-    },
-    "AI352": {
-      "name": "Natural Language Processing",
-      "dept": "AI",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Text preprocessing, language models, POS tagging, named entity recognition, sentiment analysis, machine translation, and modern Transformer-based NLP.",
-      "instructors": [
-        "Dalia Magdy"
-      ],
-      "keywords": [
-        "NLP",
-        "natural language",
-        "language models",
-        "sentiment",
-        "transformers",
-        "NER"
-      ]
-    },
-    "AI353": {
-      "name": "Fundamentals of Data Mining",
-      "dept": "AI",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Association rule mining (Apriori, FP-Growth), clustering (k-means, DBSCAN), classification trees, anomaly detection, and practical mining on large datasets.",
-      "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "data mining",
-        "Apriori",
-        "k-means",
-        "DBSCAN",
-        "anomaly detection"
-      ]
-    },
-    "AI354": {
-      "name": "Robotics",
-      "dept": "AI",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Robot kinematics, dynamics, path planning, SLAM, sensor fusion, and programming robotic platforms. Hands-on integration of AI perception and physical actuation.",
-      "instructors": [
-        "Ibrahim Shalaby"
-      ],
-      "keywords": [
-        "robotics",
-        "kinematics",
-        "SLAM",
-        "path planning",
-        "sensor fusion"
-      ]
-    },
-    "AI355": {
-      "name": "Vision and Image Computing",
-      "dept": "AI",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Low-level vision (filters, edge detection), mid-level (segmentation, texture), high-level (object recognition, scene understanding), and real-time vision systems.",
-      "instructors": [
-        "Amira Mohey"
-      ],
-      "keywords": [
-        "vision",
-        "image computing",
-        "object recognition",
-        "segmentation",
-        "real-time"
-      ]
-    },
-    "AI356": {
-      "name": "Principles of Law",
-      "dept": "AI",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Legal dimensions of AI: intellectual property in AI systems, liability for autonomous decisions, GDPR and data law, and ethical guidelines from major AI governance bodies.",
-      "instructors": [
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "law",
-        "AI law",
-        "GDPR",
-        "liability",
-        "ethics",
-        "governance"
-      ]
-    },
-    "AI401": {
-      "name": "Speech Processing",
-      "dept": "AI",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Acoustic phonetics, speech feature extraction (MFCC), hidden Markov models, deep learning for ASR, text-to-speech synthesis, and voice interface design.",
-      "instructors": [
-        "Dalia Magdy"
-      ],
-      "keywords": [
-        "speech",
-        "ASR",
-        "MFCC",
-        "HMM",
-        "text-to-speech",
-        "voice"
-      ]
-    },
-    "AI402": {
-      "name": "Internet and Online Security",
-      "dept": "AI",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Network threats, web application security (OWASP Top 10), cryptographic protocols, identity and access management, and security testing tools.",
-      "instructors": [
-        "Heba Zaki"
-      ],
-      "keywords": [
-        "security",
-        "OWASP",
-        "web security",
-        "cryptography",
-        "IAM"
-      ]
-    },
-    "AI403": {
-      "name": "Virtual and Augmented Reality",
-      "dept": "AI",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "VR/AR hardware ecosystems, 3D rendering pipelines, spatial interaction design, presence and immersion factors, and development with Unity/Unreal for immersive AI applications.",
-      "instructors": [
+        "Christina Albert",
         "Wael Karam"
       ],
       "keywords": [
-        "VR",
-        "AR",
-        "virtual reality",
-        "augmented reality",
-        "Unity",
-        "Unreal"
+        "ai",
+        "ai306",
+        "data science",
+        "ds",
+        "introduction to data science",
+        "isds",
+        "ml pipeline",
+        "pandas",
+        "python",
+        "scikit-learn"
       ]
     },
-    "AI404": {
-      "name": "Intelligent Autonomous Robotics",
-      "dept": "AI",
-      "year": 4,
+    "CS301": {
+      "name": "Computer Graphics",
+      "dept": "CS",
+      "year": 3,
       "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Advanced robotics: multi-robot coordination, reinforcement learning for robot control, ROS2, sim-to-real transfer, and ethical considerations for autonomous systems.",
+      "description": "2D and 3D rendering pipeline, transformations, rasterisation, shading, texture mapping, and OpenGL basics. Powers game development, simulation, and visualisation applications.",
       "instructors": [
-        "Ibrahim Shalaby"
+        "Walaa El Hady"
       ],
       "keywords": [
-        "autonomous robotics",
-        "ROS2",
-        "multi-robot",
+        "3d",
+        "computer graphics",
+        "cs",
+        "cs301",
+        "graphics",
+        "opengl",
+        "rasterisation",
+        "rendering",
+        "shading"
+      ]
+    },
+    "CS302": {
+      "name": "Report Writing Skills & Communication",
+      "dept": "CS",
+      "year": 3,
+      "semester": 1,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Technical writing for computing professionals: structuring reports, academic citation, presenting findings, and communicating with non-technical stakeholders.",
+      "instructors": [
+        "Christine Karmy",
+        "Fatma Ayman",
+        "Maha Abd El Hamid",
+        "Mai Katar"
+      ],
+      "keywords": [
+        "communication",
+        "cs",
+        "cs302",
+        "presentation",
+        "report writing",
+        "report writing skills & communication",
+        "report writing skills and communication",
+        "technical writing"
+      ]
+    },
+    "CS303": {
+      "name": "Artificial Intelligence II",
+      "dept": "CS",
+      "year": 3,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Advanced AI: neural networks, Bayesian networks, genetic algorithms, fuzzy logic, and reinforcement learning — building on the Year 2 AI foundation.",
+      "instructors": [
+        "Heba Zaki",
+        "Mai Hesham"
+      ],
+      "keywords": [
+        "ai",
+        "artificial intelligence",
+        "artificial intelligence ii",
+        "bayesian",
+        "cs",
+        "cs303",
+        "genetic algorithms",
+        "neural networks",
         "reinforcement learning"
       ]
     },
-    "AI405": {
-      "name": "Natural Language Understanding, Generation, and Machine Translation",
-      "dept": "AI",
-      "year": 4,
+    "CS304": {
+      "name": "Object Oriented Programming",
+      "dept": "CS",
+      "year": 3,
       "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Deep NLU: coreference resolution, discourse analysis, semantic role labelling; NLG architectures; neural machine translation and multilingual models.",
+      "description": "OOP principles in depth: encapsulation, inheritance, polymorphism, design patterns (GoF), and refactoring. Strengthens software design skills across all languages.",
       "instructors": [
-        "Dalia Magdy"
+        "Heba Sabry",
+        "Mai Hesham"
       ],
       "keywords": [
-        "NLU",
-        "NLG",
-        "machine translation",
-        "multilingual",
-        "language generation"
+        "cs",
+        "cs304",
+        "design patterns",
+        "encapsulation",
+        "object oriented",
+        "object oriented programming",
+        "oop",
+        "polymorphism"
       ]
     },
-    "AI406": {
-      "name": "Analytic and Creative Thinking",
-      "dept": "AI",
-      "year": 4,
+    "CS305": {
+      "name": "Business Intelligence",
+      "dept": "CS",
+      "year": 3,
       "semester": 1,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Frameworks for structured problem-solving, lateral thinking, and applying creative methodologies to AI research and product design challenges.",
-      "instructors": [
-        "Ola Mahmoud"
-      ],
-      "keywords": [
-        "problem solving",
-        "creativity",
-        "design thinking",
-        "AI research"
-      ]
-    },
-    "AI451": {
-      "name": "Human Computer Interaction",
-      "dept": "AI",
-      "year": 4,
-      "semester": 2,
       "credit_hours": 3,
       "category": "major",
-      "description": "User research, interaction design, prototyping, evaluation (heuristic, user testing), accessibility, and designing AI-powered interfaces that are understandable and trustworthy.",
+      "description": "Data warehousing, ETL pipelines, OLAP cubes, dashboarding, and KPI design. Connects computing skills to business decision-making contexts.",
       "instructors": [
-        "Salwa Al Aasar"
+        "Maha Talaat"
       ],
       "keywords": [
-        "HCI",
-        "UX",
-        "interaction design",
-        "usability",
-        "accessibility"
+        "bi",
+        "business intelligence",
+        "cs",
+        "cs305",
+        "dashboards",
+        "data warehouse",
+        "etl",
+        "olap"
       ]
     },
-    "AI452": {
-      "name": "Machine Perception",
-      "dept": "AI",
-      "year": 4,
-      "semester": 2,
+    "CS306": {
+      "name": "Computer Infrastructure & Organization",
+      "dept": "CS",
+      "year": 3,
+      "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Multimodal sensing (vision, audio, touch), sensor fusion, attention mechanisms, and building systems that interpret rich real-world inputs.",
+      "description": "Deep dive into hardware organisation: memory hierarchies, bus architectures, multiprocessor systems, and embedded systems design.",
       "instructors": [
-        "Amira Mohey"
+        "Hesham Ramadan",
+        "Marwa Ahmed"
       ],
       "keywords": [
-        "machine perception",
-        "sensor fusion",
-        "multimodal",
-        "attention"
-      ]
-    },
-    "AI453": {
-      "name": "Digital Marketing",
-      "dept": "AI",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "AI-driven marketing: recommendation systems, personalisation engines, NLP for social listening, and A/B testing and analytics platforms.",
-      "instructors": [
-        "Mostafa Yakoub"
-      ],
-      "keywords": [
-        "digital marketing",
-        "recommendations",
-        "personalisation",
-        "NLP",
-        "analytics"
-      ]
-    },
-    "AI454": {
-      "name": "Agent Based System",
-      "dept": "AI",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Multi-agent architectures, game theory for agents, auction mechanisms, emergent behaviour, and building cooperative and competitive AI agent systems.",
-      "instructors": [
-        "Maha Abd El Hamid"
-      ],
-      "keywords": [
-        "agents",
-        "multi-agent",
-        "game theory",
-        "emergent behaviour",
-        "auction"
-      ]
-    },
-    "AI455": {
-      "name": "Principles of Economics & Feasibility Studies",
-      "dept": "AI",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Economic thinking for AI ventures: market sizing, business model evaluation, ROI analysis, and feasibility studies for AI product development.",
-      "instructors": [
-        "Ramy Ebrahim"
-      ],
-      "keywords": [
-        "economics",
-        "feasibility",
-        "ROI",
-        "business model",
-        "market sizing"
-      ]
-    },
-    "AI456": {
-      "name": "Human Rights",
-      "dept": "AI",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "AI ethics and rights: bias, fairness, transparency, accountability, digital rights, and international frameworks governing AI deployment in sensitive domains.",
-      "instructors": [
-        "Ninete Fahmy",
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "human rights",
-        "AI ethics",
-        "fairness",
-        "bias",
-        "transparency"
+        "computer infrastructure & organization",
+        "computer infrastructure and organization",
+        "cs",
+        "cs306",
+        "embedded",
+        "hardware",
+        "infrastructure",
+        "memory hierarchy",
+        "multiprocessor"
       ]
     },
     "CSCS301": {
@@ -1556,17 +1056,20 @@
       "category": "major",
       "description": "Classical and modern ciphers, symmetric cryptography (AES, DES), asymmetric systems (RSA, ECC), hash functions, digital signatures, and cryptographic protocol analysis.",
       "instructors": [
-        "Marwa Ahmed",
-        "Christine Karmy"
+        "Heba Samy",
+        "Marwa Ahmed"
       ],
       "keywords": [
-        "cryptology",
+        "aes",
         "cryptography",
-        "AES",
-        "RSA",
-        "ECC",
+        "cryptology",
+        "cscs",
+        "cscs301",
+        "digital signatures",
+        "ecc",
         "hash",
-        "digital signatures"
+        "principles of cryptology",
+        "rsa"
       ]
     },
     "CSCS302": {
@@ -1578,16 +1081,24 @@
       "category": "major",
       "description": "Web application attacks (XSS, SQL injection, CSRF), secure coding, HTTPS internals, content security policies, and hands-on pen testing of web targets.",
       "instructors": [
-        "Heba Zaki",
-        "Heba Sabry"
+        "Antony Noshy",
+        "Hesham Ramadan",
+        "Mostafa Yakoub",
+        "Nashaat El Khameesy",
+        "Rabab Emad"
       ],
       "keywords": [
-        "web security",
-        "XSS",
-        "SQL injection",
-        "CSRF",
+        "cscs",
+        "cscs302",
+        "csrf",
+        "cyber security",
+        "internet and online security",
         "pen testing",
-        "secure coding"
+        "secure coding",
+        "security",
+        "sql injection",
+        "web security",
+        "xss"
       ]
     },
     "CSCS303": {
@@ -1599,15 +1110,18 @@
       "category": "major",
       "description": "Authentication mechanisms (passwords, MFA, biometrics), authorisation models (RBAC, ABAC), identity management, OAuth/OIDC, and directory services (LDAP, Active Directory).",
       "instructors": [
-        "Dalia Magdy"
+        "Ahmed Gamal",
+        "Heba Sabry"
       ],
       "keywords": [
         "access control",
-        "RBAC",
-        "OAuth",
-        "LDAP",
-        "MFA",
-        "authentication"
+        "authentication",
+        "cscs",
+        "cscs303",
+        "ldap",
+        "mfa",
+        "oauth",
+        "rbac"
       ]
     },
     "CSCS304": {
@@ -1619,14 +1133,19 @@
       "category": "major",
       "description": "Emerging threats and research frontiers: supply chain attacks, AI-driven cyber attacks, zero-trust architecture, and quantum-safe cryptography.",
       "instructors": [
-        "Ibrahim Shalaby"
+        "Doaa Hany",
+        "Hassan Farouk"
       ],
       "keywords": [
+        "ai attacks",
+        "cscs",
+        "cscs304",
         "cyber security",
-        "zero trust",
         "quantum cryptography",
+        "security",
+        "selected topics in cyber security",
         "supply chain",
-        "AI attacks"
+        "zero trust"
       ]
     },
     "CSCS305": {
@@ -1638,13 +1157,19 @@
       "category": "major",
       "description": "Data analytics and ML applied to security: anomaly detection, threat intelligence enrichment, log analysis, and building security dashboards.",
       "instructors": [
-        "Ahmed Esmat"
+        "Christina Albert",
+        "Wael Karam"
       ],
       "keywords": [
-        "data science",
         "anomaly detection",
-        "threat intelligence",
-        "log analysis"
+        "cscs",
+        "cscs305",
+        "data science",
+        "ds",
+        "introduction to data science",
+        "isds",
+        "log analysis",
+        "threat intelligence"
       ]
     },
     "CSCS306": {
@@ -1656,364 +1181,38 @@
       "category": "major",
       "description": "Writing penetration test reports, security advisories, incident reports, and communicating risk to executive and technical audiences.",
       "instructors": [
-        "Ola Mahmoud"
-      ],
-      "keywords": [
-        "report writing",
-        "pen test report",
-        "incident report",
-        "communication"
-      ]
-    },
-    "CSCS351": {
-      "name": "System Forensics, Investigation and Response",
-      "dept": "CSCS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Digital forensics methodology, evidence acquisition, file system analysis, memory forensics, log analysis, chain of custody, and incident response playbooks.",
-      "instructors": [
-        "Ibrahim Shalaby"
-      ],
-      "keywords": [
-        "forensics",
-        "digital forensics",
-        "incident response",
-        "memory forensics",
-        "evidence"
-      ]
-    },
-    "CSCS352": {
-      "name": "Network Security, Firewalls, and VPNs",
-      "dept": "CSCS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Firewall rules, DMZ design, VPN protocols, network monitoring (Wireshark, Zeek), intrusion detection/prevention systems, and secure network architecture.",
-      "instructors": [
-        "Kareem Kamal",
-        "Heba Zaki"
-      ],
-      "keywords": [
-        "network security",
-        "firewall",
-        "VPN",
-        "IDS",
-        "IPS",
-        "Wireshark",
-        "DMZ"
-      ]
-    },
-    "CSCS353": {
-      "name": "Machine and Deep Learning",
-      "dept": "CSCS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "ML fundamentals applied to cyber security: malware classification, phishing detection, user behaviour analytics, and adversarial examples attacking ML models.",
-      "instructors": [
-        "Randa El Wakeel"
-      ],
-      "keywords": [
-        "machine learning",
-        "malware",
-        "phishing detection",
-        "adversarial",
-        "UBA"
-      ]
-    },
-    "CSCS354": {
-      "name": "Managing Risk in Information System",
-      "dept": "CSCS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Risk assessment frameworks (NIST, ISO 27001), threat modelling, vulnerability scoring (CVSS), risk treatment options, and building an information security management system.",
-      "instructors": [
         "Christine Karmy",
-        "Dalia Magdy"
+        "Fatma Ayman",
+        "Maha Abd El Hamid",
+        "Mai Katar"
       ],
       "keywords": [
-        "risk management",
-        "NIST",
-        "ISO 27001",
-        "CVSS",
-        "threat modelling",
-        "ISMS"
+        "communication",
+        "cscs",
+        "cscs306",
+        "incident report",
+        "pen test report",
+        "report writing",
+        "report writing skills & communication",
+        "report writing skills and communication"
       ]
     },
-    "CSCS355": {
-      "name": "Hacker Techniques, Tools and Incident Handling",
+    "RST002": {
+      "name": "Cyber Security",
       "dept": "CSCS",
       "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Ethical hacking methodology, reconnaissance, exploitation (Metasploit), post-exploitation, covering tracks, and structured incident response including containment and recovery.",
-      "instructors": [
-        "Ibrahim Shalaby"
-      ],
-      "keywords": [
-        "ethical hacking",
-        "Metasploit",
-        "exploitation",
-        "reconnaissance",
-        "incident handling"
-      ]
-    },
-    "CSCS356": {
-      "name": "Principles of Law",
-      "dept": "CSCS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Cyber crime legislation, computer misuse laws, evidence admissibility in digital investigations, privacy law, and professional ethics for security practitioners.",
-      "instructors": [
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "law",
-        "cyber crime",
-        "privacy",
-        "evidence",
-        "ethics"
-      ]
-    },
-    "CSCS401": {
-      "name": "Vision and Image Computing",
-      "dept": "CSCS",
-      "year": 4,
       "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Computer vision methods applied to surveillance, biometric systems (facial recognition, fingerprint), and forensic image analysis.",
+      "description": "Core cyber security concepts for protecting systems, networks, applications, and data against common digital threats.",
       "instructors": [
-        "Amira Mohey"
+        "Rabab Emad"
       ],
       "keywords": [
-        "vision",
-        "biometrics",
-        "facial recognition",
-        "surveillance",
-        "forensic imaging"
-      ]
-    },
-    "CSCS402": {
-      "name": "IoT Technologies and Risks",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "IoT device security: firmware analysis, JTAG/UART exploitation, protocol vulnerabilities (Zigbee, Z-Wave, BLE), and securing smart home and industrial IoT deployments.",
-      "instructors": [
-        "Wael Karam",
-        "Ibrahim Shalaby"
-      ],
-      "keywords": [
-        "IoT",
-        "IoT security",
-        "firmware",
-        "Zigbee",
-        "BLE",
-        "industrial IoT"
-      ]
-    },
-    "CSCS403": {
-      "name": "Software and Application Security",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Secure SDLC, static and dynamic analysis, fuzzing, OWASP SAMM, DevSecOps practices, and hands-on auditing of real application codebases.",
-      "instructors": [
-        "Christine Karmy"
-      ],
-      "keywords": [
-        "application security",
-        "DevSecOps",
-        "fuzzing",
-        "OWASP SAMM",
-        "SAST",
-        "DAST"
-      ]
-    },
-    "CSCS404": {
-      "name": "Security Policies and Implementation",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Writing and enforcing security policies, governance frameworks, security awareness programmes, and translating policy into technical and procedural controls.",
-      "instructors": [
-        "Dalia Magdy"
-      ],
-      "keywords": [
-        "security policy",
-        "governance",
-        "awareness programme",
-        "controls"
-      ]
-    },
-    "CSCS405": {
-      "name": "Cyber Warfare",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Nation-state threat actors, APTs, offensive cyber operations, attribution, critical infrastructure protection, and the international law of armed conflict in cyberspace.",
-      "instructors": [
-        "Ibrahim Shalaby"
-      ],
-      "keywords": [
-        "cyber warfare",
-        "APT",
-        "nation-state",
-        "attribution",
-        "critical infrastructure"
-      ]
-    },
-    "CSCS406": {
-      "name": "Analytic and Creative Thinking",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Creative problem-solving applied to security challenges: red team thinking, threat modelling creativity, and unconventional defensive strategies.",
-      "instructors": [
-        "Ola Mahmoud"
-      ],
-      "keywords": [
-        "problem solving",
-        "red team",
-        "creativity",
-        "threat modelling"
-      ]
-    },
-    "CSCS451": {
-      "name": "Digital Marketing",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Understanding social engineering and digital influence from a security perspective; analysing phishing campaigns, disinformation, and brand protection online.",
-      "instructors": [
-        "Mostafa Yakoub"
-      ],
-      "keywords": [
-        "digital marketing",
-        "social engineering",
-        "phishing",
-        "disinformation"
-      ]
-    },
-    "CSCS452": {
-      "name": "Human Rights",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Surveillance, privacy rights, whistleblower protections, the ethics of offensive cyber operations, and international human rights law in the digital age.",
-      "instructors": [
-        "Hadeer El Gohary",
-        "Ninete Fahmy"
-      ],
-      "keywords": [
-        "human rights",
-        "surveillance",
-        "privacy",
-        "whistleblowing",
-        "cyber ethics"
-      ]
-    },
-    "CSCS453": {
-      "name": "Cloud Computing Security",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Cloud threat landscape, shared responsibility model, identity federation, cloud-native security tools (AWS GuardDuty, Azure Defender), and compliance in multi-cloud environments.",
-      "instructors": [
-        "Christine Karmy"
-      ],
-      "keywords": [
-        "cloud security",
-        "AWS",
-        "Azure",
-        "shared responsibility",
-        "compliance",
-        "GuardDuty"
-      ]
-    },
-    "CSCS454": {
-      "name": "Disaster Recovery and Risk Management",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Business continuity planning, RTO and RPO targets, backup architectures, crisis communication, tabletop exercises, and post-incident reviews.",
-      "instructors": [
-        "Nashaat El Khameesy"
-      ],
-      "keywords": [
-        "disaster recovery",
-        "BCP",
-        "RTO",
-        "RPO",
-        "business continuity",
-        "backup"
-      ]
-    },
-    "CSCS455": {
-      "name": "Fundamentals of Data Mining",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Mining techniques applied to cyber threat intelligence: clustering threat actors, mining dark web data, and building predictive models for attack forecasting.",
-      "instructors": [
-        "Ola Mahmoud",
-        "Christina Albert"
-      ],
-      "keywords": [
-        "data mining",
-        "threat intelligence",
-        "clustering",
-        "dark web",
-        "attack forecasting"
-      ]
-    },
-    "CSCS456": {
-      "name": "Principles of Economics & Feasibility Studies",
-      "dept": "CSCS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Security economics: cost of breaches, ROI of security controls, cyber insurance, and feasibility analysis for security product development.",
-      "instructors": [
-        "Ramy Ebrahim"
-      ],
-      "keywords": [
-        "economics",
-        "feasibility",
-        "cyber insurance",
-        "ROI",
-        "breach cost"
+        "cscs",
+        "cyber security",
+        "rst002",
+        "security"
       ]
     },
     "ISDS301": {
@@ -2025,14 +1224,19 @@
       "category": "major",
       "description": "The complete data science workflow: problem framing, data collection, cleaning, exploratory analysis, modelling, and communication of results using Python.",
       "instructors": [
-        "Ahmed Esmat"
+        "Christina Albert",
+        "Wael Karam"
       ],
       "keywords": [
-        "data science",
-        "python",
-        "EDA",
         "data cleaning",
-        "modelling"
+        "data science",
+        "ds",
+        "eda",
+        "introduction to data science",
+        "isds",
+        "isds301",
+        "modelling",
+        "python"
       ]
     },
     "ISDS302": {
@@ -2044,15 +1248,18 @@
       "category": "major",
       "description": "Advanced statistics: multivariate analysis, ANOVA, non-parametric tests, Bayesian inference, and simulation-based methods. Deepens the Year 2 statistics foundation.",
       "instructors": [
-        "Rana Mohamed",
-        "Amr Galal"
+        "Salwa Al Aasar"
       ],
       "keywords": [
-        "statistics",
-        "Bayesian",
-        "ANOVA",
+        "anova",
+        "bayesian",
+        "isds",
+        "isds302",
         "multivariate",
-        "non-parametric"
+        "non-parametric",
+        "statistics",
+        "statistics & probability (2)",
+        "statistics and probability"
       ]
     },
     "ISDS303": {
@@ -2064,14 +1271,18 @@
       "category": "major",
       "description": "GIS fundamentals, remote sensing, spatial data formats (shapefiles, GeoJSON), coordinate systems, and analysing geographic data with Python and QGIS.",
       "instructors": [
-        "Randa El Wakeel"
+        "Christina Albert",
+        "Ola Mahmoud"
       ],
       "keywords": [
-        "GIS",
-        "spatial data",
+        "geojson",
+        "gis",
+        "isds",
+        "isds303",
+        "qgis",
         "remote sensing",
-        "GeoJSON",
-        "QGIS"
+        "spatial data",
+        "spatial data acquisition techniques"
       ]
     },
     "ISDS304": {
@@ -2083,14 +1294,20 @@
       "category": "major",
       "description": "Complexity analysis for data-intensive algorithms: sorting large datasets, hashing, approximate computing, streaming algorithms, and sketching.",
       "instructors": [
-        "Nasser Dorgham"
+        "Dalia Magdy",
+        "Heba Samy"
       ],
       "keywords": [
+        "algorithmic foundations of data science",
         "algorithms",
-        "streaming",
-        "hashing",
         "approximate computing",
-        "sketching"
+        "data science",
+        "ds",
+        "hashing",
+        "isds",
+        "isds304",
+        "sketching",
+        "streaming"
       ]
     },
     "ISDS305": {
@@ -2102,14 +1319,23 @@
       "category": "major",
       "description": "Security fundamentals for data scientists: secure data pipelines, encryption in transit and at rest, access control for data lakes, and GDPR compliance.",
       "instructors": [
-        "Heba Zaki"
+        "Antony Noshy",
+        "Hesham Ramadan",
+        "Mostafa Yakoub",
+        "Nashaat El Khameesy",
+        "Rabab Emad"
       ],
       "keywords": [
-        "security",
+        "cscs",
+        "cyber security",
+        "data lakes",
         "data pipelines",
         "encryption",
-        "GDPR",
-        "data lakes"
+        "gdpr",
+        "internet and online security",
+        "isds",
+        "isds305",
+        "security"
       ]
     },
     "ISDS306": {
@@ -2121,357 +1347,73 @@
       "category": "major",
       "description": "Communicating data insights: structuring analytical reports, data storytelling, visualisation design principles, and presenting to business stakeholders.",
       "instructors": [
-        "Ola Mahmoud"
+        "Christine Karmy",
+        "Fatma Ayman",
+        "Maha Abd El Hamid",
+        "Mai Katar"
       ],
       "keywords": [
-        "report writing",
+        "communication",
         "data storytelling",
-        "visualisation",
-        "communication"
+        "isds",
+        "isds306",
+        "report writing",
+        "report writing skills & communication",
+        "report writing skills and communication",
+        "visualisation"
       ]
     },
-    "ISDS351": {
-      "name": "Analysis of Time Series Data",
-      "dept": "ISDS",
+    "RST001": {
+      "name": "Software Construction Fundamentals",
+      "dept": "SE",
       "year": 3,
-      "semester": 2,
+      "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Time series decomposition, ARIMA models, seasonal adjustment, exponential smoothing, and forecasting with applications in finance, energy, and IoT sensor data.",
-      "instructors": [
-        "Rana Mohamed"
-      ],
-      "keywords": [
-        "time series",
-        "ARIMA",
-        "forecasting",
-        "seasonal",
-        "exponential smoothing"
-      ]
-    },
-    "ISDS352": {
-      "name": "Machine and Deep Learning",
-      "dept": "ISDS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Supervised and unsupervised ML with a data science focus: feature selection, ensemble methods (random forests, XGBoost), neural networks, and AutoML.",
+      "description": "Fundamentals of constructing reliable software through structured design, implementation practices, testing awareness, and maintainable code.",
       "instructors": [
         "Ahmed Esmat"
       ],
       "keywords": [
-        "machine learning",
-        "XGBoost",
-        "random forests",
-        "AutoML",
-        "feature selection"
+        "rst001",
+        "se",
+        "software construction fundamentals",
+        "software engineering"
       ]
     },
-    "ISDS353": {
-      "name": "Network Security, Firewalls, and VPNs",
-      "dept": "ISDS",
+    "RST003": {
+      "name": "Software Engineering Tools and Methods",
+      "dept": "SE",
       "year": 3,
-      "semester": 2,
+      "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Network security for data science practitioners: protecting data in transit, secure cloud data architectures, and understanding network-based threats to data systems.",
+      "description": "Practical tools and methods used in software engineering workflows, including collaboration, analysis, implementation support, and quality practices.",
       "instructors": [
-        "Kareem Kamal"
+        "Heba Sabry"
       ],
       "keywords": [
-        "network security",
-        "firewall",
-        "VPN",
-        "cloud security",
-        "data in transit"
+        "rst003",
+        "se",
+        "software engineering",
+        "software engineering tools and methods"
       ]
     },
-    "ISDS354": {
-      "name": "Blockchain Fundamentals",
-      "dept": "ISDS",
+    "RST004": {
+      "name": "Information System Architecture",
+      "dept": "SE",
       "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Distributed ledger technology, consensus mechanisms (PoW, PoS), smart contracts (Solidity), decentralised applications, and blockchain applications in data provenance.",
-      "instructors": [
-        "Wael Karam"
-      ],
-      "keywords": [
-        "blockchain",
-        "smart contracts",
-        "Solidity",
-        "consensus",
-        "distributed ledger"
-      ]
-    },
-    "ISDS355": {
-      "name": "Collecting, Storing and Retrieving Data",
-      "dept": "ISDS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Database systems for data science: relational databases, NoSQL (MongoDB, Cassandra), data lakes, data warehouses, and ETL pipeline design.",
-      "instructors": [
-        "Sherif El Prince"
-      ],
-      "keywords": [
-        "databases",
-        "NoSQL",
-        "MongoDB",
-        "data lake",
-        "data warehouse",
-        "ETL"
-      ]
-    },
-    "ISDS356": {
-      "name": "Principles of Law",
-      "dept": "ISDS",
-      "year": 3,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Data law for practitioners: GDPR, data subject rights, controller/processor obligations, cross-border data transfer restrictions, and sector-specific data regulations.",
-      "instructors": [
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "law",
-        "GDPR",
-        "data rights",
-        "privacy",
-        "data transfer"
-      ]
-    },
-    "ISDS401": {
-      "name": "Data Visualization",
-      "dept": "ISDS",
-      "year": 4,
       "semester": 1,
       "credit_hours": 3,
       "category": "major",
-      "description": "Principles of visual encoding, chart selection, interactive dashboards (Tableau, Power BI, D3.js), storytelling with data, and designing accessible visualisations.",
+      "description": "Architecture concepts for information systems, including structure, integration, data flow, and alignment with organisational needs.",
       "instructors": [
-        "Ahmed Esmat"
+        "Kholoud Farag"
       ],
       "keywords": [
-        "data visualization",
-        "Tableau",
-        "Power BI",
-        "D3",
-        "dashboards",
-        "charts"
-      ]
-    },
-    "ISDS402": {
-      "name": "Fundamentals of Data Mining",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Classic and modern data mining: market basket analysis, clustering algorithms, classification, regression trees, and anomaly detection with large datasets.",
-      "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "data mining",
-        "market basket",
-        "clustering",
-        "classification",
-        "anomaly detection"
-      ]
-    },
-    "ISDS403": {
-      "name": "Categorical Data Analysis",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Logistic regression, contingency tables, log-linear models, ordinal regression, and analysing data with discrete outcomes — essential for survey and medical data.",
-      "instructors": [
-        "Rana Mohamed"
-      ],
-      "keywords": [
-        "categorical data",
-        "logistic regression",
-        "contingency tables",
-        "ordinal"
-      ]
-    },
-    "ISDS404": {
-      "name": "Web and Text Mining",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Scraping and crawling the web, HTML parsing, text feature extraction (TF-IDF, word embeddings), topic modelling (LDA), and sentiment analysis pipelines.",
-      "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "web mining",
-        "text mining",
-        "scraping",
-        "TF-IDF",
-        "LDA",
-        "sentiment"
-      ]
-    },
-    "ISDS405": {
-      "name": "Principles of IoT",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "IoT data streams: sensor data collection, real-time processing (Apache Kafka, Spark Streaming), time series storage, and building end-to-end IoT analytics pipelines.",
-      "instructors": [
-        "Wael Karam"
-      ],
-      "keywords": [
-        "IoT",
-        "Kafka",
-        "Spark Streaming",
-        "sensor data",
-        "real-time analytics"
-      ]
-    },
-    "ISDS406": {
-      "name": "Analytic and Creative Thinking",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 1,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Applied to data science challenges: hypothesis generation, experimental design, lateral thinking for data product ideation, and communicating uncertainty.",
-      "instructors": [
-        "Ola Mahmoud"
-      ],
-      "keywords": [
-        "problem solving",
-        "hypothesis",
-        "experimental design",
-        "creativity"
-      ]
-    },
-    "ISDS451": {
-      "name": "Selected Topics in Data Science",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Frontier topics: large language models for data analysis, diffusion models, data-centric AI, privacy-preserving ML (federated learning, differential privacy), and AI governance.",
-      "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "selected topics",
-        "LLM",
-        "diffusion models",
-        "federated learning",
-        "data-centric AI"
-      ]
-    },
-    "ISDS452": {
-      "name": "Human Rights",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 2,
-      "category": "major",
-      "description": "Data rights: algorithmic bias, fairness in ML systems, surveillance ethics, data sovereignty, and international frameworks protecting individuals in the age of big data.",
-      "instructors": [
-        "Hadeer El Gohary"
-      ],
-      "keywords": [
-        "human rights",
-        "algorithmic bias",
-        "fairness",
-        "data sovereignty",
-        "surveillance"
-      ]
-    },
-    "ISDS453": {
-      "name": "Business Intelligence & Analytics for Decision Support",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Enterprise BI architecture, decision support systems, OLAP, predictive analytics in business contexts, and deploying ML models to production BI dashboards.",
-      "instructors": [
-        "Ahmed Esmat"
-      ],
-      "keywords": [
-        "business intelligence",
-        "BI",
-        "decision support",
-        "OLAP",
-        "predictive analytics"
-      ]
-    },
-    "ISDS454": {
-      "name": "Principles of Economics & Feasibility Studies",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Economic analysis for data products: market research, valuation of data assets, cost-benefit analysis of analytics initiatives, and business case development.",
-      "instructors": [
-        "Ramy Ebrahim"
-      ],
-      "keywords": [
-        "economics",
-        "feasibility",
-        "data assets",
-        "cost-benefit",
-        "business case"
-      ]
-    },
-    "ISDS455": {
-      "name": "Big Data Technologies",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Hadoop ecosystem, Spark, Hive, HBase, distributed storage (HDFS, S3), real-time pipelines, and architecting data platforms for petabyte-scale workloads.",
-      "instructors": [
-        "Wael Karam"
-      ],
-      "keywords": [
-        "big data",
-        "Hadoop",
-        "Spark",
-        "Hive",
-        "HDFS",
-        "distributed storage"
-      ]
-    },
-    "ISDS456": {
-      "name": "Digital Marketing",
-      "dept": "ISDS",
-      "year": 4,
-      "semester": 2,
-      "credit_hours": 3,
-      "category": "major",
-      "description": "Data-driven marketing: A/B testing, attribution modelling, customer segmentation with ML, lifetime value prediction, and marketing analytics platforms.",
-      "instructors": [
-        "Antony Noshy"
-      ],
-      "keywords": [
-        "digital marketing",
-        "A/B testing",
-        "customer segmentation",
-        "attribution",
-        "LTV"
+        "information system architecture",
+        "rst004",
+        "se"
       ]
     },
     "SE301": {
@@ -2484,15 +1426,19 @@
       "description": "Requirements elicitation (interviews, workshops, prototyping), writing SRS documents to IEEE standards, use case modelling, and requirements validation and traceability.",
       "instructors": [
         "Ahmed Safwat",
-        "Kholoud Farag"
+        "Ghaidaa Zain"
       ],
       "keywords": [
-        "requirements",
-        "SRS",
-        "use cases",
         "elicitation",
-        "validation",
-        "IEEE"
+        "ieee",
+        "requirements",
+        "se",
+        "se301",
+        "software engineering",
+        "software requirements specification and validation",
+        "srs",
+        "use cases",
+        "validation"
       ]
     },
     "SE302": {
@@ -2504,15 +1450,21 @@
       "category": "major",
       "description": "Architectural styles (MVC, microservices, event-driven, layered), quality attributes, architectural patterns, and documenting architectures with UML and ADLs.",
       "instructors": [
-        "Ahmed Safwat"
+        "Amira Mohey",
+        "Heba Sabry",
+        "Maisaa Mohamed"
       ],
       "keywords": [
-        "software architecture",
-        "microservices",
-        "MVC",
+        "adl",
         "event-driven",
-        "UML",
-        "ADL"
+        "microservices",
+        "mvc",
+        "se",
+        "se302",
+        "software architecture",
+        "software architecture structure",
+        "software engineering",
+        "uml"
       ]
     },
     "SE303": {
@@ -2524,16 +1476,20 @@
       "category": "major",
       "description": "Productive engineering: version control workflows (Git), containerisation, testing frameworks (JUnit, pytest), code review practices, and professional IDE usage.",
       "instructors": [
-        "Youssef Senousy",
-        "Hassan Farouk"
+        "Doaa Hany",
+        "Kareem Kamal",
+        "Mai Hesham"
       ],
       "keywords": [
-        "programming tools",
-        "Git",
+        "advanced programming tools",
+        "code review",
         "containers",
-        "JUnit",
+        "git",
+        "junit",
+        "programming tools",
         "pytest",
-        "code review"
+        "se",
+        "se303"
       ]
     },
     "SE304": {
@@ -2545,14 +1501,20 @@
       "category": "major",
       "description": "ML for software engineers: integrating ML models into production systems, MLOps basics, model serving, and building ML-powered features in software products.",
       "instructors": [
-        "Randa El Wakeel"
+        "Heba Zaki",
+        "Magdy Aboulela",
+        "Mai Hesham",
+        "Yasser Salah Eldin"
       ],
       "keywords": [
-        "machine learning",
-        "MLOps",
-        "model serving",
         "deep learning",
-        "production ML"
+        "machine and deep learning",
+        "machine learning",
+        "mlops",
+        "model serving",
+        "production ml",
+        "se",
+        "se304"
       ]
     },
     "SE305": {
@@ -2564,15 +1526,19 @@
       "category": "major",
       "description": "Version control strategy, branching models, continuous integration, release management, change control, and audit trails for regulated software environments.",
       "instructors": [
-        "Ahmed Safwat",
-        "Ghaidaa Zain"
+        "Amira Mohey",
+        "Ayman Zaki"
       ],
       "keywords": [
-        "configuration management",
-        "version control",
-        "CI",
         "branching",
-        "release management"
+        "ci",
+        "configuration management",
+        "release management",
+        "se",
+        "se305",
+        "software configuration management",
+        "software engineering",
+        "version control"
       ]
     },
     "SE306": {
@@ -2584,14 +1550,606 @@
       "category": "major",
       "description": "Technical documentation: architecture decision records, API documentation, user manuals, and communicating technical trade-offs to product and business stakeholders.",
       "instructors": [
+        "Christine Karmy",
+        "Fatma Ayman",
+        "Maha Abd El Hamid",
+        "Mai Katar"
+      ],
+      "keywords": [
+        "adr",
+        "api docs",
+        "communication",
+        "documentation",
+        "report writing",
+        "report writing skills & communication",
+        "report writing skills and communication",
+        "se",
+        "se306"
+      ]
+    },
+    "AI351": {
+      "name": "Computational Cognitive Science",
+      "dept": "AI",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "How the mind computes: cognitive architectures (ACT-R, SOAR), attention models, memory systems, and the intersection of AI and human cognition.",
+      "instructors": [
+        "Heba Zaki",
+        "Mai Hesham"
+      ],
+      "keywords": [
+        "act-r",
+        "ai",
+        "ai351",
+        "attention",
+        "cognition",
+        "cognitive science",
+        "computational cognitive science",
+        "memory",
+        "soar"
+      ]
+    },
+    "AI352": {
+      "name": "Natural Language Processing",
+      "dept": "AI",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Text preprocessing, language models, POS tagging, named entity recognition, sentiment analysis, machine translation, and modern Transformer-based NLP.",
+      "instructors": [
+        "Magdy Aboulela",
+        "Yasser Salah Eldin"
+      ],
+      "keywords": [
+        "ai",
+        "ai352",
+        "language models",
+        "natural language",
+        "natural language processing",
+        "ner",
+        "nlp",
+        "sentiment",
+        "transformers"
+      ]
+    },
+    "AI353": {
+      "name": "Fundamentals of Data Mining",
+      "dept": "AI",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Association rule mining (Apriori, FP-Growth), clustering (k-means, DBSCAN), classification trees, anomaly detection, and practical mining on large datasets.",
+      "instructors": [
+        "Christina Albert",
+        "Mostafa Yakoub",
         "Ola Mahmoud"
       ],
       "keywords": [
-        "report writing",
-        "documentation",
-        "API docs",
-        "ADR",
-        "communication"
+        "ai",
+        "ai353",
+        "anomaly detection",
+        "apriori",
+        "data mining",
+        "dbscan",
+        "fundamentals of data mining",
+        "k-means"
+      ]
+    },
+    "AI354": {
+      "name": "Robotics",
+      "dept": "AI",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Robot kinematics, dynamics, path planning, SLAM, sensor fusion, and programming robotic platforms. Hands-on integration of AI perception and physical actuation.",
+      "instructors": [
+        "Magdy Aboulela",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "ai",
+        "ai354",
+        "kinematics",
+        "path planning",
+        "robotics",
+        "sensor fusion",
+        "slam"
+      ]
+    },
+    "AI355": {
+      "name": "Vision and Image Computing",
+      "dept": "AI",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Low-level vision (filters, edge detection), mid-level (segmentation, texture), high-level (object recognition, scene understanding), and real-time vision systems.",
+      "instructors": [
+        "Nashaat El Khameesy",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "ai",
+        "ai355",
+        "image computing",
+        "object recognition",
+        "real-time",
+        "segmentation",
+        "vision",
+        "vision and image computing"
+      ]
+    },
+    "AI356": {
+      "name": "Principles of Law",
+      "dept": "AI",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Legal dimensions of AI: intellectual property in AI systems, liability for autonomous decisions, GDPR and data law, and ethical guidelines from major AI governance bodies.",
+      "instructors": [
+        "Nasser Dorgham",
+        "Sherif Hendawy"
+      ],
+      "keywords": [
+        "ai",
+        "ai law",
+        "ai356",
+        "ethics",
+        "gdpr",
+        "governance",
+        "law",
+        "liability",
+        "principles of law"
+      ]
+    },
+    "CS351": {
+      "name": "Digital Image Processing",
+      "dept": "CS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Image acquisition, spatial filtering, frequency domain analysis (Fourier), edge detection, segmentation, morphological operations, and applications in medical and satellite imaging.",
+      "instructors": [
+        "Walaa El Hady"
+      ],
+      "keywords": [
+        "cs",
+        "cs351",
+        "digital image processing",
+        "edge detection",
+        "filtering",
+        "fourier",
+        "image processing",
+        "segmentation"
+      ]
+    },
+    "CS352": {
+      "name": "Introduction to Data Science",
+      "dept": "CS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Data wrangling, exploratory data analysis, feature engineering, supervised and unsupervised learning, and model evaluation using Python and standard libraries.",
+      "instructors": [
+        "Christina Albert",
+        "Wael Karam"
+      ],
+      "keywords": [
+        "cs",
+        "cs352",
+        "data science",
+        "ds",
+        "eda",
+        "feature engineering",
+        "introduction to data science",
+        "isds",
+        "machine learning",
+        "python"
+      ]
+    },
+    "CS353": {
+      "name": "Computer Networks 2",
+      "dept": "CS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Advanced networking: routing algorithms, QoS, SDN, wireless standards, IPv6 migration, and network management. Extends the Year 2 Networks course.",
+      "instructors": [
+        "Rabab Emad"
+      ],
+      "keywords": [
+        "computer networks 2",
+        "cs",
+        "cs353",
+        "ipv6",
+        "networks",
+        "qos",
+        "routing",
+        "sdn",
+        "wireless"
+      ]
+    },
+    "CS354": {
+      "name": "Network Security, Firewalls, and VPNs",
+      "dept": "CS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Firewall architecture, VPN protocols (IPSec, SSL/TLS), intrusion detection systems, penetration testing methodology, and practical lab work on network hardening.",
+      "instructors": [
+        "Hesham Ramadan",
+        "Marwa Ahmed",
+        "Nashaat El Khameesy",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "cs",
+        "cs354",
+        "cscs",
+        "cyber security",
+        "firewall",
+        "ids",
+        "ipsec",
+        "network security",
+        "network security firewalls and vpns",
+        "network security, firewalls, and vpns",
+        "security",
+        "tls",
+        "vpn"
+      ]
+    },
+    "CS355": {
+      "name": "Compilers & Interpreter Design",
+      "dept": "CS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Lexical analysis, parsing (LL, LR), semantic analysis, intermediate code generation, and optimisation. Demystifies how programming languages are implemented.",
+      "instructors": [
+        "Ayman Zaki",
+        "Doaa Hany"
+      ],
+      "keywords": [
+        "code generation",
+        "compilers",
+        "compilers & interpreter design",
+        "compilers and interpreter design",
+        "cs",
+        "cs355",
+        "interpreter",
+        "lexer",
+        "parser"
+      ]
+    },
+    "CS356": {
+      "name": "Principles of Law",
+      "dept": "CS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Legal frameworks relevant to computing: intellectual property, software licensing, data protection legislation, cyber crime law, and professional ethics.",
+      "instructors": [
+        "Nasser Dorgham",
+        "Sherif Hendawy"
+      ],
+      "keywords": [
+        "cs",
+        "cs356",
+        "cyber crime",
+        "data protection",
+        "ethics",
+        "ip",
+        "law",
+        "licensing",
+        "principles of law"
+      ]
+    },
+    "CSCS351": {
+      "name": "System Forensics, Investigation and Response",
+      "dept": "CSCS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Digital forensics methodology, evidence acquisition, file system analysis, memory forensics, log analysis, chain of custody, and incident response playbooks.",
+      "instructors": [
+        "Mohamed Hassan",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs351",
+        "digital forensics",
+        "evidence",
+        "forensics",
+        "incident response",
+        "memory forensics",
+        "system forensics investigation and response",
+        "system forensics, investigation and response"
+      ]
+    },
+    "CSCS352": {
+      "name": "Network Security, Firewalls, and VPNs",
+      "dept": "CSCS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Firewall rules, DMZ design, VPN protocols, network monitoring (Wireshark, Zeek), intrusion detection/prevention systems, and secure network architecture.",
+      "instructors": [
+        "Hesham Ramadan",
+        "Marwa Ahmed",
+        "Nashaat El Khameesy",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs352",
+        "cyber security",
+        "dmz",
+        "firewall",
+        "ids",
+        "ips",
+        "network security",
+        "network security firewalls and vpns",
+        "network security, firewalls, and vpns",
+        "security",
+        "vpn",
+        "wireshark"
+      ]
+    },
+    "CSCS353": {
+      "name": "Machine and Deep Learning",
+      "dept": "CSCS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "ML fundamentals applied to cyber security: malware classification, phishing detection, user behaviour analytics, and adversarial examples attacking ML models.",
+      "instructors": [
+        "Ahmed Esmat",
+        "Heba Samy",
+        "Heba Zaki",
+        "Yasmeen Zafer"
+      ],
+      "keywords": [
+        "adversarial",
+        "cscs",
+        "cscs353",
+        "machine and deep learning",
+        "machine learning",
+        "malware",
+        "phishing detection",
+        "uba"
+      ]
+    },
+    "CSCS354": {
+      "name": "Managing Risk in Information System",
+      "dept": "CSCS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Risk assessment frameworks (NIST, ISO 27001), threat modelling, vulnerability scoring (CVSS), risk treatment options, and building an information security management system.",
+      "instructors": [
+        "Mohamed Hassan",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs354",
+        "cvss",
+        "isms",
+        "iso 27001",
+        "managing risk in information system",
+        "nist",
+        "risk management",
+        "threat modelling"
+      ]
+    },
+    "CSCS355": {
+      "name": "Hacker Techniques, Tools and Incident Handling",
+      "dept": "CSCS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Ethical hacking methodology, reconnaissance, exploitation (Metasploit), post-exploitation, covering tracks, and structured incident response including containment and recovery.",
+      "instructors": [
+        "Heba Sabry",
+        "Hesham Ramadan"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs355",
+        "ethical hacking",
+        "exploitation",
+        "hacker techniques tools and incident handling",
+        "hacker techniques, tools and incident handling",
+        "incident handling",
+        "metasploit",
+        "reconnaissance"
+      ]
+    },
+    "CSCS356": {
+      "name": "Principles of Law",
+      "dept": "CSCS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Cyber crime legislation, computer misuse laws, evidence admissibility in digital investigations, privacy law, and professional ethics for security practitioners.",
+      "instructors": [
+        "Nasser Dorgham",
+        "Sherif Hendawy"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs356",
+        "cyber crime",
+        "ethics",
+        "evidence",
+        "law",
+        "principles of law",
+        "privacy"
+      ]
+    },
+    "ISDS351": {
+      "name": "Analysis of Time Series Data",
+      "dept": "ISDS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Time series decomposition, ARIMA models, seasonal adjustment, exponential smoothing, and forecasting with applications in finance, energy, and IoT sensor data.",
+      "instructors": [
+        "Antony Noshy"
+      ],
+      "keywords": [
+        "analysis of time series data",
+        "arima",
+        "exponential smoothing",
+        "forecasting",
+        "isds",
+        "isds351",
+        "seasonal",
+        "time series"
+      ]
+    },
+    "ISDS352": {
+      "name": "Machine and Deep Learning",
+      "dept": "ISDS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Supervised and unsupervised ML with a data science focus: feature selection, ensemble methods (random forests, XGBoost), neural networks, and AutoML.",
+      "instructors": [
+        "Ahmed Esmat",
+        "Heba Samy",
+        "Heba Zaki",
+        "Yasmeen Zafer"
+      ],
+      "keywords": [
+        "automl",
+        "feature selection",
+        "isds",
+        "isds352",
+        "machine and deep learning",
+        "machine learning",
+        "random forests",
+        "xgboost"
+      ]
+    },
+    "ISDS353": {
+      "name": "Network Security, Firewalls, and VPNs",
+      "dept": "ISDS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Network security for data science practitioners: protecting data in transit, secure cloud data architectures, and understanding network-based threats to data systems.",
+      "instructors": [
+        "Hesham Ramadan",
+        "Marwa Ahmed",
+        "Nashaat El Khameesy",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "cloud security",
+        "cscs",
+        "cyber security",
+        "data in transit",
+        "firewall",
+        "isds",
+        "isds353",
+        "network security",
+        "network security firewalls and vpns",
+        "network security, firewalls, and vpns",
+        "security",
+        "vpn"
+      ]
+    },
+    "ISDS354": {
+      "name": "Blockchain Fundamentals",
+      "dept": "ISDS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Distributed ledger technology, consensus mechanisms (PoW, PoS), smart contracts (Solidity), decentralised applications, and blockchain applications in data provenance.",
+      "instructors": [
+        "Antony Noshy"
+      ],
+      "keywords": [
+        "blockchain",
+        "blockchain fundamentals",
+        "consensus",
+        "distributed ledger",
+        "isds",
+        "isds354",
+        "smart contracts",
+        "solidity"
+      ]
+    },
+    "ISDS355": {
+      "name": "Collecting, Storing and Retrieving Data",
+      "dept": "ISDS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Database systems for data science: relational databases, NoSQL (MongoDB, Cassandra), data lakes, data warehouses, and ETL pipeline design.",
+      "instructors": [
+        "Ahmed Gamal",
+        "Christina Albert"
+      ],
+      "keywords": [
+        "collecting storing and retrieving data",
+        "collecting, storing and retrieving data",
+        "data lake",
+        "data warehouse",
+        "databases",
+        "etl",
+        "isds",
+        "isds355",
+        "mongodb",
+        "nosql"
+      ]
+    },
+    "ISDS356": {
+      "name": "Principles of Law",
+      "dept": "ISDS",
+      "year": 3,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Data law for practitioners: GDPR, data subject rights, controller/processor obligations, cross-border data transfer restrictions, and sector-specific data regulations.",
+      "instructors": [
+        "Nasser Dorgham",
+        "Sherif Hendawy"
+      ],
+      "keywords": [
+        "data rights",
+        "data transfer",
+        "gdpr",
+        "isds",
+        "isds356",
+        "law",
+        "principles of law",
+        "privacy"
       ]
     },
     "SE351": {
@@ -2607,11 +2165,15 @@
         "Ghaidaa Zain"
       ],
       "keywords": [
-        "testing",
-        "TDD",
-        "unit testing",
         "integration testing",
-        "mutation testing"
+        "mutation testing",
+        "se",
+        "se351",
+        "software engineering",
+        "software testing and validation",
+        "tdd",
+        "testing",
+        "unit testing"
       ]
     },
     "SE352": {
@@ -2623,13 +2185,17 @@
       "category": "major",
       "description": "Advanced software engineering research: formal verification, model checking, serverless architectures, and emerging paradigms in large-scale distributed systems.",
       "instructors": [
-        "Marwa Ahmed",
-        "Maha Gamal"
+        "Ahmed Warad",
+        "Kareem Kamal"
       ],
       "keywords": [
-        "selected topics",
         "formal verification",
         "model checking",
+        "se",
+        "se352",
+        "selected topics",
+        "selected topics in se",
+        "selected topics in se (2)",
         "serverless"
       ]
     },
@@ -2642,14 +2208,21 @@
       "category": "major",
       "description": "Threat modelling (STRIDE), secure coding guidelines (OWASP), static analysis tools, dependency vulnerability scanning, and secure architecture patterns.",
       "instructors": [
-        "Kholoud Farag"
+        "Ahmed Ibrahim",
+        "Amira Mohey Eldin"
       ],
       "keywords": [
-        "security",
-        "STRIDE",
-        "OWASP",
+        "cscs",
+        "cyber security",
+        "owasp",
+        "se",
+        "se353",
         "secure coding",
-        "static analysis"
+        "security",
+        "software engineering",
+        "software engineering security",
+        "static analysis",
+        "stride"
       ]
     },
     "SE354": {
@@ -2661,15 +2234,19 @@
       "category": "major",
       "description": "Gang of Four design patterns, SOLID principles, clean code practices, refactoring strategies, and constructing maintainable, testable software.",
       "instructors": [
-        "Ghaidaa Zain",
-        "Maha Gamal"
+        "Ahmed Ibrahim",
+        "Youssef Senousy"
       ],
       "keywords": [
-        "design patterns",
-        "SOLID",
         "clean code",
+        "design patterns",
+        "fundamentals of pattern design and software construction",
+        "gof",
         "refactoring",
-        "GoF"
+        "se",
+        "se354",
+        "software engineering",
+        "solid"
       ]
     },
     "SE355": {
@@ -2681,14 +2258,20 @@
       "category": "major",
       "description": "Data science skills for software engineers: pandas, Jupyter, scikit-learn, and integrating data-driven functionality into software applications.",
       "instructors": [
-        "Randa El Wakeel"
+        "Christina Albert",
+        "Wael Karam"
       ],
       "keywords": [
         "data science",
+        "data-driven",
+        "ds",
+        "introduction to data science",
+        "isds",
+        "jupyter",
         "pandas",
         "scikit-learn",
-        "Jupyter",
-        "data-driven"
+        "se",
+        "se355"
       ]
     },
     "SE356": {
@@ -2700,16 +2283,593 @@
       "category": "major",
       "description": "Software law: contracts, IP, open-source licensing (GPL, MIT, Apache), liability, GDPR obligations for software products, and professional standards bodies.",
       "instructors": [
-        "Hadeer El Gohary"
+        "Nasser Dorgham",
+        "Sherif Hendawy"
       ],
       "keywords": [
+        "contracts",
+        "gdpr",
+        "gpl",
         "law",
-        "open source",
-        "GPL",
-        "MIT",
         "licensing",
-        "GDPR",
-        "contracts"
+        "mit",
+        "open source",
+        "principles of law",
+        "se",
+        "se356"
+      ]
+    },
+    "AI401": {
+      "name": "Speech Processing",
+      "dept": "AI",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Acoustic phonetics, speech feature extraction (MFCC), hidden Markov models, deep learning for ASR, text-to-speech synthesis, and voice interface design.",
+      "instructors": [
+        "Randa El Wakeel"
+      ],
+      "keywords": [
+        "ai",
+        "ai401",
+        "asr",
+        "hmm",
+        "mfcc",
+        "speech",
+        "speech processing",
+        "text-to-speech",
+        "voice"
+      ]
+    },
+    "AI402": {
+      "name": "Internet and Online Security",
+      "dept": "AI",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Network threats, web application security (OWASP Top 10), cryptographic protocols, identity and access management, and security testing tools.",
+      "instructors": [
+        "Antony Noshy",
+        "Hesham Ramadan",
+        "Mostafa Yakoub",
+        "Nashaat El Khameesy",
+        "Rabab Emad"
+      ],
+      "keywords": [
+        "ai",
+        "ai402",
+        "cryptography",
+        "cscs",
+        "cyber security",
+        "iam",
+        "internet and online security",
+        "owasp",
+        "security",
+        "web security"
+      ]
+    },
+    "AI403": {
+      "name": "Virtual and Augmented Reality",
+      "dept": "AI",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "VR/AR hardware ecosystems, 3D rendering pipelines, spatial interaction design, presence and immersion factors, and development with Unity/Unreal for immersive AI applications.",
+      "instructors": [
+        "Ibrahim Shalaby",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "ai",
+        "ai403",
+        "ar",
+        "augmented reality",
+        "unity",
+        "unreal",
+        "virtual and augmented reality",
+        "virtual reality",
+        "vr"
+      ]
+    },
+    "AI404": {
+      "name": "Intelligent Autonomous Robotics",
+      "dept": "AI",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Advanced robotics: multi-robot coordination, reinforcement learning for robot control, ROS2, sim-to-real transfer, and ethical considerations for autonomous systems.",
+      "instructors": [
+        "Magdy Aboulela",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "ai",
+        "ai404",
+        "autonomous robotics",
+        "intelligent autonomous robotics",
+        "multi-robot",
+        "reinforcement learning",
+        "ros2"
+      ]
+    },
+    "AI405": {
+      "name": "Natural Language Understanding, Generation, and Machine Translation",
+      "dept": "AI",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Deep NLU: coreference resolution, discourse analysis, semantic role labelling; NLG architectures; neural machine translation and multilingual models.",
+      "instructors": [
+        "Magdy Aboulela",
+        "Mai Hesham"
+      ],
+      "keywords": [
+        "ai",
+        "ai405",
+        "language generation",
+        "machine translation",
+        "multilingual",
+        "natural language understanding",
+        "natural language understanding, generation, and machine translation",
+        "nlg",
+        "nlu"
+      ]
+    },
+    "AI406": {
+      "name": "Analytic and Creative Thinking",
+      "dept": "AI",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Frameworks for structured problem-solving, lateral thinking, and applying creative methodologies to AI research and product design challenges.",
+      "instructors": [
+        "Fatma Ayman",
+        "Maha Abd El Hamid"
+      ],
+      "keywords": [
+        "ai",
+        "ai research",
+        "ai406",
+        "analytic and creative thinking",
+        "creativity",
+        "design thinking",
+        "problem solving"
+      ]
+    },
+    "CS401": {
+      "name": "Cloud and Mobile Computing",
+      "dept": "CS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Cloud service models (IaaS, PaaS, SaaS), containerisation (Docker, Kubernetes), serverless computing, mobile app architecture, and cross-platform development.",
+      "instructors": [
+        "Heba Sabry",
+        "Hesham Ramadan"
+      ],
+      "keywords": [
+        "cloud",
+        "cloud and mobile computing",
+        "cs",
+        "cs401",
+        "docker",
+        "iaas",
+        "kubernetes",
+        "mobile",
+        "paas",
+        "serverless"
+      ]
+    },
+    "CS402": {
+      "name": "Human Computer Interfacing",
+      "dept": "CS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "User-centred design, usability principles, prototyping tools, accessibility, interaction design patterns, and usability evaluation methods.",
+      "instructors": [
+        "Antony Noshy",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "accessibility",
+        "cs",
+        "cs402",
+        "hci",
+        "human computer interaction",
+        "human computer interfacing",
+        "interaction design",
+        "prototyping",
+        "usability",
+        "ux"
+      ]
+    },
+    "CS403": {
+      "name": "Computer Vision",
+      "dept": "CS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Feature extraction, object detection (YOLO, R-CNN), image classification with CNNs, optical flow, and real-world applications in autonomous vehicles and surveillance.",
+      "instructors": [
+        "Ayman Zaki",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "cnn",
+        "computer vision",
+        "cs",
+        "cs403",
+        "object detection",
+        "optical flow",
+        "yolo"
+      ]
+    },
+    "CS404": {
+      "name": "Computer Security Techniques",
+      "dept": "CS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Symmetric and asymmetric cryptography, PKI, digital signatures, authentication protocols, secure system design, and security auditing practices.",
+      "instructors": [
+        "Antony Noshy",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "authentication",
+        "computer security techniques",
+        "cryptography",
+        "cs",
+        "cs404",
+        "cscs",
+        "cyber security",
+        "digital signatures",
+        "pki",
+        "security"
+      ]
+    },
+    "CS405": {
+      "name": "Advanced Programming Tools",
+      "dept": "CS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Productive use of modern development ecosystems: IDEs, build automation, containerisation, CI/CD pipelines, testing frameworks, and profiling tools.",
+      "instructors": [
+        "Doaa Hany",
+        "Kareem Kamal",
+        "Mai Hesham"
+      ],
+      "keywords": [
+        "advanced programming tools",
+        "build automation",
+        "ci/cd",
+        "cs",
+        "cs405",
+        "docker",
+        "profiling",
+        "programming tools",
+        "testing"
+      ]
+    },
+    "CS406": {
+      "name": "Analytic and Creative Thinking",
+      "dept": "CS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Frameworks for structured problem-solving, lateral thinking, brainstorming techniques, design thinking, and applying creative approaches to technical challenges.",
+      "instructors": [
+        "Fatma Ayman",
+        "Maha Abd El Hamid"
+      ],
+      "keywords": [
+        "analytic and creative thinking",
+        "brainstorming",
+        "creativity",
+        "cs",
+        "cs406",
+        "design thinking",
+        "problem solving"
+      ]
+    },
+    "CSCS401": {
+      "name": "Vision and Image Computing",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Computer vision methods applied to surveillance, biometric systems (facial recognition, fingerprint), and forensic image analysis.",
+      "instructors": [
+        "Ibrahim Shalaby",
+        "Nashaat El Khameesy",
+        "Reham Adel"
+      ],
+      "keywords": [
+        "biometrics",
+        "cscs",
+        "cscs401",
+        "facial recognition",
+        "forensic imaging",
+        "surveillance",
+        "vision",
+        "vision and image computing"
+      ]
+    },
+    "CSCS402": {
+      "name": "IoT Technologies and Risks",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "IoT device security: firmware analysis, JTAG/UART exploitation, protocol vulnerabilities (Zigbee, Z-Wave, BLE), and securing smart home and industrial IoT deployments.",
+      "instructors": [
+        "Mohamed Hassan",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "ble",
+        "cscs",
+        "cscs402",
+        "firmware",
+        "industrial iot",
+        "internet of things",
+        "iot",
+        "iot security",
+        "iot technologies and risks",
+        "zigbee"
+      ]
+    },
+    "CSCS403": {
+      "name": "Software and Application Security",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Secure SDLC, static and dynamic analysis, fuzzing, OWASP SAMM, DevSecOps practices, and hands-on auditing of real application codebases.",
+      "instructors": [
+        "Heba Samy",
+        "Marwa Ahmed"
+      ],
+      "keywords": [
+        "application security",
+        "cscs",
+        "cscs403",
+        "cyber security",
+        "dast",
+        "devsecops",
+        "fuzzing",
+        "owasp samm",
+        "sast",
+        "se",
+        "security",
+        "software and application security",
+        "software engineering"
+      ]
+    },
+    "CSCS404": {
+      "name": "Security Policies and Implementation",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Writing and enforcing security policies, governance frameworks, security awareness programmes, and translating policy into technical and procedural controls.",
+      "instructors": [
+        "Mohamed Hassan",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "awareness programme",
+        "controls",
+        "cscs",
+        "cscs404",
+        "cyber security",
+        "governance",
+        "security",
+        "security policies and implementation",
+        "security policy"
+      ]
+    },
+    "CSCS405": {
+      "name": "Cyber Warfare",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Nation-state threat actors, APTs, offensive cyber operations, attribution, critical infrastructure protection, and the international law of armed conflict in cyberspace.",
+      "instructors": [
+        "Ahmed Gamal",
+        "Heba Sabry",
+        "Mohamed Hassan",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "apt",
+        "attribution",
+        "critical infrastructure",
+        "cscs",
+        "cscs405",
+        "cyber security",
+        "cyber warfare",
+        "nation-state",
+        "security"
+      ]
+    },
+    "CSCS406": {
+      "name": "Analytic and Creative Thinking",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Creative problem-solving applied to security challenges: red team thinking, threat modelling creativity, and unconventional defensive strategies.",
+      "instructors": [
+        "Fatma Ayman",
+        "Maha Abd El Hamid"
+      ],
+      "keywords": [
+        "analytic and creative thinking",
+        "creativity",
+        "cscs",
+        "cscs406",
+        "problem solving",
+        "red team",
+        "threat modelling"
+      ]
+    },
+    "ISDS401": {
+      "name": "Data Visualization",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Principles of visual encoding, chart selection, interactive dashboards (Tableau, Power BI, D3.js), storytelling with data, and designing accessible visualisations.",
+      "instructors": [
+        "Ahmed Esmat"
+      ],
+      "keywords": [
+        "charts",
+        "d3",
+        "dashboards",
+        "data visualization",
+        "isds",
+        "isds401",
+        "power bi",
+        "tableau"
+      ]
+    },
+    "ISDS402": {
+      "name": "Fundamentals of Data Mining",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Classic and modern data mining: market basket analysis, clustering algorithms, classification, regression trees, and anomaly detection with large datasets.",
+      "instructors": [
+        "Ahmed Esmat"
+      ],
+      "keywords": [
+        "anomaly detection",
+        "classification",
+        "clustering",
+        "data mining",
+        "fundamentals of data mining",
+        "isds",
+        "isds402",
+        "market basket"
+      ]
+    },
+    "ISDS403": {
+      "name": "Categorical Data Analysis",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Logistic regression, contingency tables, log-linear models, ordinal regression, and analysing data with discrete outcomes — essential for survey and medical data.",
+      "instructors": [
+        "Mostafa Yakoub"
+      ],
+      "keywords": [
+        "categorial data analysis",
+        "categorical data",
+        "categorical data analysis",
+        "contingency tables",
+        "isds",
+        "isds403",
+        "logistic regression",
+        "ordinal"
+      ]
+    },
+    "ISDS404": {
+      "name": "Web and Text Mining",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Scraping and crawling the web, HTML parsing, text feature extraction (TF-IDF, word embeddings), topic modelling (LDA), and sentiment analysis pipelines.",
+      "instructors": [
+        "Antony Noshy"
+      ],
+      "keywords": [
+        "isds",
+        "isds404",
+        "lda",
+        "scraping",
+        "sentiment",
+        "text mining",
+        "tf-idf",
+        "web and text mining",
+        "web mining"
+      ]
+    },
+    "ISDS405": {
+      "name": "Principles of IOT",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "IoT data streams: sensor data collection, real-time processing (Apache Kafka, Spark Streaming), time series storage, and building end-to-end IoT analytics pipelines.",
+      "instructors": [
+        "Ibrahim Shalaby",
+        "Magdy Aboulela",
+        "Nashaat El Khameesy",
+        "Wael Karam"
+      ],
+      "keywords": [
+        "internet of things",
+        "iot",
+        "isds",
+        "isds405",
+        "kafka",
+        "principles of iot",
+        "real-time analytics",
+        "sensor data",
+        "spark streaming"
+      ]
+    },
+    "ISDS406": {
+      "name": "Analytic and Creative Thinking",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 1,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Applied to data science challenges: hypothesis generation, experimental design, lateral thinking for data product ideation, and communicating uncertainty.",
+      "instructors": [
+        "Fatma Ayman",
+        "Maha Abd El Hamid"
+      ],
+      "keywords": [
+        "analytic and creative thinking",
+        "creativity",
+        "experimental design",
+        "hypothesis",
+        "isds",
+        "isds406",
+        "problem solving"
       ]
     },
     "SE401": {
@@ -2721,14 +2881,20 @@
       "category": "major",
       "description": "Engineering data-intensive systems: stream processing, distributed storage design, data pipeline reliability, observability, and SLAs for big data platforms.",
       "instructors": [
-        "Marwa Ahmed"
+        "Ahmed Safwat",
+        "Ghaidaa Zain"
       ],
       "keywords": [
         "big data",
-        "stream processing",
         "distributed storage",
+        "engineering and software analysis in big data",
         "observability",
-        "SLA"
+        "se",
+        "se401",
+        "sla",
+        "software engineering",
+        "software engineering applications in big data",
+        "stream processing"
       ]
     },
     "SE402": {
@@ -2740,14 +2906,19 @@
       "category": "major",
       "description": "Legacy system understanding, refactoring at scale, regression testing, migration strategies, and managing technical debt in long-lived codebases.",
       "instructors": [
-        "Kholoud Farag"
+        "Dalia Magdy",
+        "Hesham Ramadan"
       ],
       "keywords": [
-        "maintenance",
         "legacy systems",
+        "maintenance",
+        "migration",
         "refactoring",
-        "technical debt",
-        "migration"
+        "se",
+        "se402",
+        "software engineering",
+        "software maintenance fundamentals",
+        "technical debt"
       ]
     },
     "SE403": {
@@ -2759,16 +2930,20 @@
       "category": "major",
       "description": "Agile (Scrum, Kanban), planning poker, sprint management, risk management, team dynamics, stakeholder reporting, and managing distributed engineering teams.",
       "instructors": [
-        "Marwa Ahmed",
-        "Maha Gamal"
+        "Ayman Zaki",
+        "Kareem Kamal"
       ],
       "keywords": [
-        "project management",
-        "Scrum",
-        "Kanban",
         "agile",
-        "sprint",
-        "risk"
+        "kanban",
+        "project management",
+        "risk",
+        "scrum",
+        "se",
+        "se403",
+        "software engineering",
+        "software project management",
+        "sprint"
       ]
     },
     "SE404": {
@@ -2780,13 +2955,20 @@
       "category": "major",
       "description": "DevSecOps, shifting security left in the SDLC, penetration testing of software products, threat modelling in agile teams, and responding to security incidents in production.",
       "instructors": [
-        "Kareem Kamal"
+        "Heba Samy",
+        "Marwa Ahmed"
       ],
       "keywords": [
-        "DevSecOps",
-        "security",
-        "SDLC",
+        "cscs",
+        "cyber security",
+        "cyber security in software engineering",
+        "devsecops",
         "pen testing",
+        "sdlc",
+        "se",
+        "se404",
+        "security",
+        "software engineering",
         "threat modelling"
       ]
     },
@@ -2798,17 +2980,17 @@
       "credit_hours": 3,
       "category": "major",
       "description": "Deep dive into productive tooling: debuggers, profilers, build systems (Maven, Gradle), CI/CD orchestration (Jenkins, GitHub Actions), and code quality gates.",
-      "instructors": [
-        "Youssef Senousy",
-        "Hassan Farouk"
-      ],
+      "instructors": [],
       "keywords": [
+        "advanced programming tools",
+        "ci/cd",
+        "gradle",
+        "jenkins",
+        "maven",
+        "profiling",
         "programming tools",
-        "CI/CD",
-        "Maven",
-        "Gradle",
-        "Jenkins",
-        "profiling"
+        "se",
+        "se405"
       ]
     },
     "SE406": {
@@ -2820,15 +3002,18 @@
       "category": "major",
       "description": "2D/3D rendering for software engineers: graphics APIs (OpenGL/Vulkan basics), game loop architecture, asset pipelines, and integrating graphics into software products.",
       "instructors": [
-        "Sherif El Prince"
+        "Walaa El Hady"
       ],
       "keywords": [
-        "graphics",
-        "OpenGL",
-        "Vulkan",
-        "rendering",
+        "asset pipeline",
+        "computer graphics",
         "game loop",
-        "asset pipeline"
+        "graphics",
+        "opengl",
+        "rendering",
+        "se",
+        "se406",
+        "vulkan"
       ]
     },
     "SE407": {
@@ -2840,13 +3025,577 @@
       "category": "major",
       "description": "Problem-solving methodologies applied to software design: design thinking workshops, creative technical problem-framing, and structured decision-making under uncertainty.",
       "instructors": [
+        "Fatma Ayman",
+        "Maha Abd El Hamid"
+      ],
+      "keywords": [
+        "analytic and creative thinking",
+        "creativity",
+        "decision-making",
+        "design thinking",
+        "problem solving",
+        "se",
+        "se407"
+      ]
+    },
+    "AI451": {
+      "name": "Human Computer Interaction",
+      "dept": "AI",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "User research, interaction design, prototyping, evaluation (heuristic, user testing), accessibility, and designing AI-powered interfaces that are understandable and trustworthy.",
+      "instructors": [
+        "Ayman Zaki",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "accessibility",
+        "ai",
+        "ai451",
+        "hci",
+        "human computer interaction",
+        "human computer interfacing",
+        "interaction design",
+        "usability",
+        "ux"
+      ]
+    },
+    "AI452": {
+      "name": "Machine Perception",
+      "dept": "AI",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Multimodal sensing (vision, audio, touch), sensor fusion, attention mechanisms, and building systems that interpret rich real-world inputs.",
+      "instructors": [
+        "Magdy Aboulela",
+        "Mai Hesham"
+      ],
+      "keywords": [
+        "ai",
+        "ai452",
+        "attention",
+        "machine perception",
+        "multimodal",
+        "sensor fusion"
+      ]
+    },
+    "AI453": {
+      "name": "Digital Marketing",
+      "dept": "AI",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "AI-driven marketing: recommendation systems, personalisation engines, NLP for social listening, and A/B testing and analytics platforms.",
+      "instructors": [
+        "Antony Noshy",
+        "Kholoud Farag",
+        "Mostafa Yakoub"
+      ],
+      "keywords": [
+        "ai",
+        "ai453",
+        "analytics",
+        "digital marketing",
+        "nlp",
+        "personalisation",
+        "recommendations"
+      ]
+    },
+    "AI454": {
+      "name": "Agent Based System",
+      "dept": "AI",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Multi-agent architectures, game theory for agents, auction mechanisms, emergent behaviour, and building cooperative and competitive AI agent systems.",
+      "instructors": [
+        "Ayman Zaki",
+        "Magdy Aboulela"
+      ],
+      "keywords": [
+        "agent based system",
+        "agents",
+        "ai",
+        "ai454",
+        "auction",
+        "emergent behaviour",
+        "game theory",
+        "multi-agent"
+      ]
+    },
+    "AI455": {
+      "name": "Principles of Economics & Feasibility Studies",
+      "dept": "AI",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Economic thinking for AI ventures: market sizing, business model evaluation, ROI analysis, and feasibility studies for AI product development.",
+      "instructors": [
+        "Ola Nour",
+        "Ramy Ebrahim"
+      ],
+      "keywords": [
+        "ai",
+        "ai455",
+        "business model",
+        "economics",
+        "feasibility",
+        "market sizing",
+        "principles of economics & feasibility studies",
+        "principles of economics and feasibility studies",
+        "roi"
+      ]
+    },
+    "AI456": {
+      "name": "Human Rights",
+      "dept": "AI",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "AI ethics and rights: bias, fairness, transparency, accountability, digital rights, and international frameworks governing AI deployment in sensitive domains.",
+      "instructors": [
+        "Hadeer El Gohary",
+        "Ninete Fahmy"
+      ],
+      "keywords": [
+        "ai",
+        "ai ethics",
+        "ai456",
+        "bias",
+        "fairness",
+        "human rights",
+        "transparency"
+      ]
+    },
+    "CS451": {
+      "name": "Parallel Processing and Distributed Systems",
+      "dept": "CS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Concurrency models, thread safety, distributed architectures, consensus algorithms (Raft, Paxos), MapReduce, and practical work with distributed data stores.",
+      "instructors": [
+        "Ayman Zaki",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "concurrency",
+        "cs",
+        "cs451",
+        "distributed",
+        "mapreduce",
+        "parallel",
+        "parallel processing and distributed systems",
+        "paxos",
+        "raft"
+      ]
+    },
+    "CS452": {
+      "name": "Advanced Computer Networks & Mobile Computing",
+      "dept": "CS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "5G architecture, mobile edge computing, software-defined networking, network virtualisation, and emerging protocols for the Internet of Things.",
+      "instructors": [
+        "Hassan Farouk",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "5g",
+        "advanced computer networks & mobile computing",
+        "advanced computer networks and mobile computing",
+        "cs",
+        "cs452",
+        "iot",
+        "mobile computing",
+        "network virtualisation",
+        "sdn"
+      ]
+    },
+    "CS453": {
+      "name": "Information Technology Project Management",
+      "dept": "CS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Agile and traditional project management, risk assessment, budgeting, stakeholder communication, and IT governance frameworks (ITIL, COBIT).",
+      "instructors": [
+        "Asmaa Said",
+        "Maha Talaat"
+      ],
+      "keywords": [
+        "agile",
+        "budgeting",
+        "cobit",
+        "cs",
+        "cs453",
+        "information technology project management",
+        "itil",
+        "project management",
+        "risk"
+      ]
+    },
+    "CS454": {
+      "name": "Principles of Economics & Feasibility Studies",
+      "dept": "CS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Micro and macroeconomic principles applied to technology ventures: cost-benefit analysis, feasibility studies, market analysis, and financial modelling for IT projects.",
+      "instructors": [
+        "Ola Nour",
+        "Ramy Ebrahim"
+      ],
+      "keywords": [
+        "cost-benefit",
+        "cs",
+        "cs454",
+        "economics",
+        "feasibility",
+        "financial modelling",
+        "market analysis",
+        "principles of economics & feasibility studies",
+        "principles of economics and feasibility studies"
+      ]
+    },
+    "CS455": {
+      "name": "Human Rights",
+      "dept": "CS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Fundamental human rights frameworks, digital rights, privacy legislation, algorithmic fairness, and the ethical responsibilities of computing professionals.",
+      "instructors": [
+        "Hadeer El Gohary",
+        "Ninete Fahmy"
+      ],
+      "keywords": [
+        "algorithmic fairness",
+        "cs",
+        "cs455",
+        "digital rights",
+        "ethics",
+        "human rights",
+        "privacy"
+      ]
+    },
+    "CS456": {
+      "name": "Digital Marketing",
+      "dept": "CS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "SEO, social media strategy, content marketing, analytics, pay-per-click advertising, and how computing skills apply to marketing automation and data-driven campaigns.",
+      "instructors": [
+        "Antony Noshy",
+        "Kholoud Farag",
+        "Mostafa Yakoub"
+      ],
+      "keywords": [
+        "analytics",
+        "content marketing",
+        "cs",
+        "cs456",
+        "digital marketing",
+        "seo",
+        "social media"
+      ]
+    },
+    "CSCS451": {
+      "name": "Digital Marketing",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Understanding social engineering and digital influence from a security perspective; analysing phishing campaigns, disinformation, and brand protection online.",
+      "instructors": [
+        "Antony Noshy",
+        "Kholoud Farag",
+        "Mostafa Yakoub"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs451",
+        "digital marketing",
+        "disinformation",
+        "phishing",
+        "social engineering"
+      ]
+    },
+    "CSCS452": {
+      "name": "Human Rights",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Surveillance, privacy rights, whistleblower protections, the ethics of offensive cyber operations, and international human rights law in the digital age.",
+      "instructors": [
+        "Hadeer El Gohary",
+        "Ninete Fahmy"
+      ],
+      "keywords": [
+        "cscs",
+        "cscs452",
+        "cyber ethics",
+        "human rights",
+        "privacy",
+        "surveillance",
+        "whistleblowing"
+      ]
+    },
+    "CSCS453": {
+      "name": "Cloud Computing Security",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Cloud threat landscape, shared responsibility model, identity federation, cloud-native security tools (AWS GuardDuty, Azure Defender), and compliance in multi-cloud environments.",
+      "instructors": [
+        "Asmaa Said",
+        "Heba Sabry"
+      ],
+      "keywords": [
+        "aws",
+        "azure",
+        "cloud computing security",
+        "cloud security",
+        "compliance",
+        "cscs",
+        "cscs453",
+        "cyber security",
+        "guardduty",
+        "security",
+        "shared responsibility"
+      ]
+    },
+    "CSCS454": {
+      "name": "Disaster Recovery and Risk Management",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Business continuity planning, RTO and RPO targets, backup architectures, crisis communication, tabletop exercises, and post-incident reviews.",
+      "instructors": [
+        "Mohamed Hassan",
+        "Nashaat El Khameesy"
+      ],
+      "keywords": [
+        "backup",
+        "bcp",
+        "business continuity",
+        "cscs",
+        "cscs454",
+        "disaster recovery",
+        "disaster recovery and risk management",
+        "rpo",
+        "rto"
+      ]
+    },
+    "CSCS455": {
+      "name": "Fundamentals of Data Mining",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Mining techniques applied to cyber threat intelligence: clustering threat actors, mining dark web data, and building predictive models for attack forecasting.",
+      "instructors": [
+        "Christina Albert",
+        "Mostafa Yakoub",
         "Ola Mahmoud"
       ],
       "keywords": [
-        "problem solving",
-        "design thinking",
-        "creativity",
-        "decision-making"
+        "attack forecasting",
+        "clustering",
+        "cscs",
+        "cscs455",
+        "dark web",
+        "data mining",
+        "fundamentals of data mining",
+        "threat intelligence"
+      ]
+    },
+    "CSCS456": {
+      "name": "Principles of Economics & Feasibility Studies",
+      "dept": "CSCS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Security economics: cost of breaches, ROI of security controls, cyber insurance, and feasibility analysis for security product development.",
+      "instructors": [
+        "Ola Nour",
+        "Ramy Ebrahim"
+      ],
+      "keywords": [
+        "breach cost",
+        "cscs",
+        "cscs456",
+        "cyber insurance",
+        "economics",
+        "feasibility",
+        "principles of economics & feasibility studies",
+        "principles of economics and feasibility studies",
+        "roi"
+      ]
+    },
+    "ISDS451": {
+      "name": "Selected Topics in Data Science",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Frontier topics: large language models for data analysis, diffusion models, data-centric AI, privacy-preserving ML (federated learning, differential privacy), and AI governance.",
+      "instructors": [
+        "Ahmed Esmat"
+      ],
+      "keywords": [
+        "data science",
+        "data-centric ai",
+        "diffusion models",
+        "ds",
+        "federated learning",
+        "isds",
+        "isds451",
+        "llm",
+        "selected topics",
+        "selected topics in data science",
+        "selected topics in ds"
+      ]
+    },
+    "ISDS452": {
+      "name": "Human Rights",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 2,
+      "category": "major",
+      "description": "Data rights: algorithmic bias, fairness in ML systems, surveillance ethics, data sovereignty, and international frameworks protecting individuals in the age of big data.",
+      "instructors": [
+        "Hadeer El Gohary",
+        "Ninete Fahmy"
+      ],
+      "keywords": [
+        "algorithmic bias",
+        "data sovereignty",
+        "fairness",
+        "human rights",
+        "isds",
+        "isds452",
+        "surveillance"
+      ]
+    },
+    "ISDS453": {
+      "name": "Business Intelligence & Analytics for Decision Support",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Enterprise BI architecture, decision support systems, OLAP, predictive analytics in business contexts, and deploying ML models to production BI dashboards.",
+      "instructors": [
+        "Ahmed Esmat"
+      ],
+      "keywords": [
+        "bi",
+        "business intelligence",
+        "business intelligence & analytics for decision support",
+        "business intelligence and analytics for decision support",
+        "decision support",
+        "isds",
+        "isds453",
+        "olap",
+        "predictive analytics"
+      ]
+    },
+    "ISDS454": {
+      "name": "Principles of Economics & Feasibility Studies",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Economic analysis for data products: market research, valuation of data assets, cost-benefit analysis of analytics initiatives, and business case development.",
+      "instructors": [
+        "Ola Nour",
+        "Ramy Ebrahim"
+      ],
+      "keywords": [
+        "business case",
+        "cost-benefit",
+        "data assets",
+        "economics",
+        "feasibility",
+        "isds",
+        "isds454",
+        "principles of economics & feasibility studies",
+        "principles of economics and feasibility studies"
+      ]
+    },
+    "ISDS455": {
+      "name": "Big Data Technologies",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Hadoop ecosystem, Spark, Hive, HBase, distributed storage (HDFS, S3), real-time pipelines, and architecting data platforms for petabyte-scale workloads.",
+      "instructors": [
+        "Wael Karam"
+      ],
+      "keywords": [
+        "big data",
+        "big data technologies",
+        "distributed storage",
+        "hadoop",
+        "hdfs",
+        "hive",
+        "isds",
+        "isds455",
+        "spark"
+      ]
+    },
+    "ISDS456": {
+      "name": "Digital Marketing",
+      "dept": "ISDS",
+      "year": 4,
+      "semester": 2,
+      "credit_hours": 3,
+      "category": "major",
+      "description": "Data-driven marketing: A/B testing, attribution modelling, customer segmentation with ML, lifetime value prediction, and marketing analytics platforms.",
+      "instructors": [
+        "Antony Noshy",
+        "Kholoud Farag",
+        "Mostafa Yakoub"
+      ],
+      "keywords": [
+        "a/b testing",
+        "attribution",
+        "customer segmentation",
+        "digital marketing",
+        "isds",
+        "isds456",
+        "ltv"
       ]
     },
     "SE451": {
@@ -2858,14 +3607,17 @@
       "category": "major",
       "description": "Ethics in software engineering: bias in systems, accessibility obligations, privacy by design, and the social impact of the software products engineers build.",
       "instructors": [
-        "Hadeer El Gohary"
+        "Hadeer El Gohary",
+        "Ninete Fahmy"
       ],
       "keywords": [
-        "human rights",
-        "ethics",
         "accessibility",
+        "bias",
+        "ethics",
+        "human rights",
         "privacy by design",
-        "bias"
+        "se",
+        "se451"
       ]
     },
     "SE452": {
@@ -2877,19 +3629,22 @@
       "category": "major",
       "description": "Product growth engineering: analytics integration, feature flagging, A/B testing infrastructure, SEO for web products, and building marketing-friendly software.",
       "instructors": [
+        "Antony Noshy",
         "Kholoud Farag",
         "Mostafa Yakoub"
       ],
       "keywords": [
+        "a/b testing",
         "digital marketing",
+        "feature flags",
         "growth",
-        "A/B testing",
-        "SEO",
-        "feature flags"
+        "se",
+        "se452",
+        "seo"
       ]
     },
     "SE453": {
-      "name": "Software Engineering Applications in IoT",
+      "name": "Software Engineering Applications in IOT",
       "dept": "SE",
       "year": 4,
       "semester": 2,
@@ -2897,15 +3652,21 @@
       "category": "major",
       "description": "IoT software architecture, firmware development, OTA updates, edge computing, digital twins, and applying software engineering discipline to embedded and IoT systems.",
       "instructors": [
-        "Marwa Ahmed",
-        "Maha Gamal"
+        "Maha Gamal",
+        "Marwa Ahmed"
       ],
       "keywords": [
-        "IoT",
-        "firmware",
-        "edge computing",
         "digital twins",
-        "OTA updates"
+        "edge computing",
+        "firmware",
+        "internet of things",
+        "iot",
+        "ota updates",
+        "se",
+        "se453",
+        "software engineering",
+        "software engineering applications in iot",
+        "sw application in iot"
       ]
     },
     "SE454": {
@@ -2921,10 +3682,15 @@
         "Ghaidaa Zain"
       ],
       "keywords": [
+        "inspection",
+        "iso 25010",
+        "se",
+        "se454",
+        "software engineering",
         "software quality",
-        "ISO 25010",
+        "software quality analysis and design",
         "static analysis",
-        "inspection"
+        "sw quality analysis and design"
       ]
     },
     "SE455": {
@@ -2936,17 +3702,20 @@
       "category": "major",
       "description": "Cloud deployment patterns, microservices on Kubernetes, mobile architecture (iOS, Android, cross-platform), and building scalable distributed mobile-backend systems.",
       "instructors": [
-        "Youssef Senousy",
         "Hassan Farouk",
-        "Hesham Ramadan"
+        "Hesham Ramadan",
+        "Youssef Senousy"
       ],
       "keywords": [
+        "android",
         "cloud",
+        "cloud and mobile computing",
+        "cross-platform",
+        "ios",
+        "kubernetes",
         "mobile",
-        "Kubernetes",
-        "iOS",
-        "Android",
-        "cross-platform"
+        "se",
+        "se455"
       ]
     },
     "SE456": {
@@ -2958,29 +3727,32 @@
       "category": "major",
       "description": "Software business economics: pricing models, build vs buy analysis, total cost of ownership, product-market fit, and funding considerations for software ventures.",
       "instructors": [
+        "Ola Nour",
         "Ramy Ebrahim"
       ],
       "keywords": [
+        "and tools.",
+        "build vs buy",
+        "careers",
+        "departments",
         "economics",
         "feasibility",
-        "pricing",
-        "build vs buy",
-        "TCO BuddyBot System Prompt Use the following prompt as the system/knowledge-base context for BuddyBot when loading fci_knowledge_base.py: You have access to a Python dictionary called COURSES and DEPARTMENTS from fci_knowledge_base.py. Use the helper functions — get_course(code)",
         "find_courses_by_instructor(name)",
         "find_courses_by_keyword(query)",
-        "get_courses_by_dept(dept_code)",
         "format_course_answer(code)",
-        "format_instructor_courses_answer(name) — to answer any question about FCI courses",
-        "departments",
-        "or instructors. Match keywords flexibly (e.g. \"big data\" → search ISDS455",
-        "SE401; \"data science\" → search ISDS* courses; \"who teaches X\" → find_courses_by_instructor; \"what is X\" → find_courses_by_keyword). Always include the course description and instructor names in your answer. For department questions",
-        "read the DEPARTMENTS dict for the full overview",
+        "format_instructor_courses_answer(name) — to answer any question about fci courses",
+        "get_courses_by_dept(dept_code)",
         "objectives",
-        "careers",
-        "and tools."
+        "or instructors. match keywords flexibly (e.g. \"big data\" → search isds455",
+        "pricing",
+        "principles of economics & feasibility studies",
+        "principles of economics and feasibility studies",
+        "read the departments dict for the full overview",
+        "se",
+        "se401; \"data science\" → search isds* courses; \"who teaches x\" → find_courses_by_instructor; \"what is x\" → find_courses_by_keyword). always include the course description and instructor names in your answer. for department questions",
+        "se456",
+        "tco buddybot system prompt use the following prompt as the system/knowledge-base context for buddybot when loading fci_knowledge_base.py: you have access to a python dictionary called courses and departments from fci_knowledge_base.py. use the helper functions — get_course(code)"
       ]
     }
-  },
-  "source": "E:\\OneDrive - Sadat Academy for Management Sciences\\FinalYear\\Grad_Project\\FCI_Knowledge_Base.docx",
-  "academic_year": "2025-2026"
+  }
 }
