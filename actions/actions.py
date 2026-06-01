@@ -5129,6 +5129,18 @@ def fci_extract_student_name_words(text: str) -> List[str]:
             phrase = match.group(1)
             break
 
+    if (
+        not phrase
+        and re.search(r"\b(?:gpa|cgpa|cumulative)\b", lowered)
+        and not fci_department_code_from_text(lowered)
+        and not re.search(r"\b(average|avg|highest|lowest|top|best|min|max|department|group|all|students)\b", lowered)
+    ):
+        phrase = re.sub(
+            r"\b(?:gpa|cgpa|cumulative|show|tell|give|get|check|me|for|of|about|student|profile|record|data|please|pls)\b",
+            " ",
+            lowered,
+        )
+
     if not phrase:
         return []
 
@@ -6738,6 +6750,9 @@ def build_fci_known_sql(question: str, context_student_id: Optional[str]) -> Opt
         return fci_schedule_sql(question)
 
     if name_words and asks_gpa:
+        resolved_creator_id = CREATOR_STUDENT_IDS_BY_NAME.get(" ".join(name_words).lower())
+        if resolved_creator_id:
+            return fci_student_gpa_sql(resolved_creator_id)
         return fci_student_gpa_by_name_sql(name_words)
 
     if name_words:
@@ -7606,6 +7621,43 @@ def format_value(value: Any) -> str:
     return str(value)
 
 
+def average_semester_gpa_from_rows(data_rows: Sequence[Dict[str, Any]]) -> str:
+    values = [
+        as_float(row.get("SemesterGPA"))
+        for row in data_rows
+        if row.get("SemesterGPA") is not None
+    ]
+    values = [value for value in values if value is not None]
+    if not values:
+        return "not recorded"
+    return format_value(sum(values) / len(values))
+
+
+def computed_cumulative_gpa_for_student(student_id: str) -> str:
+    if not student_id or student_id == "not recorded":
+        return "not recorded"
+    conn = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql_query = f"""
+SELECT AVG(CAST(semester_gpa AS FLOAT)) AS ComputedCumulativeGPA
+FROM GPA_Records
+WHERE {fci_student_id_condition("student_id", student_id)}
+  AND semester_gpa IS NOT NULL
+"""
+        cursor.execute(adapt_sql_for_configured_database(sql_query))
+        row = cursor.fetchone()
+        if row and row[0] is not None:
+            return format_value(row[0])
+    except Exception:
+        return "not recorded"
+    finally:
+        if conn:
+            conn.close()
+    return "not recorded"
+
+
 def format_column_value(column: str, value: Any) -> str:
     if column in {"Internet_Access", "Learning_Disabilities", "Extracurricular_Activities"}:
         if str(value) == "1":
@@ -7996,6 +8048,8 @@ def fci_student_profile_answer(columns: Sequence[str], row: Any) -> Optional[str
     email = format_value(data.get("Email"))
     cumulative = format_value(data.get("CumulativeGPA"))
     third_year = format_value(data.get("ThirdYearCumulativeGPA"))
+    if cumulative == "not recorded" and third_year == "not recorded":
+        cumulative = computed_cumulative_gpa_for_student(student_id)
 
     sentence = f"{full_name} (StudentID {student_id})"
     details = []
@@ -8063,6 +8117,8 @@ def fci_gpa_records_answer(columns: Sequence[str], rows: Sequence[Any], question
         ),
         format_value(first.get("ThirdYearCumulativeGPA")),
     )
+    if cumulative == "not recorded":
+        cumulative = average_semester_gpa_from_rows(semester_rows)
     if not semester_rows and cumulative == "not recorded":
         return gpa_not_found_fallback(full_name, question)
 
