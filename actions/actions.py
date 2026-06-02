@@ -6387,9 +6387,9 @@ def instructor_profile_course_lines(catalog_name: str, arabic: bool = False) -> 
     display_name, courses = find_catalog_instructor_courses(catalog_name)
     if not courses:
         return (
-            "Courses in the current CSV-backed catalog: not listed."
+            "Courses in the current catalog: not listed."
             if not arabic
-            else "المقررات في الكتالوج الحالي المعتمد على ملفات CSV: غير مدرجة."
+            else "المقررات في الكتالوج الحالي: غير مدرجة."
         )
 
     label_term = "الفصل الدراسي" if arabic else "Term"
@@ -6411,20 +6411,47 @@ def instructor_profile_course_lines(catalog_name: str, arabic: bool = False) -> 
     return "\n".join(lines)
 
 
+def instructor_profile_should_include_courses(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    return text_has_any(
+        lowered,
+        [
+            "teach",
+            "teaches",
+            "teaching",
+            "courses",
+            "subjects",
+            "who teaches",
+            "instructor for",
+            "teacher for",
+            "بيشرح",
+            "بيدرس",
+            "يدرس",
+            "مين بيدرس",
+            "مقررات",
+            "مواد",
+        ],
+    )
+
+
 def instructor_profile_answer(text: str) -> Optional[str]:
     keys = instructor_profile_keys_for_text(text)
     if not keys:
         return None
     arabic = contains_arabic(text)
+    include_courses = instructor_profile_should_include_courses(text)
     answers: List[str] = []
     for key in keys:
         profile = INSTRUCTOR_PROFILE_DATA.get(key)
         if not profile:
             continue
         bio = str(profile.get("ar" if arabic else "en") or profile.get("en") or "").strip()
-        courses_header = "المقررات المطابقة في الكتالوج الحالي:" if arabic else "Courses matched from the current CSV-backed catalog:"
-        courses = instructor_profile_course_lines(str(profile.get("catalog_name") or profile.get("display") or ""), arabic)
-        answers.append(f"{bio}\n\n{courses_header}\n{courses}".strip())
+        if include_courses:
+            courses_header = "المقررات المطابقة في الكتالوج الحالي:" if arabic else "Courses matched from the current catalog:"
+            courses = instructor_profile_course_lines(str(profile.get("catalog_name") or profile.get("display") or ""), arabic)
+            answers.append(f"{bio}\n\n{courses_header}\n{courses}".strip())
+        else:
+            answers.append(bio)
     return "\n\n".join(answers) if answers else None
 
 
