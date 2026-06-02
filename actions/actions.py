@@ -236,6 +236,18 @@ CHANGE_MAJOR_EN_RESPONSE = (
     "📍 FCI, Sadat Academy, Maadi Campus."
 )
 
+ADD_DROP_EN_RESPONSE = (
+    "📋 FCI Add/Drop Policy:\n\n"
+    "- Students may add courses or withdraw/drop courses during the first 2 weeks "
+    "from the start of the semester, following the faculty's official procedures.\n"
+    "- After this period, withdrawal may be recorded as W or F in the student's record "
+    "unless there is an accepted excuse approved by the Faculty Council.\n"
+    "- After dropping a course, the student's study load must not fall below "
+    "15 credit hours unless the faculty approves an exception.\n\n"
+    "📍 For the official form and deadlines for the current semester, visit Student Affairs.\n"
+    "📍 FCI, Sadat Academy, Maadi Campus."
+)
+
 DOCUMENTS_EN_RESPONSE = (
     "Official student documents are requested through Student Affairs. Common documents include "
     "enrollment certificates, military-service certificates, transcripts, graduation certificates, "
@@ -1734,6 +1746,28 @@ def english_hardcoded_topic_answer(question: str) -> Optional[str]:
                 "switch major",
             ],
             CHANGE_MAJOR_EN_RESPONSE,
+        ),
+        (
+            [
+                "what is the add/drop policy",
+                "add/drop policy",
+                "add drop policy",
+                "add and drop policy",
+                "add/drop period",
+                "add drop period",
+                "course add/drop",
+                "course add drop",
+                "add a course",
+                "add course",
+                "drop a course",
+                "drop course",
+                "drop courses",
+                "withdraw from a course",
+                "withdraw from course",
+                "course withdrawal",
+                "withdrawal rules",
+            ],
+            ADD_DROP_EN_RESPONSE,
         ),
     ]
     for triggers, answer in priority_policy_map:
