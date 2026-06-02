@@ -4568,7 +4568,7 @@ def dispatch_instructor_profile_continuation_answer(
         return [SlotSet("last_query_scope", "course_catalog")]
 
     header = f"Courses taught by {display_name}:"
-    page_size = 5
+    page_size = 20
     events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
     events.extend(
         [
@@ -4577,7 +4577,7 @@ def dispatch_instructor_profile_continuation_answer(
             SlotSet("last_entity_type", "instructor"),
         ]
     )
-    dispatcher.utter_message(text=format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size))
+    dispatcher.utter_message(text=format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size))
     return events
 
 
@@ -4639,7 +4639,7 @@ def dispatch_instructor_profile_course_followup_answer(
         return [SlotSet("last_query_scope", "course_catalog")]
 
     header = f"Courses taught by {display_name}:"
-    page_size = 5
+    page_size = 20
     events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
     events.extend(
         [
@@ -4648,7 +4648,7 @@ def dispatch_instructor_profile_course_followup_answer(
             SlotSet("last_entity_type", "instructor"),
         ]
     )
-    dispatcher.utter_message(text=format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size))
+    dispatcher.utter_message(text=format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size))
     return events
 
 
@@ -6147,6 +6147,31 @@ def format_fci_catalog_course_matches(
     return "\n\n".join(part for part in parts if part)
 
 
+def format_instructor_course_brief_matches(
+    header: str,
+    courses: Sequence[Dict[str, Any]],
+    max_results: int = 20,
+    offset: int = 0,
+) -> str:
+    total = len(courses)
+    start_index = max(offset, 0)
+    end_index = min(start_index + max_results, total)
+    shown = courses[start_index:end_index]
+    parts = [header]
+    if total:
+        parts.append(f"Showing courses {start_index + 1}-{end_index} of {total}.")
+    for course in shown:
+        code = str(course.get("code") or "").upper()
+        name = str(course.get("name") or code).strip()
+        dept = str(course.get("dept") or "").upper()
+        year = str(course.get("year") or "?")
+        semester = str(course.get("semester") or "?")
+        parts.append(f"- {name} ({code}) — Year {year}, Semester {semester}, {dept}")
+    if end_index < total:
+        parts.append('Say "next" or "show more" to continue.')
+    return "\n".join(part for part in parts if part)
+
+
 def rank_fci_catalog_courses(query: str, courses: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
     q = clean_fci_catalog_phrase(query)
     ranked = []
@@ -6773,7 +6798,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         display_name, instructor_courses = find_catalog_instructor_courses(instructor_query_name)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
-            page_size = 5
+            page_size = 20
             events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
             events.extend(
                 [
@@ -6783,7 +6808,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size),
+                "answer": format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size),
                 "events": events,
             }
 
@@ -6829,7 +6854,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         display_name, instructor_courses = find_catalog_instructor_courses(context_instructor_name)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
-            page_size = 5
+            page_size = 20
             events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
             events.extend(
                 [
@@ -6839,7 +6864,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size),
+                "answer": format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size),
                 "events": events,
             }
 
@@ -6954,7 +6979,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         display_name, instructor_courses = find_catalog_instructor_courses(teacher_subject)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
-            page_size = 5
+            page_size = 20
             events = course_catalog_cache_events(
                 instructor_courses,
                 header,
@@ -6969,7 +6994,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size),
+                "answer": format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size),
                 "events": events,
             }
 
@@ -6978,7 +7003,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         display_name, instructor_courses = find_catalog_instructor_courses(instructor_name)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
-            page_size = 5
+            page_size = 20
             events = course_catalog_cache_events(
                 instructor_courses,
                 header,
@@ -6993,7 +7018,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size),
+                "answer": format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size),
                 "events": events,
             }
 
@@ -7002,7 +7027,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         display_name, instructor_courses = find_catalog_instructor_courses(bare_instructor)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
-            page_size = 5
+            page_size = 20
             events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
             events.extend(
                 [
@@ -7012,7 +7037,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size),
+                "answer": format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size),
                 "events": events,
             }
 
@@ -7109,7 +7134,7 @@ def dispatch_pending_clarification_answer(
         display_name, instructor_courses = find_catalog_instructor_courses(text)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
-            page_size = 5
+            page_size = 20
             events = course_catalog_cache_events(
                 instructor_courses,
                 header,
@@ -7123,7 +7148,7 @@ def dispatch_pending_clarification_answer(
                     SlotSet("last_entity_type", "instructor"),
                 ]
             )
-            dispatcher.utter_message(text=format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size))
+            dispatcher.utter_message(text=format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size))
             return clear_events + events
         dispatcher.utter_message(text="Which instructor do you want the course details for?")
         return [SlotSet("last_clarification_topic", "instructor_courses"), SlotSet("last_query_scope", "course_catalog")]
@@ -7558,6 +7583,234 @@ FROM v_rasa_students s
 """
 
 
+def fci_stats_scope_label(text: str) -> str:
+    department_code = fci_department_code_from_text(text)
+    if department_code:
+        department = get_department(department_code) if get_department else None
+        return str((department or {}).get("name") or department_code)
+    group_code = fci_extract_group_code(text)
+    if group_code:
+        return f"group {group_code}"
+    year_level = fci_extract_year_level(text)
+    if year_level:
+        return f"year {year_level}"
+    return "FCI"
+
+
+def looks_like_instructor_count_or_list(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    instructor_terms = [
+        "doctor",
+        "doctors",
+        "dr",
+        "instructor",
+        "instructors",
+        "teacher",
+        "teachers",
+        "professor",
+        "professors",
+        "teaching staff",
+        "faculty staff",
+        "اعضاء هيئة التدريس",
+        "هيئة التدريس",
+        "دكاترة",
+        "دكتور",
+        "مدرسين",
+        "محاضرين",
+        "اساتذة",
+        "أساتذة",
+    ]
+    if not text_has_any(lowered, instructor_terms):
+        return False
+    has_standalone_arabic_all = bool(re.search(r"(?<![\u0600-\u06ff])كل(?![\u0600-\u06ff])", lowered))
+    return has_standalone_arabic_all or text_has_any(
+        lowered,
+        [
+            "how many",
+            "count",
+            "number of",
+            "total",
+            "list",
+            "names",
+            "show",
+            "give me",
+            "all",
+            "كام",
+            "كم",
+            "عدد",
+            "قائمة",
+            "اسماء",
+            "أسماء",
+            "اعرض",
+            "هات",
+        ],
+    )
+
+
+def looks_like_student_count_question(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    if not text_has_any(lowered, ["student", "students", "طلاب", "طالب", "طلبة"]):
+        return False
+    return text_has_any(
+        lowered,
+        ["how many", "count", "number of", "total", "breakdown", "كام", "كم", "عدد", "احصاء", "إحصاء"],
+    )
+
+
+def looks_like_gpa_average_question(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    has_gpa = text_has_any(lowered, ["gpa", "cgpa", "معدل", "المعدل", "جي بي اي"])
+    has_average = text_has_any(lowered, ["average", "avg", "mean", "متوسط", "المتوسط"])
+    return has_gpa and has_average
+
+
+def run_fci_stats_sql(sql: str) -> tuple[List[str], List[Any]]:
+    conn = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(adapt_sql_for_configured_database(sql))
+        rows = cursor.fetchall()
+        columns = cursor_column_names(cursor)
+        return columns, rows
+    finally:
+        if conn:
+            conn.close()
+
+
+def format_instructor_list_answer(columns: Sequence[str], rows: Sequence[Any], text: str) -> str:
+    arabic = contains_arabic(text)
+    if not rows:
+        return student_affairs_fallback(text)
+    lines = [
+        "قائمة أعضاء هيئة التدريس المسجلين في قاعدة بيانات FCI:"
+        if arabic
+        else "Here are the instructors/teaching staff listed in the FCI database:"
+    ]
+    for row in rows[:80]:
+        data = dict(zip(columns, list(row)))
+        title = format_value(data.get("InstructorTitle"))
+        name = format_value(data.get("InstructorName"))
+        email = format_value(data.get("Email"))
+        display = f"{title} {name}".replace("not recorded", "").replace("  ", " ").strip()
+        if email != "not recorded":
+            lines.append(f"- {display} — {email}")
+        else:
+            lines.append(f"- {display}")
+    if len(rows) > 80:
+        lines.append(
+            f"ويظهر هنا أول 80 اسمًا من إجمالي {len(rows)}."
+            if arabic
+            else f"Showing the first 80 names out of {len(rows)}."
+        )
+    return "\n".join(lines)
+
+
+def row_value_case_insensitive(data: Dict[str, Any], *names: str) -> Any:
+    lowered = {str(key).lower(): value for key, value in data.items()}
+    for name in names:
+        key = str(name).lower()
+        if key in lowered:
+            return lowered[key]
+    return None
+
+
+def dispatch_fci_stats_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker] = None,
+) -> Optional[List[Dict[Text, Any]]]:
+    lowered = semantic_normalize(text)
+    arabic = contains_arabic(text)
+
+    try:
+        if looks_like_instructor_count_or_list(text):
+            list_query = bool(re.search(r"(?<![\u0600-\u06ff])كل(?![\u0600-\u06ff])", lowered)) or text_has_any(
+                lowered,
+                ["list", "names", "show", "give me", "all", "قائمة", "اسماء", "أسماء", "اعرض", "هات"],
+            )
+            if list_query:
+                sql = """
+SELECT DISTINCT TOP 100
+    title AS InstructorTitle,
+    full_name AS InstructorName,
+    email AS Email
+FROM Instructors
+WHERE full_name IS NOT NULL AND full_name <> ''
+ORDER BY full_name
+"""
+                columns, rows = run_fci_stats_sql(sql)
+                dispatcher.utter_message(text=with_duplicate_prompt(format_instructor_list_answer(columns, rows, text), text, tracker))
+                return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "instructor_list")]
+
+            sql = """
+SELECT COUNT(DISTINCT full_name) AS InstructorCount
+FROM Instructors
+WHERE full_name IS NOT NULL AND full_name <> ''
+"""
+            columns, rows = run_fci_stats_sql(sql)
+            count = format_value(rows[0][0]) if rows else "0"
+            answer = (
+                f"يوجد {count} عضو هيئة تدريس/مدرس مسجل في قاعدة بيانات FCI."
+                if arabic
+                else f"There are {count} instructors/teaching staff members listed in the FCI database."
+            )
+            dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+            return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "instructor_count")]
+
+        if looks_like_student_count_question(text):
+            scope = fci_stats_scope_label(text)
+            conditions = fci_student_conditions(text, "s", include_student_id=False)
+            sql = f"""
+SELECT COUNT(*) AS StudentCount
+FROM v_rasa_students s
+{fci_where(conditions)}
+"""
+            columns, rows = run_fci_stats_sql(sql)
+            count = format_value(rows[0][0]) if rows else "0"
+            answer = (
+                f"عدد الطلاب في {scope}: {count}."
+                if arabic
+                else f"{scope} has {count} student records in the FCI database."
+            )
+            dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+            return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "student_count")]
+
+        if looks_like_gpa_average_question(text):
+            scope = fci_stats_scope_label(text)
+            conditions = fci_student_conditions(text, "s", include_student_id=False)
+            conditions.append("g.semester_gpa IS NOT NULL")
+            sql = f"""
+SELECT
+    AVG(CAST(g.semester_gpa AS FLOAT)) AS AverageGPA,
+    COUNT(DISTINCT s.student_id) AS StudentCount
+FROM GPA_Records g
+JOIN v_rasa_students s ON s.student_id = g.student_id
+{fci_where(conditions)}
+"""
+            columns, rows = run_fci_stats_sql(sql)
+            if not rows or rows[0][0] is None:
+                dispatcher.utter_message(text=student_affairs_fallback(text))
+                return [SlotSet("last_query_scope", "database")]
+            data = dict(zip(columns, list(rows[0])))
+            average = format_value(row_value_case_insensitive(data, "AverageGPA", "averagegpa"))
+            count = format_value(row_value_case_insensitive(data, "StudentCount", "studentcount"))
+            answer = (
+                f"متوسط المعدل في {scope} هو {average} محسوبًا على {count} طالب."
+                if arabic
+                else f"The average GPA in {scope} is {average}, based on {count} student records."
+            )
+            dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+            return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "gpa_average")]
+
+    except Exception as exc:
+        print(f"FCI stats answer failed: {exc}", file=sys.stderr)
+        dispatcher.utter_message(text=student_affairs_fallback(text))
+        return [SlotSet("last_query_scope", "database")]
+
+    return None
+
+
 def fci_grades_sql(question: str, student_id: Optional[str]) -> str:
     conditions = []
     if student_id:
@@ -7591,11 +7844,22 @@ def build_fci_known_sql(question: str, context_student_id: Optional[str]) -> Opt
 
     asks_schedule = any(word in lowered for word in ["schedule", "timetable", "class", "classes", "lecture", "lectures", "lab", "labs", "when", "where"])
     asks_gpa = any(word in lowered for word in ["gpa", "cgpa", "cumulative"])
+    asks_average_gpa = asks_gpa and re.search(r"\b(?:average|avg|mean)\b", lowered)
+    asks_student_count = (
+        bool(re.search(r"\b(?:how many|count|number of|percentage|percent|breakdown|total)\b", lowered))
+        and "student" in lowered
+    )
     asks_grade = any(word in lowered for word in ["grade", "grades", "mark", "marks", "score", "scores", "result"]) or (
         bool(fci_extract_course_code(question))
         and bool(student_id)
         and any(word in lowered for word in ["get", "got", "receive", "received"])
     )
+
+    if asks_student_count:
+        return fci_student_count_sql(question)
+
+    if asks_average_gpa:
+        return fci_gpa_aggregate_sql(question)
 
     if instructor_name:
         return fci_instructor_by_name_sql(instructor_name)
@@ -7624,12 +7888,10 @@ def build_fci_known_sql(question: str, context_student_id: Optional[str]) -> Opt
     if student_id:
         return fci_student_profile_sql(student_id)
 
-    if any(word in lowered for word in ["teacher", "teaches", "instructor", "professor", "faculty"]):
+    if any(word in lowered for word in ["teacher", "teaches", "instructor", "professor"]) or ("faculty" in lowered and "student" not in lowered):
         return fci_teacher_sql(question)
 
     if "department" in lowered or "departments" in lowered or "major" in lowered:
-        if re.search(r"\b(how many|count|number of|breakdown|percentage|percent)\b", lowered) and "student" in lowered:
-            return fci_student_count_sql(question)
         return fci_departments_sql()
 
     if "room" in lowered or "rooms" in lowered or "classroom" in lowered or "hall" in lowered:
@@ -7651,9 +7913,6 @@ LEFT JOIN Departments d ON d.dept_id = c.dept_id
 
     if asks_gpa:
         return fci_gpa_aggregate_sql(question)
-
-    if re.search(r"\b(how many|count|number of|percentage|percent|breakdown)\b", lowered) and "student" in lowered:
-        return fci_student_count_sql(question)
 
     if "student" in lowered and any(word in lowered for word in ["show", "list", "all", "records", "profiles", "profile", "data"]):
         return fci_list_students_sql(question)
@@ -9518,6 +9777,9 @@ class ActionRagQuery(Action):
             instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_message, tracker)
             if instructor_course_followup is not None:
                 return instructor_course_followup
+            stats_events = dispatch_fci_stats_answer(dispatcher, user_message, tracker)
+            if stats_events is not None:
+                return stats_events
             if extract_student_id(user_message):
                 return ActionTextToSQL().run(dispatcher, tracker, domain)
             if tracker.get_slot("student_id") and wants_current_student(user_message):
@@ -9638,6 +9900,10 @@ class ActionGeneralConversation(Action):
         instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_message, tracker)
         if instructor_course_followup is not None:
             return instructor_course_followup
+
+        stats_events = dispatch_fci_stats_answer(dispatcher, user_message, tracker)
+        if stats_events is not None:
+            return stats_events
 
         if extract_student_id(user_message) or (tracker.get_slot("student_id") and wants_current_student(user_message)):
             return ActionTextToSQL().run(dispatcher, tracker, domain)
@@ -9787,6 +10053,10 @@ class ActionConversationRouter(Action):
         instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_message, tracker)
         if instructor_course_followup is not None:
             return instructor_course_followup
+
+        stats_events = dispatch_fci_stats_answer(dispatcher, user_message, tracker)
+        if stats_events is not None:
+            return stats_events
 
         if extract_student_id(user_message) or (tracker.get_slot("student_id") and wants_current_student(user_message)):
             return ActionTextToSQL().run(dispatcher, tracker, domain)
@@ -10237,6 +10507,10 @@ class ActionTextToSQL(Action):
         instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_question, tracker)
         if instructor_course_followup is not None:
             return instructor_course_followup
+
+        stats_events = dispatch_fci_stats_answer(dispatcher, user_question, tracker)
+        if stats_events is not None:
+            return stats_events
 
         if is_bot_identity_question(user_question):
             dispatcher.utter_message(text=BOT_IDENTITY_RESPONSE)
