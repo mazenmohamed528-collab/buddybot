@@ -4727,6 +4727,14 @@ ARABIC_QUESTION_WORDS = {
     "ممكن",
     "عندي",
     "فين",
+    "هات",
+    "هاتهم",
+    "اعرض",
+    "اعرضهم",
+    "قائمة",
+    "قايمة",
+    "اسماء",
+    "أسماء",
 }
 
 ARABIC_PREPOSITIONS_AND_ARTICLES = {
@@ -7749,6 +7757,104 @@ def row_value_case_insensitive(data: Dict[str, Any], *names: str) -> Any:
     return None
 
 
+STATS_LIST_FOLLOWUP_PHRASES = {
+    "list them",
+    "show them",
+    "show me them",
+    "show me the list",
+    "give me the list",
+    "give me names",
+    "names",
+    "their names",
+    "all names",
+    "list names",
+    "اعرضهم",
+    "هاتهم",
+    "قائمة",
+    "القايمة",
+    "القائمة",
+    "اسماء",
+    "الأسماء",
+    "الاسماء",
+}
+
+
+def is_stats_list_followup(text: str) -> bool:
+    lowered = semantic_normalize(text).strip(" .?!؟")
+    return lowered in STATS_LIST_FOLLOWUP_PHRASES or bool(
+        re.fullmatch(r"(?:list|show|give\s+me)\s+(?:all\s+)?(?:them|names|the\s+names)", lowered)
+    )
+
+
+def dispatch_instructor_list_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker] = None,
+) -> List[Dict[Text, Any]]:
+    sql = """
+SELECT DISTINCT TOP 100
+    title AS InstructorTitle,
+    full_name AS InstructorName,
+    email AS Email
+FROM Instructors
+WHERE full_name IS NOT NULL AND full_name <> ''
+ORDER BY full_name
+"""
+    columns, rows = run_fci_stats_sql(sql)
+    dispatcher.utter_message(text=with_duplicate_prompt(format_instructor_list_answer(columns, rows, text), text, tracker))
+    return [
+        SlotSet("last_query_scope", "database"),
+        SlotSet("last_entity_type", "instructor_list"),
+        SlotSet("last_topic", "instructors"),
+    ]
+
+
+def dispatch_student_count_list_followup_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker],
+) -> Optional[List[Dict[Text, Any]]]:
+    if not tracker:
+        return None
+    context = str(tracker.get_slot("last_topic") or "").strip()
+    if not context or "student" not in semantic_normalize(context):
+        context = "show students"
+    sql = fci_list_students_sql(context)
+    columns, rows = run_fci_stats_sql(sql)
+    if not rows:
+        dispatcher.utter_message(text=student_affairs_fallback(text))
+        return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "student_count")]
+    answer = student_bulk_listing_answer(columns, rows, context, row_limit=20) or answer_from_rows(
+        columns,
+        rows,
+        context,
+        row_limit=20,
+    )
+    dispatcher.utter_message(text=answer)
+    events: List[Dict[Text, Any]] = [
+        SlotSet("last_query_scope", "list"),
+        SlotSet("last_entity_type", "student_list"),
+        SlotSet("last_topic", context),
+    ]
+    events.extend(legacy_student_cache_events(columns, rows, context))
+    return events
+
+
+def dispatch_fci_stats_followup_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker],
+) -> Optional[List[Dict[Text, Any]]]:
+    if not tracker or not is_stats_list_followup(text):
+        return None
+    last_entity_type = str(tracker.get_slot("last_entity_type") or "").strip()
+    if last_entity_type == "instructor_count":
+        return dispatch_instructor_list_answer(dispatcher, text, tracker)
+    if last_entity_type == "student_count":
+        return dispatch_student_count_list_followup_answer(dispatcher, text, tracker)
+    return None
+
+
 def dispatch_fci_stats_answer(
     dispatcher: CollectingDispatcher,
     text: str,
@@ -7764,18 +7870,7 @@ def dispatch_fci_stats_answer(
                 ["list", "names", "show", "give me", "all", "قائمة", "اسماء", "أسماء", "اعرض", "هات"],
             )
             if list_query:
-                sql = """
-SELECT DISTINCT TOP 100
-    title AS InstructorTitle,
-    full_name AS InstructorName,
-    email AS Email
-FROM Instructors
-WHERE full_name IS NOT NULL AND full_name <> ''
-ORDER BY full_name
-"""
-                columns, rows = run_fci_stats_sql(sql)
-                dispatcher.utter_message(text=with_duplicate_prompt(format_instructor_list_answer(columns, rows, text), text, tracker))
-                return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "instructor_list")]
+                return dispatch_instructor_list_answer(dispatcher, text, tracker)
 
             sql = """
 SELECT COUNT(DISTINCT full_name) AS InstructorCount
@@ -7790,7 +7885,11 @@ WHERE full_name IS NOT NULL AND full_name <> ''
                 else f"There are {count} instructors/teaching staff members listed in the FCI database."
             )
             dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
-            return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "instructor_count")]
+            return [
+                SlotSet("last_query_scope", "database"),
+                SlotSet("last_entity_type", "instructor_count"),
+                SlotSet("last_topic", "instructors"),
+            ]
 
         if looks_like_student_count_question(text):
             scope = fci_stats_scope_label(text)
@@ -7808,7 +7907,18 @@ FROM v_rasa_students s
                 else f"{scope} has {count} student records in the FCI database."
             )
             dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
-            return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "student_count")]
+            events: List[Dict[Text, Any]] = [
+                SlotSet("last_query_scope", "database"),
+                SlotSet("last_entity_type", "student_count"),
+                SlotSet("last_topic", text),
+            ]
+            department_code = fci_department_code_from_text(text)
+            group_code = fci_extract_group_code(text)
+            if department_code:
+                events.append(SlotSet("department_code", department_code))
+            if group_code:
+                events.append(SlotSet("group_code", group_code))
+            return events
 
         if looks_like_gpa_average_question(text):
             scope = fci_stats_scope_label(text)
@@ -9802,6 +9912,9 @@ class ActionRagQuery(Action):
             gibberish_events = dispatch_gibberish_answer(dispatcher, user_message)
             if gibberish_events is not None:
                 return gibberish_events
+            stats_followup_events = dispatch_fci_stats_followup_answer(dispatcher, user_message, tracker)
+            if stats_followup_events is not None:
+                return stats_followup_events
             continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_message, tracker)
             if continuation_events is not None:
                 return continuation_events
@@ -9922,6 +10035,10 @@ class ActionGeneralConversation(Action):
         if is_closing(user_message):
             dispatcher.utter_message(text=CLOSING_RESPONSE)
             return [SlotSet("student_id", None), SlotSet("last_query_scope", None)]
+
+        stats_followup_events = dispatch_fci_stats_followup_answer(dispatcher, user_message, tracker)
+        if stats_followup_events is not None:
+            return stats_followup_events
 
         continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_message, tracker)
         if continuation_events is not None:
@@ -10075,6 +10192,10 @@ class ActionConversationRouter(Action):
         if is_closing(user_message):
             dispatcher.utter_message(text=CLOSING_RESPONSE)
             return [SlotSet("student_id", None), SlotSet("last_query_scope", None)]
+
+        stats_followup_events = dispatch_fci_stats_followup_answer(dispatcher, user_message, tracker)
+        if stats_followup_events is not None:
+            return stats_followup_events
 
         continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_message, tracker)
         if continuation_events is not None:
@@ -10529,6 +10650,10 @@ class ActionTextToSQL(Action):
         if is_closing(user_question):
             dispatcher.utter_message(text=CLOSING_RESPONSE)
             return [SlotSet("student_id", None), SlotSet("last_query_scope", None)]
+
+        stats_followup_events = dispatch_fci_stats_followup_answer(dispatcher, user_question, tracker)
+        if stats_followup_events is not None:
+            return stats_followup_events
 
         continuation_events = dispatch_conversation_continuation_answer(dispatcher, user_question, tracker)
         if continuation_events is not None:
