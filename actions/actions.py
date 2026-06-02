@@ -4581,6 +4581,77 @@ def dispatch_instructor_profile_continuation_answer(
     return events
 
 
+def is_instructor_profile_course_followup(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    has_instructor_pronoun = bool(
+        re.search(r"\b(?:he|she|his|her|him|they|their)\b", lowered)
+        or "that instructor" in lowered
+        or "this instructor" in lowered
+        or "that doctor" in lowered
+        or "this doctor" in lowered
+    )
+    if not has_instructor_pronoun:
+        return False
+    return text_has_any(
+        lowered,
+        [
+            "course",
+            "courses",
+            "subject",
+            "subjects",
+            "teach",
+            "teaches",
+            "teaching",
+            "what does",
+            "what do",
+            "مقرر",
+            "مقررات",
+            "مادة",
+            "مواد",
+            "يدرس",
+            "بيدرس",
+            "بيشرح",
+        ],
+    )
+
+
+def dispatch_instructor_profile_course_followup_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker],
+) -> Optional[List[Dict[Text, Any]]]:
+    if not tracker:
+        return None
+    last_entity_type = str(tracker.get_slot("last_entity_type") or "").strip()
+    if last_entity_type not in {"instructor_profile", "instructor"}:
+        return None
+    if not is_instructor_profile_course_followup(text):
+        return None
+
+    instructor_name = str(tracker.get_slot("instructor_name") or tracker.get_slot("last_topic") or "").strip()
+    if not instructor_name or "," in instructor_name:
+        dispatcher.utter_message(text="Which instructor do you mean?")
+        return [SlotSet("last_clarification_topic", "instructor_courses"), SlotSet("last_query_scope", "course_catalog")]
+
+    display_name, instructor_courses = find_catalog_instructor_courses(instructor_name)
+    if not instructor_courses:
+        dispatcher.utter_message(text=f"I don't have courses listed for {instructor_name} in the current catalog.")
+        return [SlotSet("last_query_scope", "course_catalog")]
+
+    header = f"Courses taught by {display_name}:"
+    page_size = 5
+    events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
+    events.extend(
+        [
+            SlotSet("instructor_name", display_name),
+            SlotSet("last_topic", display_name),
+            SlotSet("last_entity_type", "instructor"),
+        ]
+    )
+    dispatcher.utter_message(text=format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size))
+    return events
+
+
 def dispatch_conversation_continuation_answer(
     dispatcher: CollectingDispatcher,
     text: str,
@@ -9444,6 +9515,9 @@ class ActionRagQuery(Action):
             pending_events = dispatch_pending_clarification_answer(dispatcher, user_message, tracker, domain)
             if pending_events is not None:
                 return pending_events
+            instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_message, tracker)
+            if instructor_course_followup is not None:
+                return instructor_course_followup
             if extract_student_id(user_message):
                 return ActionTextToSQL().run(dispatcher, tracker, domain)
             if tracker.get_slot("student_id") and wants_current_student(user_message):
@@ -9560,6 +9634,10 @@ class ActionGeneralConversation(Action):
         pending_events = dispatch_pending_clarification_answer(dispatcher, user_message, tracker, domain)
         if pending_events is not None:
             return pending_events
+
+        instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_message, tracker)
+        if instructor_course_followup is not None:
+            return instructor_course_followup
 
         if extract_student_id(user_message) or (tracker.get_slot("student_id") and wants_current_student(user_message)):
             return ActionTextToSQL().run(dispatcher, tracker, domain)
@@ -9705,6 +9783,10 @@ class ActionConversationRouter(Action):
         pending_events = dispatch_pending_clarification_answer(dispatcher, user_message, tracker, domain)
         if pending_events is not None:
             return pending_events
+
+        instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_message, tracker)
+        if instructor_course_followup is not None:
+            return instructor_course_followup
 
         if extract_student_id(user_message) or (tracker.get_slot("student_id") and wants_current_student(user_message)):
             return ActionTextToSQL().run(dispatcher, tracker, domain)
@@ -10151,6 +10233,10 @@ class ActionTextToSQL(Action):
         pending_events = dispatch_pending_clarification_answer(dispatcher, user_question, tracker, domain)
         if pending_events is not None:
             return pending_events
+
+        instructor_course_followup = dispatch_instructor_profile_course_followup_answer(dispatcher, user_question, tracker)
+        if instructor_course_followup is not None:
+            return instructor_course_followup
 
         if is_bot_identity_question(user_question):
             dispatcher.utter_message(text=BOT_IDENTITY_RESPONSE)
