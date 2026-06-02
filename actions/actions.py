@@ -6118,6 +6118,335 @@ def find_catalog_instructor_courses(name: str) -> tuple[str, List[Dict[str, Any]
     return display_name, []
 
 
+INSTRUCTOR_PROFILE_DATA: Dict[str, Dict[str, Any]] = {
+    "antony_noshy": {
+        "display": "Dr. Antony Noshy",
+        "catalog_name": "Antony Noshy",
+        "aliases": ["antony", "antony noshy", "انطوني", "انطوني نصحي", "أنطوني", "أنطوني نصحي"],
+        "en": (
+            "Dr. Antony Noshy\n"
+            "Faculty Member — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Dr. Antony Noshy contributes to teaching, research, and academic development at SAMS. "
+            "Through his work in higher education, he supports the preparation of future computing "
+            "and information-systems professionals."
+        ),
+        "ar": (
+            "د. أنطوني نصحي\n"
+            "عضو هيئة تدريس — كلية الحاسبات والمعلومات، أكاديمية السادات للعلوم الإدارية.\n\n"
+            "د. أنطوني نصحي يساهم في التدريس والبحث العلمي والتطوير الأكاديمي، ويدعم إعداد "
+            "كوادر مهنية مستقبلية في مجالات الحاسبات ونظم المعلومات."
+        ),
+    },
+    "wael_karam": {
+        "display": "Dr. Wael Karam Hanna",
+        "catalog_name": "Wael Karam",
+        "aliases": ["wael", "wael karam", "wael karam hanna", "dr wael", "وائل", "وائل كرم", "وائل كرم حنا", "د وائل", "دكتور وائل"],
+        "en": (
+            "Dr. Wael Karam Hanna\n"
+            "Assistant Professor — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Specialisation: Data Science, Artificial Intelligence, Machine Learning, and Data Mining. "
+            "His interests include predictive analytics, intelligent decision-support systems, "
+            "educational analytics, and healthcare informatics. He also supervised the BuddyBot "
+            "graduation project."
+        ),
+        "ar": (
+            "د. وائل كرم حنا\n"
+            "أستاذ مساعد — كلية الحاسبات والمعلومات، أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تخصصه يشمل علوم البيانات والذكاء الاصطناعي والتعلم الآلي وتنقيب البيانات، ومن اهتماماته "
+            "التحليلات التنبؤية ونظم دعم القرار الذكية والتحليلات التعليمية والمعلوماتية الصحية. "
+            "كما أشرف على مشروع التخرج BuddyBot."
+        ),
+    },
+    "badria_nabil": {
+        "display": "Dr. Badria Nabil",
+        "catalog_name": "Badria Nabil",
+        "aliases": ["badria", "badria nabil", "vice dean", "وكيل الكلية", "نائب العميد", "بدرية", "بدرية نبيل"],
+        "en": (
+            "Dr. Badria Nabil\n"
+            "Vice Dean — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Dr. Badria Nabil plays a senior academic leadership role in FCI, supporting academic "
+            "administration, student affairs, and the development of the faculty's educational mission."
+        ),
+        "ar": (
+            "د. بدرية نبيل\n"
+            "وكيل كلية الحاسبات والمعلومات — أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تقوم د. بدرية نبيل بدور قيادي أكاديمي داخل الكلية، وتدعم الإدارة الأكاديمية وشؤون الطلاب "
+            "وتطوير رسالة الكلية التعليمية."
+        ),
+    },
+    "mostafa_yakoub": {
+        "display": "Dr. Mostafa Yacoub",
+        "catalog_name": "Mostafa Yakoub",
+        "aliases": ["mostafa", "mostafa yacoub", "mostafa yakoub", "mustafa yacoub", "مصطفى يعقوب", "مصطفي يعقوب"],
+        "en": (
+            "Dr. Mostafa Yacoub\n"
+            "Faculty Member — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Research focus: Data Mining, Machine Learning, Information Systems, and Intelligent "
+            "Data Analytics. He contributes to teaching and applied research in data-driven systems."
+        ),
+        "ar": (
+            "د. مصطفى يعقوب\n"
+            "عضو هيئة تدريس — كلية الحاسبات والمعلومات، أكاديمية السادات للعلوم الإدارية.\n\n"
+            "يركز بحثياً على تنقيب البيانات والتعلم الآلي ونظم المعلومات والتحليلات الذكية، ويساهم "
+            "في التدريس والبحث التطبيقي في الأنظمة المعتمدة على البيانات."
+        ),
+    },
+    "maha_talaat": {
+        "display": "Prof. Maha Talaat",
+        "catalog_name": "Maha Talaat",
+        "aliases": ["maha", "maha talaat", "prof maha", "مها طلعت", "أستاذة مها", "د مها"],
+        "en": (
+            "Prof. Maha Talaat\n"
+            "Professor of Information Systems and Computer Science — Sadat Academy for Management Sciences.\n\n"
+            "Her work spans information systems, digital transformation, e-learning, e-banking, "
+            "and sustainable development, with a focus on applying technology to institutional and "
+            "business challenges."
+        ),
+        "ar": (
+            "أ.د. مها طلعت\n"
+            "أستاذ نظم المعلومات وعلوم الحاسب — أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تشمل اهتماماتها نظم المعلومات والتحول الرقمي والتعليم الإلكتروني والخدمات المصرفية "
+            "الإلكترونية والتنمية المستدامة، مع التركيز على توظيف التكنولوجيا في حل تحديات المؤسسات."
+        ),
+    },
+    "christina_albert": {
+        "display": "Prof. Christina Albert",
+        "catalog_name": "Christina Albert",
+        "aliases": ["christina", "christina albert", "dean", "dean of fci", "عميد", "عميدة", "كريستينا", "كريستينا ألبرت", "كريستينا البرت"],
+        "en": (
+            "Prof. Christina Albert\n"
+            "Dean — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Prof. Christina Albert leads FCI academically and administratively, supporting the "
+            "faculty's programmes, research direction, and student-focused educational mission."
+        ),
+        "ar": (
+            "أ.د. كريستينا ألبرت\n"
+            "عميدة كلية الحاسبات والمعلومات — أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تقود أ.د. كريستينا ألبرت الكلية أكاديمياً وإدارياً، وتدعم برامجها واتجاهها البحثي "
+            "ورسالتها التعليمية الموجهة للطلاب."
+        ),
+    },
+    "ahmed_esmat": {
+        "display": "Dr. Ahmed Esmat",
+        "catalog_name": "Ahmed Esmat",
+        "aliases": ["ahmed esmat", "esmat", "essmat", "د احمد عصمت", "أحمد عصمت", "احمد عصمت"],
+        "en": (
+            "Dr. Ahmed Esmat\n"
+            "Faculty Member — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Dr. Ahmed Esmat contributes to FCI teaching across computing, information systems, "
+            "data science, and related applied technology areas."
+        ),
+        "ar": (
+            "د. أحمد عصمت\n"
+            "عضو هيئة تدريس — كلية الحاسبات والمعلومات، أكاديمية السادات للعلوم الإدارية.\n\n"
+            "يساهم د. أحمد عصمت في التدريس داخل الكلية في مجالات الحوسبة ونظم المعلومات وعلوم "
+            "البيانات والتكنولوجيا التطبيقية."
+        ),
+    },
+    "dalia_magdy": {
+        "display": "Prof. Dalia Magdy",
+        "catalog_name": "Dalia Magdy",
+        "aliases": ["dalia", "dalia magdy", "most experienced", "29 years", "داليا مجدي", "داليا", "خبرة 29"],
+        "en": (
+            "Prof. Dalia Magdy\n"
+            "Professor of Information Systems — Sadat Academy for Management Sciences.\n\n"
+            "Prof. Dalia Magdy has 29+ years of academic experience, with interests in artificial "
+            "intelligence, data science, digital business, and information systems. She has also "
+            "held senior academic leadership responsibilities."
+        ),
+        "ar": (
+            "أ.د. داليا مجدي\n"
+            "أستاذ نظم المعلومات — أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تمتلك أ.د. داليا مجدي خبرة أكاديمية تزيد عن 29 عاماً، وتشمل اهتماماتها الذكاء "
+            "الاصطناعي وعلوم البيانات والأعمال الرقمية ونظم المعلومات، كما تولت مسؤوليات قيادية أكاديمية."
+        ),
+    },
+    "ahmed_eldeqen": {
+        "display": "Prof. Ahmed ElSayed ElDeqen",
+        "catalog_name": "Ahmed ElDeqen",
+        "aliases": ["ahmed eldeqen", "ahmed elsayed eldeqen", "prof eldeqen", "eldeqen", "الدقن", "أحمد الدقن", "أحمد السيد الدقن"],
+        "en": (
+            "Prof. Ahmed ElSayed ElDeqen\n"
+            "Professor of Management Information Systems — Sadat Academy for Management Sciences.\n\n"
+            "Research focus: Artificial Intelligence, Machine Learning, Cloud Computing, Blockchain, "
+            "Internet of Things, and Knowledge Discovery. He is an experienced academic leader, "
+            "researcher, and educator in intelligent systems and emerging technologies."
+        ),
+        "ar": (
+            "أ.د. أحمد السيد الدقن\n"
+            "أستاذ نظم المعلومات الإدارية — أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تركز اهتماماته البحثية على الذكاء الاصطناعي والتعلم الآلي والحوسبة السحابية والبلوك "
+            "تشين وإنترنت الأشياء واستخراج المعرفة، وله خبرة أكاديمية وبحثية في الأنظمة الذكية "
+            "والتقنيات الناشئة."
+        ),
+    },
+    "kholoud_farag": {
+        "display": "Dr. Kholoud Farag",
+        "catalog_name": "Kholoud Farag",
+        "aliases": ["kholoud", "kholoud farag", "خلود", "خلود فرج", "د خلود"],
+        "en": (
+            "Dr. Kholoud Farag\n"
+            "Faculty Member and Researcher — Faculty of Computers and Information, Sadat Academy for Management Sciences.\n\n"
+            "Dr. Kholoud Farag contributes to teaching and academic research at FCI, supporting "
+            "students through applied computing and information-systems education."
+        ),
+        "ar": (
+            "د. خلود فرج\n"
+            "عضو هيئة تدريس وباحثة — كلية الحاسبات والمعلومات، أكاديمية السادات للعلوم الإدارية.\n\n"
+            "تساهم د. خلود فرج في التدريس والبحث الأكاديمي داخل الكلية، وتدعم الطلاب من خلال "
+            "التعليم التطبيقي في مجالات الحوسبة ونظم المعلومات."
+        ),
+    },
+}
+
+
+INSTRUCTOR_PROFILE_ROLE_MAP: Sequence[tuple[Sequence[str], Sequence[str]]] = [
+    (["who is the dean", "dean of fci", "who runs fci", "who is in charge", "عميد", "عميدة"], ["christina_albert"]),
+    (["who is the vice dean", "vice dean", "وكيل الكلية", "نائب العميد"], ["badria_nabil"]),
+    (["project supervisor", "who supervises buddybot", "who supervised buddybot", "من أشرف على المشروع", "مشرف المشروع"], ["wael_karam"]),
+    (["head of data science", "head of isds", "رئيس قسم علوم البيانات", "رئيس قسم نظم المعلومات"], ["wael_karam"]),
+    (["who teaches big data", "big data instructor", "دكتور big data", "مين بيدرس big data"], ["wael_karam"]),
+    (["who has 29 years", "29 years experience", "most experienced", "خبرة 29"], ["dalia_magdy"]),
+    (
+        ["who teaches digital marketing", "digital marketing instructor", "دكتور digital marketing", "مين بيدرس digital marketing"],
+        ["mostafa_yakoub", "antony_noshy", "kholoud_farag"],
+    ),
+]
+
+
+PROFILE_INTENT_TERMS = [
+    "who is",
+    "who's",
+    "tell me about",
+    "profile",
+    "background",
+    "research",
+    "specialisation",
+    "specialization",
+    "known for",
+    "experience",
+    "من هو",
+    "مين",
+    "عن",
+    "نبذة",
+    "سيرة",
+    "تخصص",
+    "بحث",
+]
+
+
+def profile_alias_norm(value: str) -> str:
+    return normalize_instructor_lookup_name(value)
+
+
+def instructor_profile_keys_for_text(text: str) -> List[str]:
+    lowered = semantic_normalize(text)
+    stripped = lowered.strip(" .?!؟")
+    for phrases, keys in INSTRUCTOR_PROFILE_ROLE_MAP:
+        if any(semantic_normalize(phrase) in lowered for phrase in phrases):
+            return list(keys)
+
+    course_teaching_query = bool(extract_instructor_course_query_name(text)) and not text_has_any(lowered, PROFILE_INTENT_TERMS)
+    if course_teaching_query:
+        return []
+
+    has_profile_intent = text_has_any(lowered, PROFILE_INTENT_TERMS)
+    best_key = ""
+    best_score = 0.0
+    query_norm = profile_alias_norm(text)
+    query_tokens = set(query_norm.split())
+
+    for key, profile in INSTRUCTOR_PROFILE_DATA.items():
+        aliases = [str(profile.get("display") or ""), str(profile.get("catalog_name") or "")]
+        aliases.extend(str(alias) for alias in profile.get("aliases", []) or [])
+        for alias in aliases:
+            alias_norm = profile_alias_norm(alias)
+            if not alias_norm:
+                continue
+            alias_tokens = set(alias_norm.split())
+            score = SequenceMatcher(None, query_norm, alias_norm).ratio()
+            if query_norm == alias_norm or stripped == alias_norm:
+                score = max(score, 1.0)
+            if len(alias_norm) >= 4 and re.search(rf"\b{re.escape(alias_norm)}\b", query_norm):
+                score = max(score, 0.98)
+            if alias_tokens and alias_tokens.issubset(query_tokens):
+                score = max(score, 0.94)
+            # Avoid treating ambiguous first names like "Ahmed" as a full profile request.
+            if len(alias_tokens) == 1 and alias_norm in {"ahmed", "prof", "dr", "doctor", "د", "دكتور"}:
+                score = min(score, 0.2)
+            if score > best_score:
+                best_key = key
+                best_score = score
+
+    if best_key and (best_score >= 0.88 or (has_profile_intent and best_score >= 0.72)):
+        return [best_key]
+    return []
+
+
+def instructor_profile_course_lines(catalog_name: str, arabic: bool = False) -> str:
+    display_name, courses = find_catalog_instructor_courses(catalog_name)
+    if not courses:
+        return (
+            "Courses in the current CSV-backed catalog: not listed."
+            if not arabic
+            else "المقررات في الكتالوج الحالي المعتمد على ملفات CSV: غير مدرجة."
+        )
+
+    label_term = "الفصل الدراسي" if arabic else "Term"
+    lines: List[str] = []
+    for semester in [1, 2]:
+        term_courses = [course for course in courses if int(course.get("semester") or 0) == semester]
+        if not term_courses:
+            continue
+        lines.append(f"{label_term} {semester}:")
+        for course in sorted(term_courses, key=lambda c: (int(c.get("year") or 0), str(c.get("code") or ""))):
+            code = str(course.get("code") or "").upper()
+            name = str(course.get("name") or code).strip()
+            dept = str(course.get("dept") or "").upper()
+            year = str(course.get("year") or "?")
+            lines.append(f"- {name} ({code}) — Year {year}, {dept}")
+
+    if not lines:
+        return f"Courses taught by {display_name}: {len(courses)} course(s) in the current catalog."
+    return "\n".join(lines)
+
+
+def instructor_profile_answer(text: str) -> Optional[str]:
+    keys = instructor_profile_keys_for_text(text)
+    if not keys:
+        return None
+    arabic = contains_arabic(text)
+    answers: List[str] = []
+    for key in keys:
+        profile = INSTRUCTOR_PROFILE_DATA.get(key)
+        if not profile:
+            continue
+        bio = str(profile.get("ar" if arabic else "en") or profile.get("en") or "").strip()
+        courses_header = "المقررات المطابقة في الكتالوج الحالي:" if arabic else "Courses matched from the current CSV-backed catalog:"
+        courses = instructor_profile_course_lines(str(profile.get("catalog_name") or profile.get("display") or ""), arabic)
+        answers.append(f"{bio}\n\n{courses_header}\n{courses}".strip())
+    return "\n\n".join(answers) if answers else None
+
+
+def dispatch_instructor_profile_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker] = None,
+) -> Optional[List[Dict[Text, Any]]]:
+    answer = instructor_profile_answer(text)
+    if not answer:
+        return None
+    keys = instructor_profile_keys_for_text(text)
+    display_name = ", ".join(str(INSTRUCTOR_PROFILE_DATA[key].get("display") or key) for key in keys if key in INSTRUCTOR_PROFILE_DATA)
+    dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+    return [
+        SlotSet("last_query_scope", "knowledge"),
+        SlotSet("last_entity_type", "instructor_profile"),
+        SlotSet("last_topic", display_name or "instructor_profile"),
+        SlotSet("instructor_name", display_name or None),
+    ]
+
+
 def extract_instructor_course_query_name(text: str) -> Optional[str]:
     lowered = normalize_question(text)
     patterns = [
@@ -9025,6 +9354,9 @@ class ActionRagQuery(Action):
             if creator_answer:
                 dispatcher.utter_message(text=creator_answer)
                 return [SlotSet("last_query_scope", "project")]
+            profile_events = dispatch_instructor_profile_answer(dispatcher, user_message, tracker)
+            if profile_events is not None:
+                return profile_events
             catalog_events = dispatch_fci_catalog_answer(dispatcher, user_message, tracker)
             if catalog_events is not None:
                 return catalog_events
@@ -9145,6 +9477,10 @@ class ActionGeneralConversation(Action):
         if creator_answer:
             dispatcher.utter_message(text=creator_answer)
             return [SlotSet("last_query_scope", "project")]
+
+        profile_events = dispatch_instructor_profile_answer(dispatcher, user_message, tracker)
+        if profile_events is not None:
+            return profile_events
 
         catalog_events = dispatch_fci_catalog_answer(dispatcher, user_message, tracker)
         if catalog_events is not None:
@@ -9286,6 +9622,10 @@ class ActionConversationRouter(Action):
         if creator_answer:
             dispatcher.utter_message(text=creator_answer)
             return [SlotSet("last_query_scope", "project")]
+
+        profile_events = dispatch_instructor_profile_answer(dispatcher, user_message, tracker)
+        if profile_events is not None:
+            return profile_events
 
         catalog_events = dispatch_fci_catalog_answer(dispatcher, user_message, tracker)
         if catalog_events is not None:
@@ -9727,6 +10067,10 @@ class ActionTextToSQL(Action):
         ):
             return answer_student_why_followup(dispatcher, tracker.get_slot("student_id"))
 
+        profile_events = dispatch_instructor_profile_answer(dispatcher, user_question, tracker)
+        if profile_events is not None:
+            return profile_events
+
         catalog_events = dispatch_fci_catalog_answer(dispatcher, user_question, tracker)
         if catalog_events is not None:
             return catalog_events
@@ -9904,6 +10248,9 @@ SQL:
             print("Generated SQL:", sql_query)
 
             if not sql_query:
+                profile_events = dispatch_instructor_profile_answer(dispatcher, user_question, tracker)
+                if profile_events is not None:
+                    return profile_events
                 catalog_events = dispatch_fci_catalog_answer(dispatcher, user_question, tracker)
                 if catalog_events is not None:
                     return catalog_events
@@ -9911,6 +10258,9 @@ SQL:
                 return [SlotSet("student_id", message_student_id)] if message_student_id else []
 
             if "DATA_NOT_AVAILABLE" in sql_query.upper():
+                profile_events = dispatch_instructor_profile_answer(dispatcher, user_question, tracker)
+                if profile_events is not None:
+                    return profile_events
                 catalog_events = dispatch_fci_catalog_answer(dispatcher, user_question, tracker)
                 if catalog_events is not None:
                     return catalog_events
@@ -9928,6 +10278,9 @@ SQL:
             columns = cursor_column_names(cursor)
 
             if not rows:
+                profile_events = dispatch_instructor_profile_answer(dispatcher, user_question, tracker)
+                if profile_events is not None:
+                    return profile_events
                 catalog_events = dispatch_fci_catalog_answer(dispatcher, user_question, tracker)
                 if catalog_events is not None:
                     return catalog_events
