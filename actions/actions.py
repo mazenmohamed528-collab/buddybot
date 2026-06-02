@@ -4408,6 +4408,8 @@ CONVERSATION_CONTINUATION_PHRASES = {
     "really",
     "seriously",
     "tell me more",
+    "more details",
+    "details",
     "go on",
     "continue",
     "what else",
@@ -4516,6 +4518,69 @@ def continuation_answer_for_topic(topic: str) -> str:
     return CONVERSATION_TOPIC_REPLIES.get(topic or "", CONVERSATION_TOPIC_REPLIES["general_chat"])
 
 
+INSTRUCTOR_PROFILE_MORE_PHRASES = {
+    "yes",
+    "yeah",
+    "yep",
+    "sure",
+    "of course",
+    "tell me more",
+    "more",
+    "more details",
+    "details",
+    "continue",
+    "go on",
+    "what else",
+}
+
+
+INSTRUCTOR_PROFILE_NO_PHRASES = {"no", "nope", "not really", "i don't think so", "i dont think so"}
+
+
+def dispatch_instructor_profile_continuation_answer(
+    dispatcher: CollectingDispatcher,
+    text: str,
+    tracker: Optional[Tracker],
+) -> Optional[List[Dict[Text, Any]]]:
+    if not tracker:
+        return None
+    if str(tracker.get_slot("last_entity_type") or "").strip() != "instructor_profile":
+        return None
+
+    lowered = semantic_normalize(text).strip(" .?!؟")
+    if lowered in INSTRUCTOR_PROFILE_NO_PHRASES:
+        dispatcher.utter_message(
+            text="No problem. Ask me anytime about their courses, schedule, or any FCI policy."
+        )
+        return [SlotSet("last_query_scope", "chat"), SlotSet("last_conversation_topic", "general_chat")]
+
+    if lowered not in INSTRUCTOR_PROFILE_MORE_PHRASES:
+        return None
+
+    instructor_name = str(tracker.get_slot("instructor_name") or tracker.get_slot("last_topic") or "").strip()
+    if not instructor_name or "," in instructor_name:
+        dispatcher.utter_message(text="Which instructor do you want the course details for?")
+        return [SlotSet("last_query_scope", "course_catalog"), SlotSet("last_clarification_topic", "instructor_courses")]
+
+    display_name, instructor_courses = find_catalog_instructor_courses(instructor_name)
+    if not instructor_courses:
+        dispatcher.utter_message(text=f"I don't have courses listed for {instructor_name} in the current catalog.")
+        return [SlotSet("last_query_scope", "course_catalog")]
+
+    header = f"Courses taught by {display_name}:"
+    page_size = 5
+    events = course_catalog_cache_events(instructor_courses, header, min(page_size, len(instructor_courses)), page_size)
+    events.extend(
+        [
+            SlotSet("instructor_name", display_name),
+            SlotSet("last_topic", display_name),
+            SlotSet("last_entity_type", "instructor"),
+        ]
+    )
+    dispatcher.utter_message(text=format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size))
+    return events
+
+
 def dispatch_conversation_continuation_answer(
     dispatcher: CollectingDispatcher,
     text: str,
@@ -4523,6 +4588,9 @@ def dispatch_conversation_continuation_answer(
 ) -> Optional[List[Dict[Text, Any]]]:
     if not is_conversation_continuation_reply(text):
         return None
+    instructor_profile_events = dispatch_instructor_profile_continuation_answer(dispatcher, text, tracker)
+    if instructor_profile_events is not None:
+        return instructor_profile_events
     topic = ""
     if tracker:
         topic = str(tracker.get_slot("last_conversation_topic") or "").strip()
@@ -6965,6 +7033,29 @@ def dispatch_pending_clarification_answer(
             return clear_events + sql_engine_events(result)
         dispatcher.utter_message(text=SCHEDULE_CLARIFICATION_RESPONSE)
         return [SlotSet("last_clarification_topic", "schedule_filter"), SlotSet("last_query_scope", "schedule")]
+
+    if topic == "instructor_courses":
+        display_name, instructor_courses = find_catalog_instructor_courses(text)
+        if instructor_courses:
+            header = f"Courses taught by {display_name}:"
+            page_size = 5
+            events = course_catalog_cache_events(
+                instructor_courses,
+                header,
+                min(page_size, len(instructor_courses)),
+                page_size,
+            )
+            events.extend(
+                [
+                    SlotSet("instructor_name", display_name),
+                    SlotSet("last_topic", display_name),
+                    SlotSet("last_entity_type", "instructor"),
+                ]
+            )
+            dispatcher.utter_message(text=format_fci_catalog_course_matches(header, instructor_courses, max_results=page_size))
+            return clear_events + events
+        dispatcher.utter_message(text="Which instructor do you want the course details for?")
+        return [SlotSet("last_clarification_topic", "instructor_courses"), SlotSet("last_query_scope", "course_catalog")]
 
     return None
 
