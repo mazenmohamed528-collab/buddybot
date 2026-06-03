@@ -726,6 +726,82 @@
             color: white;
         }
 
+        .message-copy {
+            border: 1px solid #d7e0ea;
+            background: #ffffff;
+            color: #1e4d7b;
+            border-radius: 6px;
+            width: 26px;
+            height: 26px;
+            padding: 0;
+            cursor: pointer;
+            opacity: 0.82;
+            transition: all 0.2s ease;
+            margin-top: 6px;
+            flex-shrink: 0;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            position: relative;
+        }
+
+        .message-copy svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .message:hover .message-copy,
+        .message:focus-within .message-copy {
+            opacity: 1;
+        }
+
+        .message-copy:hover {
+            background: #1e4d7b;
+            color: #ffffff;
+            border-color: #1e4d7b;
+        }
+
+        .message.user .message-copy {
+            order: -1;
+        }
+
+        .message-copy.copied {
+            background: #4ade80;
+            border-color: #4ade80;
+            color: #153f24;
+            opacity: 1;
+        }
+
+        .message-copy::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 5px);
+            right: 0;
+            background: #333;
+            color: #fff;
+            font-size: 10px;
+            line-height: 1;
+            padding: 4px 7px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .message-copy:hover::after,
+        .message-copy:focus-visible::after,
+        .message-copy.copied::after {
+            opacity: 1;
+        }
+
         .policy-chips {
             padding: 8px 12px 4px;
             background: #f8f9fa;
@@ -2388,6 +2464,12 @@
                     Hey! I'm BuddyBot, FCI's campus assistant.
 Ask me about students, GPA, courses, schedules, instructors, FCI policies, official documents, or campus services - in Arabic or English.
                 </div>
+                <button class="message-copy" type="button" onclick="copyChatMessage(this)" aria-label="Copy message" title="Copy" data-tooltip="Copy">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
             </div>
         </div>
         <div class="policy-chips" id="policyChips">
@@ -2496,7 +2578,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
 
         const LOCAL_RASA_URL = "http://127.0.0.1:5005/webhooks/rest/webhook";
         const PRODUCTION_RASA_URL =
-            "https://squeezing-impending-baking.ngrok-free.dev/webhooks/rest/webhook";
+            "https://buddybot-production-f71e.up.railway.app/webhooks/rest/webhook";
 
         function normalizeRasaWebhookUrl(url) {
             const cleaned = (url || "").trim().replace(/\/+$/, "");
@@ -2505,17 +2587,21 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             return cleaned + "/webhooks/rest/webhook";
         }
 
-        const rasaUrlFromQuery = new URLSearchParams(window.location.search).get("rasa");
+        const isLocalSite = (
+            location.hostname === "localhost"
+            || location.hostname === "127.0.0.1"
+            || location.hostname === ""
+        );
+        const rasaUrlFromQuery = normalizeRasaWebhookUrl(new URLSearchParams(window.location.search).get("rasa"));
         if (rasaUrlFromQuery) {
-            localStorage.setItem("bb_rasa_url", normalizeRasaWebhookUrl(rasaUrlFromQuery));
+            localStorage.setItem("bb_rasa_url", rasaUrlFromQuery);
         }
 
-        const STORED_RASA_URL = normalizeRasaWebhookUrl(localStorage.getItem("bb_rasa_url"));
+        const STORED_RASA_URL = isLocalSite ? normalizeRasaWebhookUrl(localStorage.getItem("bb_rasa_url")) : "";
         const RASA_URL = normalizeRasaWebhookUrl(window.BUDDYBOT_RASA_URL)
+            || rasaUrlFromQuery
             || STORED_RASA_URL
-            || ((location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "")
-                ? LOCAL_RASA_URL
-                : PRODUCTION_RASA_URL);
+            || (isLocalSite ? LOCAL_RASA_URL : PRODUCTION_RASA_URL);
         const CHATBOT_TIMEOUT_MS = 30000;
         const CHATBOT_DEFAULT_PLACEHOLDER = "Ask us anything...";
         let activeChatController = null;
@@ -3004,6 +3090,62 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             if (t) t.remove();
         }
 
+        const COPY_ICON_SVG = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>`;
+        const CHECK_ICON_SVG = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>`;
+
+        function resetCopyButton(button) {
+            button.innerHTML = COPY_ICON_SVG;
+            button.classList.remove('copied');
+            button.setAttribute('aria-label', 'Copy message');
+            button.setAttribute('title', 'Copy');
+            button.dataset.tooltip = 'Copy';
+        }
+
+        async function copyChatMessage(button) {
+            const message = button.closest('.message');
+            const content = message ? message.querySelector('.message-content') : null;
+            const text = content ? content.textContent.trim() : '';
+            if (!text) return;
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const temp = document.createElement('textarea');
+                    temp.value = text;
+                    temp.setAttribute('readonly', '');
+                    temp.style.position = 'fixed';
+                    temp.style.left = '-9999px';
+                    document.body.appendChild(temp);
+                    temp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(temp);
+                }
+                button.innerHTML = CHECK_ICON_SVG;
+                button.classList.add('copied');
+                button.setAttribute('aria-label', 'Copied');
+                button.setAttribute('title', 'Copied');
+                button.dataset.tooltip = 'Copied';
+                window.setTimeout(() => {
+                    resetCopyButton(button);
+                }, 1200);
+            } catch (error) {
+                button.setAttribute('aria-label', 'Copy failed');
+                button.setAttribute('title', 'Copy failed');
+                button.dataset.tooltip = 'Copy failed';
+                window.setTimeout(() => {
+                    resetCopyButton(button);
+                }, 1200);
+            }
+        }
+
         function addMessageToChat(text, sender) {
             const messagesContainer = document.getElementById('chatbotMessages');
             const messageDiv = document.createElement('div');
@@ -3013,7 +3155,14 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             contentDiv.className = 'message-content';
             contentDiv.textContent = text;
 
+            const copyButton = document.createElement('button');
+            copyButton.className = 'message-copy';
+            copyButton.type = 'button';
+            resetCopyButton(copyButton);
+            copyButton.addEventListener('click', () => copyChatMessage(copyButton));
+
             messageDiv.appendChild(contentDiv);
+            messageDiv.appendChild(copyButton);
             messagesContainer.appendChild(messageDiv);
 
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
