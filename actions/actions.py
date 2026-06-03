@@ -6298,9 +6298,9 @@ def catalog_exact_title_result(text: str) -> Optional[Dict[str, Any]]:
         return None
 
     phrase = catalog_title_query_phrase(text)
-    header = f"I found these course matches for '{phrase}':"
+    header = f"Course details for '{phrase}':"
     page_size = min(50, len(courses))
-    events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size)
+    events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size, style="detailed")
     events.extend(
         [
             SlotSet("last_topic", phrase),
@@ -6314,7 +6314,7 @@ def catalog_exact_title_result(text: str) -> Optional[Dict[str, Any]]:
             "events": events,
         }
     return {
-        "answer": format_course_brief_matches(header, courses, max_results=page_size),
+        "answer": format_fci_catalog_course_matches(header, courses, max_results=page_size),
         "events": events,
     }
 
