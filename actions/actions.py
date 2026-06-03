@@ -7848,8 +7848,7 @@ ORDER BY room_type, room_name
 
 def fci_gpa_aggregate_sql(question: str) -> str:
     lowered = normalize_question(question)
-    conditions = ["g.semester_gpa IS NOT NULL"]
-    conditions.extend(fci_student_conditions(question, "s", include_student_id=False))
+    conditions = fci_gpa_filter_conditions(question)
 
     if any(word in lowered for word in ["highest", "top", "best", "maximum", "max"]):
         return f"""
@@ -8029,6 +8028,231 @@ def looks_like_gpa_average_question(text: str) -> bool:
     has_gpa = text_has_any(lowered, ["gpa", "cgpa", "معدل", "المعدل", "جي بي اي"])
     has_average = text_has_any(lowered, ["average", "avg", "mean", "متوسط", "المتوسط"])
     return has_gpa and has_average
+
+
+def looks_like_gpa_analysis_question(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    has_gpa = text_has_any(lowered, ["gpa", "cgpa", "معدل", "المعدل", "جي بي اي"])
+    analysis_terms = [
+        "outlier",
+        "outliers",
+        "analysis",
+        "analyze",
+        "analyse",
+        "insight",
+        "insights",
+        "graph",
+        "chart",
+        "plot",
+        "visual",
+        "visualize",
+        "visualise",
+        "highest",
+        "lowest",
+        "top gpa",
+        "bottom gpa",
+        "best gpa",
+        "worst gpa",
+        "unusual",
+        "قيم شاذة",
+        "القيم الشاذة",
+        "شاذ",
+        "تحليل",
+        "حلل",
+        "رسم",
+        "جراف",
+        "اعلى",
+        "أعلى",
+        "اقل",
+        "أقل",
+    ]
+    return (has_gpa and text_has_any(lowered, analysis_terms)) or text_has_any(
+        lowered,
+        ["gpa outlier", "gpa outliers", "outliers regarding the gpa", "gpa analysis"],
+    )
+
+
+def looks_like_gpa_graph_question(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    has_gpa = text_has_any(lowered, ["gpa", "cgpa", "معدل", "المعدل", "جي بي اي"])
+    return has_gpa and text_has_any(
+        lowered,
+        ["graph", "chart", "plot", "visual", "visualize", "visualise", "رسم", "جراف", "مخطط"],
+    )
+
+
+def fci_gpa_filter_conditions(text: str) -> List[str]:
+    conditions = ["g.semester_gpa IS NOT NULL"]
+
+    year_level = fci_extract_year_level(text)
+    if year_level:
+        conditions.append(f"s.current_year = {year_level}")
+
+    semester = fci_extract_semester(text)
+    if semester:
+        conditions.append(f"g.semester = {semester}")
+
+    academic_year = fci_extract_academic_year(text)
+    if academic_year:
+        conditions.append(f"g.academic_year = {academic_year}")
+
+    group_values = fci_group_values_from_text(text)
+    group_conditions = []
+    for group_value in group_values:
+        if group_value == "AI":
+            group_conditions.append("s.group_code LIKE 'AI%'")
+        elif group_value == "ISDS":
+            group_conditions.append("s.group_code IN ('DS', 'ISDS', 'ISDS1', 'ISDS2')")
+        elif group_value == "CS":
+            group_conditions.append("s.group_code = 'CS'")
+        else:
+            group_conditions.append(f"s.group_code = {sql_string(group_value)}")
+    if group_conditions:
+        conditions.append("(" + " OR ".join(group_conditions) + ")")
+
+    department_code = fci_department_code_from_text(text)
+    if department_code and not group_conditions:
+        conditions.append(f"s.dept_code = {sql_string(department_code)}")
+
+    return conditions
+
+
+def fci_gpa_scope_label(text: str) -> str:
+    scope = fci_stats_scope_label(text)
+    parts = [scope]
+    semester = fci_extract_semester(text)
+    if semester:
+        parts.append(f"semester {semester}")
+    academic_year = fci_extract_academic_year(text)
+    if academic_year:
+        parts.append(f"academic year {academic_year}")
+    return ", ".join(part for part in parts if part)
+
+
+def format_gpa_outlier_entry(entry: Dict[str, Any], mean: float) -> str:
+    delta = float(entry["gpa"]) - mean
+    sign = "+" if delta >= 0 else "-"
+    return (
+        f"- {entry['name']} (StudentID {entry['student_id']}), group {entry['group']}, "
+        f"{entry['department']}: GPA {entry['gpa']:.2f} ({sign}{abs(delta):.2f} vs average)"
+    )
+
+
+def fci_gpa_analysis_answer(text: str) -> Optional[str]:
+    arabic = contains_arabic(text)
+    conditions = fci_gpa_filter_conditions(text)
+    sql = f"""
+SELECT TOP 500
+    s.student_id AS StudentID,
+    s.full_name AS FullName,
+    s.group_code AS GroupCode,
+    s.dept_name AS DepartmentName,
+    s.dept_code AS DepartmentCode,
+    g.academic_year AS AcademicYear,
+    g.semester AS Semester,
+    CAST(g.semester_gpa AS FLOAT) AS SemesterGPA
+FROM GPA_Records g
+JOIN v_rasa_students s ON s.student_id = g.student_id
+{fci_where(conditions)}
+ORDER BY s.dept_code, s.group_code, s.full_name, g.academic_year, g.semester
+"""
+    columns, rows = run_fci_stats_sql(sql)
+    if not rows:
+        return None
+
+    by_student: Dict[str, Dict[str, Any]] = {}
+    raw_record_count = 0
+    for row in rows:
+        data = dict(zip(columns, list(row)))
+        gpa = as_float(row_value_case_insensitive(data, "SemesterGPA", "semestergpa"))
+        if gpa is None:
+            continue
+        raw_record_count += 1
+        student_id = str(row_value_case_insensitive(data, "StudentID", "studentid") or "")
+        if not student_id:
+            continue
+        entry = by_student.setdefault(
+            student_id,
+            {
+                "student_id": student_id,
+                "name": format_value(row_value_case_insensitive(data, "FullName", "fullname")),
+                "group": format_value(row_value_case_insensitive(data, "GroupCode", "groupcode")),
+                "department": format_value(row_value_case_insensitive(data, "DepartmentName", "departmentname")),
+                "values": [],
+            },
+        )
+        entry["values"].append(gpa)
+
+    analysed = []
+    for entry in by_student.values():
+        values = entry.get("values") or []
+        if not values:
+            continue
+        analysed.append({**entry, "gpa": sum(values) / len(values)})
+
+    if not analysed:
+        return None
+
+    values = [float(entry["gpa"]) for entry in analysed]
+    count = len(values)
+    mean = sum(values) / count
+    variance = sum((value - mean) ** 2 for value in values) / count if count else 0.0
+    std_dev = variance ** 0.5
+    low_threshold = mean - std_dev
+    high_threshold = mean + std_dev
+    high_outliers = sorted(
+        [entry for entry in analysed if std_dev > 0 and float(entry["gpa"]) >= high_threshold],
+        key=lambda entry: float(entry["gpa"]),
+        reverse=True,
+    )[:5]
+    low_outliers = sorted(
+        [entry for entry in analysed if std_dev > 0 and float(entry["gpa"]) <= low_threshold],
+        key=lambda entry: float(entry["gpa"]),
+    )[:5]
+    top_students = sorted(analysed, key=lambda entry: float(entry["gpa"]), reverse=True)[:3]
+    bottom_students = sorted(analysed, key=lambda entry: float(entry["gpa"]))[:3]
+    scope = fci_gpa_scope_label(text)
+
+    if arabic:
+        lines = [
+            f"تحليل GPA في {scope}:",
+            f"- عدد الطلاب المحللين: {count} طالب.",
+            f"- عدد سجلات GPA المستخدمة: {raw_record_count}.",
+            f"- متوسط GPA: {mean:.2f}.",
+            f"- الانحراف المعياري: {std_dev:.2f}.",
+            f"- النطاق المعتاد تقريباً: {low_threshold:.2f} إلى {high_threshold:.2f}.",
+        ]
+        lines.append("القيم الأعلى من المعتاد:" if high_outliers else "لا توجد قيم عالية شاذة بوضوح؛ أعلى القيم:")
+        for entry in (high_outliers or top_students):
+            lines.append(format_gpa_outlier_entry(entry, mean))
+        lines.append("القيم الأقل من المعتاد:" if low_outliers else "لا توجد قيم منخفضة شاذة بوضوح؛ أقل القيم:")
+        for entry in (low_outliers or bottom_students):
+            lines.append(format_gpa_outlier_entry(entry, mean))
+        if count < 4:
+            lines.append("ملاحظة: عدد الطلاب قليل، لذلك اعتبر النتائج مؤشراً عاماً فقط.")
+        return "\n".join(lines)
+
+    lines = [
+        f"GPA analysis for {scope}:",
+        f"- Students analysed: {count}.",
+        f"- GPA records used: {raw_record_count}.",
+        f"- Average GPA: {mean:.2f}.",
+        f"- Standard deviation: {std_dev:.2f}.",
+        f"- Usual range (about +/- 1 standard deviation): {low_threshold:.2f} to {high_threshold:.2f}.",
+    ]
+    lines.append("Potential high outliers:" if high_outliers else "No clear high outliers; highest GPAs:")
+    for entry in (high_outliers or top_students):
+        lines.append(format_gpa_outlier_entry(entry, mean))
+    lines.append("Potential low outliers:" if low_outliers else "No clear low outliers; lowest GPAs:")
+    for entry in (low_outliers or bottom_students):
+        lines.append(format_gpa_outlier_entry(entry, mean))
+    if count < 4:
+        lines.append("Note: this is a small sample, so treat the outlier labels as directional.")
+    if looks_like_gpa_graph_question(text):
+        lines.append(
+            "Graph note: BuddyBot can calculate the chart data now; drawing an actual chart in the widget needs a small frontend chart renderer."
+        )
+    return "\n".join(lines)
 
 
 def run_fci_stats_sql(sql: str) -> tuple[List[str], List[Any]]:
@@ -8245,10 +8469,21 @@ FROM v_rasa_students s
                 events.append(SlotSet("group_code", group_code))
             return events
 
+        if looks_like_gpa_analysis_question(text):
+            answer = fci_gpa_analysis_answer(text)
+            if not answer:
+                dispatcher.utter_message(text=student_affairs_fallback(text))
+                return [SlotSet("last_query_scope", "database")]
+            dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+            return [
+                SlotSet("last_query_scope", "database"),
+                SlotSet("last_entity_type", "gpa_analysis"),
+                SlotSet("last_topic", text),
+            ]
+
         if looks_like_gpa_average_question(text):
-            scope = fci_stats_scope_label(text)
-            conditions = fci_student_conditions(text, "s", include_student_id=False)
-            conditions.append("g.semester_gpa IS NOT NULL")
+            scope = fci_gpa_scope_label(text)
+            conditions = fci_gpa_filter_conditions(text)
             sql = f"""
 SELECT
     AVG(CAST(g.semester_gpa AS FLOAT)) AS AverageGPA,
