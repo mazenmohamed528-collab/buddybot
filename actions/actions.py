@@ -5875,6 +5875,8 @@ def extract_student_name_lookup_phrase(text: str) -> Optional[str]:
         ],
     ):
         return None
+    if catalog_exact_title_matches(text):
+        return None
 
     trigger_patterns = [
         r"\b(?:show|find|get|check|search)\s+(?:me\s+)?(?:student|profile|record)\s+(.+)$",
@@ -6238,6 +6240,85 @@ def extract_course_info_phrase(text: str) -> Optional[str]:
     return None
 
 
+def catalog_courses_list() -> List[Dict[str, Any]]:
+    if isinstance(COURSES, dict):
+        courses = []
+        for code, course in COURSES.items():
+            if not isinstance(course, dict):
+                continue
+            normalized_course = dict(course)
+            if not normalized_course.get("code") and not normalized_course.get("CourseCode"):
+                normalized_course["code"] = str(code)
+            courses.append(normalized_course)
+        return courses
+    if isinstance(COURSES, list):
+        return [course for course in COURSES if isinstance(course, dict)]
+    return []
+
+
+def normalize_catalog_title(value: str) -> str:
+    normalized = semantic_normalize(value or "")
+    normalized = re.sub(r"\b(?:the|a|an|course|subject|class|lecture|lab)\b", " ", normalized)
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
+    return re.sub(r"\s+", " ", normalized).strip()
+
+
+def catalog_title_query_phrase(text: str) -> str:
+    return extract_course_info_phrase(text) or clean_fci_catalog_phrase(text)
+
+
+def catalog_exact_title_matches(text: str) -> List[Dict[str, Any]]:
+    phrase = catalog_title_query_phrase(text)
+    normalized_phrase = normalize_catalog_title(phrase)
+    if len(normalized_phrase) < 6:
+        return []
+
+    matches = [
+        course
+        for course in catalog_courses_list()
+        if normalize_catalog_title(str(course.get("name") or course.get("CourseName") or "")) == normalized_phrase
+        or normalize_catalog_title(str(course.get("code") or course.get("CourseCode") or "")) == normalized_phrase
+    ]
+    return sorted(
+        matches,
+        key=lambda course: (
+            int(course.get("year") or course.get("CourseYear") or 0),
+            int(course.get("semester") or course.get("CourseSemester") or 0),
+            str(course.get("dept") or course.get("DepartmentCode") or ""),
+            str(course.get("code") or course.get("CourseCode") or ""),
+        ),
+    )
+
+
+def catalog_exact_title_result(text: str) -> Optional[Dict[str, Any]]:
+    if extract_teacher_subject_phrase(text):
+        return None
+    courses = catalog_exact_title_matches(text)
+    if not courses:
+        return None
+
+    phrase = catalog_title_query_phrase(text)
+    header = f"I found these course matches for '{phrase}':"
+    page_size = min(50, len(courses))
+    events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size)
+    events.extend(
+        [
+            SlotSet("last_topic", phrase),
+            SlotSet("last_entity_type", "course"),
+        ]
+    )
+    if len(courses) == 1 and courses[0].get("code"):
+        events.append(SlotSet("course_code", str(courses[0].get("code"))))
+        return {
+            "answer": format_course_answer(str(courses[0].get("code"))),
+            "events": events,
+        }
+    return {
+        "answer": format_course_brief_matches(header, courses, max_results=page_size),
+        "events": events,
+    }
+
+
 def extract_teacher_subject_phrase(text: str) -> Optional[str]:
     lowered = normalize_question(text)
     patterns = [
@@ -6259,6 +6340,8 @@ def is_course_catalog_intent(text: str) -> bool:
     if extract_teacher_subject_phrase(text):
         return True
     if extract_fci_instructor_name(text):
+        return True
+    if catalog_exact_title_matches(text):
         return True
     if fci_department_code_from_text(text) and text_has_any(
         lowered,
@@ -7028,6 +7111,10 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
     if comparison:
         return comparison
 
+    exact_title_result = catalog_exact_title_result(text)
+    if exact_title_result:
+        return exact_title_result
+
     if department_code and looks_like_bare_fci_department_query(text):
         answer = format_department_catalog_answer(department_code)
         if answer:
@@ -7065,20 +7152,43 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 "events": events,
             }
 
+    compact_followup = re.sub(r"[^a-z0-9]+", "", lowered)
     generic_course_followup = bool(
         re.search(r"\b(?:what|which|show|list|give|display)\b.*\b(?:courses|subjects)\b", lowered)
         or re.search(r"\b\d{1,3}\s+(?:courses|subjects)\b", lowered)
         or lowered.strip(" ?.!") in {
             "courses",
+            "course",
             "course list",
             "the courses",
+            "the course",
             "show me the courses",
+            "show me the course",
             "show courses",
+            "show course",
             "show me courses",
+            "show me course",
             "what courses",
+            "which courses",
             "what are the courses",
             "what are the 24 courses",
             "list them",
+        }
+        or compact_followup in {
+            "courses",
+            "course",
+            "thecourses",
+            "thecourse",
+            "showmethecourses",
+            "showmethecourse",
+            "showcourses",
+            "showcourse",
+            "showmecourses",
+            "showmecourse",
+            "whatcourses",
+            "whichcourses",
+            "whatarethecourses",
+            "listthem",
         }
     )
     if not department_code and generic_course_followup and context_department_code and context_entity_type in {"department", "department_comparison", ""}:
@@ -7189,10 +7299,10 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
             ],
         }
 
-    if department_code and text_has_any(
+    if department_code and (generic_course_followup or text_has_any(
         lowered,
         ["courses", "course list", "subjects", "curriculum", "study plan", "مواد", "مقررات", "كورسات"],
-    ):
+    )):
         courses = get_courses_by_dept(department_code)
         if courses:
             header = f"Courses for {department_code}:"
