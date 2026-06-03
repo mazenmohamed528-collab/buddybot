@@ -248,6 +248,36 @@ ADD_DROP_EN_RESPONSE = (
     "📍 FCI, Sadat Academy, Maadi Campus."
 )
 
+REGISTRATION_FREEZE_EN_RESPONSE = (
+    "⏸️ Freezing Your Registration at FCI:\n\n"
+    "You may request to suspend your registration for a semester under these conditions:\n"
+    "- Submit a compelling reason within the approved request window.\n"
+    "- Obtain Faculty Council approval.\n"
+    "- All previously earned grades are preserved.\n\n"
+    "Suspension limits:\n"
+    "- Maximum 2 consecutive semesters, or\n"
+    "- Maximum 4 non-consecutive semesters total throughout your entire study period.\n\n"
+    "⚠️ Suspension periods are not counted toward the time allowed to earn your Bachelor's degree.\n\n"
+    "📍 Submit your request to Student Affairs.\n"
+    "📍 FCI, Sadat Academy, Maadi Campus."
+)
+
+EXAM_APPEAL_EN_RESPONSE = (
+    "📋 How to Appeal Your Exam Result at FCI:\n\n"
+    "You have approximately 2 weeks after results are announced to submit an appeal. "
+    "After that, no appeals are accepted.\n\n"
+    "Steps:\n"
+    "1. Submit a written appeal request to Student Affairs, stating the course and reason clearly.\n"
+    "2. Pay the review fee set by the Academy.\n"
+    "3. Your paper is sent to an independent review committee.\n"
+    "4. The committee's final decision is announced within the set timeframe.\n\n"
+    "Important:\n"
+    "- If an error is found, your grade is corrected and your GPA is recalculated.\n"
+    "- An appeal does not guarantee a grade change; the committee decides.\n"
+    "- Once the appeal window closes, no further objections are accepted.\n\n"
+    "📍 Student Affairs — FCI, Sadat Academy, Maadi Campus."
+)
+
 DOCUMENTS_EN_RESPONSE = (
     "Official student documents are requested through Student Affairs. Common documents include "
     "enrollment certificates, military-service certificates, transcripts, graduation certificates, "
@@ -1006,7 +1036,17 @@ ARABIC_POLICY_ANSWERS: Sequence[Dict[str, Any]] = [
         ),
     },
     {
-        "triggers": ["وقف التسجيل", "تجميد الدراسة", "ايقاف الدراسة", "الانقطاع عن الدراسة"],
+        "triggers": [
+            "وقف التسجيل",
+            "تجميد الدراسة",
+            "ايقاف الدراسة",
+            "الانقطاع عن الدراسة",
+            "ازاي اجمد تسجيلي",
+            "ازاي أجمد تسجيلي",
+            "تجميد التسجيل",
+            "اجمد تسجيلي",
+            "أجمد تسجيلي",
+        ],
         "answer": (
             "يجوز للطالب وقف تسجيله لمدة لا تتجاوز فصلين دراسيين متتاليين بعذر مقبول وبموافقة "
             "مجلس الكلية. لا تتجاوز مدة الوقف الإجمالية أربعة فصول دراسية طوال فترة الدراسة. "
@@ -1015,7 +1055,19 @@ ARABIC_POLICY_ANSWERS: Sequence[Dict[str, Any]] = [
         ),
     },
     {
-        "triggers": ["المواظبة", "الغياب", "انذار الغياب", "نسبة الغياب", "المواظبة وانذار الغياب"],
+        "triggers": [
+            "المواظبة",
+            "الغياب",
+            "انذار الغياب",
+            "نسبة الغياب",
+            "المواظبة وانذار الغياب",
+            "ايه اللي يحصل لو غبت",
+            "ايه اللي يحصل لو عديت نسبة الغياب",
+            "لو غبت اكتر من 25",
+            "لو غبت أكثر من 25",
+            "لو عديت الغياب",
+            "عواقب الغياب",
+        ],
         "answer": (
             "نسبة الغياب المسموح بها هي 25% من إجمالي ساعات المقرر الدراسي. إذا تجاوز الطالب "
             "هذه النسبة:\n"
@@ -1273,6 +1325,10 @@ ARABIC_POLICY_ANSWERS: Sequence[Dict[str, Any]] = [
             "مراجعة الدرجة",
             "اعتراض على الدرجة",
             "تظلم من الامتحان",
+            "ازاي اتظلم من نتيجة",
+            "ازاي أتظلم من نتيجة",
+            "ازاي اتظلم",
+            "طلب تظلم",
         ],
         "answer": (
             "التظلم من نتيجة الامتحان:\n"
@@ -1709,6 +1765,14 @@ def english_hardcoded_topic_answer(question: str) -> Optional[str]:
                 "how many absences",
                 "25 percent rule",
                 "25% rule",
+                "what happens if i exceed absence",
+                "what happens if i exceed the absence limit",
+                "exceed the absence limit",
+                "too many absences",
+                "miss too many classes",
+                "what if i miss",
+                "what if i exceed 25",
+                "absence consequences",
             ],
             ABSENCE_POLICY_EN_RESPONSE,
         ),
@@ -1768,6 +1832,40 @@ def english_hardcoded_topic_answer(question: str) -> Optional[str]:
                 "withdrawal rules",
             ],
             ADD_DROP_EN_RESPONSE,
+        ),
+        (
+            [
+                "how do i freeze my registration",
+                "how to freeze registration",
+                "freeze my enrollment",
+                "freeze my enrolment",
+                "suspend my registration",
+                "stop my registration temporarily",
+                "take a semester off",
+                "take a break from studying",
+                "enrollment freeze",
+                "enrolment freeze",
+                "registration suspension",
+                "can i pause my studies",
+                "can i take a gap semester",
+            ],
+            REGISTRATION_FREEZE_EN_RESPONSE,
+        ),
+        (
+            [
+                "how do i appeal my exam result",
+                "appeal exam result",
+                "how to appeal a grade",
+                "contest my grade",
+                "dispute my exam grade",
+                "my grade is wrong",
+                "i think my grade is incorrect",
+                "exam appeal process",
+                "grade review",
+                "how to review my exam paper",
+                "review my answer sheet",
+            ],
+            EXAM_APPEAL_EN_RESPONSE,
         ),
     ]
     for triggers, answer in priority_policy_map:
@@ -2472,6 +2570,7 @@ def course_catalog_cache_events(
     header: str,
     offset: int,
     page_size: int,
+    style: str = "brief",
 ) -> List[Dict[Text, Any]]:
     return [
         SlotSet("last_query_scope", "course_catalog"),
@@ -2483,6 +2582,7 @@ def course_catalog_cache_events(
                 "operation": "list",
                 "header": header,
                 "page_size": page_size,
+                "style": style,
             },
         ),
         SlotSet("sql_result_offset", offset),
@@ -2521,15 +2621,32 @@ def cached_continuation_result(question: str, tracker: Tracker) -> Optional[Dict
 
         max_results = total - offset if show_all else page_size
         end = min(offset + max_results, total)
-        answer = format_fci_catalog_course_matches(
-            str(plan.get("header") or "Course results:"),
-            rows,
-            max_results=max_results,
-            offset=offset,
-        )
+        header = str(plan.get("header") or "Course results:")
+        style = str(plan.get("style") or "brief")
+        if style == "detailed":
+            answer = format_fci_catalog_course_matches(
+                header,
+                rows,
+                max_results=max_results,
+                offset=offset,
+            )
+        elif style == "teacher":
+            answer = format_teacher_subject_course_matches(
+                header,
+                rows,
+                max_results=max_results,
+                offset=offset,
+            )
+        else:
+            answer = format_course_brief_matches(
+                header,
+                rows,
+                max_results=max_results,
+                offset=offset,
+            )
         if show_all:
             dept_code = ""
-            header_match = re.search(r"\bCourses\s+for\s+([A-Z]{2,4})\b", str(plan.get("header") or ""))
+            header_match = re.search(r"\bCourses\s+for\s+([A-Z]{2,4})\b", header)
             if header_match:
                 dept_code = header_match.group(1).upper()
             elif rows and isinstance(rows[0], dict):
@@ -3015,6 +3132,8 @@ def dispatch_arabic_policy_answer(
     tracker: Optional[Tracker] = None,
 ) -> Optional[List[Dict[Text, Any]]]:
     if not contains_arabic(text):
+        return None
+    if instructor_profile_answer(text):
         return None
     try:
         answer = query_rag_service(text)
@@ -4863,6 +4982,11 @@ def is_gibberish(text: str) -> bool:
         return False
 
     if contains_arabic(stripped):
+        try:
+            if instructor_profile_keys_for_text(stripped):
+                return False
+        except NameError:
+            pass
         if extended_topic_answer(stripped) or arabic_policy_direct_answer(stripped):
             return False
         compact_arabic = re.sub(r"[^\u0621-\u063a\u0641-\u064a]", "", stripped)
@@ -6189,10 +6313,45 @@ def format_fci_catalog_course_matches(
     return "\n\n".join(part for part in parts if part)
 
 
-def format_instructor_course_brief_matches(
+def format_course_brief_matches(
     header: str,
     courses: Sequence[Dict[str, Any]],
-    max_results: int = 20,
+    max_results: int = 50,
+    offset: int = 0,
+    include_department: bool = True,
+) -> str:
+    total = len(courses)
+    start_index = max(offset, 0)
+    end_index = min(start_index + max_results, total)
+    shown = courses[start_index:end_index]
+    parts = [header]
+    if total:
+        if start_index == 0 and end_index >= total:
+            parts.append(f"Showing all {total} courses.")
+        else:
+            parts.append(f"Showing courses {start_index + 1}-{end_index} of {total}.")
+    for course in shown:
+        code = str(course.get("code") or course.get("CourseCode") or "").upper()
+        name = str(course.get("name") or course.get("CourseName") or code).strip()
+        dept = str(course.get("dept") or course.get("DepartmentCode") or "").upper()
+        year = str(course.get("year") or course.get("CourseYear") or "?")
+        semester = str(course.get("semester") or course.get("CourseSemester") or "?")
+        credits = str(course.get("credit_hours") or course.get("CreditHours") or "").strip()
+        meta = [f"Year {year}", f"Semester {semester}"]
+        if include_department and dept:
+            meta.append(dept)
+        if credits:
+            meta.append(f"{credits} credit hours")
+        parts.append(f"- {name} ({code}) — {', '.join(meta)}")
+    if end_index < total:
+        parts.append('Say "next" or "show more" to continue.')
+    return "\n".join(part for part in parts if part)
+
+
+def format_teacher_subject_course_matches(
+    header: str,
+    courses: Sequence[Dict[str, Any]],
+    max_results: int = 50,
     offset: int = 0,
 ) -> str:
     total = len(courses)
@@ -6201,17 +6360,36 @@ def format_instructor_course_brief_matches(
     shown = courses[start_index:end_index]
     parts = [header]
     if total:
-        parts.append(f"Showing courses {start_index + 1}-{end_index} of {total}.")
+        if start_index == 0 and end_index >= total:
+            parts.append(f"Showing all {total} matching courses.")
+        else:
+            parts.append(f"Showing courses {start_index + 1}-{end_index} of {total}.")
     for course in shown:
-        code = str(course.get("code") or "").upper()
-        name = str(course.get("name") or code).strip()
-        dept = str(course.get("dept") or "").upper()
-        year = str(course.get("year") or "?")
-        semester = str(course.get("semester") or "?")
-        parts.append(f"- {name} ({code}) — Year {year}, Semester {semester}, {dept}")
+        code = str(course.get("code") or course.get("CourseCode") or "").upper()
+        name = str(course.get("name") or course.get("CourseName") or code).strip()
+        dept = str(course.get("dept") or course.get("DepartmentCode") or "").upper()
+        year = str(course.get("year") or course.get("CourseYear") or "?")
+        instructors = [str(item).strip() for item in course.get("instructors", []) or [] if str(item).strip()]
+        taught_by = ", ".join(instructors) if instructors else "not listed"
+        parts.append(f"- {name} ({code}) — Year {year}, {dept}; taught by: {taught_by}")
     if end_index < total:
         parts.append('Say "next" or "show more" to continue.')
     return "\n".join(part for part in parts if part)
+
+
+def format_instructor_course_brief_matches(
+    header: str,
+    courses: Sequence[Dict[str, Any]],
+    max_results: int = 20,
+    offset: int = 0,
+) -> str:
+    return format_course_brief_matches(
+        header,
+        courses,
+        max_results=max_results,
+        offset=offset,
+        include_department=True,
+    )
 
 
 def rank_fci_catalog_courses(query: str, courses: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -6589,8 +6767,31 @@ def instructor_profile_keys_for_text(text: str) -> List[str]:
     return []
 
 
-def instructor_profile_course_lines(catalog_name: str, arabic: bool = False) -> str:
+def filter_courses_by_subject_phrase(courses: Sequence[Dict[str, Any]], subject: str) -> List[Dict[str, Any]]:
+    query = clean_fci_catalog_phrase(subject)
+    normalized_query = semantic_normalize(query)
+    if not normalized_query:
+        return list(courses)
+    tokens = [
+        token
+        for token in re.findall(r"[a-z0-9\u0600-\u06ff]+", normalized_query)
+        if token not in {"course", "courses", "subject", "subjects", "class", "the", "a", "an"}
+    ]
+    filtered: List[Dict[str, Any]] = []
+    for course in courses:
+        name = semantic_normalize(str(course.get("name") or course.get("CourseName") or ""))
+        code = semantic_normalize(str(course.get("code") or course.get("CourseCode") or ""))
+        keywords = " ".join(semantic_normalize(str(keyword)) for keyword in course.get("keywords", []) or [])
+        searchable = f"{name} {code} {keywords}".strip()
+        if normalized_query in searchable or (tokens and all(token in searchable for token in tokens)):
+            filtered.append(course)
+    return filtered
+
+
+def instructor_profile_course_lines(catalog_name: str, arabic: bool = False, subject: str = "") -> str:
     display_name, courses = find_catalog_instructor_courses(catalog_name)
+    if subject:
+        courses = filter_courses_by_subject_phrase(courses, subject)
     if not courses:
         return (
             "Courses in the current catalog: not listed."
@@ -6646,6 +6847,7 @@ def instructor_profile_answer(text: str) -> Optional[str]:
         return None
     arabic = contains_arabic(text)
     include_courses = instructor_profile_should_include_courses(text)
+    requested_subject = extract_teacher_subject_phrase(text) if include_courses else None
     answers: List[str] = []
     for key in keys:
         profile = INSTRUCTOR_PROFILE_DATA.get(key)
@@ -6653,8 +6855,15 @@ def instructor_profile_answer(text: str) -> Optional[str]:
             continue
         bio = str(profile.get("ar" if arabic else "en") or profile.get("en") or "").strip()
         if include_courses:
-            courses_header = "المقررات المطابقة في الكتالوج الحالي:" if arabic else "Courses matched from the current catalog:"
-            courses = instructor_profile_course_lines(str(profile.get("catalog_name") or profile.get("display") or ""), arabic)
+            if requested_subject:
+                courses_header = f"يدرس مقررات مطابقة لـ {requested_subject}:" if arabic else f"Teaches {requested_subject} in:"
+            else:
+                courses_header = "المقررات المطابقة في الكتالوج الحالي:" if arabic else "Courses taught:"
+            courses = instructor_profile_course_lines(
+                str(profile.get("catalog_name") or profile.get("display") or ""),
+                arabic,
+                requested_subject or "",
+            )
             answers.append(f"{bio}\n\n{courses_header}\n{courses}".strip())
         else:
             answers.append(bio)
@@ -6701,6 +6910,8 @@ def extract_bare_instructor_candidate(text: str) -> Optional[str]:
     stripped = re.sub(r"\s+", " ", (text or "").strip(" ?.!/")).strip()
     lowered = semantic_normalize(stripped)
     if not stripped or contains_arabic(stripped) or fci_department_code_from_text(stripped):
+        return None
+    if extract_student_name_lookup_phrase(stripped):
         return None
     if lowered in {"sadat academy", "buddybot"} or lowered.startswith(("what ", "who ", "show ", "list ", "tell ", "give ")):
         return None
@@ -6874,7 +7085,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         courses = get_courses_by_dept(context_department_code)
         if courses:
             header = f"Courses for {context_department_code}:"
-            page_size = 5
+            page_size = min(50, len(courses))
             events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size)
             events.extend(
                 [
@@ -6884,7 +7095,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, courses, max_results=page_size),
+                "answer": format_course_brief_matches(header, courses, max_results=page_size),
                 "events": events,
             }
 
@@ -6985,7 +7196,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         courses = get_courses_by_dept(department_code)
         if courses:
             header = f"Courses for {department_code}:"
-            page_size = 5
+            page_size = min(50, len(courses))
             events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size)
             events.extend(
                 [
@@ -6995,7 +7206,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 ]
             )
             return {
-                "answer": format_fci_catalog_course_matches(header, courses, max_results=page_size),
+                "answer": format_course_brief_matches(header, courses, max_results=page_size),
                 "events": events,
             }
 
@@ -7003,9 +7214,9 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
     if teacher_subject:
         courses = rank_fci_catalog_courses(teacher_subject, find_courses_by_keyword(teacher_subject))
         if courses:
-            header = f"I found these matching courses for '{teacher_subject}':"
-            page_size = 5
-            events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size)
+            header = f"Instructors teaching courses matching '{teacher_subject}':"
+            page_size = min(50, len(courses))
+            events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size, style="teacher")
             events.extend(
                 [
                     SlotSet("last_topic", teacher_subject),
@@ -7015,7 +7226,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
             if len(courses) == 1 and courses[0].get("code"):
                 events.append(SlotSet("course_code", str(courses[0].get("code"))))
             return {
-                "answer": format_fci_catalog_course_matches(header, courses, max_results=page_size),
+                "answer": format_teacher_subject_course_matches(header, courses, max_results=page_size),
                 "events": events,
             }
         display_name, instructor_courses = find_catalog_instructor_courses(teacher_subject)
@@ -7087,7 +7298,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         courses = rank_fci_catalog_courses(phrase, find_courses_by_keyword(phrase))
         if courses:
             header = f"I found these course matches for '{phrase}':"
-            page_size = 5
+            page_size = min(50, len(courses))
             events = course_catalog_cache_events(courses, header, min(page_size, len(courses)), page_size)
             events.extend(
                 [
@@ -7097,8 +7308,12 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
             )
             if len(courses) == 1 and courses[0].get("code"):
                 events.append(SlotSet("course_code", str(courses[0].get("code"))))
+                return {
+                    "answer": format_course_answer(str(courses[0].get("code"))),
+                    "events": events,
+                }
             return {
-                "answer": format_fci_catalog_course_matches(header, courses, max_results=page_size),
+                "answer": format_course_brief_matches(header, courses, max_results=page_size),
                 "events": events,
             }
 
