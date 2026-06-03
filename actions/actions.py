@@ -8081,6 +8081,43 @@ def looks_like_gpa_graph_question(text: str) -> bool:
     )
 
 
+def looks_like_gpa_analysis_followup(text: str) -> bool:
+    lowered = semantic_normalize(text).strip(" .?!؟")
+    return text_has_any(
+        lowered,
+        [
+            "outlier",
+            "outliers",
+            "what is the outlier",
+            "what are the outliers",
+            "analysis",
+            "analyze",
+            "analyse",
+            "insight",
+            "insights",
+            "graph",
+            "chart",
+            "plot",
+            "highest",
+            "lowest",
+            "top",
+            "bottom",
+            "unusual",
+            "قيم شاذة",
+            "القيم الشاذة",
+            "شاذ",
+            "تحليل",
+            "حلل",
+            "رسم",
+            "جراف",
+            "اعلى",
+            "أعلى",
+            "اقل",
+            "أقل",
+        ],
+    )
+
+
 def fci_gpa_filter_conditions(text: str) -> List[str]:
     conditions = ["g.semester_gpa IS NOT NULL"]
 
@@ -8394,9 +8431,25 @@ def dispatch_fci_stats_followup_answer(
     text: str,
     tracker: Optional[Tracker],
 ) -> Optional[List[Dict[Text, Any]]]:
-    if not tracker or not is_stats_list_followup(text):
+    if not tracker:
         return None
     last_entity_type = str(tracker.get_slot("last_entity_type") or "").strip()
+    if last_entity_type in {"gpa_average", "gpa_analysis"} and looks_like_gpa_analysis_followup(text):
+        previous_topic = str(tracker.get_slot("last_topic") or "").strip()
+        analysis_question = f"{previous_topic} {text}".strip() if previous_topic else f"gpa {text}"
+        answer = fci_gpa_analysis_answer(analysis_question)
+        if not answer:
+            dispatcher.utter_message(text=student_affairs_fallback(text))
+            return [SlotSet("last_query_scope", "database")]
+        dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+        return [
+            SlotSet("last_query_scope", "database"),
+            SlotSet("last_entity_type", "gpa_analysis"),
+            SlotSet("last_topic", analysis_question),
+        ]
+
+    if not is_stats_list_followup(text):
+        return None
     if last_entity_type == "instructor_count":
         return dispatch_instructor_list_answer(dispatcher, text, tracker)
     if last_entity_type == "student_count":
@@ -8505,7 +8558,18 @@ JOIN v_rasa_students s ON s.student_id = g.student_id
                 else f"The average GPA in {scope} is {average}, based on {count} student records."
             )
             dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
-            return [SlotSet("last_query_scope", "database"), SlotSet("last_entity_type", "gpa_average")]
+            events: List[Dict[Text, Any]] = [
+                SlotSet("last_query_scope", "database"),
+                SlotSet("last_entity_type", "gpa_average"),
+                SlotSet("last_topic", text),
+            ]
+            department_code = fci_department_code_from_text(text)
+            group_code = fci_extract_group_code(text)
+            if department_code:
+                events.append(SlotSet("department_code", department_code))
+            if group_code:
+                events.append(SlotSet("group_code", group_code))
+            return events
 
     except Exception as exc:
         print(f"FCI stats answer failed: {exc}", file=sys.stderr)
