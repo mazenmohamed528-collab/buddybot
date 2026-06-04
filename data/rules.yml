@@ -91,15 +91,15 @@ rules:
 - rule: handle bot status
   steps:
   - intent: ask_bot_status
-  - action: utter_bot_status
+  - action: action_conversation_router
 - rule: handle conversation opener
   steps:
   - intent: conversation_opener
-  - action: utter_conversation_opener
+  - action: action_conversation_router
 - rule: handle how are you small talk
   steps:
   - intent: small_talk_how_are_you
-  - action: utter_small_talk_how_are_you
+  - action: action_conversation_router
 - rule: explain bot identity
   steps:
   - intent: ask_bot_identity

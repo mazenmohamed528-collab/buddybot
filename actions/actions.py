@@ -6586,20 +6586,64 @@ def find_catalog_instructor_courses(name: str) -> tuple[str, List[Dict[str, Any]
     return display_name, []
 
 
-def catalog_instructor_count() -> int:
-    return len(known_catalog_instructor_names())
+def catalog_instructor_names_for_department(department_code: Optional[str] = None) -> List[str]:
+    dept_code = str(department_code or "").upper().strip()
+    if not dept_code:
+        return known_catalog_instructor_names()
+
+    names: List[str] = []
+    for course in catalog_courses_list():
+        course_dept = str(course.get("dept") or course.get("DepartmentCode") or "").upper().strip()
+        if course_dept != dept_code:
+            continue
+        for instructor in course.get("instructors", []) or []:
+            instructor_name = str(instructor).strip()
+            if instructor_name and instructor_name not in names:
+                names.append(instructor_name)
+    return names
 
 
-def format_catalog_instructor_list_answer(text: str) -> Optional[str]:
-    names = sorted(known_catalog_instructor_names(), key=lambda value: semantic_normalize(value))
+def catalog_instructor_count(department_code: Optional[str] = None) -> int:
+    return len(catalog_instructor_names_for_department(department_code))
+
+
+def instructor_department_code_from_text_or_context(text: str, tracker: Optional[Tracker] = None) -> Optional[str]:
+    department_code = fci_department_code_from_text(text)
+    if department_code:
+        return department_code
+    if not tracker:
+        return None
+    if str(tracker.get_slot("last_entity_type") or "").strip() != "instructor_count":
+        return None
+    return fci_department_code_from_text(str(tracker.get_slot("last_topic") or ""))
+
+
+def department_display_name(department_code: Optional[str]) -> str:
+    dept_code = str(department_code or "").upper().strip()
+    if not dept_code:
+        return "FCI"
+    department = get_department(dept_code) if get_department else None
+    return str((department or {}).get("name") or dept_code)
+
+
+def format_catalog_instructor_list_answer(text: str, department_code: Optional[str] = None) -> Optional[str]:
+    names = sorted(catalog_instructor_names_for_department(department_code), key=lambda value: semantic_normalize(value))
     if not names:
         return None
     arabic = contains_arabic(text)
-    lines = [
-        f"يوجد {len(names)} عضو هيئة تدريس/مدرس في كتالوج مقررات FCI الحالي:"
-        if arabic
-        else f"There are {len(names)} instructors/teaching staff members in the current FCI course catalog:"
-    ]
+    if department_code:
+        department_name = department_display_name(department_code)
+        lines = [
+            f"يوجد {len(names)} عضو هيئة تدريس/مدرس يدرسون مقررات {department_name}:"
+            if arabic
+            else f"There are {len(names)} instructors/teaching staff members teaching {department_name} courses:"
+        ]
+    else:
+        lines = [
+            f"يوجد {len(names)} عضو هيئة تدريس/مدرس مسجلين لمقررات FCI:"
+            if arabic
+            else f"There are {len(names)} instructors/teaching staff members listed for FCI courses:"
+        ]
     lines.extend(f"- {name}" for name in names)
     return "\n".join(lines)
 
@@ -8396,14 +8440,18 @@ def dispatch_instructor_list_answer(
     text: str,
     tracker: Optional[Tracker] = None,
 ) -> List[Dict[Text, Any]]:
-    catalog_answer = format_catalog_instructor_list_answer(text)
+    department_code = instructor_department_code_from_text_or_context(text, tracker)
+    catalog_answer = format_catalog_instructor_list_answer(text, department_code)
     if catalog_answer:
         dispatcher.utter_message(text=with_duplicate_prompt(catalog_answer, text, tracker))
-        return [
+        events: List[Dict[Text, Any]] = [
             SlotSet("last_query_scope", "course_catalog"),
             SlotSet("last_entity_type", "instructor_list"),
-            SlotSet("last_topic", "instructors"),
+            SlotSet("last_topic", f"instructors {department_code}" if department_code else "instructors"),
         ]
+        if department_code:
+            events.append(SlotSet("department_code", department_code))
+        return events
 
     sql = """
 SELECT DISTINCT TOP 100
@@ -8502,19 +8550,28 @@ def dispatch_fci_stats_answer(
             if list_query:
                 return dispatch_instructor_list_answer(dispatcher, text, tracker)
 
-            catalog_count = catalog_instructor_count()
+            department_code = fci_department_code_from_text(text)
+            catalog_count = catalog_instructor_count(department_code)
             if catalog_count:
+                department_name = department_display_name(department_code)
                 answer = (
-                    f"يوجد {catalog_count} عضو هيئة تدريس/مدرس في كتالوج مقررات FCI الحالي."
+                    f"يوجد {catalog_count} عضو هيئة تدريس/مدرس يدرسون مقررات {department_name}."
                     if arabic
-                    else f"There are {catalog_count} instructors/teaching staff members in the current FCI course catalog."
+                    else (
+                        f"There are {catalog_count} instructors/teaching staff members teaching {department_name} courses."
+                        if department_code
+                        else f"There are {catalog_count} instructors/teaching staff members listed for FCI courses."
+                    )
                 )
                 dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
-                return [
+                events: List[Dict[Text, Any]] = [
                     SlotSet("last_query_scope", "course_catalog"),
                     SlotSet("last_entity_type", "instructor_count"),
-                    SlotSet("last_topic", "instructors"),
+                    SlotSet("last_topic", f"instructors {department_code}" if department_code else "instructors"),
                 ]
+                if department_code:
+                    events.append(SlotSet("department_code", department_code))
+                return events
 
             sql = """
 SELECT COUNT(DISTINCT full_name) AS InstructorCount
