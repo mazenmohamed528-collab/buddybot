@@ -6373,6 +6373,88 @@ def format_department_catalog_answer(dept_code: str) -> Optional[str]:
     return "\n".join(line for line in lines if line)
 
 
+def looks_like_department_analysis_query(text: str) -> bool:
+    lowered = semantic_normalize(text)
+    if not fci_department_code_from_text(text):
+        return False
+    return text_has_any(
+        lowered,
+        [
+            "analysis",
+            "analyze",
+            "analyse",
+            "insights",
+            "summary",
+            "overview",
+            "report",
+            "statistics",
+            "stats",
+            "تحليل",
+            "احصائيات",
+            "إحصائيات",
+            "ملخص",
+            "تقرير",
+        ],
+    )
+
+
+def format_department_analysis_answer(dept_code: str, text: str) -> Optional[str]:
+    if not get_department:
+        return format_department_catalog_answer(dept_code)
+    department = get_department(dept_code)
+    if not department:
+        return None
+
+    department_name = str(department.get("name") or dept_code)
+    courses = get_courses_by_dept(dept_code) if get_courses_by_dept else []
+    instructor_count = catalog_instructor_count(dept_code)
+    student_count = ""
+    average_gpa = ""
+    gpa_count = ""
+
+    try:
+        columns, rows = run_fci_stats_sql(
+            f"SELECT COUNT(*) AS StudentCount FROM v_rasa_students s WHERE s.dept_code = {sql_string(dept_code)}"
+        )
+        if rows:
+            student_count = format_value(rows[0][0])
+    except Exception:
+        student_count = ""
+
+    try:
+        columns, rows = run_fci_stats_sql(
+            f"""
+SELECT
+    AVG(CAST(g.semester_gpa AS FLOAT)) AS AverageGPA,
+    COUNT(DISTINCT s.student_id) AS StudentCount
+FROM GPA_Records g
+JOIN v_rasa_students s ON s.student_id = g.student_id
+WHERE s.dept_code = {sql_string(dept_code)}
+  AND g.semester_gpa IS NOT NULL
+"""
+        )
+        if rows:
+            average_gpa = format_value(rows[0][0])
+            gpa_count = format_value(rows[0][1])
+    except Exception:
+        average_gpa = ""
+        gpa_count = ""
+
+    description = str(department.get("description") or "").strip()
+    lines = [f"{department_name} ({dept_code}) — quick analysis:"]
+    if description:
+        lines.append(description)
+    lines.append(f"- Major courses in catalog: {len(courses)}.")
+    if student_count:
+        lines.append(f"- Student records: {student_count}.")
+    if average_gpa and average_gpa != "not recorded":
+        lines.append(f"- Average GPA: {average_gpa} based on {gpa_count or 'available'} student records.")
+    if instructor_count:
+        lines.append(f"- Teaching staff linked to this department's courses: {instructor_count}.")
+    lines.append("Ask for the courses, GPA outliers, student list, or instructors if you want a deeper breakdown.")
+    return "\n".join(lines)
+
+
 def format_fci_catalog_course_matches(
     header: str,
     courses: Sequence[Dict[str, Any]],
@@ -6443,6 +6525,14 @@ def format_teacher_subject_course_matches(
     end_index = min(start_index + max_results, total)
     shown = courses[start_index:end_index]
     parts = [header]
+    unique_instructors: List[str] = []
+    for course in courses:
+        for instructor in course.get("instructors", []) or []:
+            name = str(instructor).strip()
+            if name and name not in unique_instructors:
+                unique_instructors.append(name)
+    if unique_instructors:
+        parts.append("Instructors: " + ", ".join(unique_instructors) + ".")
     if total:
         if start_index == 0 and end_index >= total:
             parts.append(f"Showing all {total} matching courses.")
@@ -6835,12 +6925,7 @@ INSTRUCTOR_PROFILE_ROLE_MAP: Sequence[tuple[Sequence[str], Sequence[str]]] = [
     (["who is the vice dean", "vice dean", "وكيل الكلية", "نائب العميد"], ["badria_nabil"]),
     (["project supervisor", "who supervises buddybot", "who supervised buddybot", "من أشرف على المشروع", "مشرف المشروع"], ["wael_karam"]),
     (["head of data science", "head of isds", "رئيس قسم علوم البيانات", "رئيس قسم نظم المعلومات"], ["wael_karam"]),
-    (["who teaches big data", "big data instructor", "دكتور big data", "مين بيدرس big data"], ["wael_karam"]),
     (["who has 29 years", "29 years experience", "most experienced", "خبرة 29"], ["dalia_magdy"]),
-    (
-        ["who teaches digital marketing", "digital marketing instructor", "دكتور digital marketing", "مين بيدرس digital marketing"],
-        ["mostafa_yakoub", "antony_noshy", "kholoud_farag"],
-    ),
 ]
 
 
@@ -7048,6 +7133,8 @@ def extract_instructor_course_query_name(text: str) -> Optional[str]:
         match = re.search(pattern, lowered, flags=re.I)
         if match:
             candidate = re.sub(r"[?.!]+$", "", match.group(1)).strip()
+            if semantic_normalize(candidate) in {"he", "she", "him", "her", "they", "them", "his", "their", "that instructor"}:
+                return None
             return candidate or None
     return None
 
@@ -7173,6 +7260,19 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
     comparison = department_comparison_result(text)
     if comparison:
         return comparison
+
+    if department_code and looks_like_department_analysis_query(text):
+        answer = format_department_analysis_answer(department_code, text)
+        if answer:
+            return {
+                "answer": answer,
+                "events": [
+                    SlotSet("last_query_scope", "course_catalog"),
+                    SlotSet("department_code", department_code),
+                    SlotSet("last_topic", department_code),
+                    SlotSet("last_entity_type", "department_analysis"),
+                ],
+            }
 
     exact_title_result = catalog_exact_title_result(text)
     if exact_title_result:
