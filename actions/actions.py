@@ -663,6 +663,7 @@ TYPO_NORMALIZATIONS = {
     "sciencs": "science",
     "scienc": "science",
     "scinece": "science",
+    "deqn": "dean",
     "enginering": "engineering",
     "softwar": "software",
     "securty": "security",
@@ -6585,6 +6586,24 @@ def find_catalog_instructor_courses(name: str) -> tuple[str, List[Dict[str, Any]
     return display_name, []
 
 
+def catalog_instructor_count() -> int:
+    return len(known_catalog_instructor_names())
+
+
+def format_catalog_instructor_list_answer(text: str) -> Optional[str]:
+    names = sorted(known_catalog_instructor_names(), key=lambda value: semantic_normalize(value))
+    if not names:
+        return None
+    arabic = contains_arabic(text)
+    lines = [
+        f"يوجد {len(names)} عضو هيئة تدريس/مدرس في كتالوج مقررات FCI الحالي:"
+        if arabic
+        else f"There are {len(names)} instructors/teaching staff members in the current FCI course catalog:"
+    ]
+    lines.extend(f"- {name}" for name in names)
+    return "\n".join(lines)
+
+
 INSTRUCTOR_PROFILE_DATA: Dict[str, Dict[str, Any]] = {
     "antony_noshy": {
         "display": "Dr. Antony Noshy",
@@ -8377,6 +8396,15 @@ def dispatch_instructor_list_answer(
     text: str,
     tracker: Optional[Tracker] = None,
 ) -> List[Dict[Text, Any]]:
+    catalog_answer = format_catalog_instructor_list_answer(text)
+    if catalog_answer:
+        dispatcher.utter_message(text=with_duplicate_prompt(catalog_answer, text, tracker))
+        return [
+            SlotSet("last_query_scope", "course_catalog"),
+            SlotSet("last_entity_type", "instructor_list"),
+            SlotSet("last_topic", "instructors"),
+        ]
+
     sql = """
 SELECT DISTINCT TOP 100
     title AS InstructorTitle,
@@ -8473,6 +8501,20 @@ def dispatch_fci_stats_answer(
             )
             if list_query:
                 return dispatch_instructor_list_answer(dispatcher, text, tracker)
+
+            catalog_count = catalog_instructor_count()
+            if catalog_count:
+                answer = (
+                    f"يوجد {catalog_count} عضو هيئة تدريس/مدرس في كتالوج مقررات FCI الحالي."
+                    if arabic
+                    else f"There are {catalog_count} instructors/teaching staff members in the current FCI course catalog."
+                )
+                dispatcher.utter_message(text=with_duplicate_prompt(answer, text, tracker))
+                return [
+                    SlotSet("last_query_scope", "course_catalog"),
+                    SlotSet("last_entity_type", "instructor_count"),
+                    SlotSet("last_topic", "instructors"),
+                ]
 
             sql = """
 SELECT COUNT(DISTINCT full_name) AS InstructorCount
