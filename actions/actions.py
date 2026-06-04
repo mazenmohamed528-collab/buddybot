@@ -6407,7 +6407,6 @@ def format_department_analysis_answer(dept_code: str, text: str) -> Optional[str
 
     department_name = str(department.get("name") or dept_code)
     courses = get_courses_by_dept(dept_code) if get_courses_by_dept else []
-    instructor_count = catalog_instructor_count(dept_code)
     student_count = ""
     average_gpa = ""
     gpa_count = ""
@@ -6449,9 +6448,10 @@ WHERE s.dept_code = {sql_string(dept_code)}
         lines.append(f"- Student records: {student_count}.")
     if average_gpa and average_gpa != "not recorded":
         lines.append(f"- Average GPA: {average_gpa} based on {gpa_count or 'available'} student records.")
-    if instructor_count:
-        lines.append(f"- Teaching staff linked to this department's courses: {instructor_count}.")
-    lines.append("Ask for the courses, GPA outliers, student list, or instructors if you want a deeper breakdown.")
+    lines.append(
+        "Note: course schedules list teaching staff per course, but they do not prove official department membership."
+    )
+    lines.append("Ask for the courses, GPA outliers, student list, or course teachers if you want a deeper breakdown.")
     return "\n".join(lines)
 
 
@@ -6724,10 +6724,15 @@ def format_catalog_instructor_list_answer(text: str, department_code: Optional[s
     if department_code:
         department_name = department_display_name(department_code)
         lines = [
-            f"يوجد {len(names)} عضو هيئة تدريس/مدرس يدرسون مقررات {department_name}:"
+            f"يوجد {len(names)} اسمًا مذكورًا كمدرسين/معيدين على مقررات {department_name}:"
             if arabic
-            else f"There are {len(names)} instructors/teaching staff members teaching {department_name} courses:"
+            else f"There are {len(names)} names listed as teaching staff on {department_name} courses:"
         ]
+        lines.append(
+            "هذه قائمة مقررات، وليست تعدادًا رسميًا لأعضاء القسم."
+            if arabic
+            else "This is course-teacher coverage, not an official department staff count."
+        )
     else:
         lines = [
             f"يوجد {len(names)} عضو هيئة تدريس/مدرس مسجلين لمقررات FCI:"
@@ -8655,10 +8660,10 @@ def dispatch_fci_stats_answer(
             if catalog_count:
                 department_name = department_display_name(department_code)
                 answer = (
-                    f"يوجد {catalog_count} عضو هيئة تدريس/مدرس يدرسون مقررات {department_name}."
+                    f"يوجد {catalog_count} اسمًا مذكورًا كمدرسين/معيدين على مقررات {department_name}. هذه ليست قائمة رسمية بأعضاء القسم."
                     if arabic
                     else (
-                        f"There are {catalog_count} instructors/teaching staff members teaching {department_name} courses."
+                        f"There are {catalog_count} names listed as teaching staff on {department_name} courses. This is not an official department staff count."
                         if department_code
                         else f"There are {catalog_count} instructors/teaching staff members listed for FCI courses."
                     )
