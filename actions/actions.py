@@ -3448,6 +3448,17 @@ def text_has_any(text: str, terms: Sequence[str]) -> bool:
     return any(term in text for term in terms)
 
 
+def text_has_any_whole_term(text: str, terms: Sequence[str]) -> bool:
+    for term in terms:
+        cleaned = str(term or "").strip()
+        if not cleaned:
+            continue
+        pattern = r"(?<![a-z0-9\u0600-\u06ff])" + re.escape(cleaned) + r"(?![a-z0-9\u0600-\u06ff])"
+        if re.search(pattern, text):
+            return True
+    return False
+
+
 def has_fci_lookup_verb(text: str) -> bool:
     lowered = semantic_normalize(text)
     lookup_terms = [
@@ -5878,6 +5889,11 @@ def extract_student_name_lookup_phrase(text: str) -> Optional[str]:
         return None
     if catalog_exact_title_matches(text):
         return None
+    try:
+        if catalog_instructor_match_names(text):
+            return None
+    except Exception:
+        pass
 
     trigger_patterns = [
         r"\b(?:show|find|get|check|search)\s+(?:me\s+)?(?:student|profile|record)\s+(.+)$",
@@ -6407,51 +6423,201 @@ def format_department_analysis_answer(dept_code: str, text: str) -> Optional[str
 
     department_name = str(department.get("name") or dept_code)
     courses = get_courses_by_dept(dept_code) if get_courses_by_dept else []
-    student_count = ""
-    average_gpa = ""
-    gpa_count = ""
-
-    try:
-        columns, rows = run_fci_stats_sql(
-            f"SELECT COUNT(*) AS StudentCount FROM v_rasa_students s WHERE s.dept_code = {sql_string(dept_code)}"
-        )
-        if rows:
-            student_count = format_value(rows[0][0])
-    except Exception:
-        student_count = ""
+    student_rows: List[Dict[str, Any]] = []
+    raw_gpa_records = 0
 
     try:
         columns, rows = run_fci_stats_sql(
             f"""
-SELECT
-    AVG(CAST(g.semester_gpa AS FLOAT)) AS AverageGPA,
-    COUNT(DISTINCT s.student_id) AS StudentCount
-FROM GPA_Records g
-JOIN v_rasa_students s ON s.student_id = g.student_id
+SELECT TOP 1000
+    s.student_id AS StudentID,
+    s.full_name AS FullName,
+    s.group_code AS GroupCode,
+    s.current_year AS CurrentYear,
+    s.current_semester AS CurrentSemester,
+    g.academic_year AS AcademicYear,
+    g.semester AS Semester,
+    CAST(g.semester_gpa AS FLOAT) AS SemesterGPA,
+    CAST(g.cumulative_gpa AS FLOAT) AS CumulativeGPA
+FROM v_rasa_students s
+LEFT JOIN GPA_Records g ON g.student_id = s.student_id
 WHERE s.dept_code = {sql_string(dept_code)}
-  AND g.semester_gpa IS NOT NULL
+ORDER BY s.group_code, s.full_name, g.academic_year, g.semester
 """
         )
-        if rows:
-            average_gpa = format_value(rows[0][0])
-            gpa_count = format_value(rows[0][1])
+        student_rows = [dict(zip(columns, list(row))) for row in rows]
     except Exception:
-        average_gpa = ""
-        gpa_count = ""
+        student_rows = []
+
+    students: Dict[str, Dict[str, Any]] = {}
+    for row in student_rows:
+        student_id = str(row_value_case_insensitive(row, "StudentID", "studentid") or "").strip()
+        if not student_id:
+            continue
+        entry = students.setdefault(
+            student_id,
+            {
+                "student_id": student_id,
+                "name": format_value(row_value_case_insensitive(row, "FullName", "fullname")),
+                "group": format_value(row_value_case_insensitive(row, "GroupCode", "groupcode")),
+                "department": department_name,
+                "year": format_value(row_value_case_insensitive(row, "CurrentYear", "currentyear")),
+                "semester": format_value(row_value_case_insensitive(row, "CurrentSemester", "currentsemester")),
+                "semester_values": [],
+                "latest_cumulative": None,
+                "latest_key": (-1, -1),
+            },
+        )
+        semester_gpa = as_float(row_value_case_insensitive(row, "SemesterGPA", "semestergpa"))
+        cumulative_gpa = as_float(row_value_case_insensitive(row, "CumulativeGPA", "cumulativegpa"))
+        academic_year = as_float(row_value_case_insensitive(row, "AcademicYear", "academicyear")) or -1
+        semester = as_float(row_value_case_insensitive(row, "Semester", "semester")) or -1
+        if semester_gpa is not None:
+            raw_gpa_records += 1
+            entry["semester_values"].append(semester_gpa)
+        if cumulative_gpa is not None and (academic_year, semester) >= entry["latest_key"]:
+            entry["latest_key"] = (academic_year, semester)
+            entry["latest_cumulative"] = cumulative_gpa
+
+    analysed: List[Dict[str, Any]] = []
+    for entry in students.values():
+        values = [float(value) for value in entry.get("semester_values") or []]
+        latest = entry.get("latest_cumulative")
+        if latest is None and values:
+            latest = sum(values) / len(values)
+        if latest is None:
+            continue
+        analysed.append({**entry, "gpa": float(latest)})
+
+    def percent(part: int, whole: int) -> str:
+        return f"{(part / whole * 100):.1f}%" if whole else "0.0%"
+
+    def median(values: Sequence[float]) -> float:
+        sorted_values = sorted(float(value) for value in values)
+        if not sorted_values:
+            return 0.0
+        middle = len(sorted_values) // 2
+        if len(sorted_values) % 2:
+            return sorted_values[middle]
+        return (sorted_values[middle - 1] + sorted_values[middle]) / 2
+
+    def mini_bar(part: int, whole: int, width: int = 12) -> str:
+        filled = int(round((part / whole) * width)) if whole else 0
+        return "[" + ("#" * filled).ljust(width, ".") + "]"
+
+    gpa_values = [float(entry["gpa"]) for entry in analysed]
+    gpa_count = len(gpa_values)
+    mean = sum(gpa_values) / gpa_count if gpa_count else 0.0
+    variance = sum((value - mean) ** 2 for value in gpa_values) / gpa_count if gpa_count else 0.0
+    std_dev = variance ** 0.5
+    min_gpa = min(gpa_values) if gpa_values else 0.0
+    max_gpa = max(gpa_values) if gpa_values else 0.0
+    median_gpa = median(gpa_values)
+    q1 = median(sorted(gpa_values)[: max(1, gpa_count // 2)]) if gpa_count >= 4 else min_gpa
+    q3 = median(sorted(gpa_values)[(gpa_count + 1) // 2 :]) if gpa_count >= 4 else max_gpa
+    iqr = q3 - q1
+    low_fence = q1 - 1.5 * iqr
+    high_fence = q3 + 1.5 * iqr
+
+    high_outliers = sorted(
+        [entry for entry in analysed if iqr > 0 and float(entry["gpa"]) > high_fence],
+        key=lambda entry: float(entry["gpa"]),
+        reverse=True,
+    )[:3]
+    low_outliers = sorted(
+        [entry for entry in analysed if iqr > 0 and float(entry["gpa"]) < low_fence],
+        key=lambda entry: float(entry["gpa"]),
+    )[:3]
+    highest = sorted(analysed, key=lambda entry: float(entry["gpa"]), reverse=True)[:3]
+    lowest = sorted(analysed, key=lambda entry: float(entry["gpa"]))[:3]
+
+    bands = [
+        ("Excellent 3.70-4.00", lambda value: value >= 3.70),
+        ("Strong 3.20-3.69", lambda value: 3.20 <= value < 3.70),
+        ("Good 2.60-3.19", lambda value: 2.60 <= value < 3.20),
+        ("Watchlist 2.00-2.59", lambda value: 2.00 <= value < 2.60),
+        ("High risk <2.00", lambda value: value < 2.00),
+    ]
+    band_counts = [(label, sum(1 for value in gpa_values if check(value))) for label, check in bands]
+
+    course_credits = sum(int(float(course.get("credit_hours") or 0)) for course in courses)
+    course_terms: Dict[str, int] = {}
+    for course in courses:
+        key = f"Y{course.get('year', '?')} S{course.get('semester', '?')}"
+        course_terms[key] = course_terms.get(key, 0) + 1
+    course_term_summary = ", ".join(f"{key}: {count}" for key, count in sorted(course_terms.items()))
+
+    group_counts: Dict[str, int] = {}
+    for entry in students.values():
+        group = str(entry.get("group") or "Unknown")
+        group_counts[group] = group_counts.get(group, 0) + 1
+    group_summary = ", ".join(f"{group}={count}" for group, count in sorted(group_counts.items()))
 
     description = str(department.get("description") or "").strip()
-    lines = [f"{department_name} ({dept_code}) — quick analysis:"]
+    lines = [f"{department_name} ({dept_code}) — data/ML-style analysis:"]
     if description:
         lines.append(description)
-    lines.append(f"- Major courses in catalog: {len(courses)}.")
-    if student_count:
-        lines.append(f"- Student records: {student_count}.")
-    if average_gpa and average_gpa != "not recorded":
-        lines.append(f"- Average GPA: {average_gpa} based on {gpa_count or 'available'} student records.")
+    lines.append("")
+    lines.append("Dataset snapshot:")
+    lines.append(f"- Student records: {len(students)}.")
+    lines.append(f"- Students with GPA data: {gpa_count}/{len(students)}.")
+    lines.append(f"- GPA semester records used: {raw_gpa_records}.")
+    lines.append(f"- Major courses: {len(courses)} courses, about {course_credits} credit hours.")
+    if course_term_summary:
+        lines.append(f"- Course distribution: {course_term_summary}.")
+    if group_summary:
+        lines.append(f"- Group distribution: {group_summary}.")
+
+    if gpa_count:
+        lines.append("")
+        lines.append("GPA distribution:")
+        lines.append(f"- Mean: {mean:.2f}; median: {median_gpa:.2f}; std dev: {std_dev:.2f}.")
+        lines.append(f"- Min: {min_gpa:.2f}; max: {max_gpa:.2f}; IQR: {q1:.2f}-{q3:.2f}.")
+        for label, count in band_counts:
+            lines.append(f"- {label}: {count} students ({percent(count, gpa_count)}) {mini_bar(count, gpa_count)}")
+
+        lines.append("")
+        if high_outliers or low_outliers:
+            lines.append("IQR outliers:")
+            for entry in high_outliers:
+                lines.append(format_gpa_outlier_entry(entry, mean))
+            for entry in low_outliers:
+                lines.append(format_gpa_outlier_entry(entry, mean))
+        else:
+            lines.append("No strict IQR outliers detected. Highest and lowest GPA signals:")
+            lines.append("Highest:")
+            for entry in highest:
+                lines.append(format_gpa_outlier_entry(entry, mean))
+            lines.append("Lowest:")
+            for entry in lowest:
+                lines.append(format_gpa_outlier_entry(entry, mean))
+
+        high_risk = next((count for label, count in band_counts if label.startswith("High risk")), 0)
+        watchlist = next((count for label, count in band_counts if label.startswith("Watchlist")), 0)
+        strong_plus = sum(count for label, count in band_counts if label.startswith(("Excellent", "Strong")))
+        lines.append("")
+        lines.append("ML-style reading:")
+        lines.append(
+            f"- Baseline risk classifier: {high_risk} high-risk students (<2.0 GPA), "
+            f"{watchlist} watchlist students (2.00-2.59), {strong_plus} strong/excellent students (>=3.20)."
+        )
+        if std_dev <= 0.25:
+            lines.append("- Cohort spread is tight: performance is relatively consistent across the available GPA data.")
+        elif std_dev <= 0.45:
+            lines.append("- Cohort spread is moderate: useful for monitoring groups, but not a crisis signal by itself.")
+        else:
+            lines.append("- Cohort spread is wide: this department would benefit from targeted academic advising.")
+        lines.append(
+            "- For a real predictive ML model, BuddyBot would need more features such as attendance, "
+            "course grades, midterms, assignment scores, and repeated semester history."
+        )
+    else:
+        lines.append("- GPA analysis is not available because GPA records are missing for this department.")
+
     lines.append(
         "Note: course schedules list teaching staff per course, but they do not prove official department membership."
     )
-    lines.append("Ask for the courses, GPA outliers, student list, or course teachers if you want a deeper breakdown.")
+    lines.append("Ask for GPA outliers, course teachers, or a specific group/semester analysis for a deeper breakdown.")
     return "\n".join(lines)
 
 
@@ -6636,10 +6802,47 @@ def known_catalog_instructor_names() -> List[str]:
     return names
 
 
+def catalog_instructor_match_names(name: str) -> List[str]:
+    query_norm = normalize_instructor_lookup_name(name)
+    if not query_norm:
+        return []
+    query_tokens = set(query_norm.split())
+    matches: List[str] = []
+    for instructor in known_catalog_instructor_names():
+        instructor_norm = normalize_instructor_lookup_name(instructor)
+        if not instructor_norm:
+            continue
+        instructor_tokens = set(instructor_norm.split())
+        matched = False
+        if query_tokens and query_tokens.issubset(instructor_tokens):
+            matched = True
+        elif len(query_norm) >= 4 and (query_norm in instructor_norm or instructor_norm in query_norm):
+            matched = True
+        elif SequenceMatcher(None, query_norm, instructor_norm).ratio() >= 0.88:
+            matched = True
+        if matched and instructor not in matches:
+            matches.append(instructor)
+    return sorted(matches, key=lambda value: semantic_normalize(value))
+
+
+def catalog_instructor_ambiguity_answer(name: str) -> Optional[str]:
+    query_tokens = normalize_instructor_lookup_name(name).split()
+    if len(query_tokens) != 1:
+        return None
+    matches = catalog_instructor_match_names(name)
+    if len(matches) <= 1:
+        return None
+    names = ", ".join(matches[:8])
+    extra = "" if len(matches) <= 8 else f", and {len(matches) - 8} more"
+    return f"I found more than one instructor matching '{name}': {names}{extra}. Which one do you mean?"
+
+
 def find_catalog_instructor_courses(name: str) -> tuple[str, List[Dict[str, Any]]]:
     if not find_courses_by_instructor:
         return name, []
     display_name = re.sub(r"\s+", " ", INSTRUCTOR_TITLE_RE.sub(" ", name or "")).strip()
+    if catalog_instructor_ambiguity_answer(display_name):
+        return display_name, []
     courses = find_courses_by_instructor(display_name)
     if courses:
         query_norm = normalize_instructor_lookup_name(display_name)
@@ -7246,6 +7449,21 @@ def catalog_context_events(entity_type: str, topic: str, extra: Optional[List[Di
     return events
 
 
+def catalog_instructor_ambiguity_result(name: str) -> Optional[Dict[str, Any]]:
+    answer = catalog_instructor_ambiguity_answer(name)
+    if not answer:
+        return None
+    return {
+        "answer": answer,
+        "events": [
+            SlotSet("last_query_scope", "course_catalog"),
+            SlotSet("last_clarification_topic", "instructor_courses"),
+            SlotSet("last_entity_type", "instructor"),
+            SlotSet("last_topic", name),
+        ],
+    }
+
+
 def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional[Dict[str, Any]]:
     if not fci_catalog_helpers_available():
         return None
@@ -7303,6 +7521,9 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
 
     instructor_query_name = extract_instructor_course_query_name(text)
     if instructor_query_name:
+        ambiguity = catalog_instructor_ambiguity_result(instructor_query_name)
+        if ambiguity:
+            return ambiguity
         display_name, instructor_courses = find_catalog_instructor_courses(instructor_query_name)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
@@ -7438,7 +7659,7 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
         "سكشن",
     ]
     course_list_terms = ["courses", "course list", "subjects", "curriculum", "study plan", "مواد", "مقررات", "كورسات"]
-    if text_has_any(lowered, schedule_terms) and not text_has_any(lowered, course_list_terms):
+    if text_has_any_whole_term(lowered, schedule_terms) and not text_has_any_whole_term(lowered, course_list_terms):
         return None
 
     course_code = fci_extract_course_code(text)
@@ -7528,9 +7749,15 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
                 "answer": format_instructor_course_brief_matches(header, instructor_courses, max_results=page_size),
                 "events": events,
             }
+        ambiguity = catalog_instructor_ambiguity_result(teacher_subject)
+        if ambiguity:
+            return ambiguity
 
     instructor_name = extract_fci_instructor_name(text)
     if instructor_name:
+        ambiguity = catalog_instructor_ambiguity_result(instructor_name)
+        if ambiguity:
+            return ambiguity
         display_name, instructor_courses = find_catalog_instructor_courses(instructor_name)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
@@ -7555,6 +7782,9 @@ def fci_catalog_result(text: str, tracker: Optional[Tracker] = None) -> Optional
 
     bare_instructor = extract_bare_instructor_candidate(text)
     if bare_instructor:
+        ambiguity = catalog_instructor_ambiguity_result(bare_instructor)
+        if ambiguity:
+            return ambiguity
         display_name, instructor_courses = find_catalog_instructor_courses(bare_instructor)
         if instructor_courses:
             header = f"Courses taught by {display_name}:"
@@ -10648,7 +10878,15 @@ class ActionCheckStudentExists(Action):
         domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
 
-        text = tracker.latest_message.get("text", "").lower()
+        raw_text = tracker.latest_message.get("text", "") or ""
+        profile_events = dispatch_instructor_profile_answer(dispatcher, raw_text, tracker)
+        if profile_events is not None:
+            return profile_events
+        catalog_events = dispatch_fci_catalog_answer(dispatcher, raw_text, tracker)
+        if catalog_events is not None:
+            return catalog_events
+
+        text = raw_text.lower()
         entities = tracker.latest_message.get("entities", [])
 
         extracted_name = None
