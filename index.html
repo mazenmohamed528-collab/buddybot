@@ -802,6 +802,66 @@
             opacity: 1;
         }
 
+        .attachment-list {
+            display: grid;
+            gap: 8px;
+            width: min(420px, 78%);
+        }
+
+        .attachment-link {
+            display: grid;
+            grid-template-columns: 34px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border: 1px solid #c9d8e8;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #173f68;
+            text-decoration: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .attachment-link:hover,
+        .attachment-link:focus-visible {
+            border-color: #1e4d7b;
+            background: #f2f7fb;
+            outline: none;
+        }
+
+        .attachment-icon {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            background: #e8f1f8;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .attachment-title {
+            min-width: 0;
+            font-size: 13px;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .attachment-meta {
+            display: block;
+            margin-top: 2px;
+            color: #61758a;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .attachment-action {
+            color: #1e4d7b;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
         .policy-chips {
             padding: 8px 12px 4px;
             background: #f8f9fa;
@@ -3027,6 +3087,12 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                     if (item.text) {
                         addMessageToChat(item.text, "bot");
                     }
+                    const attachments = item.custom && Array.isArray(item.custom.attachments)
+                        ? item.custom.attachments
+                        : [];
+                    if (attachments.length) {
+                        addAttachmentsToChat(attachments);
+                    }
                 });
 
             } catch (error) {
@@ -3165,6 +3231,58 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             messageDiv.appendChild(copyButton);
             messagesContainer.appendChild(messageDiv);
 
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function addAttachmentsToChat(attachments) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+
+            const list = document.createElement('div');
+            list.className = 'attachment-list';
+
+            attachments.forEach(attachment => {
+                const url = String(attachment.download_url || '').trim();
+                if (!url) return;
+
+                const link = document.createElement('a');
+                link.className = 'attachment-link';
+                link.href = url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.setAttribute('aria-label', `Download ${attachment.title || 'schedule PDF'}`);
+
+                const icon = document.createElement('span');
+                icon.className = 'attachment-icon';
+                icon.textContent = String(attachment.file_type || '').toLowerCase() === 'pdf' ? 'PDF' : 'FILE';
+
+                const text = document.createElement('span');
+                text.className = 'attachment-title';
+                text.textContent = attachment.title || 'Download file';
+
+                const meta = document.createElement('span');
+                meta.className = 'attachment-meta';
+                const details = [];
+                if (attachment.is_official) details.push('Official');
+                if (attachment.page_number) details.push(`Page ${attachment.page_number}`);
+                if (attachment.file_type) details.push(String(attachment.file_type).toUpperCase());
+                meta.textContent = details.join(' · ');
+                text.appendChild(meta);
+
+                const action = document.createElement('span');
+                action.className = 'attachment-action';
+                action.textContent = 'Download';
+
+                link.appendChild(icon);
+                link.appendChild(text);
+                link.appendChild(action);
+                list.appendChild(link);
+            });
+
+            if (!list.children.length) return;
+            messageDiv.appendChild(list);
+            messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
     </script>
