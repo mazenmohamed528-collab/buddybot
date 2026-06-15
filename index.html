@@ -3234,6 +3234,20 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
+        function resolveAttachmentUrl(attachment) {
+            const id = String(attachment.attachment_id || '').toLowerCase();
+            let url = String(attachment.download_url || '').trim();
+            if (id.includes('sem1')) {
+                url = 'assets/documents/fci-schedule-first-term-2025.pdf';
+            } else if (id.includes('sem2')) {
+                url = 'assets/documents/fci-schedule-second-term-2025.pdf';
+            }
+            if (attachment.page_number && url) {
+                url += `#page=${attachment.page_number}`;
+            }
+            return url;
+        }
+
         function addAttachmentsToChat(attachments) {
             const messagesContainer = document.getElementById('chatbotMessages');
             const messageDiv = document.createElement('div');
@@ -3243,7 +3257,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             list.className = 'attachment-list';
 
             attachments.forEach(attachment => {
-                const url = String(attachment.download_url || '').trim();
+                const url = resolveAttachmentUrl(attachment);
                 if (!url) return;
 
                 const link = document.createElement('a');
