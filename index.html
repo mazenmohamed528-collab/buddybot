@@ -2919,6 +2919,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             || (isLocalSite ? LOCAL_RASA_URL : PRODUCTION_RASA_URL);
         const AUTH_STORAGE_KEY = "bb_auth_session";
         const AUTH_API_BASE = new URL(RASA_URL, window.location.href).origin;
+        const AUTH_URL_PARAMS = new URLSearchParams(window.location.search);
         const CHATBOT_TIMEOUT_MS = 30000;
         const CHATBOT_DEFAULT_PLACEHOLDER = "Ask us anything...";
         let activeChatController = null;
@@ -3088,6 +3089,24 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                 addMessageToChat("Please login before using BuddyBot. This protects student data and keeps your session context private.", "bot");
             }
             return false;
+        }
+
+        function applyAuthInviteFromUrl() {
+            const inviteCode = (AUTH_URL_PARAMS.get("invite") || "").trim();
+            const requestedRole = (AUTH_URL_PARAMS.get("role") || "").trim().toLowerCase();
+            const hashMode = (window.location.hash || "").replace("#", "").toLowerCase();
+
+            if (requestedRole === "staff" || requestedRole === "admin") {
+                document.getElementById("registerRole").value = requestedRole;
+            }
+            if (inviteCode) {
+                document.getElementById("registerInviteCode").value = inviteCode;
+            }
+            if (inviteCode || requestedRole === "staff" || requestedRole === "admin" || hashMode === "register") {
+                openAuthModal("register");
+            } else if (hashMode === "login") {
+                openAuthModal("login");
+            }
         }
         let activeSuggestionIndex = -1;
         let currentSuggestions = [];
@@ -3790,7 +3809,10 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        document.addEventListener("DOMContentLoaded", updateAuthUI);
+        document.addEventListener("DOMContentLoaded", function() {
+            updateAuthUI();
+            applyAuthInviteFromUrl();
+        });
         document.getElementById("authModal").addEventListener("click", function(event) {
             if (event.target === this) closeAuthModal();
         });
