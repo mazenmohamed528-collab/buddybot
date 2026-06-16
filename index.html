@@ -2636,7 +2636,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             }
         }
 
-        const LOCAL_RASA_URL = "http://127.0.0.1:5005/webhooks/rest/webhook";
+        const LOCAL_RASA_URL = "http://127.0.0.1:8010/webhooks/rest/webhook";
         const PRODUCTION_RASA_URL =
             "https://squeezing-impending-baking.ngrok-free.dev/webhooks/rest/webhook";
 
@@ -3234,6 +3234,18 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
+        function resolveDynamicAttachmentUrl(url) {
+            const raw = String(url || '').trim();
+            if (!raw) return "";
+            try {
+                if (/^https?:\/\//i.test(raw)) return raw;
+                const botOrigin = new URL(RASA_URL, window.location.href).origin;
+                return new URL(raw, botOrigin).href;
+            } catch (error) {
+                return raw;
+            }
+        }
+
         function resolveAttachmentUrl(attachment) {
             const id = String(attachment.attachment_id || '').toLowerCase();
             let url = String(attachment.download_url || '').trim();
@@ -3241,11 +3253,45 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                 url = 'assets/documents/fci-schedule-first-term-2025.pdf';
             } else if (id.includes('sem2')) {
                 url = 'assets/documents/fci-schedule-second-term-2025.pdf';
+            } else {
+                url = resolveDynamicAttachmentUrl(url);
             }
             if (attachment.page_number && url) {
                 url += `#page=${attachment.page_number}`;
             }
             return url;
+        }
+
+        async function downloadAttachment(attachment) {
+            const resolvedUrl = resolveAttachmentUrl(attachment);
+            if (!resolvedUrl) return;
+
+            if (resolvedUrl.startsWith('assets/') || resolvedUrl.includes('#page=')) {
+                window.open(resolvedUrl, '_blank', 'noopener,noreferrer');
+                return;
+            }
+
+            try {
+                const response = await fetch(resolvedUrl, {
+                    headers: { "ngrok-skip-browser-warning": "true" }
+                });
+                if (!response.ok) throw new Error("Download failed");
+
+                const blob = await response.blob();
+                const objectUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                const safeTitle = String(attachment.title || 'buddybot-file')
+                    .replace(/[\\/:*?"<>|]+/g, '-')
+                    .trim() || 'buddybot-file';
+                link.href = objectUrl;
+                link.download = safeTitle.toLowerCase().endsWith('.pdf') ? safeTitle : `${safeTitle}.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+            } catch (error) {
+                window.open(resolvedUrl, '_blank', 'noopener,noreferrer');
+            }
         }
 
         function addAttachmentsToChat(attachments) {
@@ -3263,9 +3309,12 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                 const link = document.createElement('a');
                 link.className = 'attachment-link';
                 link.href = url;
-                link.target = '_blank';
                 link.rel = 'noopener noreferrer';
                 link.setAttribute('aria-label', `Download ${attachment.title || 'schedule PDF'}`);
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    downloadAttachment(attachment);
+                });
 
                 const icon = document.createElement('span');
                 icon.className = 'attachment-icon';
