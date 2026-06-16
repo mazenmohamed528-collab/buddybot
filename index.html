@@ -242,18 +242,205 @@
         .auth-links {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
-        .auth-links a {
+        .auth-links a,
+        .auth-button {
             color: #1e4d7b;
+            background: transparent;
+            border: 0;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
             transition: color 0.3s;
+            font-family: inherit;
+            cursor: pointer;
         }
 
-        .auth-links a:hover {
+        .auth-links a:hover,
+        .auth-button:hover {
             color: #ffb81c;
+        }
+
+        .auth-primary {
+            background: #1e4d7b;
+            border: 1px solid #1e4d7b;
+            border-radius: 999px;
+            color: white;
+            padding: 8px 14px;
+            transition: all 0.2s;
+        }
+
+        .auth-primary:hover {
+            background: #163a5d;
+            border-color: #163a5d;
+            color: white;
+        }
+
+        .auth-user-chip {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            max-width: 260px;
+            color: #1e4d7b;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .auth-user-chip.active {
+            display: flex;
+        }
+
+        .auth-user-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .auth-role-badge {
+            border: 1px solid #cbd8e6;
+            border-radius: 999px;
+            color: #52657a;
+            font-size: 11px;
+            padding: 3px 8px;
+            text-transform: capitalize;
+        }
+
+        .auth-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(18, 34, 50, 0.55);
+        }
+
+        .auth-modal.active {
+            display: flex;
+        }
+
+        .auth-panel {
+            width: min(440px, 100%);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+            overflow: hidden;
+        }
+
+        .auth-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            background: #1e4d7b;
+            color: white;
+        }
+
+        .auth-panel-header h2 {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: 0;
+        }
+
+        .auth-close {
+            width: 34px;
+            height: 34px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.14);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .auth-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e6edf4;
+        }
+
+        .auth-tab {
+            border: 0;
+            background: #f7f9fb;
+            color: #52657a;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+            padding: 13px 16px;
+        }
+
+        .auth-tab.active {
+            background: white;
+            color: #1e4d7b;
+            border-bottom: 3px solid #ffb81c;
+        }
+
+        .auth-form {
+            display: none;
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .auth-form.active {
+            display: grid;
+        }
+
+        .auth-field {
+            display: grid;
+            gap: 6px;
+        }
+
+        .auth-field label {
+            color: #34495e;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .auth-field input,
+        .auth-field select {
+            width: 100%;
+            border: 1px solid #cbd8e6;
+            border-radius: 6px;
+            color: #1d2b38;
+            font: inherit;
+            padding: 11px 12px;
+        }
+
+        .auth-submit {
+            border: 0;
+            border-radius: 6px;
+            background: #1e4d7b;
+            color: white;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+            padding: 12px 14px;
+            margin-top: 4px;
+        }
+
+        .auth-submit:hover {
+            background: #163a5d;
+        }
+
+        .auth-status {
+            min-height: 20px;
+            color: #b42318;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .auth-status.success {
+            color: #087443;
+        }
+
+        .auth-note {
+            color: #6b7785;
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 0;
         }
 
         .lang-switcher {
@@ -1203,9 +1390,77 @@
                 </div>
             </a>
             <div class="header-right">
+                <div class="auth-links" id="authLinks">
+                    <button class="auth-button" type="button" onclick="openAuthModal('login')">Login</button>
+                    <button class="auth-button auth-primary" type="button" onclick="openAuthModal('register')">Register</button>
+                </div>
+                <div class="auth-user-chip" id="authUserChip" aria-live="polite">
+                    <span class="auth-user-name" id="authUserName"></span>
+                    <span class="auth-role-badge" id="authUserRole"></span>
+                    <button class="auth-button" type="button" onclick="logoutBuddyBot()">Logout</button>
+                </div>
             </div>
         </div>
     </header>
+
+    <div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <div class="auth-panel">
+            <div class="auth-panel-header">
+                <h2 id="authTitle">BuddyBot Account</h2>
+                <button class="auth-close" type="button" onclick="closeAuthModal()" aria-label="Close login dialog">x</button>
+            </div>
+            <div class="auth-tabs" role="tablist">
+                <button class="auth-tab active" id="authLoginTab" type="button" onclick="switchAuthMode('login')">Login</button>
+                <button class="auth-tab" id="authRegisterTab" type="button" onclick="switchAuthMode('register')">Register</button>
+            </div>
+            <form class="auth-form active" id="loginForm" onsubmit="submitLogin(event)">
+                <div class="auth-field">
+                    <label for="loginEmail">Email</label>
+                    <input id="loginEmail" type="email" autocomplete="email" required>
+                </div>
+                <div class="auth-field">
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="auth-submit" type="submit">Login</button>
+                <div class="auth-status" id="loginStatus" aria-live="polite"></div>
+                <p class="auth-note">Use your account to access BuddyBot's student-data features and keep session context tied to you.</p>
+            </form>
+            <form class="auth-form" id="registerForm" onsubmit="submitRegister(event)">
+                <div class="auth-field">
+                    <label for="registerName">Full name</label>
+                    <input id="registerName" type="text" autocomplete="name" required>
+                </div>
+                <div class="auth-field">
+                    <label for="registerEmail">Email</label>
+                    <input id="registerEmail" type="email" autocomplete="email" required>
+                </div>
+                <div class="auth-field">
+                    <label for="registerStudentId">Student ID (optional)</label>
+                    <input id="registerStudentId" type="text" inputmode="numeric" autocomplete="off">
+                </div>
+                <div class="auth-field">
+                    <label for="registerRole">Role</label>
+                    <select id="registerRole">
+                        <option value="student">Student</option>
+                        <option value="staff">Staff</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="auth-field">
+                    <label for="registerInviteCode">Staff/admin invite code (if applicable)</label>
+                    <input id="registerInviteCode" type="password" autocomplete="off">
+                </div>
+                <div class="auth-field">
+                    <label for="registerPassword">Password</label>
+                    <input id="registerPassword" type="password" autocomplete="new-password" minlength="6" required>
+                </div>
+                <button class="auth-submit" type="submit">Create account</button>
+                <div class="auth-status" id="registerStatus" aria-live="polite"></div>
+                <p class="auth-note">Accounts are stored by the BuddyBot gateway and issued a signed session token for the chat webhook.</p>
+            </form>
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav>
@@ -2662,11 +2917,178 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             || rasaUrlFromQuery
             || STORED_RASA_URL
             || (isLocalSite ? LOCAL_RASA_URL : PRODUCTION_RASA_URL);
+        const AUTH_STORAGE_KEY = "bb_auth_session";
+        const AUTH_API_BASE = new URL(RASA_URL, window.location.href).origin;
         const CHATBOT_TIMEOUT_MS = 30000;
         const CHATBOT_DEFAULT_PLACEHOLDER = "Ask us anything...";
         let activeChatController = null;
         let activeChatRequestId = 0;
         let activeChatTimeoutId = null;
+
+        function authApiUrl(path) {
+            return AUTH_API_BASE + path;
+        }
+
+        function readAuthSession() {
+            try {
+                const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+                if (!raw) return null;
+                const session = JSON.parse(raw);
+                if (!session || !session.token || Number(session.expires_at || 0) * 1000 <= Date.now()) {
+                    localStorage.removeItem(AUTH_STORAGE_KEY);
+                    return null;
+                }
+                return session;
+            } catch (error) {
+                localStorage.removeItem(AUTH_STORAGE_KEY);
+                return null;
+            }
+        }
+
+        function saveAuthSession(session) {
+            localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
+            sessionStorage.setItem("bb_sid", "auth_" + session.user.id);
+            updateAuthUI();
+        }
+
+        function getAuthMetadata() {
+            const session = readAuthSession();
+            if (!session) return null;
+            return {
+                token: session.token,
+                user_id: session.user.id,
+                email: session.user.email,
+                role: session.user.role,
+                student_id: session.user.student_id || "",
+                expires_at: session.expires_at
+            };
+        }
+
+        function updateAuthUI() {
+            const session = readAuthSession();
+            const links = document.getElementById("authLinks");
+            const chip = document.getElementById("authUserChip");
+            const name = document.getElementById("authUserName");
+            const role = document.getElementById("authUserRole");
+            if (!links || !chip || !name || !role) return;
+
+            if (session) {
+                links.style.display = "none";
+                chip.classList.add("active");
+                name.textContent = session.user.full_name || session.user.email;
+                role.textContent = session.user.role || "student";
+            } else {
+                links.style.display = "flex";
+                chip.classList.remove("active");
+                name.textContent = "";
+                role.textContent = "";
+            }
+        }
+
+        function setAuthStatus(id, message, isSuccess = false) {
+            const node = document.getElementById(id);
+            if (!node) return;
+            node.textContent = message || "";
+            node.classList.toggle("success", Boolean(isSuccess));
+        }
+
+        function switchAuthMode(mode) {
+            const isRegister = mode === "register";
+            document.getElementById("authLoginTab").classList.toggle("active", !isRegister);
+            document.getElementById("authRegisterTab").classList.toggle("active", isRegister);
+            document.getElementById("loginForm").classList.toggle("active", !isRegister);
+            document.getElementById("registerForm").classList.toggle("active", isRegister);
+            document.getElementById("authTitle").textContent = isRegister ? "Create BuddyBot Account" : "Login to BuddyBot";
+            setAuthStatus("loginStatus", "");
+            setAuthStatus("registerStatus", "");
+        }
+
+        function openAuthModal(mode = "login") {
+            switchAuthMode(mode);
+            const modal = document.getElementById("authModal");
+            modal.classList.add("active");
+            setTimeout(() => {
+                const first = mode === "register"
+                    ? document.getElementById("registerName")
+                    : document.getElementById("loginEmail");
+                if (first) first.focus();
+            }, 50);
+        }
+
+        function closeAuthModal() {
+            document.getElementById("authModal").classList.remove("active");
+        }
+
+        function logoutBuddyBot() {
+            localStorage.removeItem(AUTH_STORAGE_KEY);
+            sessionStorage.removeItem("bb_sid");
+            updateAuthUI();
+            addMessageToChat("You are signed out. Login again before using BuddyBot student-data features.", "bot");
+        }
+
+        async function postAuth(path, payload) {
+            const response = await fetch(authApiUrl(path), {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "true"
+                },
+                body: JSON.stringify(payload)
+            });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(data.detail || "Authentication request failed");
+            }
+            return data;
+        }
+
+        async function submitLogin(event) {
+            event.preventDefault();
+            setAuthStatus("loginStatus", "Signing in...");
+            try {
+                const session = await postAuth("/auth/login", {
+                    email: document.getElementById("loginEmail").value,
+                    password: document.getElementById("loginPassword").value
+                });
+                saveAuthSession(session);
+                setAuthStatus("loginStatus", "Signed in successfully.", true);
+                closeAuthModal();
+                addMessageToChat("Signed in. BuddyBot is ready.", "bot");
+            } catch (error) {
+                setAuthStatus("loginStatus", error.message || "Login failed");
+            }
+        }
+
+        async function submitRegister(event) {
+            event.preventDefault();
+            setAuthStatus("registerStatus", "Creating account...");
+            try {
+                const session = await postAuth("/auth/register", {
+                    full_name: document.getElementById("registerName").value,
+                    email: document.getElementById("registerEmail").value,
+                    student_id: document.getElementById("registerStudentId").value,
+                    role: document.getElementById("registerRole").value,
+                    invite_code: document.getElementById("registerInviteCode").value,
+                    password: document.getElementById("registerPassword").value
+                });
+                saveAuthSession(session);
+                setAuthStatus("registerStatus", "Account created.", true);
+                closeAuthModal();
+                addMessageToChat("Account created and signed in. BuddyBot is ready.", "bot");
+            } catch (error) {
+                setAuthStatus("registerStatus", error.message || "Registration failed");
+            }
+        }
+
+        function requireBuddyBotAuth() {
+            if (readAuthSession()) return true;
+            openAuthModal("login");
+            const widget = document.getElementById("chatbotWidget");
+            if (widget && widget.classList.contains("active")) {
+                addMessageToChat("Please login before using BuddyBot. This protects student data and keeps your session context private.", "bot");
+            }
+            return false;
+        }
         let activeSuggestionIndex = -1;
         let currentSuggestions = [];
 
@@ -2889,6 +3311,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             const message = input.value.trim();
 
             if (message === '') return;
+            if (!requireBuddyBotAuth()) return;
 
             addMessageToChat(message, 'user');
             updateChipLanguage(message);
@@ -2907,6 +3330,7 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
         document.getElementById('policyChips').addEventListener('click', function(e) {
             const chip = e.target.closest('.policy-chip');
             if (!chip) return;
+            if (!requireBuddyBotAuth()) return;
 
             const msg = chip.dataset.msg;
             addMessageToChat(msg, 'user');
@@ -3025,6 +3449,12 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             return "";
         }
         async function sendMessageToRasa(message) {
+            const authMetadata = getAuthMetadata();
+            if (!authMetadata) {
+                requireBuddyBotAuth();
+                return;
+            }
+
             const localGuardResponse = guardedLocalChatResponse(message);
             if (localGuardResponse) {
                 addMessageToChat(localGuardResponse, "bot");
@@ -3052,17 +3482,28 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "ngrok-skip-browser-warning": "true"
+                        "ngrok-skip-browser-warning": "true",
+                        "Authorization": "Bearer " + authMetadata.token
                     },
                     signal: activeChatController.signal,
                     body: JSON.stringify({
                         sender: getBuddyBotSenderId(),
-                        message: message
+                        message: message,
+                        metadata: {
+                            buddybot_auth: authMetadata
+                        }
                     })
                 });
 
                 clearTimeout(activeChatTimeoutId);
                 activeChatTimeoutId = null;
+
+                if (response.status === 401) {
+                    localStorage.removeItem(AUTH_STORAGE_KEY);
+                    updateAuthUI();
+                    openAuthModal("login");
+                    throw new Error("Please login again. Your BuddyBot session expired.");
+                }
 
                 if (!response.ok) {
                     throw new Error("Server returned " + response.status);
@@ -3348,6 +3789,14 @@ Ask me about students, GPA, courses, schedules, instructors, FCI policies, offic
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
+
+        document.addEventListener("DOMContentLoaded", updateAuthUI);
+        document.getElementById("authModal").addEventListener("click", function(event) {
+            if (event.target === this) closeAuthModal();
+        });
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") closeAuthModal();
+        });
     </script>
 </body>
 </html>
